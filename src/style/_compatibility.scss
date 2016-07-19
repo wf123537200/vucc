@@ -1,0 +1,14 @@
+@import "compass/css3";
+
+// for iconfont font size
+// fix chrome 12px bug, support ie
+@mixin iconfont-size-under-12px($size, $rotate: 0deg) {
+  display: inline-block;
+  $font-scale: $size/$font-size-base;
+  font-size: $font-size-base;
+  font-size: "#{$size} \9"; // ie8-9
+  @include transform(scale($font-scale) rotate($rotate));
+  :root & {
+    font-size: $font-size-base; // reset ie9 and above
+  }
+}

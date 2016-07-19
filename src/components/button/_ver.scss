@@ -1,0 +1,23 @@
+// btn
+$btn-padding: 0 20px;
+$btn-padding-xs: 0 7px;
+$btn-padding-sm: 0 10px;
+$btn-padding-lg: 0 25px;
+$btn-border-color: $border-color;
+$btn-bg: transparent;
+
+$btn-outline-border-color: $primary-color;
+$btn-outline-bg: transparent;
+$btn-outline-color: $primary-color;
+
+$btn-primary-border-color: $primary-color;
+$btn-primary-bg: $primary-color;
+
+$btn-error-border-color: $error-color;
+$btn-error-bg: $error-color;
+
+$btn-disabled-border-color: $border-disabled-color;
+$btn-disabled-bg: $border-disabled-color;
+$btn-disabled-color: $gray-color;
+
+$btn-link-color: $blue-color;

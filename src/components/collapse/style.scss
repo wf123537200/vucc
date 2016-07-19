@@ -1,0 +1,150 @@
+@import "../../style/ver";
+@import "../../style/mixins";
+
+$collapse-prefix-cls: $css-prefix + "collapse";
+
+.#{$collapse-prefix-cls} {
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  border: 1px solid $border-color;
+  background: #fff;
+
+  &-header {
+    position: relative;
+    box-sizing: border-box;
+    height: 41px;
+    padding: 0 15px 0 10px;
+    background: lighten($base-bg, 3%);
+    color: $base-color;
+    line-height: 40px;
+    @include clearfix();
+    cursor: pointer;
+    transition: background 0.3s linear;
+
+    &-trigger {
+      float: left;
+      width: 20px;
+      @include iconfont-mixin();
+      line-height: inherit;
+      color: $gray-color;
+      transition: color 0.3s linear, transform 0.24s ease;
+      overflow: hidden;
+
+      &:before {
+        content: '\e60a';
+      }
+    }
+
+    &-title {
+      float: left;
+      font-weight: normal;
+      font-size: 12px;
+    }
+
+    &-extra {
+      float: right;
+    }
+
+    &:hover {
+      background: $base-bg;
+
+      .#{$collapse-prefix-cls}-header-trigger {
+         color: $base-color;
+       }
+    }
+  }
+
+  &-content {
+    display: none;
+    box-sizing: border-box;
+    padding: 15px;
+    border-top: 1px solid $border-color;
+  }
+
+  // 展开
+  &-open &-header-trigger {
+    transform: rotate(90deg);
+  }
+  &-open &-content {
+    display: block;
+  }
+
+  // 激活
+  &-active &-header {
+    color: #fff;
+    background: $primary-color;
+
+    &:hover {
+      background: darken($primary-color, 5%);
+
+      .#{$collapse-prefix-cls}-header-trigger {
+           color: #fff;
+         }
+    }
+  }
+  &-active &-header-trigger {
+    color: #fff;
+  }
+  &-active &-header .#{$css-prefix}link{
+    color: #fff;
+  }
+
+  // 多个折叠面板
+  &-group {
+    margin-bottom: 20px;
+
+    > .#{$collapse-prefix-cls} {
+      margin-bottom: 0;
+      border-bottom-width: 0;
+
+      &:last-child {
+        border-bottom-width: 1px;
+      }
+    }
+  }
+
+  //无边框的折叠面板
+  &-noborder {
+    margin-bottom: 10px;
+    border: none;
+
+    .#{$collapse-prefix-cls}-header {
+       position: relative;
+       padding: 0;
+       height: 36px;
+       line-height: 36px;
+       background: none;
+       overflow: hidden;
+       *zoom: 1;
+
+       &:after {
+         content: '';
+         display: block;
+         position: absolute;
+         left: 0;
+         top: 50%;
+         width: 100%;
+         height: 1px;
+         background: $border-color;
+         visibility: visible;
+       }
+
+       &-trigger {
+         position: relative;
+         z-index: 2;
+         background: #fff;
+       }
+       &-title {
+         position: relative;
+         z-index: 2;
+         padding-right: 10px;
+         background: #fff;
+       }
+     }
+
+    .#{$collapse-prefix-cls}-content {
+         padding: 5px 0 0;
+         border: none;
+       }
+  }
+}

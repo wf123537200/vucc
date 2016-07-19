@@ -1,0 +1,127 @@
+@import "../../style/ver";
+@import "../../style/mixins";
+@import "../../style/compatibility";
+
+$pagination-prefix-cls: $css-prefix + "pagination";
+$select-prefix-cls: $css-prefix + "select";
+$input-prefix-cls: $css-prefix + "input";
+
+.#{$pagination-prefix-cls} {
+  margin: 0 0 20px;
+  font-size: $font-size-base;
+  @include clearfix();
+
+  &-records {
+    float: left;
+    line-height: 24px;
+    color: $gray-color;
+  }
+  &-per-page {
+    position: relative;
+    top: -2px;
+    padding: 0 5px;
+    *position: static;
+    height: 24px;
+    width: auto;
+    vertical-align: middle;
+  }
+  .#{$select-prefix-cls} {
+    height: 24px;
+
+    &-selection-single {
+      height: 24px;
+
+      .#{$select-prefix-cls}-selection-rendered {
+        line-height: 22px;
+      }
+    }
+  }
+  &-btns {
+    float: right;
+
+    a,
+    &-dot {
+      float: left;
+      margin-left: 4px;
+      padding: 0 9px;
+      height: 24px;
+      min-width: 4px;
+      box-sizing: border-box;
+      border: 1px solid $border-color;
+      color: $gray-color;
+      line-height: 22px;
+      text-align: center;
+      text-decoration: none;
+    }
+    a:hover {
+      border-color: $primary-color;
+      color: $primary-color;
+      text-decoration: none;
+    }
+    & &-active {
+      border-color: $primary-color;
+      background: $primary-color;
+      color: #fff;
+      font-weight: normal;
+
+      &:hover {
+        color: #fff;
+      }
+    }
+    & &-dot {
+      padding: 0;
+      width: 24px;
+      line-height: 24px;
+      border: none;
+    }
+    & &-first,
+    & &-prev,
+    & &-next,
+    & &-last {
+      padding: 0;
+      width: 24px;
+    }
+    &-first:after,
+    &-prev:after,
+    &-next:after,
+    &-last:after {
+      display: inline-block;
+      @include iconfont-size-under-12px(8px);
+      font-family: 'tbdicon';
+      font-weight: bold;
+      content: '\e62c';
+    }
+    &-prev:after {
+      content: '\e601';
+    }
+    &-next:after {
+      content: '\e600';
+    }
+    &-last:after {
+      content: '\e62b';
+    }
+    &-records {
+      float: left;
+      margin-left: 10px;
+      line-height: 24px;
+      color: $gray-color;
+      em {
+        margin: 0 3px;
+        color: $primary-color;
+      }
+    }
+    &-goto {
+      float: left;
+      margin-left: 10px;
+      line-height: 24px;
+
+      .#{$input-prefix-cls} {
+        margin: 0 5px;
+        width: 40px;
+        @include input(24px, 12px);
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+    }
+  }
+}

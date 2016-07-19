@@ -1,0 +1,498 @@
+/* line 11, style.scss */
+.tbd-tabs {
+  box-sizing: border-box;
+  position: relative;
+  color: #1b1e25;
+  margin-bottom: 20px;
+}
+/* line 17, style.scss */
+.tbd-tabs-bar {
+  outline: none;
+}
+/* line 21, style.scss */
+.tbd-tabs-ink-bar {
+  display: none;
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  bottom: 7px;
+  box-sizing: border-box;
+  width: 2px;
+  height: 2px;
+  background-color: #57cc95;
+  transform: scaleX(1);
+  transform-origin: 0 0;
+  transition: width 0.3s cubic-bezier(0.645, 0.045, 0.355, 1), left 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+/* line 34, style.scss */
+.tbd-tabs-ink-bar:after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 0;
+  height: 0;
+  margin-left: -5px;
+  border-style: solid;
+  border-width: 5px 5px 0;
+  border-color: #57cc95 transparent;
+}
+/* line 48, style.scss */
+.tbd-tabs-bar {
+  border-bottom: 1px solid #e5e9ec;
+  margin-bottom: 20px;
+}
+/* line 53, style.scss */
+.tbd-tabs-nav-container {
+  overflow: hidden;
+  font-size: 12px;
+  line-height: 1.5;
+  box-sizing: border-box;
+  position: relative;
+  white-space: nowrap;
+  margin-bottom: -7px;
+}
+/* line 63, style.scss */
+.tbd-tabs-nav-container-scrolling {
+  padding-right: 100px;
+}
+/* line 67, style.scss */
+.tbd-tabs-tab-pages {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 2;
+  height: 100%;
+}
+/* line 75, style.scss */
+.tbd-tabs-tab-num {
+  float: left;
+  width: 36px;
+  height: 100%;
+  line-height: 40px;
+  text-align: center;
+  color: #8b91a0;
+  overflow: hidden;
+}
+/* line 85, style.scss */
+.tbd-tabs-tab-prev, .tbd-tabs-tab-next {
+  float: left;
+  width: 32px;
+  height: 100%;
+  line-height: 40px;
+  cursor: pointer;
+  border: 0;
+  background-color: transparent;
+  text-align: center;
+  color: #8b91a0;
+  transition: color 0.3s ease;
+}
+/* line 98, style.scss */
+.tbd-tabs-tab-prev:hover, .tbd-tabs-tab-next:hover {
+  color: #1b1e25;
+}
+/* line 102, style.scss */
+.tbd-tabs-tab-prev-icon, .tbd-tabs-tab-next-icon {
+  position: relative;
+  display: inline-block;
+  font-style: normal;
+  font-weight: bold;
+  font-variant: normal;
+  line-height: inherit;
+  vertical-align: baseline;
+  text-align: center;
+  text-transform: none;
+  font-family: sans-serif;
+}
+/* line 114, style.scss */
+.tbd-tabs-tab-prev-icon:before, .tbd-tabs-tab-next-icon:before {
+  display: block;
+  font-family: "tbdicon" !important;
+}
+/* line 120, style.scss */
+.tbd-tabs-tab-prev.tbd-tabs-tab-btn-disabled, .tbd-tabs-tab-next.tbd-tabs-tab-btn-disabled {
+  opacity: 0.5;
+}
+/* line 125, style.scss */
+.tbd-tabs-tab-btn-disabled {
+  cursor: not-allowed;
+}
+/* line 127, style.scss */
+.tbd-tabs-tab-btn-disabled:hover {
+  color: #8b91a0;
+}
+/* line 133, style.scss */
+.tbd-tabs-tab-next-icon:before {
+  content: "\e600";
+}
+/* line 139, style.scss */
+.tbd-tabs-tab-prev-icon:before {
+  content: "\e601";
+}
+/* line 142, style.scss */
+:root .tbd-tabs-tab-prev {
+  filter: none;
+}
+/* line 147, style.scss */
+.tbd-tabs-nav-wrap {
+  overflow: hidden;
+  margin-bottom: -1px;
+}
+/* line 152, style.scss */
+.tbd-tabs-nav-scroll {
+  width: 99999px;
+  overflow: hidden;
+}
+/* line 157, style.scss */
+.tbd-tabs-nav {
+  box-sizing: border-box;
+  padding-left: 0;
+  padding-bottom: 6px;
+  transition: left 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+  position: relative;
+  margin: 0;
+  list-style: none;
+  float: left;
+}
+/* line 167, style.scss */
+.tbd-tabs-nav:before, .tbd-tabs-nav:after {
+  display: table;
+  content: " ";
+}
+/* line 173, style.scss */
+.tbd-tabs-nav:after {
+  clear: both;
+}
+/* line 177, style.scss */
+.tbd-tabs-nav .tbd-tabs-tab-disabled {
+  pointer-events: none;
+  cursor: default;
+}
+/* line 181, style.scss */
+.tbd-tabs-nav .tbd-tabs-tab-disabled .tbd-tabs-tab-inner {
+  color: #8b91a0;
+}
+/* line 186, style.scss */
+.tbd-tabs-nav .tbd-tabs-tab {
+  float: left;
+  height: 100%;
+  margin-right: 5px;
+  box-sizing: border-box;
+  position: relative;
+}
+/* line 193, style.scss */
+.tbd-tabs-nav .tbd-tabs-tab-inner {
+  padding: 0 15px;
+  transition: color 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  display: block;
+  cursor: pointer;
+  text-decoration: none;
+  line-height: 40px;
+  color: #1b1e25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+/* line 206, style.scss */
+.tbd-tabs-nav .tbd-tabs-tab-inner:hover {
+  color: #79d6aa;
+}
+/* line 210, style.scss */
+.tbd-tabs-nav .tbd-tabs-tab-inner:active {
+  color: #53c28e;
+  transform: translateZ(0);
+}
+/* line 215, style.scss */
+.tbd-tabs-nav .tbd-tabs-tab-inner .tbdi {
+  width: 14px;
+  height: 14px;
+  margin-right: 5px;
+}
+/* line 222, style.scss */
+.tbd-tabs-nav .tbd-tabs-tab-inner-with-close {
+  position: relative;
+  padding-right: 30px;
+}
+/* line 226, style.scss */
+.tbd-tabs-nav .tbd-tabs-tab-inner-with-close .tbdi-cross {
+  position: absolute;
+  right: 10px;
+  top: 0;
+  margin-right: 0;
+  height: 100%;
+  line-height: inherit;
+  color: #8b91a0;
+}
+/* line 235, style.scss */
+.tbd-tabs-nav .tbd-tabs-tab-inner-with-close .tbdi-cross:hover {
+  color: #1b1e25;
+  font-weight: bold;
+}
+/* line 245, style.scss */
+.tbd-tabs-nav .tbd-tabs-tab-active .tbd-tabs-tab-inner {
+  color: #57cc95;
+  transform: translateZ(0);
+}
+/* line 250, style.scss */
+.tbd-tabs-nav .tbd-tabs-tab-active:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: #57cc95;
+}
+/* line 259, style.scss */
+.tbd-tabs-nav .tbd-tabs-tab-active:after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 0;
+  height: 0;
+  margin-left: -5px;
+  border-style: solid;
+  border-width: 5px 5px 0;
+  border-color: #57cc95 transparent;
+}
+/* line 274, style.scss */
+.tbd-tabs-tabpane-hidden {
+  display: none;
+}
+/* line 278, style.scss */
+.tbd-tabs-content {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+/* line 284, style.scss */
+.tbd-tabs-extra-content {
+  float: right;
+  line-height: 32px;
+  padding-top: 4px;
+}
+/* line 289, style.scss */
+.tbd-tabs-extra-content > .tbd-btn,
+.tbd-tabs-extra-content > .tbd-btn-group {
+  vertical-align: middle;
+}
+/* line 294, style.scss */
+.tbd-tabs-extra-content > .tbd-btn + .tbd-btn,
+.tbd-tabs-extra-content > .tbd-btn + .tbd-btn-group {
+  margin-left: 5px;
+}
+/* line 299, style.scss */
+.tbd-tabs-extra-content .tbd-tabs-new-tab {
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 3px;
+  border: 1px solid #e5e9ec;
+  font-size: 12px;
+  color: #8b91a0;
+  transition: color 0.3s ease;
+}
+/* line 311, style.scss */
+.tbd-tabs-extra-content .tbd-tabs-new-tab:hover {
+  color: #57cc95;
+  border-color: #57cc95;
+}
+/* line 319, style.scss */
+.tbd-tabs-card .tbd-tabs-bar {
+  margin-bottom: 0;
+  background: #f1f4f6;
+  border-bottom-color: transparent;
+}
+/* line 324, style.scss */
+.tbd-tabs-card .tbd-tabs-nav-container {
+  margin-bottom: -1px;
+}
+/* line 327, style.scss */
+.tbd-tabs-card .tbd-tabs-extra-content {
+  padding-right: 10px;
+}
+/* line 330, style.scss */
+.tbd-tabs-card .tbd-tabs-nav {
+  padding-bottom: 0;
+}
+/* line 333, style.scss */
+.tbd-tabs-card .tbd-tabs-ink-bar {
+  visibility: hidden;
+}
+/* line 336, style.scss */
+.tbd-tabs-card .tbd-tabs-tab {
+  margin: 0;
+  border: 1px solid transparent;
+  border-bottom: 0;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  background: transparent;
+  margin-right: 5px;
+}
+/* line 344, style.scss */
+.tbd-tabs-card .tbd-tabs-tab-inner {
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  color: #8b91a0;
+}
+/* line 348, style.scss */
+.tbd-tabs-card .tbd-tabs-tab-active {
+  background: #fff;
+  transform: translateZ(0);
+  color: #57cc95;
+}
+/* line 353, style.scss */
+.tbd-tabs-card .tbd-tabs-tab-active:before, .tbd-tabs-card .tbd-tabs-tab-active:after {
+  display: none;
+}
+/* line 358, style.scss */
+.tbd-tabs-card .tbd-tabs-tab-active .tbd-tabs-tab-inner {
+  color: #57cc95;
+}
+/* line 362, style.scss */
+.tbd-tabs-card .tbd-tabs-tab-active .tbd-tabs-tab-inner {
+  transform: translateZ(0);
+}
+/* line 365, style.scss */
+.tbd-tabs-card .tbd-tabs-nav-wrap {
+  margin-bottom: 0;
+}
+/* line 368, style.scss */
+.tbd-tabs-card .tbd-tabs-tab-inner .anticon-cross {
+  margin-right: 0;
+  color: #999;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transform-origin: 100% 50%;
+  width: 0;
+  text-align: right;
+  vertical-align: middle;
+  overflow: hidden;
+}
+/* line 377, style.scss */
+.tbd-tabs-card .tbd-tabs-tab-inner .anticon-cross:hover {
+  color: #404040;
+  font-weight: bold;
+}
+/* line 382, style.scss */
+.tbd-tabs-card > .tbd-tabs-content > div {
+  padding: 20px;
+  background: #fff;
+}
+/* line 387, style.scss */
+.tbd-tabs-editable-card
+.tbd-tabs-tab:not(.tbd-tabs-tab-active):hover
+.tbd-tabs-tab-inner {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+/* line 394, style.scss */
+.tbd-tabs-card .tbd-tabs-tab-active .anticon-cross, .tbd-tabs-card .tbd-tabs-tab:hover .anticon-cross {
+  width: 16px;
+  transform: translateZ(0);
+}
+/* line 401, style.scss */
+.tbd-tabs-panel > .tbd-tabs-bar {
+  background: #fff;
+  border-bottom-color: transparent;
+}
+/* line 405, style.scss */
+.tbd-tabs-panel > .tbd-tabs-bar .tbd-tabs-extra-content {
+  margin-right: 10px;
+  padding-top: 4px;
+}
+/* line 409, style.scss */
+.tbd-tabs-panel .tbd-tabs-ink-bar {
+  visibility: hidden;
+}
+/* line 412, style.scss */
+.tbd-tabs-panel > .tbd-tabs-bar .tbd-tabs-tab {
+  margin: 0;
+  border: 1px solid transparent;
+  border-bottom: 0;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  background: transparent;
+  margin-right: 2px;
+}
+/* line 420, style.scss */
+.tbd-tabs-panel > .tbd-tabs-bar .tbd-tabs-tab-inner {
+  padding: 0 16px;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+/* line 424, style.scss */
+.tbd-tabs-panel > .tbd-tabs-bar .tbd-tabs-tab-active {
+  position: relative;
+  background: #57cc95;
+  transform: translateZ(0);
+  color: #fff;
+}
+/* line 430, style.scss */
+.tbd-tabs-panel > .tbd-tabs-bar .tbd-tabs-tab-active:before {
+  display: none;
+}
+/* line 434, style.scss */
+.tbd-tabs-panel > .tbd-tabs-bar .tbd-tabs-tab-active .tbd-tabs-tab-inner {
+  transform: translateZ(0);
+  color: #fff;
+}
+/* line 438, style.scss */
+.tbd-tabs-panel > .tbd-tabs-bar .tbd-tabs-nav-wrap {
+  margin-bottom: 0;
+}
+/* line 441, style.scss */
+.tbd-tabs-panel > .tbd-tabs-bar .tbd-tabs-tab-inner .tbdi-cross {
+  margin-right: 0;
+  color: #8b91a0;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transform-origin: 100% 50%;
+  width: 0;
+  text-align: right;
+  vertical-align: middle;
+  overflow: hidden;
+}
+/* line 450, style.scss */
+.tbd-tabs-panel > .tbd-tabs-bar .tbd-tabs-tab-inner .tbdi-cross:hover {
+  color: #57cc95;
+  font-weight: bold;
+}
+/* line 456, style.scss */
+.tbd-tabs-editable-panel .tbd-tabs-tab:not(.tbd-tabs-tab-active):hover .tbd-tabs-tab-inner {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+/* line 461, style.scss */
+.tbd-tabs-panel > .tbd-tabs-bar .tbd-tabs-tab-active .anticon-cross, .tbd-tabs-panel > .tbd-tabs-bar .tbd-tabs-tab:hover .anticon-cross {
+  width: 16px;
+  transform: translateZ(0);
+}
+/* line 467, style.scss */
+.tbd-tabs-panel > .tbd-tabs-content > div {
+  padding: 20px;
+  background: #fff;
+}
+/* line 472, style.scss */
+.tbd-tabs-panel > .tbd-tabs-content > .tbd-tabs-tabpane-sub {
+  padding: 0;
+  background: transparent;
+}
+/* line 478, style.scss */
+.tbd-tabs-sm > .tbd-tabs-bar .tbd-tabs-nav-container {
+  font-size: 12px;
+}
+/* line 483, style.scss */
+.tbd-tabs-sm > .tbd-tabs-bar .tbd-tabs-tab .tbd-tabs-tab-inner {
+  line-height: 32px;
+}
+/* line 488, style.scss */
+.tbd-tabs-lg > .tbd-tabs-bar .tbd-tabs-nav-container {
+  font-size: 14px;
+}
+/* line 493, style.scss */
+.tbd-tabs-lg > .tbd-tabs-bar .tbd-tabs-tab .tbd-tabs-tab-inner {
+  line-height: 50px;
+}
+/* line 498, style.scss */
+.tbd-tabs-lg .tbd-tabs-panel > .tbd-tabs-bar .tbd-tabs-extra-content, .tbd-tabs-lg .tbd-tabs-card > .tbd-tabs-bar .tbd-tabs-extra-content {
+  padding-top: 9px;
+}

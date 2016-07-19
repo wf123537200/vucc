@@ -1,0 +1,156 @@
+@import "base";
+
+@mixin zoom-motion($className, $keyframeName) {
+  @include make-motion($className, $keyframeName);
+  .#{$className}-enter,
+  .#{$className}-appear {
+    transform: scale(0); // need this by yiminghe
+    animation-timing-function: $ease-out-circ;
+  }
+  .#{$className}-leave {
+    animation-timing-function: $ease-in-out-circ;
+  }
+}
+
+@include zoom-motion(zoom, tbdZoom);
+@include zoom-motion(zoom-big, tbdZoomBig);
+@include zoom-motion(zoom-up, tbdZoomUp);
+@include zoom-motion(zoom-down, tbdZoomDown);
+@include zoom-motion(zoom-left, tbdZoomLeft);
+@include zoom-motion(zoom-right, tbdZoomRight);
+
+@include keyframes(tbdZoomIn) {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@include keyframes(tbdZoomOut) {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+@include keyframes(tbdZoomBigIn) {
+  0% {
+    opacity: 0;
+    transform: scale(.8);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@include keyframes(tbdZoomBigOut) {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(.8);
+  }
+}
+
+@include keyframes(tbdZoomUpIn) {
+  0% {
+    opacity: 0;
+    transform-origin: 50% 0%;
+    transform: scale(.8);
+  }
+  100% {
+    transform-origin: 50% 0%;
+    transform: scale(1);
+  }
+}
+
+@include keyframes(tbdZoomUpOut) {
+  0% {
+    transform-origin: 50% 0%;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform-origin: 50% 0%;
+    transform: scale(.8);
+  }
+}
+
+@include keyframes(tbdZoomLeftIn) {
+  0% {
+    opacity: 0;
+    transform-origin: 0% 50%;
+    transform: scale(.8);
+  }
+  100% {
+    transform-origin: 0% 50%;
+    transform: scale(1);
+  }
+}
+
+@include keyframes(tbdZoomLeftOut) {
+  0% {
+    transform-origin: 0% 50%;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform-origin: 0% 50%;
+    transform: scale(.8);
+  }
+}
+
+@include keyframes(tbdZoomRightIn) {
+  0% {
+    opacity: 0;
+    transform-origin: 100% 50%;
+    transform: scale(.8);
+  }
+  100% {
+    transform-origin: 100% 50%;
+    transform: scale(1);
+  }
+}
+
+@include keyframes(tbdZoomRightOut) {
+  0% {
+    transform-origin: 100% 50%;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform-origin: 100% 50%;
+    transform: scale(.8);
+  }
+}
+
+@include keyframes(tbdZoomDownIn) {
+  0% {
+    opacity: 0;
+    transform-origin: 50% 100%;
+    transform: scale(.8);
+  }
+  100% {
+    transform-origin: 50% 100%;
+    transform: scale(1);
+  }
+}
+
+@include keyframes(tbdZoomDownOut) {
+  0% {
+    transform-origin: 50% 100%;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform-origin: 50% 100%;
+    transform: scale(.8);
+  }
+}

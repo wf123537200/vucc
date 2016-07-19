@@ -1,0 +1,216 @@
+@import "../../style/ver";
+@import "../../style/mixins";
+@import "../../style/compatibility";
+
+$select-prefix-cls: $css-prefix + "select";
+$dropdown-prefix-cls: $css-prefix + "dropdown";
+
+$duration: .3s;
+
+.#{$select-prefix-cls} {
+  box-sizing: border-box;
+  display: inline-block;
+  margin: 0;
+  position: relative;
+  vertical-align: middle;
+  color: $base-color;
+  font-size: $font-size-base;
+
+  // arrow
+  &-arrow {
+    @include iconfont-mixin();
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    line-height: 1;
+    margin-top: -5px;
+    color: $gray-color;
+    @include iconfont-size-under-12px(8px);
+
+    &:before {
+      content: '\e611';
+      transition: transform 0.2s ease;
+    }
+  }
+
+  &-selection {
+    outline: none;
+    user-select: none;
+
+    box-sizing: border-box;
+    display: block;
+
+    background-color: #fff;
+    border-radius: $border-radius-base;
+    border: 1px solid $border-color;
+    transition: all .3s $ease-in-out;
+
+    &:active {
+      @include active();
+
+      .#{$select-prefix-cls}-arrow {
+         color: $base-color;
+       }
+    }
+
+    &-clear {
+
+    }
+
+    &:hover &-clear {
+      opacity: 1;
+    }
+  }
+
+  &-disabled {
+    @include disabled();
+
+    &:active {
+      .#{$select-prefix-cls}-arrow {
+         color: $gray-color;
+         opacity: 0.6;
+       }
+    }
+  }
+
+  &-disabled &-selection {
+    border-color: $border-disabled-color;
+    background: $base-bg;
+    cursor: $cursor-disabled;
+    &:hover,
+    &:active {
+      border-color: $border-disabled-color;
+    }
+  }
+
+  &-selection-single {
+    height: $height;
+    cursor: pointer;
+
+    .#{$select-prefix-cls}-selection-rendered {
+       display: block;
+       overflow: hidden;
+       text-overflow: ellipsis;
+       white-space: nowrap;
+       padding-left: 8px;
+       padding-right: 24px;
+       line-height: $height - 2px;
+     }
+
+    .#{$select-prefix-cls}-selection-placeholder {
+       color: $gray-color;
+     }
+  }
+
+  &-lg {
+    .#{$select-prefix-cls}-selection-single {
+     height: $height-lg;
+     .#{$select-prefix-cls}-selection-rendered {
+        line-height: $height-lg - 2px;
+      }
+   }
+}
+
+  &-sm {
+    .#{$select-prefix-cls}-selection-single {
+     height: $height-sm;
+     .#{$select-prefix-cls}-selection-rendered {
+        line-height: $height-sm - 2px;
+      }
+    }
+  }
+
+  &-selection-multiple {
+    min-height: $height;
+    cursor: text;
+
+    .#{$select-prefix-cls}-selection-placeholder {
+       display: block;
+       padding: 0 10px;
+       line-height: 34px;
+       color: $gray-color;
+       @include ellipsis();
+     }
+
+    .#{$select-prefix-cls}-selection-rendered {
+       padding: 5px 5px 0;
+       overflow: hidden;
+     }
+
+    .#{$select-prefix-cls}-selection-choice {
+       position: relative;
+       float: left;
+       padding: 0 20px 0 10px;
+       margin: 0 3px 5px;
+       max-width: 99%;
+       height: 24px;
+       background-color: $base-bg;
+       border-radius: $border-radius-base;
+       line-height: 24px;
+       cursor: default;
+       overflow: hidden;
+       transition: padding $duration $ease-in-out;
+
+       &-editing {
+         background-color: transparent;
+
+         .#{$select-prefix-cls}-selection-choice-remove {
+            display: none;
+          }
+       }
+
+       &-disabled {
+         padding-right: 10px;
+
+         .#{$select-prefix-cls}-selection-choice-remove {
+            display: none;
+          }
+       }
+     }
+
+    .#{$select-prefix-cls}-selection-choice-content {
+       display: block;
+       @include ellipsis;
+     }
+
+    .#{$select-prefix-cls}-selection-choice-input {
+       display: block;
+       box-sizing: border-box;
+       padding: 3px 0;
+       height: 100%;
+       border: none;
+       background: transparent;
+       line-height: 18px;
+     }
+
+    .#{$select-prefix-cls}-selection-choice-remove {
+       position: absolute;
+       right: 4px;
+       top: 0;
+       padding: 0 0 0 8px;
+       @include iconfont-mixin();
+       color: #999;
+       line-height: inherit;
+       cursor: pointer;
+       font-weight: bold;
+       transition: all 0.3s $ease-in-out;
+       @include iconfont-size-under-12px(10px);
+
+       &:hover {
+         color: #404040;
+       }
+       &:before {
+         content: "\e62d";
+       }
+     }
+  }
+
+  .#{$dropdown-prefix-cls} {
+    left: 0;
+    top: 100%;
+    margin-top: 2px;
+    min-width: 140px;
+    width: 100%;
+    display: none;
+  }
+}

@@ -1,0 +1,104 @@
+@import "../../style/ver";
+@import "../../style/mixins";
+
+$radio-prefix-cls: $css-prefix + 'radio';
+$label-prefix-cls: $css-prefix + 'label';
+
+// 多选框、单选框
+.#{$radio-prefix-cls} {
+  display: inline-block;
+  box-sizing: border-box;
+  width: 14px;
+  height: 14px;
+  border: 1px solid $base-bg;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+
+  &:after {
+    display: none;
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -4px 0 0 -4px;
+    width: 8px;
+    height: 8px;
+    background: $primary-color;
+    border-radius: 50%;
+  }
+}
+
+.#{$css-prefix + 'label'} {
+  @include label();
+
+  .#{$radio-prefix-cls} {
+    position: relative;
+    top: -1px;
+    vertical-align: middle;
+
+    .#{$label-prefix-cls}-text {
+      margin-left: 5px;
+    }
+  }
+
+  input[type=radio] {
+    display: none;
+  }
+
+  &:hover {
+    .#{$label-prefix-cls}-text {
+      color: $base-color;
+    }
+
+    .#{$radio-prefix-cls} {
+      border-color: $primary-color;
+    }
+  }
+
+  // 不同状态
+  &-checked,
+  &-checked:hover {
+    .#{$label-prefix-cls}-text {
+      color: $primary-color;
+    }
+
+    .#{$radio-prefix-cls} {
+      position: relative;
+      border-color: $primary-color;
+
+      &:after {
+        display: block;
+      }
+    }
+
+    .#{$radio-prefix-cls} {
+      background: $base-bg;
+    }
+  }
+
+  &-disabled,
+  &-disabled:hover {
+    cursor: $cursor-disabled;
+
+    .#{$label-prefix-cls}-text {
+      color: $gray-color;
+    }
+
+    .#{$radio-prefix-cls} {
+      border-color: $border-disabled-color;
+      background: $base-bg;
+      cursor: $cursor-disabled;
+    }
+
+    .#{$radio-prefix-cls}:after {
+      border-color: $border-disabled-color;
+    }
+  }
+
+  // 垂直排列
+  &-vertical {
+    display: block;
+    margin-right: 0;
+  }
+}

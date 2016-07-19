@@ -1,0 +1,186 @@
+@import "mixins";
+@import "ver";
+
+// reset
+// unify the setting of elements's margin and padding for browsers
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
+  margin: 0;
+  padding: 0;
+}
+
+// Reset fonts for relevant elements
+button,input,select,textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+:focus {
+  outline: 0;
+}
+
+// Remove the clear button of a text input control in IE10+
+input::-ms-clear, input::-ms-reveal {
+  display: none;
+}
+
+// scrollbar
+$scrollbar-css-perfix: "::-webkit-scrollbar";
+
+#{$scrollbar-css-perfix} {
+  & {
+    /*滚动条宽度*/
+    width: $scrollbar-width;
+    height: $scrollbar-height;
+  }
+
+  &-thumb {
+    /*滑动块*/
+    background: $scrollbar-thumb-bg;
+    border-radius: floor(($scrollbar-width / 2));
+  }
+
+  &-thumb:hover {
+    background: $scrollbar-thumb-hover-bg;
+    opacity: 0.5;
+  }
+
+  &-track-piece:decrement {
+    /*底槽*/
+    background: $scrollbar-track-piece-decrement-bg;
+  }
+
+  &-track-piece:increment {
+    /*底槽*/
+    background: $scrollbar-track-piece-increment-bg;
+  }
+}
+
+body {
+  font-family: $font-family;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  color: $base-color;
+  background-color: $body-bg;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Utility classes
+.pull-left {
+  float: left;
+}
+.pull-right {
+  float: right;
+}
+.invisible {
+  visibility: hidden;
+}
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// 文字对齐与颜色
+.text-left {
+  text-align: left;
+}
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+.text-explain {
+  color: $gray-color;
+}
+.text-success {
+  color: $success-color;
+}
+.text-error {
+  color: $error-color;
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-family: $code-family;
+}
+
+a {
+  &:hover,
+  &:active {
+    text-decoration: none;
+  }
+}
+
+.clearfix{
+  @include clearfix();
+}
+
+.#{$css-prefix + 'label'}  {
+  @include label();
+}
+
+// 显示、隐藏
+.#{$css-prefix}hidden {
+  display: none !important;
+}
+              
+.#{$css-prefix}block {
+  display: block !important;
+}
+              
+.#{$css-prefix}inline-block {
+  display: inline-block !important;
+}
+
+// a 标签重置
+.#{$css-prefix}divider {
+  margin: 0 4px;
+  color: #999;
+  display: inline-block;
+  vertical-align: middle;
+  height: 10px;
+  width: 1px;
+  background: lighten($gray-color, 5%);
+}
+
+.tbd-inline {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+a.tbd-inline,
+a.tbd-link {
+  color: $link-color;
+  text-decoration: $link-hover-decoration;
+  outline: none;
+
+  &:hover {
+    color: $link-hover-color;
+  }
+
+  &:active {
+    color: $link-active-color;
+  }
+
+  &:active,
+  &:hover {
+    outline: 0;
+    text-decoration: underline;
+  }
+
+  &[disabled] {
+    color: #ccc;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}

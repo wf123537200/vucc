@@ -1,0 +1,298 @@
+@import "../../style/ver";
+@import "../../style/compatibility";
+
+$table-prefix-cls: $css-prefix + "table";
+
+$table-border-color: $border-color-split;
+$table-head-background-color: lighten($base-bg, 3%);
+
+.#{$table-prefix-cls} {
+  margin-bottom: $gutter-base;
+  font-size: $font-size-base;
+  color: $base-color;
+  line-height: 2;
+
+  &-body {
+    transition: opacity 0.3s ease;
+  }
+
+  //过长出滚动条
+  &-autoscroll &-body {
+    overflow: auto;
+  }
+
+  //表格宽度固定
+  &-fixed table {
+    table-layout: fixed;
+  }
+
+  table {
+    width: 100%;
+    max-width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    border: 1px solid $table-border-color;
+  }
+
+  th {
+    background: $table-head-background-color;
+    transition: background .3s ease;
+    position: relative;
+    font-weight: normal;
+
+    .tbdi-filter,
+    .tbdi-question-circle-o {
+      margin-left: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      color: $gray-color;
+      transition: all 0.3s ease;
+      &:hover {
+        color: $base-color;
+      }
+    }
+
+    .tbdi-filter {
+      @include iconfont-size-under-12px(10px);
+    }
+
+    .#{$table-prefix-cls}-filter-selected.tbdi-filter {
+      color: $primary-color;
+    }
+
+    .tbd-form-explain {
+      vertical-align: middle;
+    }
+
+    .tbd-label {
+      margin-right: 0;
+
+      + span {
+        margin-left: 5px;
+      }
+    }
+  }
+
+  td {
+    border-bottom: 1px solid $table-border-color;
+  }
+
+  tr {
+    transition: all .3s ease;
+    &:hover {
+      background: $hover-bg;
+    }
+  }
+
+  thead tr:hover {
+    background: none;
+  }
+
+  thead th {
+    white-space: nowrap;
+  }
+
+  tfoot tr {
+    background: $table-head-background-color;
+    position: relative;
+    top: -1px;
+    &:hover {
+      background: $table-head-background-color;
+    }
+    td {
+      border: 0;
+    }
+  }
+
+  tr.#{$table-prefix-cls}-row-selected {
+    background: $hover-bg;
+  }
+
+  th,
+  td {
+    padding: 13px 10px;
+    box-sizing: border-box;
+
+    &:first-child {
+      padding-left: 20px;
+    }
+    &:last-child {
+      padding-right: 20px;
+    }
+  }
+
+  th.#{$table-prefix-cls}-selection-column,
+  td.#{$table-prefix-cls}-selection-column {
+    text-align: center;
+    width: 60px;
+  }
+
+  &-header + &-body {
+    overflow: auto;
+    height: 360px;
+  }
+
+  &-loading {
+    position: relative;
+    .#{$table-prefix-cls}-body {
+      background: #fff;
+      opacity: 0.5;
+    }
+    .#{$table-prefix-cls}-spin-holder {
+      height: 20px;
+      line-height: 20px;
+      left: 50%;
+      top: 50%;
+      margin-left: -30px;
+      position: absolute;
+    }
+  }
+
+  &-column-sorter {
+    margin-left: 4px;
+    display: inline-block;
+    width: 12px;
+    height: 14px;
+    vertical-align: middle;
+    text-align: center;
+    &-up,
+    &-down {
+      line-height: 4px;
+      height: 6px;
+      display: block;
+      width: 12px;
+      cursor: pointer;
+      &:hover .tbdi {
+        color: $base-color;
+      }
+      &.on {
+        .tbdi-caret-up,
+        .tbdi-caret-down {
+          color: $primary-color;
+        }
+      }
+    }
+    .tbdi-caret-up,
+    .tbdi-caret-down {
+      @include iconfont-size-under-12px(6px);
+      line-height: 6px;
+      height: 6px;
+      color: $gray-color;
+      &:before {
+        -moz-transform-origin: 53% 50%; /* fix firefox position */
+      }
+    }
+  }
+
+  // 边框表格
+  &.#{$table-prefix-cls}-bordered {
+    table {
+      border: 1px solid $border-color-split;
+    }
+
+    thead th {
+      // border: 1px solid $table-head-background-color;
+    }
+
+    th {
+      border-bottom: 1px solid $border-color-split;
+    }
+
+    td {
+      border-right: 1px solid $border-color-split;
+    }
+
+    tbody tr:last-child {
+      th,
+      td {
+        border-bottom: 0;
+      }
+    }
+
+    th,
+    td {
+      &:first-child {
+        padding-left: 10px;
+      }
+      &:last-child {
+        padding-right: 10px;
+        border-right: 0;
+      }
+    }
+  }
+
+  //不同尺寸
+  &-sm {
+    th,
+    td {
+      padding: 10px;
+    }
+  }
+}
+
+.#{$table-prefix-cls} {
+  &-cell {
+    &-expand {
+      width: 60px;
+
+      &:hover {
+        .#{$table-prefix-cls}-cell-expand-icon {
+          color: $base-color;
+        }
+      }
+    }
+
+    &-expand-icon {
+      cursor: pointer;
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      text-align: center;
+      user-select: none;
+      font-family: 'tbdicon';
+      font-style: normal;
+      color: $gray-color;
+
+      &:after {
+        content: '\e600';
+      }
+    }
+  }
+
+  &-row {
+    cursor: pointer;
+
+    &-active {
+      background: #fbfbfb;
+
+      .#{$table-prefix-cls}-cell-expand-icon:after {
+        content: '\e603';
+      }
+    }
+  }
+  tr
+  &-expanded-row {
+    &:hover {
+      background: #fbfbfb;
+    }
+  }
+}
+
+.#{$table-prefix-cls}-filter-dropdown {
+  .tbd-label {
+    display: block;
+    margin: -7px -15px;
+    padding: 4px 15px;
+  }
+}
+
+// 多行省略号
+.#{$css-prefix}multi-ellipsis {
+  display: block;
+  overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+  max-height: 4em;
+}

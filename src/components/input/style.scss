@@ -1,0 +1,75 @@
+@import "../../style/ver";
+@import "../../style/mixins";
+
+$input-prefix-cls: $css-prefix + "input";
+
+// input
+.#{$input-prefix-cls} {
+  &[type=text],
+  &[type=url],
+  &[type=password],
+  &[type=email],
+  &[type=search] {
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 3px 10px;
+    border: 1px solid $border-color;
+    border-radius: $border-radius-base;
+    width: 200px;
+    @include input($height, $font-size-base);
+    color: $base-color;
+    @include placeholder($gray-color);
+
+    &:focus {
+      border-color: $border-focus-color;
+    }
+
+    &[disabled] {
+      border-color: $border-disabled-color;
+      background: $base-bg;
+      color: lighten($gray-color, 5%);
+      cursor: $cursor-disabled;
+    }
+  }
+  //不同尺寸
+  &-sm {
+    &,
+    &[type=text],
+    &[type=url],
+    &[type=password],
+    &[type=email],
+    &[type=search] {
+      @include input($height-sm, $font-size-base);
+    }
+  }
+
+  &-lg {
+    &,
+    &[type=text],
+    &[type=url],
+    &[type=password],
+    &[type=email],
+    &[type=search] {
+      padding: 3px 20px;
+      @include input($height-lg, $font-size-lg);
+    }
+  }
+
+  // 文本组合中的添加的文本
+  &-extra {
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 3px 10px;
+    border: 1px solid $border-color;
+    border-radius: $border-radius-base;
+    @include input($height, $font-size-base);
+    line-height: $font-size-base * 1.5;
+    background: $base-bg;
+    color: $base-color;
+    white-space: nowrap;
+  }
+}
+
+#{$input-prefix-cls} {
+  height: auto;
+}

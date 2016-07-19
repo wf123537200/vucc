@@ -1,0 +1,68 @@
+@import "../../style/ver";
+$switch-prefix-cls:  $css-prefix + "switch";
+
+$switch-border-color: $primary-color;
+$switch-bg: $primary-color;
+$switch-disabled-border-color: $border-color;
+$switch-disabled-bg: $base-bg;
+$switch-height: 26px;
+$switch-height-sm: 20px;
+
+
+@mixin switch($height){
+  & {
+    width: $height * 2;
+    height: $height;
+    border-radius: floor($height / 2);
+
+    > i {
+      width: $height - 2px;
+      height: $height - 2px;
+    }
+  }
+}
+
+// 开关按钮
+.#{$switch-prefix-cls} {
+  & {
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    border: 1px solid $switch-border-color;
+    background: $switch-bg;
+    transition: all 0.3s linear;
+    cursor: pointer;
+    @include switch($switch-height);
+
+    > i {
+      position: absolute;
+      right: 0;
+      top: 0;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 1px 2px rgba(95, 190, 170, 0.75);
+      transition: all 0.3s linear;
+    }
+  }
+
+  &-off {
+    border-color: $switch-disabled-border-color;
+    background: $switch-disabled-bg;
+
+    > i {
+      right: 100%;
+      margin-right: -($switch-height - 2px);
+      box-shadow: 0 1px 2px rgba(154, 164, 171, 0.75);
+    }
+  }
+
+  &-sm {
+    @include switch($switch-height-sm);
+
+    &.#{$css-prefix}switch-off {
+       > i {
+         margin-right: -($switch-height-sm - 2px);
+       }
+     }
+  }
+}

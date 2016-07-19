@@ -1,0 +1,43 @@
+@import "../../style/ver";
+
+$popover-prefix-cls: $css-prefix + "popover";
+
+.#{$popover-prefix-cls} {
+  &-wrap {
+    position: fixed;
+    left: 0;
+    top: 20%;
+    z-index: 1002;
+    width: 100%;
+    text-align: center;
+  }
+  
+  & {
+    display: inline-block;
+    max-width: 500px;
+    padding: 8px 10px;
+    background-color: #373737;
+    border-radius: $border-radius-base;
+    color: #fff;
+    box-shadow: $box-shadow;
+  }
+  
+  //不同状态
+  &-error {
+    border: 1px solid tint($error-color, 80%);
+    background-color: tint($error-color, 90%);
+    color: $base-color;
+  }
+  
+  &-success {
+    border: 1px solid tint($success-color, 80%);
+    background-color: tint($success-color, 90%);
+    color: $base-color;
+  }
+  
+  &-warning {
+    border: 1px solid tint($warning-color, 80%);
+    background-color: tint($warning-color, 90%);
+    color: $base-color;
+  }
+}

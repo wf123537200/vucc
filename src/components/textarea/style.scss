@@ -1,0 +1,29 @@
+@import "../../style/ver";
+@import "../../style/mixins";
+
+$textarea-prefix-cls: $css-prefix + "textarea";
+
+// input
+.#{$textarea-prefix-cls} {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 3px 10px;
+  border: 1px solid $border-color;
+  border-radius: $border-radius-base;
+  width: 100%;
+  @include input($height, $font-size-base);
+  color: $base-color;
+  @include placeholder($gray-color);
+  height: auto;
+
+  &:focus {
+    border-color: $border-focus-color;
+  }
+
+  &[disabled] {
+    border-color: $border-disabled-color;
+    background: $base-bg;
+    color: lighten($gray-color, 5%);
+    cursor: $cursor-disabled;
+  }
+}

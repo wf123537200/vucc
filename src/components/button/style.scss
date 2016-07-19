@@ -1,0 +1,178 @@
+@import "../../style/ver";
+@import "../../style/compatibility";
+@import "../../style/mixins";
+@import "ver";
+
+$btn-cls: $css-prefix + 'btn';
+
+@mixin btn($border-color, $bg){
+  border-color: $border-color;
+  background: $bg;
+  color: #fff;
+
+  &:hover,
+  &:active,
+  &:focus {
+    border-color: darken($border-color, 10%);
+    background: darken($bg, 10%);
+    color: #fff;
+  }
+}
+
+.#{$btn-cls} {
+  display: inline-block;
+  box-sizing: border-box;
+  height: $height;
+  padding: $btn-padding;
+  border: 1px solid $btn-border-color;
+  border-radius: $border-radius-base;
+  background: #fff;
+  color: $gray-color;
+  text-align: center;
+  font-size: $font-size-base;
+  line-height: $height - 2px;
+  transition: all 0.3s linear;
+  cursor: $cursor-pointer;
+
+  &:hover,
+  &:active,
+  &:focus {
+    border-color: $primary-color;
+    color: $primary-color;
+    outline: none;
+  }
+
+  //不同类型
+  &-outline {
+    border-color: $btn-outline-border-color;
+    background: $btn-outline-bg;
+    color: $btn-outline-color;
+
+    &:hover,
+    &:active,
+    &:focus {
+      border-color: darken($btn-outline-border-color, 10%);
+      color: darken($btn-outline-color, 10%);
+    }
+  }
+
+  &-primary {
+    @include btn($btn-primary-border-color, $btn-primary-bg);
+  }
+
+  &-error {
+    @include btn($btn-error-border-color, $btn-error-bg);
+  }
+
+  &-disabled {
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+      border-color: $btn-disabled-border-color;
+      background: $btn-disabled-bg;
+      color: $btn-disabled-color;
+      cursor: $cursor-disabled;
+    }
+  }
+
+  &-link,
+  a &-link {
+    border-color: transparent;
+    background: transparent;
+    color: $btn-link-color;
+
+    &:hover,
+    &:active,
+    &:focus {
+      border-color: transparent;
+      background: transparent;
+      color: $btn-link-color;
+      text-decoration: underline;
+    }
+
+    &#{$btn-cls}-disabled {
+         @extend .#{$btn-cls}-disabled;
+         color: $gray-color;
+         cursor: $cursor-disabled;
+
+         &:hover,
+         &:active,
+         &:focus {
+           color: $gray-color;
+           text-decoration: none;
+         }
+       }
+  }
+
+  // 带图标
+  span + .#{$iconfont-css-prefix}-down {
+                                  margin:0 -10px 0 10px;
+                                  font-size: 12px;
+                                }
+  .#{$iconfont-css-prefix} + span {
+                            margin-left: 10px;
+                          }
+
+  //不同尺寸
+  &-xs {
+    padding: $btn-padding-xs;
+    height: $height-xs;
+    line-height: $height-xs - 2px;
+    font-size: $font-size-base;
+
+    span + .#{$iconfont-css-prefix}-down {
+                                    margin: 0 -5px 0 5px;
+                                    @include iconfont-size-under-12px(10px);
+                                  }
+
+    .#{$iconfont-css-prefix} + span {
+                              margin-left: 5px;
+                            }
+  }
+
+  &-sm {
+    padding: $btn-padding-sm;
+    height: $height-sm;
+    line-height: $height-sm - 2px;
+    font-size: $font-size-base;
+
+    span + .#{$iconfont-css-prefix}-down {
+                                    margin: 0 -5px 0 5px;
+                                    @include iconfont-size-under-12px(10px);
+                                  }
+
+    .#{$iconfont-css-prefix} + span {
+                              margin-left: 5px;
+                            }
+  }
+
+  &-lg {
+    padding: $btn-padding-lg;
+    height: $height-lg;
+    font-size: $font-size-lg;
+    line-height: $height-lg - 2px;
+  }
+
+  //加载中
+  &-loading {
+    position: relative;
+    padding-left: 30px;
+
+    &:after {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      margin-top: -9px;
+      display: inline-block;
+      animation: loadingCircle 1s infinite linear;
+      content:"\e6a1";
+      font: 16px/1 'tbdicon';
+    }
+  }
+
+  //按钮组中增加的图标按钮
+  &-extra {
+    padding: 0 10px;
+  }
+}

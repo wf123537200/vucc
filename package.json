@@ -1,0 +1,69 @@
+{
+  "name": "@tencent/tbd-design-vue",
+  "version": "0.2.5",
+  "description": "tbd-design-vue",
+  "main": "src",
+  "devDependencies": {
+    "babel-cli": "^6.5.1",
+    "babel-core": "^6.0.0",
+    "babel-loader": "^6.0.0",
+    "babel-plugin-transform-runtime": "^6.0.0",
+    "babel-preset-es2015": "^1.0.0",
+    "css-loader": "^0.22.0",
+    "file-loader": "^0.8.5",
+    "html-loader": "^0.3.0",
+    "webpack": "^1.11.0",
+    "webpack-dev-server": "^1.12.1",
+    "lodash": "^4.6",
+    "vue": "^1.0.17",
+    "vue-hot-reload-api": "^1.2.0",
+    "vue-html-loader": "^1.2.0",
+    "vue-loader": "^8.5.2",
+    "vue-router": "^0.7.11",
+    "vue-style-loader": "^1.0.0",
+    "scss-loader": "^0.0.1",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack-merge": "^0.8.3"
+  },
+  "scripts": {
+    "dev": "webpack-dev-server --inline --hot --quiet --host 0.0.0.0 --port 8090 --config build/webpack.dev.conf.js",
+    "dev-build": "webpack --colors --config build/webpack.dev.conf.js",
+    "res": "webpack -p --progress  --config build/webpack.prod.conf.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vuejs/vue-webpack-example"
+  },
+  "keywords": [
+    "vue",
+    "webpack"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vuejs/vue-webpack-example/issues"
+  },
+  "homepage": "https://github.com/vuejs/vue-webpack-example",
+  "dependencies": {
+    "babel-cli": "^6.5.1",
+    "babel-core": "^6.0.0",
+    "babel-loader": "^6.0.0",
+    "babel-plugin-transform-runtime": "^6.0.0",
+    "babel-preset-es2015": "^6.6.0",
+    "css-loader": "^0.22.0",
+    "scss-loader": "^0.0.1",
+    "file-loader": "^0.8.5",
+    "html-loader": "^0.3.0",
+    "webpack": "^1.11.0",
+    "webpack-dev-server": "^1.12.1",
+    "lodash": "^4.6",
+    "vue": "^1.0.17",
+    "vue-hot-reload-api": "^1.2.0",
+    "vue-html-loader": "^1.2.0",
+    "vue-loader": "^8.5.2",
+    "vue-router": "^0.7.11",
+    "vue-style-loader": "^1.0.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7"
+  }
+}

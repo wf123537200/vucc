@@ -1,0 +1,114 @@
+@mixin clearfix{
+  zoom: 1;
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+    visibility: hidden;
+    font-size: 0;
+    height: 0;
+  }
+}
+
+@mixin label {
+  & {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: $gutter-sm;
+    cursor: pointer;
+    line-height: 2;
+    white-space: nowrap;
+  }
+
+  &-text {
+    display: inline-block;
+    vertical-align: middle;
+    color: $base-color;
+  }
+}
+
+/* input */
+@mixin input($height, $font-size) {
+  padding-top: ($height - 2 - ($font-size * 1.5)) / 2;
+  padding-bottom: ($height - 2 - ($font-size * 1.5)) / 2;
+  height: $height;
+  font-size: $font-size;
+  line-height: 1.5;
+}
+
+@mixin placeholder($color: $input-placeholder-color) {
+  // Firefox
+  &::-moz-placeholder {
+    color: $color;
+    opacity: 1; // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526
+  }
+  // Internet Explorer 10+
+  &:-ms-input-placeholder {
+    color: $color;
+  }
+  // Safari and Chrome
+  &::-webkit-input-placeholder {
+    color: $color;
+  }
+}
+
+/* icon fonts */
+@mixin iconfont-mixin() {
+  display: inline-block;
+  font-style: normal;
+  vertical-align: baseline;
+  text-align: center;
+  text-transform: none;
+  text-rendering: auto;
+  line-height: 1;
+
+  &:before {
+    display: block;
+    font-family: "tbdicon" !important;
+  }
+}
+
+@mixin search-radius($height: $height) {
+  .#{$css-prefix}input {
+    border-radius: $height / 2px;
+  }
+
+  button.#{$css-prefix}input-wrap-extra {
+    border-top-right-radius: $height / 2px;
+    border-bottom-right-radius: $height / 2px;
+  }
+}
+
+@mixin input($height, $font-size) {
+  padding-top: ($height - 2 - ($font-size * 1.5)) / 2;
+  padding-bottom: ($height - 2 - ($font-size * 1.5)) / 2;
+  height: $height;
+  font-size: $font-size;
+  line-height: 1.5;
+}
+
+@mixin active($color: $border-focus-color) {
+  border-color: $color;
+}
+
+@mixin focus($color: $border-focus-color) {
+  border-color: $color;
+}
+
+@mixin disabled() {
+  &:focus {
+    border-color: $border-focus-color;
+    background: $border-focus-color;
+    color: lighten($gray-color, 5%);
+    cursor: $cursor-disabled;
+  }
+}
+
+@mixin ellipsis() {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

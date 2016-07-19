@@ -1,0 +1,208 @@
+<!--
+   table-edit 编辑型表格组件
+
+   @require select
+   @require checkbox
+
+   @param {Array} data 表格数据
+   @param {Object} types 类型选择列表
+   @param {Object} bases 基础类型列表
+   @param {String} appendClass 自定义class
+   @param {Object} appendClass 自定义Style对象
+-->
+<template>
+    <div class="tbdb-edit-table">
+        <div class="tbd-table tbd-table-bordered">
+            <table>
+                <thead>
+                <tr>
+                    <th>字段英文名</th>
+                    <th>字段类型
+                        <!--<div class="tbd-tooltip-wrap">-->
+                            <!--<i class="tbdi tbdi-question-circle-o"></i>-->
+                            <!--<div-->
+                                    <!--class="tbd-tooltip tbd-tooltip-placement-rightTop"-->
+                                    <!--style="min-width:200px;-->
+                            <!--position: absolute;-->
+                            <!--left: 200%;">-->
+                                <!--<i class="tbd-tooltip-arrow"></i>-->
+                                <!--<div class="tbd-tooltip-inner">-->
+                                    <!--char和varchar字段类型需要输入字段长度-->
+                                    <!--array字段类型，需要输入值的类型-->
+                                    <!--map字段类型，需要输入键和值的类型-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    </th>
+                    <th>字段描述</th>
+                    <th>分区字段</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="item in objs">
+                    <td><input v-model="item.columnName" type="text" class="tbd-input tbd-input-sm"></td>
+
+                    <td>
+
+                        <div class="tbdb-edit-table-select-group">
+                            <!-- select -->
+                            <v-select :value.sync="item.columnType" :data="types">
+                            </v-select>
+
+                            <div class="tbd-input-group tbd-input-group-sm" v-show="item.columnType === 'array'">
+                                <span class="tbd-input-extra">value=</span>
+                                <v-select :value.sync="item.sub" :data="bases">
+                                </v-select>
+                            </div>
+
+                            <!-- input group -->
+                            <div class="tbd-input-group tbd-input-group-sm" v-show="item.columnType === 'map'">
+                                <span class="tbd-input-extra">key=</span>
+                                <v-select :value.sync="item.subKey" :data="bases">
+                                </v-select>
+                            </div>
+                            <!-- input group -->
+                            <div class="tbd-input-group tbd-input-group-sm" v-show="item.columnType === 'map'">
+                                <span class="tbd-input-extra">value=</span>
+                                <v-select :value.sync="item.subValue" :data="bases">
+                                </v-select>
+                            </div>
+
+                            <div class="tbd-input-group tbd-input-group-sm" v-show="item.columnType.indexOf('char') > -1">
+                                <span class="tbd-input-extra">size=</span>
+                                <input type="text" class="tbd-input tbd-input-sm" v-model="item.sub"  />
+                            </div>
+                        </div>
+
+                    </td>
+
+                    <td><input v-model="item.columnDesc" type="text" class="tbd-input tbd-input-sm"></td>
+                    <td><v-checkbox :value.sync="item.isPartition"></v-checkbox></td>
+                    <td>
+                        <a href="javascript:void(0)" @click="removeItem(item, $index)" class="tbd-link">删除</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <a href="javascript:void(0)" @click="addItem(item)"  class="tbd-link">+ 增加一行</a>
+    </div>
+</template>
+
+<script>
+    import vSelect from '../select/'
+    import vCheckbox from '../checkbox/'
+
+    export default {
+        components: {
+            vSelect,
+            vCheckbox
+        },
+        props: {
+            data: {
+                type: Array,
+                default: function() {
+                    return [{
+                        columnName: '',
+                        columnType: 'string',
+                        columnDesc: '',
+                        isPartition: false
+                    }]
+                }
+            },
+            types: {
+                types: Object,
+                default: function() {
+                    let res = [];
+
+                    ['string','tinyint','smallint', 'int',
+                        'bigint', 'boolean', 'float','double', 'timestamp','date',
+                        'char','varchar','array','map'].map(function(it) {
+                        res.push({
+                            value: it
+                        })
+                    });
+
+                    return {
+                        optsList: res
+                    };
+                }
+            },
+
+            bases: {
+                types: Object,
+                default: function() {
+                    let res = [];
+
+                    ['string','tinyint','smallint', 'int',
+                        'bigint', 'boolean', 'float','double', 'timestamp','date'].map(function(it) {
+                        res.push({
+                            value: it
+                        })
+                    });
+
+                    return {
+                        optsList: res
+                    }
+                }
+            }
+        },
+
+        data () {
+            return {
+                objs: this.data
+            }
+        },
+
+        watch: {
+            objs: {
+                deep: true,
+                handler: function(val, oldVal) {
+                    // 转换为 data
+                    this.data = val.map((item, index) => {
+                                let newItem = {
+                                    columnName: item.columnName,
+                                    columnDesc: item.columnDesc,
+                                    columnType: item.columnType,
+                                    isPartition: item.isPartition
+                                }
+
+                                if (newItem.columnType === 'array') {
+                        newItem.columnType = 'ARRAY<' + (item.sub || 'string') +'>'
+                    } else if (newItem.columnType === 'map') {
+                        newItem.columnType = 'MAP<' + (item.subKey || 'string')
+                                +',' + (item.subValue || 'string') + '>'
+
+                    } else if (newItem.columnType === 'char' || newItem.columnType === 'varchar') {
+                        newItem.columnType =  newItem.columnType.toUpperCase() +
+                                '(' + (item.sub || 0) +')'
+
+                    }
+                    return newItem
+                })
+
+                }
+            }
+
+
+        },
+
+        methods: {
+            removeItem(item, index) {
+                this.objs.splice(index, 1);
+            },
+
+            addItem() {
+                const emptyItem = {
+                    columnName: '',
+                    columnType: 'string',
+                    columnDesc: '',
+                    isPartition: false
+                };
+
+                this.objs.push(emptyItem)
+            }
+        }
+    }
+</script>

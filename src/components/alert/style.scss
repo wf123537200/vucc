@@ -1,0 +1,118 @@
+@import "../../style/ver";
+
+$alert-prefix-cls: $css-prefix + "alert";
+$alert-title-prefix-cls: $css-prefix + "alert-with-description";
+
+.#{$alert-prefix-cls} {
+  &.show {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    width: 500px;
+    transform: translate(-50%, -50%);
+    z-index: 1001;
+  }
+
+  position: relative;
+  padding: 8px 8px 8px 16px;
+  border-radius: $border-radius-lg;
+  color: $base-color;
+  font-size: 12px;
+  line-height: 1.5;
+  margin-bottom: $gutter-base;
+
+  &-message {
+    font-weight: normal;
+    font-size: inherit;
+  }
+
+  &-description {
+    font-size: 12px;
+    color: $gray-color;
+    line-height: 1.8;
+    display: none;
+  }
+
+  &-success {
+    border: 1px solid tint($success-color, 80%);
+    background-color: tint($success-color, 90%);
+  }
+
+  &-info {
+    border: 1px solid tint($info-color, 80%);
+    background-color: tint($info-color, 90%);
+  }
+
+  &-warning {
+    border: 1px solid tint($warning-color, 80%);
+    background-color: tint($warning-color, 90%);
+  }
+
+  &-error {
+    border: 1px solid tint($error-color, 80%);
+    background-color: tint($error-color, 90%);
+  }
+
+  &-close-icon {
+    font-size: 12px;
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    margin-top: -6px;
+    height: 12px;
+    line-height: 12px;
+    overflow: hidden;
+    cursor: pointer;
+
+    .tbdi-cross {
+      color: $gray-color;
+      transition: color .3s ease;
+      &:hover {
+        color: $base-color;
+      }
+    }
+  }
+
+  &-close-text {
+    position: absolute;
+    right: 16px;
+  }
+
+  &-with-description {
+    padding: 16px;
+    position: relative;
+    border-radius: $border-radius-lg;
+    margin-bottom: $gutter-base;
+    color: $gray-color;
+    line-height: 1.5;
+  }
+
+  &-with-description &-close-icon {
+    position: absolute;
+    top: 17px;
+    right: 16px;
+    cursor: pointer;
+    font-size: 12px;
+  }
+
+  &-with-description &-message {
+    font-size: 14px;
+    color: $base-color;
+    display: block;
+  }
+
+  &-with-description &-description {
+    display: block;
+  }
+
+  &-close {
+    height: 0;
+    opacity: 0;
+    margin: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    transition: all .3s $ease-in-out;
+    transform-origin: 50% 0;
+    animation-timing-function: $ease-in-out !important;
+  }
+}
