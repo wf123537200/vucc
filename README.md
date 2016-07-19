@@ -1,5 +1,8 @@
 tbd-design (fork from tencent big data component lib)
 
+任何问题,可以联系
+zakwu@tencent.com
+
 vue 组件部分
 一 使用
 
@@ -42,7 +45,4 @@ npm run dev
 2,生产模式
 npm run res
 
-三 免责声明
-暂不允许进行商业使用,如果需要使用,请联系开发者
-zakwu@tencent.com
 
