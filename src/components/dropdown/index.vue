@@ -4,9 +4,9 @@
   @param {String} size 组件大小
   @param {String} value 绑定外部数据对象的结果
   @param {Boolean} isDisabled 当前下拉列表是否可选
-  @param {Boolean} isMultiple value返回数组中的值是一个还是多个
   @param {Boolean} isOpened 下拉列表是否显示
   @param {Function} onSelect 当下拉列表选中后调用,调用后会将列表隐藏
+  @param {Number | String | Function} filter 传入过滤器,可以过滤下拉列表的值
   @param {Object} appendClass 自定义class
   @param {Object} appendStyle 自定义Style对象
 -->
@@ -20,7 +20,7 @@
             <li v-if="data.optsList.length === 0">
                 没有数据....
             </li>
-            <li v-for="it in data.optsList" value="it.value"
+            <li v-for="it in showData.optsList" value="it.value"
                 :class="['tbd-dropdown-menu-item', {'tbd-dropdown-menu-item-disabled': it.isDisabled, 'tbd-dropdown-menu-item-active': $index === curIndex}]"
                 @click.stop="onSelected($index)">
                 {{{renderLi($index)}}}
@@ -36,10 +36,6 @@ import {componentBaseParamConfig} from '../base-config';
 export default {
     props: Object.assign({}, componentBaseParamConfig, {
         isDisabled: {
-            type: Boolean,
-            default: false
-        },
-        isMultiple: {
             type: Boolean,
             default: false
         },
@@ -62,7 +58,8 @@ export default {
         isOpened: {
             type: Boolean,
             default: false
-        }
+        },
+        filter: {}
     }),
 
     data () {
@@ -85,6 +82,21 @@ export default {
             };
 
             return sizeMap[this.size]
+        },
+
+        showData() {
+            var _this = this;
+
+            if(!this.filter) return this.data;
+            if(Object.prototype.toString.call(this.filter) === '[object Function]') {
+                return {
+                    optsList: this.filter(this.data)
+                };
+            } else {
+                return {
+                    optsList: this.data.optsList.filter((it) => it.label.includes(_this.filter))
+                };
+            }
         }
     },
 
@@ -94,7 +106,7 @@ export default {
         },
 
         onSelected (index){
-            let opts = this.data.optsList;
+            let opts = this.showData.optsList;
 
             if(opts[index].isDisabled) return;
 
@@ -105,7 +117,7 @@ export default {
         },
 
         renderLi(index) {
-            let opts = this.data.optsList;
+            let opts = this.showData.optsList;
             let curObj = opts[index];
 
             if(curObj.renderLi) {

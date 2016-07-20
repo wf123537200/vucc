@@ -59,6 +59,7 @@
         <v-dropdown :data="dropDownList"
                     :on-select="selectItem"
                     :is-opened="showDropdown"
+                    :filter = "keyword"
                     :append-style="{width: '305px','margin-top': '-24px'}">
         </v-dropdown>
     </div>
@@ -162,13 +163,7 @@
             },
 
             getData() {
-                const _this = this;
-
-                _this.optionData = this.data.filter(function(item) {
-                    return _this.keyword && _this.keyword !== '' ? item.userName.indexOf(_this.keyword) > -1 : true;
-                });
-
-                _this.showDropdown = true;
+                this.showDropdown = true;
             }
         },
 
