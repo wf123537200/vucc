@@ -270,6 +270,24 @@
         </v-collapse-group>
       </div>
 
+      <h2>不紧输入框</h2>
+      <div class="doc-example">
+        <v-step-input size="small"></v-step-input>
+        <v-step-input></v-step-input>
+        <v-step-input :size="'large'" :min="10" :max="80" :step="5"></v-step-input>
+      </div>
+
+      <h2>进度条</h2>
+      <div class="doc-example">
+        <v-progress :progress="20"></v-progress>
+        <v-progress :size="'large'" :progress="30"></v-progress>
+        <v-progress :progress="40" :title="'标题'" :info="'啦啦'"></v-progress>
+        <v-progress :progress="40" :is-show-text="true" :is-active="true"></v-progress>
+        <v-progress :type="'success'" :progress="50" :explain="'成功'"></v-progress>
+        <v-progress :type="'error'" :progress="50" :explain="'失败'"></v-progress>
+        <v-progress :type="'warn'" :progress="50" :explain="'警告'"></v-progress>
+      </div>
+
       <h2>业务类型组件</h2>
       <h2>编辑表组件</h2>
       <div class="doc-example">

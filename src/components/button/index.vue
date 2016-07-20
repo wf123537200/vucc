@@ -2,8 +2,8 @@
    button 组件
 
    @param {Boolean} isDisabled 按钮是否可以点击
-   @param {String} [typeClass=default|primary|outline|error|link] 按钮的类型
-   @param {String} [sizeClass=normal|large|small] 按钮的大小
+   @param {String} [type=default|primary|outline|error|link] 按钮的类型
+   @param {String} [size=normal|large|small] 按钮的大小
    @param {String} appendClass 自定义class
    @param {Object} appendStyle 自定义Style对象
 -->

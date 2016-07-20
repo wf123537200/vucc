@@ -1,0 +1,147 @@
+@import "../../style/ver";
+@import "../../style/compatibility";
+@import "../../style/mixins";
+
+$progress-prefix-cls: $css-prefix + "progress";
+$progress-bg: $blue-color;
+$progress-extra-bg: $primary-color;
+
+.#{$progress-prefix-cls} {
+  & {
+    display: inline-block;
+    width: 100%;
+    font-size: $font-size-base;
+    line-height: $line-height-base;
+  }
+  &-line-wrap {
+    position: relative;
+    height: $font-size-base * $line-height-base;
+    @include clearfix();
+  }
+  &-line {
+    margin-top: ($font-size-base * $line-height-base - 10) / 2;
+    height: 10px;
+    margin-right: 45px;
+    background: $base-bg;
+  }
+  &-full {
+    .#{$progress-prefix-cls}-line {
+      margin-right: 0;
+    }
+  }
+  &-line-bg,
+  &-line-extra-bg {
+    float: left;
+    height: 100%;
+    background-color: $progress-bg;
+    transition: all 0.3s linear 0s;
+    position: relative;
+  }
+  &-line-text {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 35px;
+    text-align: left;
+    font-size: 1em;
+    margin-left: 10px;
+
+    .#{$iconfont-css-prefix} {
+      font-weight: bold;
+      font-size: $font-size-base;
+    }
+  }
+
+  &-title {
+    @include clearfix();
+
+    h3 {
+      float: left;
+      font-size: $font-size-base;
+      font-weight: normal;
+    }
+
+    &-info {
+      float: right;
+      color: $gray-color;
+    }
+  }
+
+  &-explain {
+    color: $gray-color;
+  }
+
+  // 两个进度条
+  &-extra {
+    .#{$progress-prefix-cls}-line-bg {
+      background-color: $progress-extra-bg;
+    }
+  }
+
+  &.status-active {
+    .#{$progress-prefix-cls}-line-bg:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(-45deg, rgba(255, 255, 255, .3) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .3) 50%, rgba(255, 255, 255, .3) 75%, transparent 75%, transparent);
+      background-size: 20px 20px;
+      background: transparent\9; // ie8-9
+      border-radius: 10px;
+      animation: progress-active 0.5s linear infinite;
+    }
+  }
+  &.status-error {
+    .#{$progress-prefix-cls}-line-bg {
+      background-color: $error-color;
+    }
+    .#{$progress-prefix-cls}-line-text,
+    .#{$progress-prefix-cls}-explain {
+      color: $error-color;
+    }
+  }
+  &.status-success {
+    .#{$progress-prefix-cls}-line-bg {
+      background-color: $success-color;
+    }
+    .#{$progress-prefix-cls}-line-text,
+    .#{$progress-prefix-cls}-explain {
+      color: $success-color;
+    }
+  }
+  &.status-warning {
+    .#{$progress-prefix-cls}-line-bg {
+      background-color: $warning-color;
+    }
+    .#{$progress-prefix-cls}-line-text,
+    .#{$progress-prefix-cls}-explain {
+      color: $warning-color;
+    }
+  }
+
+  // 不同尺寸
+  &-lg {
+    .#{$progress-prefix-cls}-line {
+      margin-top: 0;
+      height: 20px;
+
+      &-text {
+        line-height: 20px;
+      }
+    }
+    .#{$progress-prefix-cls}-wrap {
+      height: 20px;
+    }
+  }
+}
+
+@include keyframes(progress-active) {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 20px 0;
+  }
+}

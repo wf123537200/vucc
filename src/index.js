@@ -23,10 +23,12 @@ var vTextarea = require('./components/textarea');
 var vCollapse = require('./components/collapse');
 var vCollapseGroup = require('./components/collapse-group');
 var vPane = require('./components/pane');
+var vStepInput = require('./components/step-input');
+var vProgress = require('./components/progress');
 
 /* 为不支持模块化的系统提供简单支持 */
-window.__tbd_design__ = {vPagination, vPane, vCollapseGroup, vCollapse, vInput, vTextarea, vBadge, vAlert, vTableEdit, vLabelDropdown, vSlider, vTable, vButton, vButtonGroup, vSwitch, vCheckbox, vRadio, vDropdown, vSelect, vTips, vDialog, vMask, vMessageBox, vTabs, vButtonGroup};
-module.exports = {vPagination, vPane, vCollapseGroup, vCollapse, vInput, vTextarea, vBadge, vAlert, vTableEdit, vLabelDropdown, vSlider, vTable, vButton, vButtonGroup, vSwitch, vCheckbox, vRadio, vDropdown, vSelect, vTips, vDialog, vMask, vMessageBox, vTabs, vButtonGroup};
+window.__tbd_design__ = {vProgress, vStepInput, vPagination, vPane, vCollapseGroup, vCollapse, vInput, vTextarea, vBadge, vAlert, vTableEdit, vLabelDropdown, vSlider, vTable, vButton, vButtonGroup, vSwitch, vCheckbox, vRadio, vDropdown, vSelect, vTips, vDialog, vMask, vMessageBox, vTabs, vButtonGroup};
+module.exports = {vProgress, vStepInput, vPagination, vPane, vCollapseGroup, vCollapse, vInput, vTextarea, vBadge, vAlert, vTableEdit, vLabelDropdown, vSlider, vTable, vButton, vButtonGroup, vSwitch, vCheckbox, vRadio, vDropdown, vSelect, vTips, vDialog, vMask, vMessageBox, vTabs, vButtonGroup};
 
 // 自动装载css
 try {
