@@ -1,0 +1,171 @@
+@import "../../style/ver";
+
+$step-prefix-cls: $css-prefix + "step";
+
+.#{$step-prefix-cls} {
+  margin-bottom: $gutter-base;
+  font-size: 0;
+  text-align: center;
+
+  &-item {
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    width: 220px;
+    text-align: center;
+    font-size: $font-size-base;
+    color: $gray-color;
+
+    &-line {
+      position: absolute;
+      right: 50%;
+      top: 20px;
+      box-sizing: border-box;
+      width: 100%;
+      height: 1px;
+      background-color: $border-color;
+      background-clip: padding-box;
+      border-style: solid;
+      border-color: transparent;
+      border-width: 0 24px;
+    }
+
+    &-order {
+      position: relative;
+      z-index: 2;
+      display: block;
+      box-sizing: border-box;
+      margin: 0 auto 5px;
+      width: 40px;
+      height: 40px;
+      border: 1px solid $border-color;
+      border-radius: 50%;
+      background: #fff;
+      text-align: center;
+      font: 16px/38px arial;
+      color: $gray-color;
+    }
+
+    &-title {
+      padding: 0 10px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    &-explain {
+      padding: 0 10px;
+    }
+
+    &:first-child &-line {
+      display: none;
+    }
+
+    // 完成
+    &-finish &-order {
+      border-color: $primary-color;
+      color: #fff;
+
+      &:after {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        content: '\e62e';
+        font: 18px/40px 'tbdicon';
+        color: $primary-color;
+      }
+    }
+
+    &-finish &-line {
+      background: $primary-color;
+    }
+
+    // 进行中
+    &-active &-order {
+      border-color: $primary-color;
+      background: $primary-color;
+      color: #fff;
+    }
+
+    &-active &-line {
+      background-color: $primary-color;
+    }
+
+    &-active &-title {
+      color: $base-color;
+    }
+  }
+
+  // 垂直排列
+  &-vertical {
+    margin-bottom: 0;
+    text-align: left;
+
+    .#{$step-prefix-cls}-item {
+      display: block;
+      padding: 8px 0 20px 40px;
+      min-height: 70px;
+      text-align: left;
+
+      &-line {
+        right: auto;
+        left: 20px;
+        top: auto;
+        bottom: 50%;
+        margin-bottom: 14px;
+        width: 1px;
+        height: 100%;
+        border-width: 24px 0;
+      }
+
+      &-order {
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+    }
+  }
+
+  // 不同尺寸
+  &-sm {
+    .#{$step-prefix-cls}-item {
+      &-line {
+        top: 12px;
+        border-width: 0 16px;
+      }
+
+      &-order {
+        width: 24px;
+        height: 24px;
+        font-size: 14px;
+        line-height: 22px;
+      }
+
+      &-title {
+        font-size: 12px;
+      }
+
+      &-finish .#{$step-prefix-cls}-item-order:after {
+        font-size: 14px;
+        line-height: 26px;
+      }
+    }
+
+    // 垂直排列
+    &.#{$step-prefix-cls}-vertical {
+      .#{$step-prefix-cls}-item {
+        padding: 4px 0 10px 24px;
+        min-height: 50px;
+
+        &-line {
+          left: 12px;
+          top: auto;
+          margin-bottom: 14px;
+          border-width: 16px 0;
+        }
+      }
+    }
+  }
+}

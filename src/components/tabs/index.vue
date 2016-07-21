@@ -46,21 +46,28 @@
             size: {
                 type: String,
                 default: 'normal'
+            },
+            activeIndex: {
+                type: Number,
+                default: 0
             }
         }),
 
         data() {
             return {
-                curIndex: 0
+                curIndex: this.activeIndex
             }
         },
 
         methods: {
             selectTab(index, event) {
                 if(!event) {
+                    this.$el.querySelector('.tbd-tabs-tab-active').className = this.$el.querySelector('.tbd-tabs-tab-active').className.replace(/\s?tbd-tabs-tab-active\s?/, '');
+
                     event = {};
                     event.target = this.$el.querySelector('.tbd-tabs-nav > [slot=header]').children[index];
                     event.target.className += ' tbd-tabs-tab-active';
+
                     return;
                 }
 
@@ -103,9 +110,7 @@
                 el.className += ' tbd-tabs-tab-inner ';
                 el.setAttribute('tab_index', index);
 
-                if(el.hasAttribute('active')) {
-                    el.removeAttribute('active');
-
+                if(index == _this.activeIndex) {
                     _this.curIndex = +index;
                     temp += '<div class="tbd-tabs-tab tbd-tabs-tab-active" >' + el.outerHTML + '</div>';
                 } else {
@@ -128,7 +133,13 @@
 
             tabPanes.innerHTML = panes;
 
-            if(_this.curIndex === 0) _this.selectTab(0);
+            if(_this.curIndex === 0) _this.selectTab(_this.activeIndex || 0);
+        },
+
+        watch: {
+            activeIndex(val) {
+                this.selectTab(+val)
+            }
         }
     }
 </script>

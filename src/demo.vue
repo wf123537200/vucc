@@ -145,10 +145,10 @@
         </v-tabs>
 
         <h2>card tabs</h2>
-        <v-tabs type="card">
+        <v-tabs type="card" :active-index="activeIndex">
           <div slot="header">
             <div class="a">选项卡1</div>
-            <div active>选项卡2</div>
+            <div>选项卡2</div>
             <div>选项卡3</div>
           </div>
 
@@ -158,10 +158,10 @@
         </v-tabs>
 
         <h2>panel tabs small</h2>
-        <v-tabs type="panel" size="small">
+        <v-tabs type="panel" size="small" :active-index="1">
           <div slot="header">
             <div class="a">选项卡1</div>
-            <div active>选项卡2</div>
+            <div>选项卡2</div>
             <div>选项卡3</div>
           </div>
 
@@ -174,7 +174,7 @@
         <v-tabs type="panel" size="large">
           <div slot="header">
             <div class="a">选项卡1</div>
-            <div active>选项卡2</div>
+            <div>选项卡2</div>
             <div>选项卡3</div>
           </div>
 
@@ -288,6 +288,22 @@
         <v-progress :type="'warn'" :progress="50" :explain="'警告'"></v-progress>
       </div>
 
+      <h2>加载</h2>
+      <div class="doc-example">
+        <v-button type="primary" @click="showLoading('Global')">全局loading</v-button>
+        <v-button type="primary" @click="showLoading('Part')">局部loading</v-button>
+
+        <v-loading :is-show="showGlobalLoading" :is-global="true" :content="'加载中..'"></v-loading>
+        <v-loading :is-show="showPartLoading" :size="'small'"></v-loading>
+      </div>
+
+      <h2>加载</h2>
+      <div class="doc-example">
+        <v-steps :data="stepsData"></v-steps>
+        <v-steps :data="stepsData" :size="'small'"></v-steps>
+        <v-steps :data="stepsData" :is-vertical="true"></v-steps>
+      </div>
+
       <h2>业务类型组件</h2>
       <h2>编辑表组件</h2>
       <div class="doc-example">
@@ -319,6 +335,8 @@
     components: components,
     data() {
       return {
+        // tabs
+        activeIndex: 2,
         // button group
         buttonGroupList: [{
           text: 'btn1',
@@ -454,7 +472,28 @@
             userId : 100,
             userName : 'admin'
           }]
-        }
+        },
+
+        // loading
+        showGlobalLoading: false,
+        showPartLoading: false,
+
+        // steps
+        stepsData: [{
+            order: 1,
+            title: '完成',
+            explain: '说明文字',
+            isFinished: true
+        }, {
+            order: 2,
+            title: '进行中',
+            explain: '说明文字',
+            isActive: true
+        }, {
+            order: 3,
+            title: '默认尺寸',
+            explain: '说明文字'
+        }]
       }
     },
 
@@ -501,6 +540,16 @@
         window.Tips.init('tips1', 'info', 'lalalala');
 
         this.$root.$$tips['tips1'].show();
+      },
+
+      showLoading(value) {
+        var _this = this;
+
+        _this['show' + value + 'Loading'] = true;
+
+        setTimeout(function() {
+          _this['show' + value + 'Loading'] = false;
+        }, 2000);
       }
     },
 
@@ -508,6 +557,7 @@
       // 动态化兼容测试
       const _this = this;
       setTimeout(function() {
+        _this.activeIndex = 1;
         // checkbox / radio 测试
         _this.commonListData = [{
           value: 0,
@@ -641,11 +691,6 @@
     font-size: 20px;
     font-weight: bold;
     text-align: center;
-  }
-
-  .doc-index p {
-    text-indent: 2em;
-    line-height: 2;
   }
 
   .doc-index .doc-sidebar {

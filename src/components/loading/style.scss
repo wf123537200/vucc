@@ -1,0 +1,126 @@
+@import "../../style/ver";
+@import "compass/css3";
+
+$spin-prefix-cls: $css-prefix + "spin";
+$spin-size-sm: 20px;
+$spin-size: 30px;
+$spin-size-lg: 40px;
+
+.#{$spin-prefix-cls} {
+  display: inline-block;
+  color: $primary-color;
+  line-height: $spin-size;
+
+  &-circle {
+    margin: 0 auto;
+    display: none;
+    box-sizing: border-box;
+    width: $spin-size;
+    height: $spin-size;
+    border: 3px solid #fff;
+    border-color: #57cc95 rgba(87, 204, 149, 0.5) rgba(87, 204, 149, 0.5);
+    border-radius: 50%;
+    animation: loadingCircle 1s infinite linear;
+  }
+
+  &-text {
+    display: block;
+  }
+
+  :root &-circle {
+    display: block;
+  }
+
+  &-btn {
+    margin-top: 5px;
+    padding: 5px 10px;
+    border: 1px solid $primary-color;
+    border-radius: 5px;
+    background: transparent;
+    color: $primary-color;
+    font-size: 12px;
+    line-height: 1.5;
+    cursor: pointer;
+
+    &:hover,
+    &:active,
+    &:focus {
+      opacity: 0.8;
+      filter: alpha(opacity=80);
+    }
+  }
+
+  //不同尺寸
+  &-sm {
+    line-height: $spin-size-sm;
+  }
+  &-sm &-circle{
+    width: $spin-size-sm;
+    height: $spin-size-sm;
+  }
+
+  &-lg {
+    line-height: $spin-size-lg;
+  }
+  &-lg &-circle{
+    width: $spin-size-lg;
+    height: $spin-size-lg;
+    border-width: 6px;
+  }
+
+  //模块中的loading
+  &-wrap {
+    position: relative;
+
+    &-mask {
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 500;
+      width: 100%;
+      height: 100%;
+      background: #373737;
+      opacity: 0.5;
+      filter: alpha(opacity=50);
+    }
+  }
+
+  &-content {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    @include transform(translate(0, -50%));
+    z-index: 1000;
+    width: 100%;
+    text-align: center;
+  }
+
+  //页面laoding
+  &-page {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+
+    .#{$spin-prefix-cls}-circle {
+      border-color: #fff rgba(255, 255, 255, 0.5) rgba(255, 255, 255, 0.5);
+    }
+
+    .#{$spin-prefix-cls}-btn {
+      margin-top: 10px;
+      border-color: #fff;
+      color: #fff;
+    }
+
+    .#{$spin-prefix-cls}-text {
+      color: #fff;
+    }
+  }
+}
+
+//模糊
+.#{$css-prefix}-blur {
+
+}

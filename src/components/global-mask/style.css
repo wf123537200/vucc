@@ -1,5 +1,5 @@
-/* line 6, style.scss */
-.tbd-dialog-mask {
+/* line 5, style.scss */
+.tbd-global-mask {
   position: fixed;
   top: 0;
   right: 0;
@@ -11,7 +11,7 @@
   z-index: 1000;
   filter: alpha(opacity=50);
 }
-/* line 18, style.scss */
-.tbd-dialog-mask-hidden {
+/* line 17, style.scss */
+.tbd-global-mask-hidden {
   display: none;
 }

@@ -4,7 +4,7 @@
   @param {Object} appendClass 自定义Style对象
 -->
 <template>
-    <div :class="['tbd-dialog-mask', {'tbd-dialog-mask-hidden': !isShow}]"></div>
+    <div :class="['tbd-global-mask', {'tbd-global-mask-hidden': !isShow}]"></div>
 </template>
 <script>
     import {componentBaseParamConfig} from '../base-config';
