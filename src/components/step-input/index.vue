@@ -1,7 +1,11 @@
 <!--
    step-input 步进输入框
 
-   @param {Boolean} isDisabled 按钮是否可以点击
+   @param {Boolean} isDisabled 组件是否可以点击
+   @param {Number} value 当前步进输入框的值,不传入时默认为最小值
+   @param {Number} min 当前步进输入框的最小值
+   @param {Number} max 当前步进输入框的最大值
+   @param {Number} step 步进值,每次增加或者减少多少
    @param {String} [size=normal|large|small] 组件的大小
    @param {String} appendClass 自定义class
    @param {Object} appendStyle 自定义Style对象

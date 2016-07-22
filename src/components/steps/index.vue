@@ -3,8 +3,23 @@
 
    @param {Array} data 渲染组件的数据
    ex:
-
+        data: [{
+                order: 1,
+                title: '完成',
+                explain: '说明文字',
+                isFinished: true
+            }, {
+                order: 2,
+                title: '进行中',
+                explain: '说明文字',
+                isActive: true
+            }, {
+                order: 3,
+                title: '默认尺寸',
+                explain: '说明文字'
+            }]
    @param {String} [size=normal|small] 组件的大小
+   @param {Boolean} isVertical 组件是否竖向排列
    @param {String} appendClass 自定义class
    @param {Object} appendStyle 自定义Style对象
 -->

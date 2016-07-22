@@ -297,7 +297,7 @@
         <v-loading :is-show="showPartLoading" :size="'small'"></v-loading>
       </div>
 
-      <h2>加载</h2>
+      <h2>步骤条</h2>
       <div class="doc-example">
         <v-steps :data="stepsData"></v-steps>
         <v-steps :data="stepsData" :size="'small'"></v-steps>
