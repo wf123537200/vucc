@@ -11,7 +11,7 @@
    @param {Object} appendClass 自定义Style对象
 -->
 <template>
-    <div class="tbdb-edit-table">
+    <div class="tbd-edit-table">
         <div class="tbd-table tbd-table-bordered">
             <table>
                 <thead>
@@ -206,3 +206,7 @@
         }
     }
 </script>
+
+<style scoped>
+    @import "style.css";
+</style>
