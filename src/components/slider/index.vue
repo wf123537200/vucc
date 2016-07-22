@@ -13,15 +13,7 @@
 <template>
     <div :class="['tbd-slider', appendClass, {'tbd-slider-disabled': isDisabled}]" :style="appendStyle" @mousemove="mousemove($event)" @mousedown="mousedown($event)" @mouseup="mouseup($event)">
         <!-- 滑块 -->
-        <div class="tbd-slider-handle" v-el:dot-btn :style="{'left' : percentValue + '%'}">
-            <!-- 提示tips -->
-            <div class="tbd-tooltip tbd-tooltip-placement-top show-tips">
-                <i class="tbd-tooltip-arrow"></i>
-                <div class="tbd-tooltip-inner">
-                    {{type === 'percent' ? value + '%' : parseInt(value) + text}}
-                </div>
-            </div>
-        </div>
+        <div class="tbd-slider-handle" v-el:dot-btn :style="{'left' : percentValue + '%'}"></div>
 
         <div class="tbd-slider-track" style="left:0%;visibility:visible;"
              :style="{'width' : percentValue + '%'}"></div>
