@@ -3,6 +3,7 @@
 
   @param {String} [type=default|primary|outline|error|link] 按钮的类型
   @param {String} [size=normal|large|small] 按钮的大小
+  @param {Number} activeIndex 当前选中的标签页索引
   @param {String} appendClass 自定义class
   @param {Object} appendClass 自定义Style对象
 -->
@@ -19,7 +20,7 @@
             <div class="tbd-tabs-nav-container" >
                 <div class="tbd-tabs-nav-wrap" >
                     <div class="tbd-tabs-nav-scroll">
-                        <div class="tbd-tabs-nav" @click="selectTab(curIndex, $event)">
+                        <div class="tbd-tabs-nav" @click.stop="selectTab(curIndex, $event)">
                             <slot name="header"></slot>
                         </div>
                     </div>
@@ -71,12 +72,13 @@
                     return;
                 }
 
-                const selectIndex = +(event.target.getAttribute('tab_index'));
+                let selectIndex = (event.target.getAttribute('tab_index'));
                 if(selectIndex === null || (event.type && selectIndex === index)) return;
+                selectIndex = +selectIndex;
 
                 // switch header
                 this.$el.querySelector('.tbd-tabs-tab-active').className = this.$el.querySelector('.tbd-tabs-tab-active').className.replace(/\s?tbd-tabs-tab-active\s?/, '');
-                event.target.parentNode.className += ' tbd-tabs-tab-active ';
+                this.$el.querySelector('.tbd-tabs-nav [slot=header] :nth-child(' + (selectIndex + 1) + ')').className += ' tbd-tabs-tab-active ';
 
                 // switch context
                 let curContextEl = this.$el.querySelector('.tbd-tabs-content :nth-child(' + (selectIndex + 1) + ')');

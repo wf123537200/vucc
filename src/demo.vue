@@ -270,7 +270,7 @@
         </v-collapse-group>
       </div>
 
-      <h2>不紧输入框</h2>
+      <h2>步进输入框</h2>
       <div class="doc-example">
         <v-step-input size="small"></v-step-input>
         <v-step-input></v-step-input>
