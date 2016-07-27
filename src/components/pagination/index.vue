@@ -8,7 +8,7 @@
     <div class="tbd-pagination" v-if="isShow">
         <div class="tbd-pagination-records">
             共<em>{{total}}</em>条记录，每页显示
-            <v-select :data="pageSizeObject" :value.sync="pageSize"></v-select>
+            <pv-select :data="pageSizeObject" :value.sync="pageSize"></pv-select>
             条
         </div>
 
@@ -41,7 +41,7 @@
 </template>
 
 <script>
-    import vSelect from '../select/';
+    import pvSelect from '../select/';
 
     export default {
         props: {
@@ -50,6 +50,7 @@
                 default: true
             },
             onChange: {
+                require: true,
                 type: Function
             },
             pageSize: {
@@ -81,7 +82,7 @@
         },
 
         components: {
-            vSelect
+            pvSelect
         },
 
         computed: {

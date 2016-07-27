@@ -30,18 +30,18 @@
 -->
 <template>
     <div :class="['tbd-btn-group', appendClass]" :style="appendStyle">
-        <v-button v-for="it in data" :append-class="$index === curBtnIndex ? 'tbd-btn-primary' : ''"
+        <pv-button v-for="it in data" :append-class="$index === curBtnIndex ? 'tbd-btn-primary' : ''"
                   @click="it.onClickWarp($index)"
                   :size="size"
                   :is-disabled="it.isDisabled">
             <span>{{it.text}}</span>
-        </v-button>
+        </pv-button>
     </div>
 </template>
 
 <script>
     import {componentBaseParamConfig} from '../base-config';
-    import vButton from '../button';
+    import pvButton from '../button';
 
     export default {
         props: Object.assign({}, componentBaseParamConfig, {
@@ -84,7 +84,7 @@
         },
 
         components: {
-            vButton
+            pvButton
         }
     }
 </script>

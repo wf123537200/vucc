@@ -26,7 +26,7 @@
 -->
 <template>
     <div :class="['tbd-dialog-wrap', {'tbd-block': isShow, 'tbd-hidden': !isShow}]" tabindex="10000" @keyup.esc="closeFn">
-        <v-mask :is-show="showMask"></v-mask>
+        <pv-mask :is-show="showMask"></pv-mask>
         <div :class="['tbd-dialog tbd-dialog-autoscroll', appendClass]" :style="appendStyle">
             <div class="tbd-dialog-content">
                 <!-- header -->
@@ -46,13 +46,13 @@
 
                 <!-- footer -->
                 <div v-if="hasFooter" class="tbd-dialog-footer">
-                    <v-button v-if="hasCancelBtn" @click="_onCancel">{{cancelText}}</v-button>
-                    <v-button v-if="hasOkBtn"
+                    <pv-button v-if="hasCancelBtn" @click="_onCancel">{{cancelText}}</pv-button>
+                    <pv-button v-if="hasOkBtn"
                               type='primary'
                               @keyup.enter="_onOk"
                               @click="_onOk">
                         {{okText}}
-                    </v-button>
+                    </pv-button>
                 </div>
             </div>
         </div>
@@ -62,8 +62,8 @@
 
 <script>
     import {componentBaseParamConfig} from '../base-config';
-    import vMask from '../global-mask';
-    import vButton from '../button';
+    import pvMask from '../global-mask';
+    import pvButton from '../button';
 
     export default {
         props: Object.assign({}, componentBaseParamConfig, {
@@ -169,8 +169,8 @@
         },
 
         components: {
-            vButton,
-            vMask
+            pvButton,
+            pvMask
         }
     }
 </script>

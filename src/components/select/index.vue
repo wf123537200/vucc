@@ -27,7 +27,7 @@
   @param {Object} appendStyle 自定义Style对象
 -->
 <template>
-    <v-dropdown :data="data"
+    <pv-dropdown :data="data"
                 :append-style="appendStyle"
                 :append-class="appendClass"
                 :value.sync="value"
@@ -38,12 +38,12 @@
         <span class="tbd-select-selection-rendered">{{currentSelected}}</span>
         <span class="tbd-select-arrow" @click.stop="toggle"></span>
         </span>
-    </v-dropdown>
+    </pv-dropdown>
 </template>
 
 <script>
 import {componentBaseParamConfig} from '../base-config';
-import vDropdown from '../dropdown';
+import pvDropdown from '../dropdown';
 
 export default {
     props: Object.assign({}, componentBaseParamConfig, {
@@ -100,7 +100,7 @@ export default {
     },
 
     components: {
-        vDropdown
+        pvDropdown
     }
 }
 </script>

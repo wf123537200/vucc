@@ -63,11 +63,11 @@
         </div>
     </div>
 
-    <v-pagination :total="totalNum" :current-page.sync="currentPage" :page-size.sync="pageSize" :on-change="onChangePage"></v-pagination>
+    <pv-pagination :total="totalNum" :current-page.sync="currentPage" :page-size.sync="pageSize" :on-change="onChangePage"></pv-pagination>
 </template>
 
 <script>
-    import vPagination from '../pagination'
+    import pvPagination from '../pagination'
 
     export default {
         props: {
@@ -119,7 +119,7 @@
         },
 
         components: {
-            vPagination
+            pvPagination
         },
 
         computed: {

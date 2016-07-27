@@ -14,7 +14,7 @@
 <template>
     <div v-if="isShow" :style="appendStyle" :class="['tbd-spin', appendClass, sizeClass, {'tbd-spin-lg': isGlobal}]">
         <!-- 全局遮罩 -->
-        <g-mask :is-show="isGlobal && isShow"></g-mask>
+        <pv-mask :is-show="isGlobal && isShow"></pv-mask>
         <!-- 局部遮罩 -->
         <div v-if="!isGlobal && isShow" class="tbd-spin-wrap-mask"></div>
 
@@ -28,7 +28,7 @@
 
 <script>
     import {componentBaseParamConfig} from '../base-config';
-    import gMask from '../global-mask';
+    import pvMask from '../global-mask';
 
     export default {
         props: Object.assign({}, componentBaseParamConfig, {
@@ -51,7 +51,7 @@
         }),
 
         components: {
-            gMask
+            pvMask
         },
 
         data() {

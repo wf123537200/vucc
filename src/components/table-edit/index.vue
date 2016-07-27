@@ -47,26 +47,26 @@
 
                         <div class="tbdb-edit-table-select-group">
                             <!-- select -->
-                            <v-select :value.sync="item.columnType" :data="types">
-                            </v-select>
+                            <pv-select :value.sync="item.columnType" :data="types">
+                            </pv-select>
 
                             <div class="tbd-input-group tbd-input-group-sm" v-show="item.columnType === 'array'">
                                 <span class="tbd-input-extra">value=</span>
-                                <v-select :value.sync="item.sub" :data="bases">
-                                </v-select>
+                                <pv-select :value.sync="item.sub" :data="bases">
+                                </pv-select>
                             </div>
 
                             <!-- input group -->
                             <div class="tbd-input-group tbd-input-group-sm" v-show="item.columnType === 'map'">
                                 <span class="tbd-input-extra">key=</span>
-                                <v-select :value.sync="item.subKey" :data="bases">
-                                </v-select>
+                                <pv-select :value.sync="item.subKey" :data="bases">
+                                </pv-select>
                             </div>
                             <!-- input group -->
                             <div class="tbd-input-group tbd-input-group-sm" v-show="item.columnType === 'map'">
                                 <span class="tbd-input-extra">value=</span>
-                                <v-select :value.sync="item.subValue" :data="bases">
-                                </v-select>
+                                <pv-select :value.sync="item.subValue" :data="bases">
+                                </pv-select>
                             </div>
 
                             <div class="tbd-input-group tbd-input-group-sm" v-show="item.columnType.indexOf('char') > -1">
@@ -78,7 +78,7 @@
                     </td>
 
                     <td><input v-model="item.columnDesc" type="text" class="tbd-input tbd-input-sm"></td>
-                    <td><v-checkbox :value.sync="item.isPartition"></v-checkbox></td>
+                    <td><pv-checkbox :value.sync="item.isPartition"></pv-checkbox></td>
                     <td>
                         <a href="javascript:void(0)" @click="removeItem(item, $index)" class="tbd-link">删除</a>
                     </td>
@@ -91,13 +91,13 @@
 </template>
 
 <script>
-    import vSelect from '../select/'
-    import vCheckbox from '../checkbox/'
+    import pvSelect from '../select/';
+    import pvCheckbox from '../checkbox/';
 
     export default {
         components: {
-            vSelect,
-            vCheckbox
+            pvSelect,
+            pvCheckbox
         },
         props: {
             data: {

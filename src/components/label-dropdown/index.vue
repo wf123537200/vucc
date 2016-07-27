@@ -56,21 +56,21 @@
             </ul>
         </div>
         <!-- select 下拉选项 -->
-        <v-dropdown :data="dropDownList"
+        <pv-dropdown :data="dropDownList"
                     :on-select="selectItem"
                     :is-opened="showDropdown"
                     :filter = "keyword"
                     :append-style="{width: '305px','margin-top': '-24px'}">
-        </v-dropdown>
+        </pv-dropdown>
     </div>
 </template>
 <script>
     import {componentBaseParamConfig} from '../base-config';
-    import vDropdown from '../dropdown';
+    import pvDropdown from '../dropdown';
 
     export default {
         components: {
-            vDropdown
+            pvDropdown
         },
         props : Object.assign({}, componentBaseParamConfig, {
             disabled : {

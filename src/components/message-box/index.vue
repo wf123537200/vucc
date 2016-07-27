@@ -9,8 +9,6 @@
     调用统一通过
     vm.$root.$$messageBox.yourId.show();
 
-    NOTICE: 第二种调用方式还可以使用window.Tips.id.show()的方式调用
-
     @param {String}     type 对话框展示的类型,可选枚举值有:info, success, confirm, error
     @param {String}     title 弹出框主标题
     @param {String}     explain 弹出框说明文字
@@ -22,7 +20,7 @@
     @param {Object}     appendStyle 自定义Style对象
 -->
 <template>
-    <v-dialog :id="id"
+    <pv-dialog :id="id"
               :append-class="appendClass"
               :append-style="appendStyle"
               :has-header="false"
@@ -36,12 +34,12 @@
             <span class="tbd-confirm-title">{{title}}</span>
             <div class="tbd-confirm-content">{{explain}}</div>
         </div>
-    </v-dialog>
+    </pv-dialog>
 </template>
 
 <script>
     import {componentBaseParamConfig} from '../base-config';
-    import vDialog from '../dialog';
+    import pvDialog from '../dialog';
 
     export default {
         props: Object.assign({}, componentBaseParamConfig, {
@@ -97,7 +95,7 @@
         },
 
         components: {
-            vDialog
+            pvDialog
         }
     }
 </script>
