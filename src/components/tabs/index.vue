@@ -81,10 +81,10 @@
                 this.$el.querySelector('.tbd-tabs-nav [slot=header] :nth-child(' + (selectIndex + 1) + ')').className += ' tbd-tabs-tab-active ';
 
                 // switch context
-                let curContextEl = this.$el.querySelector('.tbd-tabs-content :nth-child(' + (selectIndex + 1) + ')');
-                curContextEl.setAttribute('class',  curContextEl.className.replace(/\s?tbd-tabs-tabpane-hidden\s?/, ''));
-                let oldContextEl = this.$el.querySelector('.tbd-tabs-content :nth-child(' + (index + 1) + ')');
+                let oldContextEl = this.$el.querySelector('.tbd-tabs-content > :nth-child(' + (index + 1) + ')');
                 oldContextEl.setAttribute('class',  oldContextEl.className + ' tbd-tabs-tabpane-hidden ');
+                let curContextEl = this.$el.querySelector('.tbd-tabs-content > :nth-child(' + (selectIndex + 1) + ')');
+                curContextEl.setAttribute('class',  curContextEl.className.replace(/\s?tbd-tabs-tabpane-hidden\s?/, ''));
 
                 this.curIndex = selectIndex;
             }
