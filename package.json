@@ -27,7 +27,7 @@
     "webpack-merge": "^0.8.3"
   },
   "scripts": {
-    "dev": "webpack-dev-server --inline --hot --quiet --host 0.0.0.0 --port 8090 --config build/webpack.dev.conf.js",
+    "dev": "webpack-dev-server --content-base src --inline --hot --quiet --host 0.0.0.0 --port 8090 --config build/webpack.dev.conf.js",
     "dev-build": "webpack --colors --config build/webpack.dev.conf.js",
     "res": "webpack -p --progress  --config build/webpack.prod.conf.js"
   },
