@@ -28,12 +28,12 @@
 -->
 <template>
     <pv-dropdown :data="data"
-                :append-style="appendStyle"
-                :append-class="appendClass"
-                :value.sync="value"
-                :is-disabled="isDisabled"
-                :on-select="onSelected"
-                :is-opened="isOpened">
+                 :append-style="appendStyle"
+                 :append-class="appendClass"
+                 :value.sync="value"
+                 :is-disabled="isDisabled"
+                 :on-select="onSelected"
+                 :is-opened="isOpened">
         <span class="tbd-select-selection tbd-select-selection-single">
         <span class="tbd-select-selection-rendered">{{currentSelected}}</span>
         <span class="tbd-select-arrow" @click.stop="toggle"></span>
@@ -42,67 +42,69 @@
 </template>
 
 <script>
-import {componentBaseParamConfig} from '../base-config';
-import pvDropdown from '../dropdown';
+    import {componentBaseParamConfig} from '../base-config';
+    import pvDropdown from '../dropdown';
 
-export default {
-    props: Object.assign({}, componentBaseParamConfig, {
-        isDisabled: {
-            type: Boolean,
-            default: false
-        },
-        data: {
-            type: Object,
-            default: function() {
-                return {
-                    optsList: []
+    export default {
+        props: Object.assign({}, componentBaseParamConfig, {
+            isDisabled: {
+                type: Boolean,
+                default: false
+            },
+            data: {
+                type: Object,
+                default: function() {
+                    return {
+                        optsList: []
+                    }
                 }
+            },
+            value: {
+            },
+            onSelect: {
+                type: Function
+            },
+            isOpened: {
+                type: Boolean,
+                default: false
+            }
+        }),
+
+        data () {
+            return {}
+        },
+
+        computed: {
+            currentSelected() {
+                const _this = this;
+                let res = _this.data.optsList.find(function(it) {
+                    return it.value == _this.value;
+                });
+                return res && (res.label || res.value) || '请选择';
             }
         },
-        value: {
-        },
-        onSelect: {
-            type: Function
-        },
-        isOpened: {
-            type: Boolean,
-            default: false
-        }
-    }),
 
-    data () {
-        return {}
-    },
+        methods: {
+            onSelected(index, item) {
+                let opts = this.data.optsList;
 
-    computed: {
-        currentSelected() {
-            const _this = this;
-            let res = _this.data.optsList.find(function(it) {
-                return it.value == _this.value;
-            });
-            return res && (res.label || res.value) || '请选择';
-        }
-    },
+                if(opts.isDisabled) return;
 
-    methods: {
-        onSelected(index, item) {
-            let opts = this.data.optsList;
+                this.currentSelected = opts[index].label || this.value;
+                this.onSelect && this.onSelect(item.value, index);
+            },
 
-            if(opts.isDisabled) return;
+            toggle() {
+                if(this.isDisabled) return;
 
-            this.currentSelected = opts[index].label || this.value;
-            this.onSelect && this.onSelect(index, item.value);
+                this.isOpened = !this.isOpened;
+            }
         },
 
-        toggle() {
-            this.isOpened = !this.isOpened;
+        components: {
+            pvDropdown
         }
-    },
-
-    components: {
-        pvDropdown
     }
-}
 </script>
 
 <style scoped>

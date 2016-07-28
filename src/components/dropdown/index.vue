@@ -102,6 +102,8 @@ export default {
 
     methods: {
         onClick() {
+            if(this.isDisabled) return;
+
             this.isOpened = true;
         },
 
@@ -120,7 +122,7 @@ export default {
             let opts = this.showData.optsList;
             let curObj = opts[index];
 
-            if(curObj.renderLi) {
+            if(curObj.renderLi && typeof curObj.renderLi == 'function') {
                 return curObj.renderLi(index, opts[index]);
             } else {
                 return curObj.label || curObj.value;

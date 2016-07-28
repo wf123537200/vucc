@@ -51,6 +51,9 @@
             activeIndex: {
                 type: Number,
                 default: 0
+            },
+            onChange: {
+                type: Function
             }
         }),
 
@@ -72,13 +75,16 @@
                     return;
                 }
 
-                let selectIndex = (event.target.getAttribute('tab_index'));
-                if(selectIndex === null || (event.type && selectIndex === index)) return;
-                selectIndex = +selectIndex;
+                let selectIndex = +(event.target.getAttribute('tab_index'));
+                if(selectIndex === null) {
+                    selectIndex  = +(event.target.parentElement.getAttribute('tab_index'));
+                }
+
+                if(selectIndex === null || (event.type && selectIndex === +index)) return;
 
                 // switch header
                 this.$el.querySelector('.tbd-tabs-tab-active').className = this.$el.querySelector('.tbd-tabs-tab-active').className.replace(/\s?tbd-tabs-tab-active\s?/, '');
-                this.$el.querySelector('.tbd-tabs-nav [slot=header] :nth-child(' + (selectIndex + 1) + ')').className += ' tbd-tabs-tab-active ';
+                this.$el.querySelector('.tbd-tabs-nav [slot=header] > :nth-child(' + (selectIndex + 1) + ')').className += ' tbd-tabs-tab-active ';
 
                 // switch context
                 let oldContextEl = this.$el.querySelector('.tbd-tabs-content > :nth-child(' + (index + 1) + ')');
@@ -87,6 +93,8 @@
                 curContextEl.setAttribute('class',  curContextEl.className.replace(/\s?tbd-tabs-tabpane-hidden\s?/, ''));
 
                 this.curIndex = selectIndex;
+
+                this.onChange && this.onChange(this.curIndex);
             }
         },
 

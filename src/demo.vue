@@ -125,7 +125,7 @@
       <h2>tabs</h2>
       <div class="doc-example">
         <h2>默认类型tabs</h2>
-        <v-tabs type="">
+        <v-tabs type="" :on-change="switchChange">
           <div slot="operate">
             <v-button>额外操作</v-button>
           </div>
@@ -498,6 +498,10 @@
     },
 
     methods: {
+      switchChange(value) {
+        console.log('Tab switch result is :', value)
+      },
+
       buttonClick() {
         console.log('u has been click')
       },
