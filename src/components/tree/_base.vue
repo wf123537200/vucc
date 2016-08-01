@@ -6,72 +6,49 @@
    @param {Object} appendStyle 自定义Style对象
 -->
 
-<template>
-    <ul>
-        <li v-for="it in data.leafs" :class="['tbd-tree-open', {'tbd-tree-checked': isChecked, 'tbd-tree-disabled': isDisabled}]">
-            <a href="javascript: void 0;" class="tbd-tree-item">
-                <i v-if="it.subTree" class="tbd-tree-caret"></i>
-                <span class="tbd-tree-text">
-                    <i v-if="isHasCheckbox" class="tbd-tree-checkbox"></i>
-                    {{it.content}}
-                </span>
-            </a>
-
-            <pv-base :data="it.subTree"></pv-base>
-        </li>
-    </ul>
-</template>
-
 <script>
-    import {componentBaseParamConfig} from '../base-config';
-    import pvBase from './_base.vue';
-
     export default {
-        components: {
-            pvBase
-        },
-        props: Object.assign({}, componentBaseParamConfig, {
+        name: 'tree_base',
+        template:    `<ul>
+                        <li v-for="it in data.leafs" :class="[{'tbd-tree-checked': it.isChecked, 'tbd-tree-disabled': it.isDisabled, 'tbd-tree-open': it.isOpened}]">
+                            <a href="javascript: void 0;" class="tbd-tree-item">
+                                <i @click.stop="toggleOpen(it)" v-if="it.subTree" class="tbd-tree-caret"></i>
+                                <span class="tbd-tree-text" @click.stop="toggleOpen(it)">
+                                    <i @click.stop="toggleChecked(it)" v-if="data.isHasCheckbox" class="tbd-tree-checkbox"></i>
+                                    <span @click.stop="toggleChecked(it)">{{it.content}}</span>
+                                </span>
+                            </a>
+
+                            <tree_base v-if="it.subTree" :data="it.subTree"></tree_base>
+                        </li>
+                     </ul>`,
+        props: {
             data: {
                 type: Object,
-                default() {
-                    return {
-                        isHasCheckbox: true,
-                        isChecked: true,
-                        isDisabled: false,
-                        leafs: [{
-                            content: '文本内容1'
-                        }, {
-                            content: '文本内容2',
-                            subTree: {
-                                isHasCheckbox: true,
-                                isChecked: true,
-                                isDisabled: false,
-                                leafs: [{
-                                    content: '文本内容1'
-                                }, {
-                                    content: '文本内容2'
-                                }, {
-                                    content: '文本内容3'
-                                }]
-                            }
-                        }, {
-                            content: '文本内容2',
-                            subTree: {
-                                isHasCheckbox: true,
-                                isChecked: true,
-                                isDisabled: false,
-                                leafs: [{
-                                    content: '文本内容1'
-                                }, {
-                                    content: '文本内容2'
-                                }, {
-                                    content: '文本内容3'
-                                }]
-                            }
-                        }]
-                    }
-                }
+                default() {}
             }
-        })
+        },
+        beforeCompile() {
+            this.data.isHasCheckbox = this.data.isHasCheckbox || false;
+            this.data.leafs = this.data.leafs.map(function(it) {
+                return Object.assign({
+                    isOpened: false,
+                    isChecked: false,
+                    isDisabled: false
+                }, it);
+            });
+        },
+        methods: {
+            toggleOpen(it) {
+                if(it.isDisabled) return;
+
+                it.isOpened = !it.isOpened;
+            },
+            toggleChecked(it) {
+                if(it.isDisabled) return;
+
+                it.isChecked = !it.isChecked;
+            }
+        }
     }
 </script>

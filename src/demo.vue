@@ -385,7 +385,7 @@
 
       <h2>树形列表</h2>
       <div class="doc-example">
-        <v-tree></v-tree>
+        <v-tree :data="tree"></v-tree>
       </div>
 
       <h2>业务类型组件</h2>
@@ -585,7 +585,27 @@
         // tagList
         tagList: [{
           content: '内容'
-        }]
+        }],
+        //
+        tree: {
+          isHasCheckbox: true,
+          leafs: [{
+            isOpened: true,
+            isChecked: true,
+            isDisabled: true,
+            content: '文本内容1'
+          }, {
+            content: '文本内容2',
+            subTree: {
+              isHasCheckbox: true,
+              leafs: [{
+                content: '文本内容1'
+              }, {
+                content: '文本内容2'
+              }]
+            }
+          }]
+        }
       }
     },
 

@@ -1,97 +1,68 @@
 <!--
    tree 树状组件
 
-   @param {String}
+   @param {String} data
+    ex:
+        {
+            isHasCheckbox: true,
+            leafs: [{
+                isOpened: true,
+                isChecked: true,
+                isDisabled: true,
+                content: '文本内容1'
+            }, {
+                content: '文本内容2',
+                subTree: {
+                    isHasCheckbox: true,
+                    leafs: [{
+                        content: '文本内容1'
+                    }, {
+                        content: '文本内容2'
+                    }]
+                }
+            }]
+        }
    @param {String} appendClass 自定义class
    @param {Object} appendStyle 自定义Style对象
 -->
 
 <template>
     <ul :style="appendStyle" :class="['tbd-tree', appendClass]" >
-        {{{renderUl}}}
+        <li v-for="it in data.leafs" :class="[{'tbd-tree-checked': it.isChecked, 'tbd-tree-disabled': it.isDisabled, 'tbd-tree-open': it.isOpened}]">
+            <a href="javascript: void 0;" class="tbd-tree-item">
+                <i @click.stop="toggleOpen(it)" v-if="it.subTree" class="tbd-tree-caret"></i>
+                <span class="tbd-tree-text" @click.stop="toggleOpen(it)">
+                    <i @click.stop="toggleChecked(it)" v-if="data.isHasCheckbox" class="tbd-tree-checkbox"></i>
+                    {{it.content}}
+                </span>
+            </a>
+
+            <pv-base v-if="it.subTree" :data="it.subTree"></pv-base>
+        </li>
     </ul>
 </template>
 
 <script>
     import {componentBaseParamConfig} from '../base-config';
-
-    const liTpl = `<li v-for="it in data.leafs" :class="['tbd-tree-open', {'tbd-tree-checked': isChecked, 'tbd-tree-disabled': isDisabled}]">`+
-                    `<a href="javascript: void 0;" class="tbd-tree-item">` +
-                        `<i v-if="it.subTree" class="tbd-tree-caret"></i>` +
-                        `<span class="tbd-tree-text">` +
-                            `<i v-if="isHasCheckbox" class="tbd-tree-checkbox"></i>` +
-                            `{{it.content}}` +
-                        `</span>` +
-                    `</a>` +
-                  `</li>`;
-    const UlTpl = `<ui>` + liTpl + `</ul>`;
+    import pvBase from './_base.vue';
 
     export default {
+        replace: false,
+        components: {
+            pvBase
+        },
         props: Object.assign({}, componentBaseParamConfig, {
             data: {
                 type: Object,
                 default() {
                     return {
-                        isHasCheckbox: true,
-                        isChecked: true,
-                        isDisabled: false,
-                        leafs: [{
-                            content: '文本内容1'
-                        }, {
-                            content: '文本内容2',
-                            subTree: {
-                                isHasCheckbox: true,
-                                isChecked: true,
-                                isDisabled: false,
-                                leafs: [{
-                                    content: '文本内容1'
-                                }, {
-                                    content: '文本内容2'
-                                }, {
-                                    content: '文本内容3'
-                                }]
-                            }
-                        }, {
-                            content: '文本内容2',
-                            subTree: {
-                                isHasCheckbox: true,
-                                isChecked: true,
-                                isDisabled: false,
-                                leafs: [{
-                                    content: '文本内容1',
-                                    subTree: {
-                                        isHasCheckbox: true,
-                                        isChecked: true,
-                                        isDisabled: false,
-                                        leafs: [{
-                                            content: '文本内容1'
-                                        }, {
-                                            content: '文本内容2'
-                                        }, {
-                                            content: '文本内容3'
-                                        }]
-                                    }
-                                }, {
-                                    content: '文本内容2'
-                                }, {
-                                    content: '文本内容3'
-                                }]
-                            }
-                        }]
-                    }
-                }
-            },
-            computed: {
-                renderUl() {
-                    if(!this.data) return ``;
-
-                    function addUl() {
-                        const {isHasCheckbox, isChecked, isDisabled, leafs} = this.data;
-
+                        leafs: []
                     }
                 }
             }
-        })
+        }),
+        beforeCompile: pvBase.beforeCompile,
+        methods: Object.assign({}, pvBase.methods)
     }
 </script>
 
