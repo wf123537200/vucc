@@ -15,7 +15,7 @@ $input-prefix-cls: $css-prefix + "input";
     padding: 3px 10px;
     border: 1px solid $border-color;
     border-radius: $border-radius-base;
-    width: 200px;
+    width: 100%;
     @include input($height, $font-size-base);
     color: $base-color;
     @include placeholder($gray-color);

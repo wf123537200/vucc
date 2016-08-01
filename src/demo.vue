@@ -221,7 +221,7 @@
       <h2>输入框和文本域</h2>
       <div class="doc-example">
         <v-input type="text" size="small" placeholder="sm"></v-input>
-        <v-input type="text"value="disabled" disabled></v-input>
+        <v-input type="text" value="disabled" disabled></v-input>
 
         <v-textarea rows="3" placeholder="textarea的高度由rows属性决定"></v-textarea>
         <v-textarea rows="3" placeholder="textarea的高度由rows属性决定" disabled></v-textarea>
@@ -302,6 +302,90 @@
         <v-steps :data="stepsData"></v-steps>
         <v-steps :data="stepsData" :size="'small'"></v-steps>
         <v-steps :data="stepsData" :is-vertical="true"></v-steps>
+      </div>
+
+      <h2>文字提示</h2>
+      <div class="doc-example">
+        <!-- 底部 -->
+        <div style="margin-left: 50px;">
+          <div>底部</div>
+          <v-tool-tip>文字提示</v-tool-tip>
+        </div>
+
+        <div style="margin-left: 50px;">
+          <div>底部靠左</div>
+          <v-tool-tip :type="'bottomLeft'">文字提示</v-tool-tip>
+        </div>
+
+        <div style="margin-left: 50px;">
+          <div>底部靠右</div>
+          <v-tool-tip :type="'bottomRight'">文字提示</v-tool-tip>
+        </div>
+
+        <!-- 顶部 -->
+        <div style="margin-left: 50px;">
+          <div>顶部</div>
+          <v-tool-tip :type="'top'">文字提示</v-tool-tip>
+        </div>
+
+        <div style="margin-left: 50px;">
+          <div>顶部靠右</div>
+          <v-tool-tip :type="'topRight'">文字提示</v-tool-tip>
+        </div>
+
+        <div style="margin-left: 50px;">
+          <div>顶部靠左</div>
+          <v-tool-tip :type="'topLeft'">文字提示</v-tool-tip>
+        </div>
+
+        <br />
+        <!-- 右边 -->
+        <div style="margin-left: 50px;">
+          <div>右边</div>
+          <v-tool-tip :type="'right'">文字提示</v-tool-tip>
+        </div>
+
+        <div style="margin-left: 50px;">
+          <div>右边靠顶</div>
+          <v-tool-tip :type="'rightTop'">文字提示</v-tool-tip>
+        </div>
+
+        <div style="margin-left: 50px;">
+          <div>右边靠底</div>
+          <v-tool-tip :type="'rightBottom'">文字提示</v-tool-tip>
+        </div>
+
+        <!-- 左边 -->
+        <div style="margin-left: 50px;">
+          <div>左边</div>
+          <v-tool-tip :type="'left'">文字提示</v-tool-tip>
+        </div>
+
+        <div style="margin-left: 50px;">
+          <div>左边靠顶</div>
+          <v-tool-tip :type="'leftTop'">文字提示</v-tool-tip>
+        </div>
+
+        <div style="margin-left: 50px;">
+          <div>左边靠底</div>
+          <v-tool-tip :type="'leftBottom'">文字提示</v-tool-tip>
+        </div>
+      </div>
+
+      <h2>时间轴</h2>
+      <div class="doc-example">
+          <v-time-line :data="timeLineData"></v-time-line>
+      </div>
+
+      <h2>标签列表</h2>
+      <div class="doc-example">
+        <v-tag-list :data="tagList"></v-tag-list>
+        <v-tag-list :data="tagList" :size="'small'" :is-delete-able="true"></v-tag-list>
+      </div>
+
+      <h2>树形列表</h2>
+      <div class="doc-example">
+        <v-tree></v-tree>
       </div>
 
       <h2>业务类型组件</h2>
@@ -493,6 +577,14 @@
             order: 3,
             title: '默认尺寸',
             explain: '说明文字'
+        }],
+
+        // time line
+        timeLineData: ['我们发布了alpha \n\r 再试试', '我们发布了beta'],
+
+        // tagList
+        tagList: [{
+          content: '内容'
         }]
       }
     },
@@ -676,18 +768,6 @@
   /*==首页==*/
 
   .doc-index {
-    font: 14px/1.5 'Microsoft Yahei';
-  }
-
-  .doc-index a,
-  .doc-index a:visited {
-    color: #006dd3;
-    text-decoration: none;
-  }
-
-  .doc-index a:hover {
-    color: #006dd3;
-    text-decoration: underline;
   }
 
   .doc-index h1 {

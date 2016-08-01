@@ -27,10 +27,14 @@ var vStepInput = require('./components/step-input');
 var vProgress = require('./components/progress');
 var vLoading = require('./components/loading');
 var vSteps = require('./components/steps');
+var vToolTip = require('./components/tool-tip');
+var vTimeLine = require('./components/time-line');
+var vTagList = require('./components/tag-list');
+var vTree = require('./components/tree');
 
 /* 为不支持模块化的系统提供简单支持 */
-window.__tbd_design__ = {vSteps, vLoading, vProgress, vStepInput, vPagination, vPane, vCollapseGroup, vCollapse, vInput, vTextarea, vBadge, vAlert, vTableEdit, vLabelDropdown, vSlider, vTable, vButton, vButtonGroup, vSwitch, vCheckbox, vRadio, vDropdown, vSelect, vTips, vDialog, vMask, vMessageBox, vTabs, vButtonGroup};
-module.exports = {vSteps, vLoading, vProgress, vStepInput, vPagination, vPane, vCollapseGroup, vCollapse, vInput, vTextarea, vBadge, vAlert, vTableEdit, vLabelDropdown, vSlider, vTable, vButton, vButtonGroup, vSwitch, vCheckbox, vRadio, vDropdown, vSelect, vTips, vDialog, vMask, vMessageBox, vTabs, vButtonGroup};
+window.__tbd_design__ = {vTree, vTagList, vTimeLine, vToolTip, vSteps, vLoading, vProgress, vStepInput, vPagination, vPane, vCollapseGroup, vCollapse, vInput, vTextarea, vBadge, vAlert, vTableEdit, vLabelDropdown, vSlider, vTable, vButton, vButtonGroup, vSwitch, vCheckbox, vRadio, vDropdown, vSelect, vTips, vDialog, vMask, vMessageBox, vTabs, vButtonGroup};
+module.exports = {vTree, vTagList, vTimeLine, vToolTip, vSteps, vLoading, vProgress, vStepInput, vPagination, vPane, vCollapseGroup, vCollapse, vInput, vTextarea, vBadge, vAlert, vTableEdit, vLabelDropdown, vSlider, vTable, vButton, vButtonGroup, vSwitch, vCheckbox, vRadio, vDropdown, vSelect, vTips, vDialog, vMask, vMessageBox, vTabs, vButtonGroup};
 
 // 自动装载css
 try {
@@ -39,4 +43,17 @@ try {
 } catch (e) {
     console.error('如果不使用css-load,请手动拷贝css,使用link标签进行加载!');
 }
+
+// 配置
+window.tbdConfig = function(conf) {
+    var res = {};
+    var prefix = conf.prefix;
+    var tbdDesign = window.__tbd_design__;
+
+    for(var key in tbdDesign) {
+        res[prefix + key.slice(1)] = tbdDesign[key];
+    }
+
+    return res;
+};
 

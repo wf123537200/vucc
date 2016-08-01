@@ -1,0 +1,154 @@
+@import "../../style/ver";
+@import "../../style/mixins";
+@import "../../style/compatibility";
+
+$tree-prefix-cls: $css-prefix + "tree";
+
+$tree-item-height: 26px;
+
+$tree-disabled-border-color: $border-disabled-color;
+$tree-disabled-bg: $base-bg;
+$tree-disabled-color: $gray-color;
+
+.#{$tree-prefix-cls} {
+  margin-bottom: 20px;
+
+  &-item {
+    position: relative;
+    display: block;
+    margin-left: 15px;
+    padding: 0 5px;
+    height: $tree-item-height;
+    line-height: $tree-item-height;
+    color: $base-color;
+    transition: background 0.3s ease;
+    text-decoration: none;
+
+    &:hover {
+      color: $base-color;
+      text-decoration: none;
+      background-color: lighten($base-bg, 5%);
+
+      .#{$tree-prefix-cls}-checkbox {
+        border-color: $border-focus-color;
+      }
+    }
+  }
+
+  &-caret {
+    position: absolute;
+    left: -15px;
+    top: 0;
+    width: 20px;
+    height: 100%;
+    text-align: center;
+    color: $gray-color;
+    cursor: pointer;
+
+    &:after {
+      content: '\E60A';
+      font-family: 'tbdicon';
+      line-height: 1;
+      font-style: normal;
+      @include iconfont-size-under-12px(8px);
+    }
+
+    &:hover {
+      color: $base-color;
+    }
+  }
+
+  &-checkbox {
+    position: relative;
+    top: -2px;
+    display: inline-block;
+    vertical-align: middle;
+    box-sizing: border-box;
+    margin-right: 5px;
+    width: 14px;
+    height: 14px;
+    border: 1px solid $border-color;
+    border-radius: $border-radius-base;
+    background: #fff;
+    cursor: pointer;
+
+    &:after {
+      display: none;
+      position: absolute;
+      top: 0px;
+      left: 3px;
+      box-sizing: border-box;
+      width: 6px;
+      height: 9px;
+      border: 2px solid #fff;
+      border-top: 0;
+      border-left: 0;
+      content: '';
+      transform: rotate(45deg);
+    }
+  }
+
+  &-text {
+    display: block;
+    @include ellipsis();
+  }
+
+  ul {
+    margin-left: 15px;
+    display: none;
+  }
+
+  // 打开两级菜单
+  &-open {
+    > .#{$tree-prefix-cls}-item .#{$tree-prefix-cls}-caret {
+      &:after {
+        content: '\E611';
+      }
+    }
+
+    > ul {
+      display: block;
+    }
+  }
+
+  // 选中
+  &-checked {
+    > .#{$tree-prefix-cls}-item {
+      color: $primary-color;
+
+      .#{$tree-prefix-cls}-checkbox {
+         position: relative;
+         border-color: $primary-color;
+         background: $primary-color;
+
+         &:after {
+           display: block;
+         }
+       }
+    }
+  }
+
+  // 不可更改
+  &-disabled {
+    > .#{$tree-prefix-cls}-item {
+      color: $gray-color;
+      cursor: $cursor-disabled;
+
+      &:hover {
+        background: transparent;
+        color: $gray-color;
+      }
+
+      .#{$tree-prefix-cls}-checkbox {
+         position: relative;
+         border-color: $tree-disabled-border-color;
+         background: $tree-disabled-bg;
+         cursor: $cursor-disabled;
+
+         &:after {
+           border-color: $tree-disabled-border-color;
+         }
+       }
+    }
+  }
+}

@@ -1,0 +1,161 @@
+@import "../../style/ver";
+@import "../../style/mixins";
+
+$tag-prefix-cls: $css-prefix + 'tag';
+$input-prefix-cls: $css-prefix + "input";
+
+.#{$tag-prefix-cls} {
+  & {
+    display: inline-block;
+    box-sizing: border-box;
+    line-height: $height;
+
+    span {
+      position: relative;
+      display: block;
+      padding: 0 15px;
+      box-sizing: border-box;
+      @include ellipsis();
+      border-radius: $border-radius-base;
+      color: $base-color;
+      cursor: pointer;
+      max-width: 150px;
+
+      &:hover {
+        color: $primary-color;
+      }
+    }
+
+    .#{$iconfont-css-prefix}-cross {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 30px;
+      line-height: inherit;
+      text-align: center;
+
+      &:hover {
+        font-weight: bold;
+      }
+    }
+  }
+
+  &-active {
+    span,
+    span:hover {
+      background: $primary-color;
+      color: #fff;
+    }
+
+    .#{$iconfont-css-prefix}-cross {
+      display: block;
+    }
+  }
+
+  &-with-close {
+    &.#{$tag-prefix-cls}-active span {
+      padding-right: 30px;
+    }
+  }
+
+  // 列表
+  &-list {
+    margin: 0 -5px;
+    @include clearfix();
+
+    .#{$tag-prefix-cls} {
+      float: left;
+      margin: 0 5px 10px;
+    }
+
+    .#{$input-prefix-cls}-wrap {
+      float: left;
+      width: 130px;
+      display: inline-block;
+      position: relative;
+      font-size: $font-size-base; // 防止外层行高与字体大小的影响
+      line-height: 1.5;
+
+      &-extra {
+        position: absolute;
+        right: 0;
+        top: 0;
+        box-sizing: border-box;
+        padding: 3px 10px;
+        @include input($height, $font-size-base);
+        border: 1px solid transparent;
+        border-top-right-radius: $border-radius-base;
+        border-bottom-right-radius: $border-radius-base;
+        color: $gray-color;
+      }
+
+      button.#{$input-prefix-cls}-wrap-extra {
+        border-color: transparent;
+        border-left-width: 0;
+        background-color: #fff;
+        background-color: transparent\9; //ie7-10
+        background-clip: padding-box;
+        cursor: pointer;
+        transition: all .3s linear;
+
+        :root & {
+          background-color: #fff; // reset ie9 and above
+        }
+
+        &:hover {
+          color: $primary-color;
+        }
+      }
+
+      // 不同尺寸
+      &-sm {
+        .#{$input-prefix-cls} {
+          &-wrap-extra {
+            @include input($height-sm, $font-size-base);
+          }
+        }
+      }
+      &-lg {
+        .#{$input-prefix-cls} {
+          &,
+          &-wrap-extra {
+            @include input($height-lg, $font-size-lg);
+          }
+          & {
+            padding: 3px 20px;
+          }
+        }
+      }
+
+    }
+
+    // 不同尺寸
+    &-sm {
+      .#{$tag-prefix-cls} {
+        line-height: $height-sm;
+      }
+
+      .#{$input-prefix-cls},
+      .#{$input-prefix-cls}-wrap-extra {
+        @include input($height-sm, $font-size-base);
+      }
+    }
+  }
+
+  // 列表组
+  &-group {
+    @include clearfix();
+
+    &-title {
+      float: left;
+      width: 60px;
+      line-height: $height-sm;
+    }
+
+    &-content {
+      display: block;
+      margin-left: 60px;
+    }
+  }
+}

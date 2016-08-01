@@ -1,0 +1,41 @@
+@import "../../style/ver";
+
+$timeline-prefix-cls: $css-prefix + 'timeline';
+
+.#{$timeline-prefix-cls} {
+  padding-left: 10px;
+  margin-bottom: 20px;
+
+  &-item {
+    position: relative;
+    padding: 0 0 10px 15px;
+    border-left: 2px solid $border-color;
+    min-height: 30px;
+
+    &:last-child {
+      border-left-color: transparent;
+      min-height: 0;
+      padding-bottom: 0;
+    }
+
+    &-dot {
+      position: absolute;
+      left: -9px;
+      top: 0;
+      box-sizing: border-box;
+      width: 16px;
+      height: 16px;
+      border: 2px solid $primary-color;
+      background: #fff;
+      border-radius: 50%;
+    }
+
+    p {
+      margin-bottom: 5px;
+    }
+
+    &-info {
+      margin-right: 10px;
+    }
+  }
+}

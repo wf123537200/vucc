@@ -28,16 +28,17 @@
   background: none;
   color: #8b91a0;
   line-height: 18px;
+  cursor: pointer;
 }
-/* line 35, style.scss */
+/* line 36, style.scss */
 .tbd-input-number-handle-down {
   border-top: 1px solid #e5e9ec;
 }
-/* line 39, style.scss */
+/* line 40, style.scss */
 .tbd-input-number-handle:hover {
   color: #57cc95;
 }
-/* line 44, style.scss */
+/* line 45, style.scss */
 .tbd-input-number .tbdi {
   display: inline-block;
   font-size: 12px;
@@ -52,7 +53,7 @@
 :root .tbd-input-number .tbdi {
   font-size: 12px;
 }
-/* line 51, style.scss */
+/* line 52, style.scss */
 .tbd-input-number-sm .tbd-input {
   padding-top: 6px;
   padding-bottom: 6px;
@@ -61,11 +62,11 @@
   line-height: 1.5;
   padding-right: 20px;
 }
-/* line 56, style.scss */
+/* line 57, style.scss */
 .tbd-input-number-sm .tbd-input-number-handle {
   line-height: 16px;
 }
-/* line 62, style.scss */
+/* line 63, style.scss */
 .tbd-input-number-lg .tbd-input {
   padding-top: 8.5px;
   padding-bottom: 8.5px;
@@ -74,31 +75,31 @@
   line-height: 1.5;
   padding-right: 20px;
 }
-/* line 67, style.scss */
+/* line 68, style.scss */
 .tbd-input-number-lg .tbd-input-number-handle {
   line-height: 20px;
 }
-/* line 74, style.scss */
+/* line 75, style.scss */
 .tbd-input-number-success .tbd-input {
   border-color: #57cc95;
 }
-/* line 80, style.scss */
+/* line 81, style.scss */
 .tbd-input-number-error .tbd-input {
   border-color: #f35958;
 }
-/* line 86, style.scss */
+/* line 87, style.scss */
 .tbd-input-number-warning .tbd-input {
   border-color: #f9ba46;
 }
-/* line 92, style.scss */
+/* line 93, style.scss */
 .tbd-input-number-disabled .tbd-input-number-handle {
   cursor: not-allowed;
 }
-/* line 93, style.scss */
+/* line 94, style.scss */
 .tbd-input-number-disabled .tbd-input-number-handle-wrap {
   border-left-color: #d2d4d8;
 }
-/* line 99, style.scss */
+/* line 100, style.scss */
 .tbd-input-number-disabled .tbd-input-number-handle:hover {
   color: #8b91a0;
 }

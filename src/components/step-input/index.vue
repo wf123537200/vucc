@@ -13,7 +13,7 @@
 
 <template>
     <div :style="appendStyle" :class="['tbd-input-number', sizeClass, appendClass, {'tbd-input-number-disabled': isDisabled}]">
-        <input type="text" class="tbd-input" placeholder="{{min}}" v-model="value"/>
+        <pv-input type="text" placeholder="{{min}}" v-model="value"></pv-input>
         <div class="tbd-input-number-handle-wrap">
             <button class="tbd-input-number-handle" @mousedown.stop="stepUp" @mouseup.stop="cleanTimer">
                 <i class="tbdi tbdi-up"></i>
@@ -27,8 +27,12 @@
 
 <script>
     import {componentBaseParamConfig} from '../base-config';
+    import pvInput from '../input';
 
     export default {
+        components: {
+            pvInput
+        },
         props: Object.assign({}, componentBaseParamConfig, {
             value: {
                 type: Number
