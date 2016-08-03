@@ -10,7 +10,7 @@
     export default {
         name: 'tree_base',
         template:    `<ul>
-                        <li v-for="it in data.leafs" :class="[{'tbd-tree-checked': it.isChecked, 'tbd-tree-disabled': it.isDisabled, 'tbd-tree-open': it.isOpened}]">
+                        <li v-for="it in data.leafs" :class="[{'tbd-tree-checked': it.isChecked || isParentChecked, 'tbd-tree-disabled': it.isDisabled, 'tbd-tree-open': it.isOpened}]">
                             <a href="javascript: void 0;" class="tbd-tree-item">
                                 <i @click.stop="toggleOpen(it)" v-if="it.subTree" class="tbd-tree-caret"></i>
                                 <span class="tbd-tree-text" @click.stop="toggleOpen(it)">
@@ -19,13 +19,17 @@
                                 </span>
                             </a>
 
-                            <tree_base v-if="it.subTree" :data="it.subTree"></tree_base>
+                            <tree_base v-if="it.subTree" :data="it.subTree" :is-parent-checked="it.isChecked"></tree_base>
                         </li>
                      </ul>`,
         props: {
             data: {
                 type: Object,
                 default() {}
+            },
+            isParentChecked: {
+                type: Boolean,
+                default: false
             }
         },
         beforeCompile() {

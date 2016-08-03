@@ -37,7 +37,7 @@
                 </span>
             </a>
 
-            <pv-base v-if="it.subTree" :data="it.subTree"></pv-base>
+            <pv-base v-if="it.subTree" :data="it.subTree" :is-parent-checked="it.isChecked"></pv-base>
         </li>
     </ul>
 </template>
