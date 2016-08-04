@@ -1,0 +1,13 @@
+@import "../../style/ver";
+@import "compass/css3";
+
+//== Inline Form
+.#{$css-prefix}form-inline {
+  .#{$css-prefix}form-item-with-help {
+    margin-bottom: -17px;
+
+    label{
+      vertical-align: super;
+    }
+  }
+}

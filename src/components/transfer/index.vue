@@ -1,6 +1,27 @@
 <!--
    transfer 穿梭匡组件,只提供穿梭框框架
 
+   @param {Array} data 左侧框渲染数据
+    ex:
+        {
+          content: '我是选择框Aaa',
+          isChecked: true
+        }, {
+          content: '我是选择框Bbb'
+        }
+   @param {Array} result 右侧框渲染数据
+    ex:
+        {
+          content: '我是选择框Ccc',
+          isChecked: true
+        }
+   @param {String} srcTitle 左侧框的title
+   @param {String} distTitle 右侧框的title
+   @param {Boolean} isDeleteAble 删除按钮是否可用
+   @param {String} addText 添加按钮文案
+   @param {Function} onAdd 添加按钮的function
+   @param {String} deleteText 删除按钮文案
+   @param {Function} onDelete 删除按钮的function
    @param {String} appendClass 自定义class
    @param {Object} appendStyle 自定义Style对象
 -->

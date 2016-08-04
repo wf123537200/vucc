@@ -393,6 +393,115 @@
         <v-transfer :src-title="'原数据'" :dist-title="'选择'" :data="transfer" :result="transferRes"></v-transfer>
       </div>
 
+      <h2>表单-水平</h2>
+      <div class="doc-example">
+        <v-form>
+          <v-form-item
+                  :is-explain-show="true"
+                  :explain-text="'输入正确'"
+                  :explain-type="'success'"
+                  label="账户：">
+
+            <v-input placeholder="请输入账户名" ></v-input>
+          </v-form-item>
+
+          <v-form-item
+                  label="密码：">
+            <v-input type="password" placeholder="请输入密码"></v-input>
+          </v-form-item>
+
+          <v-form-item>
+            <label className="ant-checkbox-inline">
+              <v-checkbox :data="[{label: '记住我', value: true}]"></v-checkbox>
+            </label>
+          </v-form-item>
+
+          <v-button type="primary">登录</v-button>
+        </v-form>
+        <br>
+      </div>
+      
+      <h2>表单-垂直-验证</h2>
+      <div class="doc-example">
+        <v-form :is-vertical="true" :is-valid="false">
+          <v-form-item
+                  :is-require="true"
+                  :label="'账户：'"
+                  :is-explain-show="true"
+                  :explain-text="'输入错误'"
+                  :explain-type="'error'"
+                  :label-col=4
+                  :wrapper-col=8>
+            <v-input placeholder="请输入账户名" ></input>
+          </v-form-item>
+
+          <v-form-item
+                  :label="'密码：'"
+                  :is-explain-show="true"
+                  :explain-text="'输入正确'"
+                  :explain-type="'success'"
+                  :label-col=4
+                  :wrapper-col=8>
+            <v-input type="password" placeholder="请输入密码"></input>
+          </v-form-item>
+
+          <v-form-item
+                  :label="'密码：'"
+                  :is-explain-show="true"
+                  :explain-text="'警告提示'"
+                  :explain-type="'warning'"
+                  :label-col=4
+                  :wrapper-col=8>
+            <v-input placeholder="请输入密码"></input>
+          </v-form-item>
+
+          <v-form-item
+                  :label="'密码：'"
+                  :is-explain-show="true"
+                  :explain-text="'验证中提示'"
+                  :explain-type="'feedback'"
+                  :label-col=4
+                  :wrapper-col=8>
+            <v-input type="password" placeholder="请输入密码"></input>
+          </v-form-item>
+
+          <v-form-item
+                  label="选中："
+                  label-col=4
+                  wrapper-col=4>
+            <label className="ant-checkbox-inline">
+              <v-checkbox :data="[{label: '记住我', value: true}]"></v-checkbox>
+            </label>
+          </v-form-item>
+
+          <v-form-item
+                  label="多选："
+                  label-col=4
+                  wrapper-col=4>
+            <label className="ant-checkbox-inline">
+              <v-checkbox :data="[{label: '我是A', value: true}]"></v-checkbox>
+              <v-checkbox :data="[{label: '我是B', value: true}]"></v-checkbox>
+              <v-checkbox :data="[{label: '我是C', value: true}]"></v-checkbox>
+            </label>
+          </v-form-item>
+
+          <v-form-item
+                  label="开关："
+                  label-col=4
+                  wrapper-col=4>
+            <label className="ant-checkbox-inline">
+              <v-switch></v-switch>
+            </label>
+          </v-form-item>
+
+          <v-form-item
+                  label-col=4
+                  wrapper-col=4>
+            <v-button :type="'primary'">登录</vButton>
+          </v-form-item>
+        </v-form>
+      </div>
+
       <h2>业务类型组件</h2>
       <h2>编辑表组件</h2>
       <div class="doc-example">

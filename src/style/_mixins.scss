@@ -1,3 +1,5 @@
+@import "ver";
+
 @mixin clearfix{
   zoom: 1;
   &:before,
@@ -111,4 +113,23 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+
+// mixins for grid system
+@mixin container-fixed($gutter: $grid-gutter-width) {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left:  ($gutter / 2);
+  padding-right: ($gutter / 2);
+  @include clearfix();
+}
+
+@mixin make-row($gutter: $grid-gutter-width) {
+  position: relative;
+  margin-left: ($gutter / -2);
+  margin-right: ($gutter / -2);
+  height: auto;
+  @include clearfix();
+  box-sizing: border-box;
 }

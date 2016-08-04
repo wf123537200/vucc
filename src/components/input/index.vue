@@ -1,12 +1,13 @@
 <!--
   input 扩展input
 
+  @param {String} type input类型
   @param {String} size 输入框的大小
   @param {Object} appendClass 自定义class
   @param {Object} appendStyle 自定义Style对象
 -->
 <template>
-    <input type="text" :style="appendStyle" :class="['tbd-input', sizeClass, appendClass]">
+    <input :type="type" :style="appendStyle" :class="['tbd-input', sizeClass, appendClass]">
 </template>
 
 <script>
@@ -14,6 +15,10 @@
 
     export default {
         props: Object.assign({}, componentBaseParamConfig, {
+            type: {
+                type: String,
+                default: 'text'
+            },
             size: {
                 type: String,
                 default: ''
