@@ -388,6 +388,11 @@
         <v-tree :data="tree"></v-tree>
       </div>
 
+      <h2>穿梭框</h2>
+      <div class="doc-example">
+        <v-transfer :src-title="'原数据'" :dist-title="'选择'" :data="transfer" :result="transferRes"></v-transfer>
+      </div>
+
       <h2>业务类型组件</h2>
       <h2>编辑表组件</h2>
       <div class="doc-example">
@@ -586,7 +591,7 @@
         tagList: [{
           content: '内容'
         }],
-        //
+        // 树
         tree: {
           isHasCheckbox: true,
           leafs: [{
@@ -605,7 +610,18 @@
               }]
             }
           }]
-        }
+        },
+        // 穿梭框
+        transfer: [{
+          content: '我是选择框Aaa',
+          isChecked: true
+        }, {
+          content: '我是选择框Bbb'
+        }],
+        transferRes: [{
+          content: '我是选择框Ccc',
+          isChecked: true
+        }]
       }
     },
 

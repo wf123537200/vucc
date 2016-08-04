@@ -1,0 +1,107 @@
+@import "../../style/ver";
+@import "../../style/mixins";
+@import "compass/css3";
+
+$transfer-prefix-cls: $css-prefix + "transfer";
+$btn-prefix-cls: $css-prefix + "btn";
+$label-prefix-cls: $css-prefix + "label";
+
+.#{$transfer-prefix-cls} {
+  position: relative;
+  @include clearfix();
+  margin-bottom: 20px;
+
+  &-btns {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    @include transform(translate(-50%, -50%));
+
+    .#{$btn-prefix-cls} {
+      margin: 10px 0;
+      display: block;
+    }
+  }
+
+  &-item {
+    margin-bottom: $gutter-base;
+    border: 1px solid $border-color;
+    box-sizing: border-box;
+
+    &-header {
+      padding: 0 20px;
+      height: 40px;
+      background: $light-bg;
+      font-size: 12px;
+      line-height: 40px;
+      @include clearfix();
+
+      h3 {
+        float: left;
+        font-size: 14px;
+        font-weight: normal;
+      }
+    }
+
+    &-extra {
+      float: right;
+
+      .#{$label-prefix-cls} {
+        margin-right: 0;
+      }
+    }
+
+    &-search {
+      padding: 10px 10px 0;
+      box-sizing: border-box;
+    }
+
+    &-content {
+      box-sizing: border-box;
+      padding: 10px 0;
+      height: 250px;
+      overflow: auto;
+
+      .#{$label-prefix-cls} {
+        display: block;
+        padding: 0 20px;
+        margin-right: 0;
+        line-height: 26px;
+        transition: background 0.3s ease;
+
+        &:hover {
+          background-color: lighten($base-bg, 5%);
+        }
+      }
+    }
+
+    &-with-search &-content {
+      height: 204px;
+    }
+  }
+
+  & &-item {
+    margin-bottom: 0;
+  }
+
+  & &-item-wrap {
+    float: left;
+    padding-left: 50px;
+    box-sizing: border-box;
+    width: 50%;
+
+    &:first-child {
+      padding-right: 50px;
+      padding-left: 0;
+    }
+  }
+
+  & &-btns + &-item-wrap {
+    padding-right: 50px;
+    padding-left: 0;
+  }
+
+  .ellipsis {
+    @include ellipsis();
+  }
+}
