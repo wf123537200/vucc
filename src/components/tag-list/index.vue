@@ -4,8 +4,8 @@
    @require input
 
    @param {String} [size=normal|large|small] 按钮的大小
-   @param {Boolean} isDeleteAble 列表是否有删除按钮
-   @param {String} data 渲染数据
+   @param {Boolean} isDeleteAble 展示列表是否有删除按钮
+   @param {Array} data 渲染数据
     ex:
         tagList: [{
           content: '内容'

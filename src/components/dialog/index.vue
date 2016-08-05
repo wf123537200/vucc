@@ -16,6 +16,8 @@
     @param {Boolean}    hasFooter 是否存在尾部
     @param {Boolean}    hasOkBtn 尾部中是否存在确定按钮
     @param {Boolean}    hasCancelBtn 尾部中是否存在取消按钮
+    @param {Boolean}    hasCancelBtn 尾部中是否存在取消按钮
+    @param {Boolean}    isShow 绑定外部变量,控制弹框是否显示
     @param {String}     cancelText 取消按钮的展示文字
     @param {String}     okText 确定按钮的展示文字
     @param {Function}   onOk ok按钮的回调函数

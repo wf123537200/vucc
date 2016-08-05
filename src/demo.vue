@@ -317,7 +317,7 @@
           <v-tool-tip :type="'bottomLeft'">文字提示</v-tool-tip>
         </div>
 
-        <div style="margin-left: 50px;">
+        <div style="margin-left: 50px;">tool-tip
           <div>底部靠右</div>
           <v-tool-tip :type="'bottomRight'">文字提示</v-tool-tip>
         </div>
@@ -418,7 +418,6 @@
 
           <v-button type="primary">登录</v-button>
         </v-form>
-        <br>
       </div>
       
       <h2>表单-垂直-验证</h2>

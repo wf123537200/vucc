@@ -2,14 +2,12 @@
    表单布局子组件
 
    @param {String} label 标题
-   @param {String | Number} labelCol label占grid列数
-   @param {String | Number} wrapperCol input占grid列数
+   @param {} labelCol label占grid列数,[0, 24]
+   @param {} wrapperCol input占grid列数,[0, 24]
    @param {Boolean} isRequire 是否必填,带小红点
    @param {String} explainType=error|success|warning|feedback 说明文字的类型
    @param {Boolean} isExplainShow 是否显示提示文字
    @param {String} explainText 提示文字
-   @param {String} appendClass 自定义class
-   @param {Object} appendStyle 自定义Style对象
 -->
 
 <template>

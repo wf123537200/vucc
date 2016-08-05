@@ -1,9 +1,9 @@
 <!--
    time-line 时间轴组件
 
-   @param {Boolean} isDisabled 按钮是否可以点击
-   @param {String} [type=default|primary|outline|error|link] 按钮的类型
-   @param {String} [size=normal|large|small] 按钮的大小
+   @param {Array} data 时间轴渲染数据
+    ex:
+        ['我们发布了alpha \n\r 再试试', '我们发布了beta']
    @param {String} appendClass 自定义class
    @param {Object} appendStyle 自定义Style对象
 -->

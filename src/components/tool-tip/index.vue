@@ -1,7 +1,7 @@
 <!--
    tooltip 文字提示组件
 
-   @param {String} [type=default | bottom | bottomLeft | bottomRight
+   @param {String} [type= bottom | bottomLeft | bottomRight
                     | top | topLeft | topRight | right | rightTop | rightBottom
                     | left | leftTop | leftBottom] 文字提示的位置
    @param {String} appendClass 自定义class

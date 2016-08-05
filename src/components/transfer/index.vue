@@ -19,9 +19,9 @@
    @param {String} distTitle 右侧框的title
    @param {Boolean} isDeleteAble 删除按钮是否可用
    @param {String} addText 添加按钮文案
-   @param {Function} onAdd 添加按钮的function
+   @param {Function} onAdd 添加按钮的回调function
    @param {String} deleteText 删除按钮文案
-   @param {Function} onDelete 删除按钮的function
+   @param {Function} onDelete 删除按钮的回调function
    @param {String} appendClass 自定义class
    @param {Object} appendStyle 自定义Style对象
 -->
