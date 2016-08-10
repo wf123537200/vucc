@@ -28,10 +28,6 @@ module.exports = {
         }
       },
       {
-        test: /\.css$/,
-        loaders: ['style', 'css'],
-      },
-      {
         test   : /\.woff|\.woff2|\.svg|.eot|\.ttf/,
         loader : 'url'
       },
