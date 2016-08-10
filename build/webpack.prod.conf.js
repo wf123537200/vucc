@@ -1,17 +1,19 @@
 var webpack = require('webpack');
 var merge = require('webpack-merge');
 var baseConfig = require('./webpack.base.conf');
-var SOURCE_MAP = false;
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var SOURCE_MAP = false;
 
+// css 打包时抽出
 baseConfig.module.loaders.push({
     test: /\.css$/,
     loader: ExtractTextPlugin.extract("style-loader", "css-loader")
 });
 
+// 文件配置部分
 module.exports = merge(baseConfig, {
     entry: {
-        app: './src/index.js'
+        app: './src/index'
     },
     vue: {
         loaders: {
@@ -24,11 +26,6 @@ module.exports = merge(baseConfig, {
         filename: "[name].js"
     },
     plugins: [
-        new webpack.DefinePlugin({
-            'process.env': {
-                NODE_ENV: '"production"'
-            }
-        }),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false
