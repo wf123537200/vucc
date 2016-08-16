@@ -22,6 +22,29 @@ $duration: .3s;
   font-size: $font-size-base;
   line-height: 1.5;
 
+  &-multi {
+    min-width: 500px!important;
+    .#{$dropdown-prefix-cls}-menu {
+      clear: right;
+    }
+    .#{$dropdown-prefix-cls}-menu-item {
+      float: left;
+      width: 24.5%;
+      margin: 1px 1px;
+
+      :hover
+      &-active {
+        background-color: $primary-color;
+        color: #f0f0f0;
+      }
+    }
+
+    &-footer {
+      padding: 10px;
+      text-align: center;
+    }
+  }
+
   &.slide-up-enter.slide-up-enter-active
   &.slide-up-appear.slide-up-appear-active {
     animation-name: tbdSlideUpIn;
@@ -150,16 +173,6 @@ $duration: .3s;
  padding: 5px;
 }
 
-.#{$css-prefix}input-wrap-search {
-  @include search-radius($height-sm);
-
-  .#{$css-prefix}input {
-    &-wrap-extra {
-      @include input($height-sm, $font-size-base);
-    }
-  }
-}
-
 * {
   box-sizing: border-box;
 }
@@ -187,7 +200,6 @@ $duration: .3s;
     top: 100%;
     margin-top: 2px;
     min-width: 100px;
-    width: 100%;
     display: none;
   }
 }

@@ -4,7 +4,7 @@
 $input-prefix-cls: $css-prefix + "input";
 @mixin search-radius($height: $height) {
   .#{$input-prefix-cls} {
-    border-radius: $height / 2;
+    border-radius: $height / 2 !important;
   }
 
   button.#{$input-prefix-cls}-wrap-extra {

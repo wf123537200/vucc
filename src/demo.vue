@@ -73,6 +73,8 @@
         <section class="doc-part">
           <h3>dropdown单选: {{dropDownValue}}</h3>
           <v-select :data="dropDownData" :append-style="{width: '200px'}" :value.sync="dropDownValue"></v-select>
+          <h3>dropdown多选: {{multiResList | json}}</h3>
+          <v-multi-select :data="multiDataList" :append-style="{width: '200px'}" :result-list.sync="multiResList"></v-multi-select>
         </section>
       </div>
 
@@ -212,6 +214,7 @@
         <v-button type="primary" @click="showAlert('alert2')">alert error</v-button>
       </div>
 
+      <h2>徽标数</h2>
       <h2>徽标数</h2>
       <div class="doc-example">
         <v-badge :number="10" :is-show-number="true">
@@ -538,10 +541,38 @@
 <script>
   let components = require('./index');
 
+
   export default {
     components: components,
     data() {
       return {
+        // multi-select
+        multiDataList: {
+          optsList: (function() {
+            var base =[{
+              value: 1,
+              label: 'value1',
+              renderLi: function() {
+                return `<a>111</a>`
+              }
+            }, {
+              value: 2,
+              label: 'value2',
+              isDisabled: true
+            }];
+
+            var other = [];
+            for(var i = 0; i < 30; i++) {
+              other.push({
+                value: i,
+                label: 'value' + i
+              })
+            }
+
+            return base.concat(other);
+          })()
+        },
+        multiResList: [ { "value": 7, "label": "value7" }, { "value": 9, "label": "value9" }, { "value": 17, "label": "value17" }, { "value": 11, "label": "value11" }],
         // tabs
         activeIndex: 2,
         // button group
