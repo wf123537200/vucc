@@ -1,0 +1,91 @@
+@import "../../style/ver";
+@import "../../style/mixins";
+
+$input-prefix-cls: $css-prefix + "input";
+@mixin search-radius($height: $height) {
+  .#{$input-prefix-cls} {
+    border-radius: $height / 2;
+  }
+
+  button.#{$input-prefix-cls}-wrap-extra {
+    border-top-right-radius: $height / 2;
+    border-bottom-right-radius: $height / 2;
+  }
+}
+
+.#{$input-prefix-cls}-wrap {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  font-size: $font-size-base; // 防止外层行高与字体大小的影响
+  line-height: 1.5;
+
+  &-extra {
+    position: absolute;
+    right: 0;
+    top: 0;
+    box-sizing: border-box;
+    padding: $input-padding;
+    @include input($height, $font-size-base);
+    border: 1px solid transparent;
+    border-top-right-radius: $border-radius-base;
+    border-bottom-right-radius: $border-radius-base;
+    color: $gray-color;
+  }
+
+  button.#{$input-prefix-cls}-wrap-extra {
+    border-color: transparent;
+    border-left-width: 0;
+    background-color: #fff;
+    background-color: transparent\9; //ie7-10
+    background-clip: padding-box;
+    cursor: pointer;
+    transition: all .3s linear;
+
+    :root & {
+      background-color: #fff; // reset ie9 and above
+    }
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+
+  // 搜索框
+  &-search {
+    @include search-radius();
+
+    button.#{$input-prefix-cls}-wrap-extra {
+      font-weight: bold;
+    }
+  }
+
+  // 不同尺寸
+  &-sm {
+    .#{$input-prefix-cls} {
+      &,
+      &-wrap-extra {
+        @include input($height-sm, $font-size-base);
+      }
+    }
+
+    &.#{$input-prefix-cls}-wrap-search {
+      @include search-radius($height-sm);
+    }
+  }
+  &-lg {
+    .#{$input-prefix-cls} {
+      &,
+      &-wrap-extra {
+        @include input($height-lg, $font-size-lg);
+      }
+      & {
+        padding: 3px 20px;
+      }
+    }
+
+    &.#{$input-prefix-cls}-wrap-search {
+      @include search-radius($height-lg);
+    }
+  }
+}

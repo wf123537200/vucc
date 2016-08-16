@@ -42,10 +42,11 @@ var vTree = require('./components/tree');
 var vTransfer = require('./components/transfer');
 var vForm = require('./components/form');
 var vFormItem = require('./components/form-item');
+var vSearch = require('./components/search');
 
 /* 为不支持模块化的系统提供简单支持 */
-window.__tbd_design__ = {vFormItem, vForm, vTransfer, vTree, vTagList, vTimeLine, vToolTip, vSteps, vLoading, vProgress, vStepInput, vPagination, vPane, vCollapseGroup, vCollapse, vInput, vTextarea, vBadge, vAlert, vTableEdit, vLabelDropdown, vSlider, vTable, vButton, vButtonGroup, vSwitch, vCheckbox, vRadio, vDropdown, vSelect, vTips, vDialog, vMask, vMessageBox, vTabs, vButtonGroup};
-module.exports = {vFormItem, vForm, vTransfer, vTree, vTagList, vTimeLine, vToolTip, vSteps, vLoading, vProgress, vStepInput, vPagination, vPane, vCollapseGroup, vCollapse, vInput, vTextarea, vBadge, vAlert, vTableEdit, vLabelDropdown, vSlider, vTable, vButton, vButtonGroup, vSwitch, vCheckbox, vRadio, vDropdown, vSelect, vTips, vDialog, vMask, vMessageBox, vTabs, vButtonGroup};
+window.__tbd_design__ = {vSearch, vFormItem, vForm, vTransfer, vTree, vTagList, vTimeLine, vToolTip, vSteps, vLoading, vProgress, vStepInput, vPagination, vPane, vCollapseGroup, vCollapse, vInput, vTextarea, vBadge, vAlert, vTableEdit, vLabelDropdown, vSlider, vTable, vButton, vButtonGroup, vSwitch, vCheckbox, vRadio, vDropdown, vSelect, vTips, vDialog, vMask, vMessageBox, vTabs, vButtonGroup};
+module.exports = {vSearch, vFormItem, vForm, vTransfer, vTree, vTagList, vTimeLine, vToolTip, vSteps, vLoading, vProgress, vStepInput, vPagination, vPane, vCollapseGroup, vCollapse, vInput, vTextarea, vBadge, vAlert, vTableEdit, vLabelDropdown, vSlider, vTable, vButton, vButtonGroup, vSwitch, vCheckbox, vRadio, vDropdown, vSelect, vTips, vDialog, vMask, vMessageBox, vTabs, vButtonGroup};
 
 // 配置
 window.tbdConfig = function(conf) {

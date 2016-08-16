@@ -94,7 +94,7 @@ export default {
                 };
             } else {
                 return {
-                    optsList: this.data.optsList.filter((it) => it.label.includes(_this.filter))
+                    optsList: (this.filter === '' || this.filter === '请选择') ? this.data.optsList : this.data.optsList.filter((it) => {return it.label && it.label.includes(_this.filter)})
                 };
             }
         }

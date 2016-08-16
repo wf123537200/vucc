@@ -501,6 +501,12 @@
         </v-form>
       </div>
 
+      <h2>搜索框</h2>
+      <div class="doc-example">
+        {{search}}
+        <v-search :value.sync="search" @click.stop="buttonClick"></v-search>
+      </div>
+
       <h2>业务类型组件</h2>
       <h2>编辑表组件</h2>
       <div class="doc-example">
@@ -729,7 +735,10 @@
         transferRes: [{
           content: '我是选择框Ccc',
           isChecked: true
-        }]
+        }],
+
+        // 搜索框
+        search: ''
       }
     },
 

@@ -25,13 +25,16 @@
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "extract-text-webpack-plugin": "^1.0.0",
-    "webpack-merge": "^0.8.3"
+    "webpack-merge": "^0.8.3",
+    "casperjs": "^1.1.0-beta5",
+    "phantomjs": "^1.9.17"
   },
   "scripts": {
     "dev": "webpack-dev-server --content-base src --inline --hot --quiet --host 0.0.0.0 --port 8090 --config build/webpack.dev.conf.js",
     "dev-build": "webpack --colors --config build/webpack.dev.conf.js",
     "pre-prd": "compass compile --force",
-    "prd": "webpack -p --progress --config build/webpack.prod.conf.js"
+    "prd": "npm run pre-prd && webpack -p --progress --config build/webpack.prod.conf.js",
+    "e2e": "casperjs test --concise ./test/e2e"
   },
   "repository": {
     "type": "git",

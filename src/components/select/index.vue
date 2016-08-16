@@ -22,6 +22,7 @@
   @param {String | Number} value 绑定外部数据对象的结果
   @param {Boolean} isDisabled 当前下拉列表是否可选
   @param {Boolean} isOpened 下拉列表是否显示
+  @param {Boolean} isEditAble 下拉列表是否可编辑,如果可编辑,则展示框变成输入框,并自带过滤功能
   @param {Function} onSelect 选择事件
   @param {Object} appendClass 自定义class
   @param {Object} appendStyle 自定义Style对象
@@ -33,9 +34,11 @@
                  :value.sync="value"
                  :is-disabled="isDisabled"
                  :on-select="onSelected"
-                 :is-opened="isOpened">
+                 :is-opened="isOpened"
+                 :filter="isEditAble ? inputSelect : ''">
         <span class="tbd-select-selection tbd-select-selection-single">
-        <span class="tbd-select-selection-rendered">{{currentSelected}}</span>
+        <pv-input v-if="isEditAble && !isDisabled" v-model="inputSelect" ></pv-input>
+        <span v-if="isDisabled || !isEditAble" class="tbd-select-selection-rendered">{{currentSelected}}</span>
         <span class="tbd-select-arrow" @click.stop="toggle"></span>
         </span>
     </pv-dropdown>
@@ -44,6 +47,7 @@
 <script>
     import {componentBaseParamConfig} from '../base-config';
     import pvDropdown from '../dropdown';
+    import pvInput from '../input';
 
     export default {
         props: Object.assign({}, componentBaseParamConfig, {
@@ -67,11 +71,17 @@
             isOpened: {
                 type: Boolean,
                 default: false
+            },
+            isEditAble: {
+                type: Boolean,
+                default: false
             }
         }),
 
         data () {
-            return {}
+            return {
+                inputSelect: ''
+            }
         },
 
         computed: {
@@ -80,6 +90,7 @@
                 let res = _this.data.optsList.find(function(it) {
                     return it.value == _this.value;
                 });
+
                 return res && (res.label || res.value) || '请选择';
             }
         },
@@ -90,7 +101,7 @@
 
                 if(opts.isDisabled) return;
 
-                this.currentSelected = opts[index].label || this.value;
+                this.inputSelect = this.currentSelected = opts[index].label || this.value;
                 this.onSelect && this.onSelect(item.value, index);
             },
 
@@ -101,8 +112,21 @@
             }
         },
 
+        ready() {
+            // 初始化input数据
+            this.inputSelect = this.currentSelected;
+        },
+
+        watch: {
+            // 数据变化重置初始值
+            data() {
+                this.inputSelect = this.currentSelected;
+            }
+        },
+
         components: {
-            pvDropdown
+            pvDropdown,
+            pvInput
         }
     }
 </script>
