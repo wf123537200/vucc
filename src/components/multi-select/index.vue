@@ -49,7 +49,7 @@
 <script>
     import {componentBaseParamConfig} from '../base-config';
     import pvDropdown from '../dropdown';
-    import pvButton from '../Button';
+    import pvButton from '../button';
 
     export default {
         props: Object.assign({}, componentBaseParamConfig, {

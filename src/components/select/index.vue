@@ -45,12 +45,12 @@
 </template>
 
 <script>
-    import {componentBaseParamConfig} from '../base-config';
+    import {componentBaseParamConfig, alias, name2Alias} from '../base-config';
     import pvDropdown from '../dropdown';
     import pvInput from '../input';
 
     export default {
-        props: Object.assign({}, componentBaseParamConfig, {
+        props: Object.assign({}, componentBaseParamConfig, alias, {
             isDisabled: {
                 type: Boolean,
                 default: false
@@ -82,6 +82,10 @@
             return {
                 inputSelect: ''
             }
+        },
+
+        beforeCompile() {
+            name2Alias(this.data.optsList, this.asValue, this.asLabel);
         },
 
         computed: {

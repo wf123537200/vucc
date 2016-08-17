@@ -48,6 +48,9 @@
         <section class="doc-part">
           <h3>checkbox: 横向{{checkboxResultList | json}}</h3>
           <v-checkbox :data="commonListData" :result-list.sync="checkboxResultList"></v-checkbox>
+          <h3>checkbox: 横向使用别名{{checkboxResultList | json}}</h3>
+          <v-checkbox :data="commonListData2" :as-value="'name'"
+                      :as-label="'desc'" :result-list.sync="checkboxResultList"></v-checkbox>
           <h3>checkbox: 纵向{{checkboxResultList | json}}</h3>
           <v-checkbox :data="commonListData" :result-list.sync="checkboxResultList" :is-vertical="true"></v-checkbox>
         </section>
@@ -56,6 +59,9 @@
         <section class="doc-part">
           <h3>radio: 横向{{radioResultList | json}}</h3>
           <v-radio :data="commonListData" :result-list.sync="radioResultList"></v-radio>
+          <h3>radio: 横向{{radioValue}}</h3>
+          <v-radio :data="commonListData2" :as-value="'name'"
+                   :as-label="'desc'" :value.sync="radioValue"></v-radio>
           <h3>radio: 纵向/多选{{radioMulResultList | json}}</h3>
           <v-radio :data="commonListData" :result-list.sync="radioMulResultList" :is-vertical="true" :is-multiple="true"></v-radio>
         </section>
@@ -64,6 +70,8 @@
         <section class="doc-part">
           <h3>select: {{dropDownValue}}</h3>
           <v-select :data="dropDownData" :append-style="{width: '200px'}" :value.sync="dropDownValue"></v-select>
+          <v-select :data="dropDownData2" :as-value="'name'"
+                    :as-label="'desc'":append-style="{width: '200px'}" :value.sync="dropDownValue"></v-select>
           <v-select :data="dropDownData" :is-disabled="true" :value.sync="dropDownValue"></v-select>
         </section>
       </div>
@@ -616,7 +624,20 @@
           isDisabled: true
         }],
 
+        commonListData2: [{
+          name: 0,
+          desc: 'value0'
+        }, {
+          name: 1,
+          desc: '<a>111</a>'
+        }, {
+          name: 2,
+          desc: 'value1',
+          isDisabled: true
+        }],
+
         checkboxResultList: [0, '', 2],
+        radioValue: 0,
 
         // radio
         radioResultList: [1],
@@ -636,6 +657,23 @@
           }, {
             value: 2,
             label: 'value2',
+            isDisabled: true
+          }]
+        },
+
+        dropDownData2: {
+          optsList: [{
+            name: 0,
+            desc: 'value0'
+          }, {
+            name: 1,
+            desc: 'value1',
+            renderLi: function() {
+              return `<a>111</a>`
+            }
+          }, {
+            name: 2,
+            desc: 'value2',
             isDisabled: true
           }]
         },

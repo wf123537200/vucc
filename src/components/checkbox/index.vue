@@ -18,6 +18,8 @@
   @param {Boolean} isVertical checkbox横向(false)排列还是纵向(true),默认为横向
   @param {Object} appendClass 自定义class
   @param {Object} appendStyle 自定义Style对象
+  @param {String} asValue 自定义value key
+  @param {String} asLabel 自定义label key
 -->
 <template>
   <div v-for="it in data" track-by="$index" :style="appendStyle" :class="[appendClass]">
@@ -31,10 +33,10 @@
 </template>
 
 <script>
-  import {componentBaseParamConfig} from '../base-config';
+  import {componentBaseParamConfig, alias, name2Alias} from '../base-config';
 
   export default {
-    props: Object.assign({}, componentBaseParamConfig, {
+    props: Object.assign({}, componentBaseParamConfig, alias, {
       data: {
         type: Array,
         default: function() {
@@ -53,6 +55,10 @@
       },
       value: {}
     }),
+
+    beforeCompile() {
+      name2Alias(this.data, this.asValue, this.asLabel);
+    },
 
     compiled() {
       this.appendStyle = Object.assign({}, this.appendStyle, {

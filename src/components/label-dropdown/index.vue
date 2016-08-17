@@ -187,6 +187,10 @@
                     this.selected[i].userName = this.selected[i][key2];
                 }
             }
+
+            document.addEventListener('click', function() {
+                _this.showDropdown = false
+            });
         }
     }
 </script>
