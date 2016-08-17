@@ -19,111 +19,79 @@
             isDisabled: true
           }]
         }
-  @param {String | Number} value 绑定外部数据对象的结果
+  @param {Array} resultList 多选的结果,如果是单选时,传入无效
   @param {Boolean} isDisabled 当前下拉列表是否可选
   @param {Boolean} isOpened 下拉列表是否显示
-  @param {Function} onSelect 选择事件
+  @param {String} okText 确定按钮的值,默认为'确定'
+  @param {String} okCancel 取消按钮的值,默认为'取消'
+  @param {Function} onOk 点击确定按钮后的回调函数
+  @param {Function} onCancel 点击取消按钮后的回调函数
   @param {Object} appendClass 自定义class
   @param {Object} appendStyle 自定义Style对象
 -->
 <template>
     <pv-dropdown :data="data"
-                 :append-style="appendStyle"
-                 :append-class="appendClass"
                  :is-disabled="isDisabled"
-                 :on-select="onSelected"
                  :is-opened="isOpened"
-                 :is-multiple="true"
                  :result-list.sync="resultList"
-                 :filter="isEditAble ? inputSelect : ''">
-        <span class="tbd-select-selection tbd-select-selection-single">
-        <span v-if="isDisabled || !isEditAble" class="tbd-select-selection-rendered">{{currentSelected}}</span>
-        <span class="tbd-select-arrow" @click.stop="toggle"></span>
-        </span>
+                 :ok-text="okText"
+                 :on-ok="onOk"
+                 :on-cancel="onCancel"
+                 :cancel-text="cancelText"
+                 :append-style="appendStyle"
+                 :has-footer="true"
+                 :is-multiple="true"
+                 :append-class="appendClass">
+        <slot></slot>
     </pv-dropdown>
 </template>
 
 <script>
     import {componentBaseParamConfig} from '../base-config';
     import pvDropdown from '../dropdown';
+    import pvButton from '../Button';
 
     export default {
         props: Object.assign({}, componentBaseParamConfig, {
+            data: {
+                type: Object,
+                default: {
+                    optsList: []
+                }
+            },
             isDisabled: {
                 type: Boolean,
                 default: false
-            },
-            data: {
-                type: Object,
-                default: function() {
-                    return {
-                        optsList: []
-                    }
-                }
-            },
-            value: {
-            },
-            onSelect: {
-                type: Function
             },
             isOpened: {
                 type: Boolean,
                 default: false
             },
-            isEditAble: {
-                type: Boolean,
-                default: false
-            },
             resultList: {
-                type: Array
+                type: Array,
+                default() {
+                    return [];
+                }
+            },
+
+            okText: {
+                type: String,
+                default: '确 定'
+            },
+
+            cancelText: {
+                type: String,
+                default: '取 消'
+            },
+
+            onOk: {
+                type: Function
+            },
+
+            onCancel: {
+                type: Function
             }
         }),
-
-        data () {
-            return {
-                inputSelect: ''
-            }
-        },
-
-        computed: {
-            currentSelected() {
-                const _this = this;
-                let res = _this.data.optsList.find(function(it) {
-                    return it.value == _this.value;
-                });
-
-                return res && (res.label || res.value) || '请选择';
-            }
-        },
-
-        methods: {
-            onSelected(index, item) {
-                let opts = this.data.optsList;
-
-                if(opts.isDisabled) return;
-
-                this.inputSelect = this.currentSelected = opts[index].label || this.value;
-                this.onSelect && this.onSelect(item.value, index);
-            },
-
-            toggle() {
-                if(this.isDisabled) return;
-
-                this.isOpened = !this.isOpened;
-            }
-        },
-
-        ready() {
-            // 初始化input数据
-            this.inputSelect = this.currentSelected;
-        },
-
-        watch: {
-            // 数据变化重置初始值
-            data() {
-                this.inputSelect = this.currentSelected;
-            }
-        },
 
         components: {
             pvDropdown

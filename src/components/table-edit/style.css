@@ -1,4 +1,1 @@
-/* line 6, style.scss */
-.tbd-edit-table > .tbd-table {
-  line-height: inherit;
-}
+.tbd-edit-table>.tbd-table{line-height:inherit}

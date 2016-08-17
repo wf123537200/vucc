@@ -1,7 +1,25 @@
 <!--
-  select 下拉列表
-  @param {Array} data 传入组件数据,用于渲染
-  @param {String} size 组件大小
+  dropdown 下拉列表
+  @param {Object} data 传入组件数据,用于渲染
+  ex:
+    {
+      optsList: [{
+        value: 0,
+        label: 'value0'
+      }, {
+        value: 1,
+        label: 'value1'
+        // 特性渲染函数
+        render: function() {
+            return <a>111</a>
+        }
+      }, {
+        value: 2,
+        label: 'value2',
+        isDisabled: true
+      }]
+    }
+  @param {String} [size = normal | large | small] 组件大小,单选时使用
   @param {String} value 绑定外部数据对象的结果
   @param {Boolean} isDisabled 当前下拉列表是否可选
   @param {Boolean} isOpened 下拉列表是否显示
@@ -54,7 +72,7 @@
 
             <!-- 确定取消按钮 -->
             <div v-if="hasFooter" class="tbd-dropdown-multi-footer">
-                <pv-button @click.stop="_onCancel">{{cancelText}}</pv-button>
+                <pv-button @click.stop="_onCancel">{{cancelText}}</pv-button>&nbsp;&nbsp;&nbsp;&nbsp;
                 <pv-button type='primary' @click.stop="_onOk">
                     {{okText}}
                 </pv-button>
@@ -71,10 +89,6 @@ import pvButton from '../button';
 
 export default {
     props: Object.assign({}, componentBaseParamConfig, {
-        isDisabled: {
-            type: Boolean,
-            default: false
-        },
         size: {
             type: String,
             default: 'normal'
@@ -87,9 +101,12 @@ export default {
         },
         value: {
         },
-
         onSelect: {
             type: Function
+        },
+        isDisabled: {
+            type: Boolean,
+            default: false
         },
         isOpened: {
             type: Boolean,
@@ -112,12 +129,12 @@ export default {
 
         okText: {
             type: String,
-            default: '确定'
+            default: '确 定'
         },
 
         cancelText: {
             type: String,
-            default: '取消'
+            default: '取 消'
         },
 
         onOk: {

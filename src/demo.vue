@@ -74,7 +74,9 @@
           <h3>dropdown单选: {{dropDownValue}}</h3>
           <v-select :data="dropDownData" :append-style="{width: '200px'}" :value.sync="dropDownValue"></v-select>
           <h3>dropdown多选: {{multiResList | json}}</h3>
-          <v-multi-select :data="multiDataList" :append-style="{width: '200px'}" :result-list.sync="multiResList"></v-multi-select>
+          <v-multi-select :data="multiDataList" :append-style="{width: '200px'}" :result-list.sync="multiResList">
+            <v-button>点击选择</v-button>
+          </v-multi-select>
         </section>
       </div>
 

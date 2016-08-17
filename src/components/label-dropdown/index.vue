@@ -74,8 +74,7 @@
         },
         props : Object.assign({}, componentBaseParamConfig, {
             disabled : {
-                type: Array,
-                default : []
+                type: Array
             },
 
             selected : {

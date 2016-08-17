@@ -1,6 +1,8 @@
 <!--
    搜索框 组件
 
+   @requires input
+
    @param {String} value 输入输出的值
    @param {String} [size=normal|large|small] 按钮的大小
    @param {String} appendClass 自定义class

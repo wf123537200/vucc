@@ -71,10 +71,6 @@ $label-prefix-cls: $css-prefix + 'label';
         display: block;
       }
     }
-
-    .#{$radio-prefix-cls} {
-      background: $base-bg;
-    }
   }
 
   &-disabled,

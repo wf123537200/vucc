@@ -1,7 +1,7 @@
 {
-  "name": "@tencent/tbd-design-vue",
-  "version": "0.2.5",
-  "description": "tbd-design-vue",
+  "name": "vucc",
+  "version": "0.5.3",
+  "description": "vue 前端组件库",
   "main": "src",
   "devDependencies": {
     "babel-cli": "^6.5.1",
@@ -38,17 +38,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/vuejs/vue-webpack-example"
+    "url": "https://github.com/wf123537200/vucc"
   },
   "keywords": [
     "vue",
-    "webpack"
+    "webpack",
+    "ui lib"
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/vuejs/vue-webpack-example/issues"
+    "url": "https://github.com/wf123537200/vucc/issues"
   },
-  "homepage": "https://github.com/vuejs/vue-webpack-example",
+  "homepage": "https://wf123537200.github.io/vucc.com/index.html",
   "dependencies": {
     "babel-cli": "^6.5.1",
     "babel-core": "^6.0.0",
