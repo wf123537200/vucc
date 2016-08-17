@@ -551,13 +551,13 @@
           optsList: (function() {
             var base =[{
               value: 1,
-              label: 'value1',
+              label: 'value1value1value1value1value1',
               renderLi: function() {
-                return `<a>111</a>`
+                return `<a>111value1value1value1value1value1</a>`
               }
             }, {
               value: 2,
-              label: 'value2',
+              label: 'value2disabledvalue2disabled',
               isDisabled: true
             }];
 
