@@ -2,13 +2,18 @@
    分页栏 组件
 
    @param {Boolean} isShow 是否显示分页栏组件
+   @param {Function} onChange 当选择那一页时调用
+   @param {Number} pageSize 每页的大小
+   @param {Number} currentPage 当前页的页码
+   @param {Number} total 总页数
+   @param {Function} onSizeChange 当前页显示多少条下拉列表变更事件
 -->
 
 <template>
     <div class="tbd-pagination" v-if="isShow">
         <div class="tbd-pagination-records">
             共<em>{{total}}</em>条记录，每页显示
-            <pv-select :data="pageSizeObject" :value.sync="pageSize"></pv-select>
+            <pv-select :data="pageSizeObject" :value.sync="pageSize" :on-select="_onSizeChange"></pv-select>
             条
         </div>
 
@@ -64,6 +69,9 @@
             total: {
                 type: Number,
                 default: 0
+            },
+            onSizeChange: {
+                type: Function
             }
         },
 
@@ -155,6 +163,10 @@
                 this.currentPage = (this.currentPage + 1 > this.totalNum ? this.totalNum : this.currentPage + 1 );
                 this.onChange(this.currentPage)
 
+            },
+            _onSizeChange() {
+                this.currentPage = 1;
+                this.onSizeChange && this.onSizeChange();
             }
         }
     }

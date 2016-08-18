@@ -151,7 +151,7 @@
             <div>选项卡3</div>
           </div>
 
-          <v-pane>选项卡111111内容</v-pane>
+          <v-pane><v-button @click="buttonClick">测试按钮</v-button></v-pane>
           <v-pane>选项卡222222内容</v-pane>
           <v-pane>选项卡33333内容</v-pane>
         </v-tabs>
@@ -200,7 +200,7 @@
       <h2>表格</h2>
       <div class="doc-example">
         <h2>普通表格</h2>
-        <v-table :data="table.data" :columns="table.columns"></v-table>
+        <v-table :page-size="10" :has-all-select="true" :data="table.data" :columns="table.columns"></v-table>
       </div>
 
       <h2>滑动输入条</h2>
@@ -237,7 +237,7 @@
 
       <h2>输入框和文本域</h2>
       <div class="doc-example">
-        <v-input type="text" size="small" placeholder="sm"></v-input>
+        <v-input type="text" size="small" placeholder="sm" v-model="radioValue"></v-input>
         <v-input type="text" value="disabled" disabled></v-input>
 
         <v-textarea rows="3" placeholder="textarea的高度由rows属性决定"></v-textarea>
@@ -521,7 +521,7 @@
       <h2>搜索框</h2>
       <div class="doc-example">
         {{search}}
-        <v-search :value.sync="search" @click.stop="buttonClick"></v-search>
+        <v-search :value.sync="search" :on-search="buttonClick" :placeholder="'sousou'"></v-search>
       </div>
 
       <h2>业务类型组件</h2>
@@ -636,7 +636,7 @@
           isDisabled: true
         }],
 
-        checkboxResultList: [0, '', 2],
+        checkboxResultList: [0, 2],
         radioValue: 0,
 
         // radio
@@ -697,6 +697,7 @@
           })(),
           columns: [{
             title: '姓名',
+            style: {width: '200px'},
             dataIndex: 'name',
             render(text, item) {
               return `<a href="#">${text}</a>`;

@@ -23,7 +23,7 @@
 -->
 <template>
   <div v-for="it in data" track-by="$index" :style="appendStyle" :class="[appendClass]">
-    <label class="tbd-label" :class="{'tbd-label-checked': (resultList && (it.value === resultList[$index]) || value === true), 'tbd-label-disabled': it.isDisabled}" @click="toggleSwitch($index, it.value)">
+    <label class="tbd-label" :class="{'tbd-label-checked': (resultList && resultList.includes(it.value) || value === true), 'tbd-label-disabled': it.isDisabled}" @click="toggleSwitch($index, it.value)">
       <span class="tbd-checkbox"></span>
       <span class="tbd-label-text">
           {{{it.label || it.value}}}
@@ -77,7 +77,12 @@
         if(this.data[index].isDisabled) return;
 
         if(this.resultList) {
-          this.resultList.$set(index, (this.resultList[index] === undefined || this.resultList[index] === '') ? value : '');
+          if(!this.resultList.includes(value)) {
+            this.resultList.push(value);
+          } else {
+            this.resultList.$remove(value);
+          }
+
           this.value = resultList[0];
         } else {
           this.value = !this.value;

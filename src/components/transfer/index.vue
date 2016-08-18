@@ -148,8 +148,7 @@
 
         watch: {
             selectAll(val) {
-                if(this.cancelSelectAll) {
-                    this.selectAll = false;
+                if(this.cancelSelectAll && !val) {
                     return this.cancelSelectAll = false;
                 }
 

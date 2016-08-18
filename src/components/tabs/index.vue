@@ -138,10 +138,7 @@
                     el.className += ' tbd-tabs-tabpane-hidden ';
                 }
 
-                panes += el.outerHTML;
             });
-
-            tabPanes.innerHTML = panes;
 
             if(_this.curIndex === 0) _this.selectTab(_this.activeIndex || 0);
         },

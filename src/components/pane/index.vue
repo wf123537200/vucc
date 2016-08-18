@@ -3,9 +3,9 @@
 -->
 
 <template>
-    <section>
+    <div>
         <slot></slot>
-    </section>
+    </div>
 </template>
 
 <script>
