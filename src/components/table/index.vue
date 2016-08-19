@@ -62,7 +62,7 @@
                 </thead>
                 <tbody>
                 <tr v-for="row in currentData" track-by="$index">
-                    <td v-if="hasAllSelect" @click.stop="itemClick(row.isChecked)">
+                    <td v-if="hasAllSelect" @click.stop="itemClick(row.isChecked, row)">
                         <pv-checkbox :value.sync="row.isChecked"></pv-checkbox>
                     </td>
                     <td v-for="col in cols" v-show="col.isShow === undefined">{{{renderTD(col, row)}}}</td>
@@ -136,17 +136,26 @@
 
         data () {
             return {
-                currentData: []
+                currentData: [],
+
             }
         },
 
         beforeCompile() {
             // 初始化currentData
+            // 每一个data增加key值,为了全选
+            this.data.forEach((it) => {
+                it.__el__id__ = Math.random().toString(36).substr(3)
+            });
             this.refreshCurrentData();
         },
 
         watch: {
             data(val, newVal) {
+                // 每一个data增加key值,为了全选
+                this.data.forEach((it) => {
+                   it.__el__id__ = Math.random().toString(36).substr(3)
+                });
                 // 表格数据变化 分页重置为默认
                 this.refreshCurrentData();
             },
@@ -157,13 +166,19 @@
                 this.refreshCurrentData();
             },
             selectAll(val) {
+                if(!this.hasAllSelect) return;
+
                 if(this.cancelSelectAll && !val) {
                     return this.cancelSelectAll = false;
                 }
 
                 this.currentData.forEach((it) => {
-                    it.isChecked = val;
-            });
+                    let temp = this.data.filter((el) => {
+                       return el.__el__id__ === it.__el__id__;
+                    });
+
+                    temp[0].isChecked = it.isChecked = val;
+                });
             }
         },
 
@@ -176,20 +191,29 @@
 
                     if(this.hasAllSelect) {
                         temp.forEach((it, index) => {
-                            this.currentData.push(Object.assign({}, it, {
+                            this.currentData.push(Object.assign({}, {
                             isChecked: false
-                        }))
+                        }, it))
                     });
                     }
                 }
 
                 this.selectAll = false;
             },
-            itemClick(isChecked) {
+            itemClick(isChecked, item) {
+                // 更新data内部值
+                let temp = this.data.filter((el) => {
+                    return el.__el__id__ === item.__el__id__;
+                });
+
+                temp[0].isChecked = isChecked;
+
                 if(isChecked) return;
 
                 this.selectAll = false;
                 this.cancelSelectAll = true;
+
+
             }
         },
 
