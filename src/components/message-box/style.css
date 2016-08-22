@@ -1,1 +1,64 @@
-.tbd-confirm .tbd-dialog-header{display:none}.tbd-confirm .tbd-dialog-body{padding:30px 40px}.tbd-confirm .tbd-confirm-body{position:relative;padding-top:8px;padding-left:42px;min-height:28px}.tbd-confirm .tbd-confirm-body .tbd-confirm-title{color:#1b1e25;font-size:14px}.tbd-confirm .tbd-confirm-body .tbd-confirm-content{font-size:12px;color:#8b91a0;margin-top:8px}.tbd-confirm .tbd-confirm-body .tbdi{position:absolute;left:0;top:0;font-size:32px}.tbd-confirm .tbd-confirm-body .tbdi-exclamation-circle{color:#f35958}.tbd-confirm .tbd-confirm-body .tbdi-question-circle{color:#f9ba46}.tbd-confirm .tbd-confirm-body .tbdi-check-circle{color:#57cc95}.tbd-confirm .tbd-confirm-body .tbdi-info-circle{color:#3598dc}.tbd-confirm .tbd-confirm-btns{margin-top:30px;text-align:center}.tbd-confirm .tbd-confirm-btns button+button{margin-left:8px}.tbd-confirm .tbd-confirm-btns button{line-height:30px;min-width:80px;height:32px}
+/* line 7, style.scss */
+.tbd-confirm .tbd-dialog-header {
+  display: none;
+}
+/* line 11, style.scss */
+.tbd-confirm .tbd-dialog-body {
+  padding: 30px 40px;
+}
+/* line 15, style.scss */
+.tbd-confirm .tbd-confirm-body {
+  position: relative;
+  padding-top: 8px;
+  padding-left: 42px;
+  min-height: 28px;
+}
+/* line 21, style.scss */
+.tbd-confirm .tbd-confirm-body .tbd-confirm-title {
+  color: #1b1e25;
+  font-size: 14px;
+}
+/* line 26, style.scss */
+.tbd-confirm .tbd-confirm-body .tbd-confirm-content {
+  font-size: 12px;
+  color: #8b91a0;
+  margin-top: 8px;
+}
+/* line 32, style.scss */
+.tbd-confirm .tbd-confirm-body .tbdi {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 32px;
+}
+/* line 39, style.scss */
+.tbd-confirm .tbd-confirm-body .tbdi-exclamation-circle {
+  color: #f35958;
+}
+/* line 43, style.scss */
+.tbd-confirm .tbd-confirm-body .tbdi-question-circle {
+  color: #f9ba46;
+}
+/* line 47, style.scss */
+.tbd-confirm .tbd-confirm-body .tbdi-check-circle {
+  color: #57cc95;
+}
+/* line 51, style.scss */
+.tbd-confirm .tbd-confirm-body .tbdi-info-circle {
+  color: #3598dc;
+}
+/* line 56, style.scss */
+.tbd-confirm .tbd-confirm-btns {
+  margin-top: 30px;
+  text-align: center;
+}
+/* line 60, style.scss */
+.tbd-confirm .tbd-confirm-btns button + button {
+  margin-left: 8px;
+}
+/* line 63, style.scss */
+.tbd-confirm .tbd-confirm-btns button {
+  line-height: 30px;
+  min-width: 80px;
+  height: 32px;
+}

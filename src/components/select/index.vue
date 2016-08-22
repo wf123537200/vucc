@@ -35,6 +35,8 @@
                  :is-disabled="isDisabled"
                  :on-select="onSelected"
                  :is-opened="isOpened"
+                 :as-label="asLabel"
+                 :as-value="asValue"
                  :filter="isEditAble ? inputSelect : ''">
         <span class="tbd-select-selection tbd-select-selection-single">
         <pv-input v-if="isEditAble && !isDisabled" v-model="inputSelect" ></pv-input>
@@ -45,7 +47,7 @@
 </template>
 
 <script>
-    import {componentBaseParamConfig, alias, name2Alias} from '../base-config';
+    import {componentBaseParamConfig, alias} from '../base-config';
     import pvDropdown from '../dropdown';
     import pvInput from '../input';
 
@@ -82,10 +84,6 @@
             return {
                 inputSelect: ''
             }
-        },
-
-        beforeCompile() {
-            name2Alias(this.data.optsList, this.asValue, this.asLabel);
         },
 
         computed: {

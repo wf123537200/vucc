@@ -85,6 +85,10 @@
           <v-multi-select :data="multiDataList" :append-style="{width: '200px'}" :result-list.sync="multiResList">
             <v-button>点击选择</v-button>
           </v-multi-select>
+
+          <v-multi-select :has-search="false" :filter="search" :data="multiDataList" :append-style="{width: '200px'}" :result-list.sync="multiResList">
+            <v-search :value.sync="search"></v-search>
+          </v-multi-select>
         </section>
       </div>
 

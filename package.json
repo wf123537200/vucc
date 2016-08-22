@@ -33,7 +33,7 @@
     "dev": "webpack-dev-server --content-base src --inline --hot --quiet --host 0.0.0.0 --port 8090 --config build/webpack.dev.conf.js",
     "dev-build": "webpack --colors --config build/webpack.dev.conf.js",
     "pre-prd": "compass compile --force",
-    "prd": "npm run pre-prd && webpack -p --progress --config build/webpack.prod.conf.js",
+    "prd": "webpack -p --progress --config build/webpack.prod.conf.js",
     "e2e": "casperjs test --concise ./test/e2e"
   },
   "repository": {
