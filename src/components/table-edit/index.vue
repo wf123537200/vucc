@@ -91,8 +91,8 @@
 </template>
 
 <script>
-    import pvSelect from 'components/select/';
-    import pvCheckbox from 'components/checkbox/';
+    import pvSelect from '../select/';
+    import pvCheckbox from '../checkbox/';
 
     export default {
         components: {

@@ -21,7 +21,7 @@
 </template>
 
 <script>
-  import {componentBaseParamConfig, alias, name2Alias} from 'components/base-config';
+  import {componentBaseParamConfig, alias, name2Alias} from '../base-config';
 
   export default {
     props: Object.assign({}, componentBaseParamConfig, alias, {

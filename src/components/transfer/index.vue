@@ -80,9 +80,9 @@
 </template>
 
 <script>
-    import {componentBaseParamConfig} from 'components/base-config';
-    import pvButton from 'components/button';
-    import pvCheckbox from 'components/checkbox';
+    import {componentBaseParamConfig} from '../base-config';
+    import pvButton from '../button';
+    import pvCheckbox from '../checkbox';
 
     export default {
         components: {

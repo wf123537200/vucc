@@ -21,8 +21,8 @@
 </template>
 
 <script>
-    import {componentBaseParamConfig} from 'components/base-config';
-    import pvInput from 'components/input';
+    import {componentBaseParamConfig} from '../base-config';
+    import pvInput from '../input';
 
     export default {
         props: Object.assign({}, componentBaseParamConfig, {

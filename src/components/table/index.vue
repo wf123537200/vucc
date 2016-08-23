@@ -80,8 +80,8 @@
 </template>
 
 <script>
-    import pvPagination from 'components/pagination'
-    import pvCheckbox from 'components/checkbox'
+    import pvPagination from '../pagination'
+    import pvCheckbox from '../checkbox'
 
     export default {
         props: {
@@ -189,13 +189,11 @@
                 if (this.data && this.data.length > 0) {
                     let temp = this.isReal ? this.data : this.data.slice(this.pageSize * (this.currentPage - 1), this.pageSize * this.currentPage);
 
-                    if(this.hasAllSelect) {
-                        temp.forEach((it, index) => {
+                    temp.forEach((it, index) => {
                             this.currentData.push(Object.assign({}, {
                             isChecked: false
                         }, it))
                     });
-                    }
                 }
 
                 this.selectAll = false;

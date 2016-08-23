@@ -40,8 +40,8 @@
 </template>
 
 <script>
-    import {componentBaseParamConfig} from 'components/base-config';
-    import pvButton from 'components/button';
+    import {componentBaseParamConfig} from '../base-config';
+    import pvButton from '../button';
 
     export default {
         props: Object.assign({}, componentBaseParamConfig, {

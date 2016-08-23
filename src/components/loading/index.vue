@@ -27,8 +27,8 @@
 </template>
 
 <script>
-    import {componentBaseParamConfig} from 'components/base-config';
-    import pvMask from 'components/global-mask';
+    import {componentBaseParamConfig} from '../base-config';
+    import pvMask from '../global-mask';
 
     export default {
         props: Object.assign({}, componentBaseParamConfig, {

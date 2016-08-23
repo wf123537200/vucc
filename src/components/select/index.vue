@@ -47,9 +47,9 @@
 </template>
 
 <script>
-    import {componentBaseParamConfig, alias} from 'components/base-config';
-    import pvDropdown from 'components/dropdown';
-    import pvInput from 'components/input';
+    import {componentBaseParamConfig, alias} from '../base-config';
+    import pvDropdown from '../dropdown';
+    import pvInput from '../input';
 
     export default {
         props: Object.assign({}, componentBaseParamConfig, alias, {
