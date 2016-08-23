@@ -31,19 +31,23 @@ function getEntry() {
 
     walk(srcPath);
 
+    // 公共入口
+
     fileList = fileList.filter(function(it) {
         return it.match(/index\.vue/);
     });
 
     //console.log(fileList);
 
+    res['app'] = [];
     fileList.forEach(function(it) {
         var path = it.substr(srcPath.length);
-        res[path.substr(0, path.length - 4)] = it;
+        res[path.substr(0, path.length - 4)] = [it];
+        res['app'].push(it);
     });
 
-    // 公共入口
-    res['app'] = './src/index';
+    res['alert'] = ['./src/components/alert/index.vue'];
+    console.log(res);
 
     return res;
 };
@@ -72,5 +76,12 @@ module.exports = merge(baseConfig, {
             allChunks: true,
             disable: false
         })
-    ]
+    ],
+    resolve: {
+        extensions: ['', '.js', '.vue'],
+        alias: {
+            'src': path.resolve(__dirname, '/src'),
+            components: path.resolve(__dirname, '../src/components')
+        }
+    }
 });

@@ -80,8 +80,8 @@
 </template>
 
 <script>
-    import pvPagination from '../pagination'
-    import pvCheckbox from '../checkbox'
+    import pvPagination from 'components/pagination'
+    import pvCheckbox from 'components/checkbox'
 
     export default {
         props: {

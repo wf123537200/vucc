@@ -46,7 +46,7 @@
 </template>
 
 <script>
-    import pvSelect from '../select/';
+    import pvSelect from 'components/select/';
 
     export default {
         props: {

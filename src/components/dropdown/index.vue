@@ -95,9 +95,9 @@
 </template>
 
 <script>
-    import {componentBaseParamConfig, alias, name2Alias} from '../base-config';
-    import pvSearch from '../search';
-    import pvButton from '../button';
+    import {componentBaseParamConfig, alias, name2Alias} from 'components/base-config';
+    import pvSearch from 'components/search';
+    import pvButton from 'components/button';
 
     export default {
         props: Object.assign({}, componentBaseParamConfig, alias, {

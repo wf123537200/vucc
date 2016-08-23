@@ -38,8 +38,8 @@
 </template>
 
 <script>
-    import {componentBaseParamConfig} from '../base-config';
-    import pvDialog from '../dialog';
+    import {componentBaseParamConfig} from 'components/base-config';
+    import pvDialog from 'components/dialog';
 
     export default {
         props: Object.assign({}, componentBaseParamConfig, {

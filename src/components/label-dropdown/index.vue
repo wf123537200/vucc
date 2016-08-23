@@ -65,8 +65,8 @@
     </div>
 </template>
 <script>
-    import {componentBaseParamConfig} from '../base-config';
-    import pvDropdown from '../dropdown';
+    import {componentBaseParamConfig} from 'components/base-config';
+    import pvDropdown from 'components/dropdown';
 
     export default {
         components: {

@@ -25,7 +25,7 @@
 </template>
 
 <script>
-    import {componentBaseParamConfig} from '../base-config';
+    import {componentBaseParamConfig} from 'components/base-config';
 
     // 暂不提供window上的直接注册和调用方式
 

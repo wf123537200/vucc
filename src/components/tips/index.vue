@@ -28,7 +28,7 @@
 </template>
 
 <script>
-    import {componentBaseParamConfig} from '../base-config';
+    import {componentBaseParamConfig} from 'components/base-config';
 
     const classMap = {
         'info': '',

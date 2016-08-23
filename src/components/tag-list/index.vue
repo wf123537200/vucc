@@ -33,8 +33,8 @@
 </template>
 
 <script>
-    import {componentBaseParamConfig} from '../base-config';
-    import pvInput from '../input';
+    import {componentBaseParamConfig} from 'components/base-config';
+    import pvInput from 'components/input';
 
     export default {
         components: {

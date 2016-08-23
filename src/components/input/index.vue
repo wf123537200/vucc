@@ -11,7 +11,7 @@
 </template>
 
 <script>
-    import {componentBaseParamConfig} from '../base-config';
+    import {componentBaseParamConfig} from 'components/base-config';
 
     export default {
         props: Object.assign({}, componentBaseParamConfig, {
