@@ -83,8 +83,7 @@
             },
 
             data : {
-                type: Array,
-                default : []
+                type: Array
             }
         }),
 
