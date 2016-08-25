@@ -6,7 +6,7 @@
 
     另一种是直接通过函数进行声明
     ex:
-        window.Tips.init(id, type, content, [showTime, appendClass, appendStyle]);
+        window.Tips.init(type, content, [id, showTime, appendClass, appendStyle]);
 
     调用统一通过
     vm.$root.$$tips.myTips.show();

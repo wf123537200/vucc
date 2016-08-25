@@ -265,7 +265,6 @@
                         const renderRes = col.render(row[col.dataIndex], row);
                         if(col.hasPartial && renderRes.functions) {
                             for(let k in renderRes.functions) {
-                                debugger
                                 this[k] = renderRes.functions[k];
                             }
                         }

@@ -344,7 +344,7 @@
           <v-tool-tip :type="'bottomLeft'">文字提示</v-tool-tip>
         </div>
 
-        <div style="margin-left: 50px;">tool-tip
+        <div style="margin-left: 50px;">
           <div>底部靠右</div>
           <v-tool-tip :type="'bottomRight'">文字提示</v-tool-tip>
         </div>
