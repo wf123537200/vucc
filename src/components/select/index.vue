@@ -93,7 +93,17 @@
                     return it.value == _this.value;
                 });
 
-                return res && (res.label || res.value) || '请选择';
+                let returnValue = '请选择';
+
+                if(!res) return returnValue;
+
+                if(res.label !== undefined) {
+                    returnValue = res.label;
+                } else if(res.value !== undefined) {
+                    returnValue = res.value;
+                }
+
+                return returnValue;
             }
         },
 

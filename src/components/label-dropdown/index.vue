@@ -57,10 +57,11 @@
         </div>
         <!-- select 下拉选项 -->
         <pv-dropdown :data="dropDownList"
-                    :on-select="selectItem"
-                    :is-opened="showDropdown"
-                    :filter = "keyword"
-                    :append-style="{width: '305px','margin-top': '-24px'}">
+                     :on-select="selectItem"
+                     :is-opened="showDropdown"
+                     :filter = "keyword"
+                     :result-list="resultList"
+                     :append-style="{width: '305px','margin-top': '-24px'}">
         </pv-dropdown>
     </div>
 </template>
@@ -83,6 +84,9 @@
             },
 
             data : {
+                type: Array,
+            },
+            resultList: {
                 type: Array
             }
         }),

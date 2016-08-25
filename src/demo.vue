@@ -93,7 +93,7 @@
       </div>
 
       <h2>弹窗</h2>
-      <div class="doc-example">
+      <section class="doc-example">
         <h3>tips类弹窗</h3>
         <section class="doc-part">
           <v-tips :id="'infoTips1'" :content="'我是一个提示操作/类型是info'" type="info"></v-tips>
@@ -108,7 +108,19 @@
           <v-button type="primary" @click="showTips('infoTips4', 'warn')">tips warn</v-button>
 
           <!-- 第二种调用方法 -->
-          <v-button @click="showTipsWay2()">tips info 第二种调用方法</v-button>
+          <v-button @click="showTipsWay2()">tips第二种调用方法</v-button>
+        </section>
+
+        <h3>警告提示组件</h3>
+        <section class="doc-part">
+          <v-alert :id="'alert1'" :title="'我是标题'" :explain="'辅助说明性文字'" :type="'success'"></v-alert>
+          <v-alert :id="'alert2'" :title="'我是标题'" :explain="'辅助说明性文字'" :type="'error'" :is-close-able="true"></v-alert>
+
+          <v-button type="primary" @click="showAlert('alert1')">alert success</v-button>
+          <v-button type="primary" @click="showAlert('alert2')">alert error</v-button>
+
+          <!-- 第二种调用方法 -->
+          <v-button @click="showAlert2()">alert第二种调用方法</v-button>
         </section>
 
         <h3>messageBox类弹窗</h3>
@@ -122,6 +134,9 @@
           <v-button type="primary" @click="showMb('mb2', 'success')">msgBox success</v-button>
           <v-button type="primary" @click="showMb('mb3', 'error')">msgBox error</v-button>
           <v-button type="primary" @click="showMb('mb4', 'confirm')">msgBox confirm</v-button>
+
+          <!-- 第二种调用方法 -->
+          <v-button @click="showMb2()">messagebox 第二种调用方法</v-button>
         </section>
 
         <h3>dialog类弹窗</h3>
@@ -217,15 +232,6 @@
           <v-slider :value.sync="sliderValue2" :text="'px'" :value-list="sliderValueList"></v-slider>
         </div>
         <input type="text" style="margin-top:20px;" v-model="sliderValue2"></input>
-      </div>
-
-      <h2>警告提示组件</h2>
-      <div class="doc-example">
-        <v-alert :id="'alert1'" :title="'我是标题'" :explain="'辅助说明性文字'" :type="'success'"></v-alert>
-        <v-alert :id="'alert2'" :title="'我是标题'" :explain="'辅助说明性文字'" :type="'error'" :is-close-able="true"></v-alert>
-
-        <v-button type="primary" @click="showAlert('alert1')">alert success</v-button>
-        <v-button type="primary" @click="showAlert('alert2')">alert error</v-button>
       </div>
 
       <h2>徽标数</h2>
@@ -554,11 +560,12 @@
 
 <script>
   let components = require('./index');
-
+  import Vue from 'vue';
 
   export default {
     components: components,
     data() {
+      const _this = this;
       return {
         // multi-select
         multiDataList: {
@@ -651,7 +658,7 @@
         dropDownData: {
           optsList: [{
             value: 0,
-            label: 'value0'
+            label: 0
           }, {
             value: 1,
             label: 'value1',
@@ -714,10 +721,18 @@
             dataIndex: 'address'
           }, {
             title: '操作',
+            hasPartial: true,
             render(text, item) {
-              return `<a class="tbd-inline" @click="clickOperate">操作一</a>
+              Vue.partial('xxx', `<a class="tbd-inline" @click="showTipsWay2">操作一</a>
                         <span class="tbd-divider"></span>
-                      <a class="tbd-inline">操作二</a>`;
+                      <a class="tbd-inline">操作二</a>`);
+
+              return {
+                id: 'xxx',
+                functions: {
+                  showTipsWay2: _this.showTipsWay2
+                }
+              };
             }
           }]
         },
@@ -737,7 +752,7 @@
         },
 
         // staff
-        staff : {
+        staff: {
           data : [
             {userId:1, userName: 'hill'},
             {userId:2, userName: 'shijia'},
@@ -865,14 +880,30 @@
       },
 
       showTipsWay2() {
-        window.Tips.init('tips1', 'info', 'lalalala');
-
-        this.$root.$$tips['tips1'].show();
+        window.Tips.init('', 'info', 'lalalala');
       },
 
       // alert
       showAlert(id) {
         this.$root.$$alert[id].show();
+      },
+
+      showAlert2() {
+        window.Alert.init({
+            type: 'info',
+            title: '我是标题',
+            explain: '我是说明文字',
+            isCloseAble: true
+        });
+      },
+
+      // message box
+      showMb(id) {
+        this.$root.$$messageBox[id].show();
+      },
+
+      showMb2(id) {
+        window.MessageBox.init('', 'info', 'lalalala');
       },
 
       // 展示对话框
@@ -886,17 +917,6 @@
 
       dialogCallbackFn2() {
         alert('cancel callback !');
-      },
-
-      // message box
-      showMb(id) {
-        this.$root.$$messageBox[id].show();
-      },
-
-      showTipsWay2() {
-        window.Tips.init('tips1', 'info', 'lalalala');
-
-        this.$root.$$tips['tips1'].show();
       },
 
       showLoading(value) {
@@ -1046,14 +1066,6 @@
     margin-left: 0;
     min-height: 500px;
   }
-
-  .doc-index .doc-footer {
-    position: static;
-    padding: 30px 0;
-    width: auto;
-    text-align: center;
-  }
-
 
   /*快速预览*/
 
@@ -1340,10 +1352,10 @@
   }
 
   .doc-footer {
-    position: fixed;
-    bottom: 50px;
-    width: 260px;
     font-size: 12px;
+    width: 100%;
+    text-align: center;
+    height: 30px;
   }
 
 

@@ -65,7 +65,12 @@
                     <td v-if="hasAllSelect" @click.stop="itemClick(row.isChecked, row)">
                         <pv-checkbox :value.sync="row.isChecked"></pv-checkbox>
                     </td>
-                    <td v-for="col in cols" v-show="col.isShow === undefined">{{{renderTD(col, row)}}}</td>
+                    <td v-for="col in cols" v-show="col.isShow === undefined">
+                        <span v-if="!col.hasPartial">{{{renderTD(col, row)}}}</span>
+                        <span v-if="col.hasPartial">
+                            <partial :name="renderTD(col, row).id"></partial>
+                        </span>
+                    </td>
                 </tr>
                 </tbody>
             </table>
@@ -257,12 +262,19 @@
             renderTD() {
                 return (col, row) => {
                     if (col.render && typeof col.render === 'function') {
-                        return col.render(row[col.dataIndex], row)
+                        const renderRes = col.render(row[col.dataIndex], row);
+                        if(col.hasPartial && renderRes.functions) {
+                            for(let k in renderRes.functions) {
+                                debugger
+                                this[k] = renderRes.functions[k];
+                            }
+                        }
+
+                        return renderRes;
                     } else {
                         return row[col.dataIndex]
                     }
                 }
-
             }
         }
     }

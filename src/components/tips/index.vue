@@ -44,6 +44,8 @@
 
             Tips[id] = this;
 
+            this.isNoId = !!id;
+            id = id || ('tips' + Math.random().toString(36).substr(3, 15));
             this.id = id;
             this.tpl = `<div id="${id}" style="${appendStyle || ''}" class="tbd-popover-wrap ${appendClass || ''}">
                             <div class="tbd-popover ${classMap[type]}">
@@ -62,17 +64,17 @@
             if(!tips) {
                 document.body.insertAdjacentHTML('beforeEnd', _this.tpl);
                 tips = document.querySelector('#' + this.id);
+            } else {
+                tips.style.display = 'block';
             }
 
-            tips.style.display = 'block';
-
             window.setTimeout(function() {
-                tips.style.display = 'none';
+                if(_this.isNoId) {
+                    tips.style.display = 'none';
+                } else {
+                    document.body.removeChild(tips);
+                }
             }, _this.showTime || 1200);
-        }
-
-        getEl() {
-            return document.querySelector('#' + this.id)
         }
     }
 
@@ -80,6 +82,8 @@
         let tips = new Tips(id, type, content, showTime, appendClass, appendStyle);
         if(!document.body.__vue__.$root.$$tips) document.body.__vue__.$root.$$tips = {};
         document.body.__vue__.$root.$$tips[tips.id] = tips;
+
+        tips.show();
     };
 
     window.Tips = Tips;
