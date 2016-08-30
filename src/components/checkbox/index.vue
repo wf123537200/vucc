@@ -83,7 +83,7 @@
             this.resultList.$remove(value);
           }
 
-          this.value = resultList[0];
+          this.value = this.resultList[0];
         } else {
           this.value = !this.value;
         }

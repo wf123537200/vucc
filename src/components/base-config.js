@@ -24,8 +24,8 @@ function name2Alias(data, asValue, asLabel) {
     if(!asValue && !asLabel) return data;
 
     data.forEach(function(it) {
-        it.value = it[asValue];
-        it.label = it[asLabel];
+        if(asValue && asValue !== 'value') it.value = it[asValue];
+        if(asLabel && asLabel !== 'label') it.label = it[asLabel];
     });
 };
 

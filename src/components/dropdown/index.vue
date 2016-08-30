@@ -213,6 +213,8 @@
 
                 if(opts[index].isDisabled) return;
 
+                if(opts[index].value === undefined) console.warn('%c the value is undefinde, please check it!', 'color: red;');
+
                 // 多选
                 if(this.isMultiple) {
                     if(!this.indexList.includes(index)) {

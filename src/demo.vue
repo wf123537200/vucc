@@ -70,7 +70,7 @@
         <section class="doc-part">
           <h3>select: {{dropDownValue}}</h3>
           <v-select :data="dropDownData" :append-style="{width: '200px'}" :value.sync="dropDownValue"></v-select>
-          <v-select :data="dropDownData2" :as-value="'name'"
+          <v-select :data="dropDownData2"
                     :as-label="'desc'":append-style="{width: '200px'}" :value.sync="dropDownValue"></v-select>
           <v-select :data="dropDownData" :is-disabled="true" :value.sync="dropDownValue"></v-select>
         </section>
@@ -674,16 +674,16 @@
 
         dropDownData2: {
           optsList: [{
-            name: 0,
+            value: 0,
             desc: 'value0'
           }, {
-            name: 1,
+            value: 1,
             desc: 'value1',
             renderLi: function() {
               return `<a>111</a>`
             }
           }, {
-            name: 2,
+            value: 2,
             desc: 'value2',
             isDisabled: true
           }]

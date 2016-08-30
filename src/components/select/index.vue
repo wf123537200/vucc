@@ -34,14 +34,14 @@
                  :value.sync="value"
                  :is-disabled="isDisabled"
                  :on-select="onSelected"
-                 :is-opened="isOpened"
+                 :is-opened.sync="isOpened"
                  :as-label="asLabel"
                  :as-value="asValue"
                  :filter="isEditAble ? inputSelect : ''">
-        <span class="tbd-select-selection tbd-select-selection-single">
+        <span class="tbd-select-selection tbd-select-selection-single" @click.stop="toggle">
         <pv-input v-if="isEditAble && !isDisabled" v-model="inputSelect" ></pv-input>
         <span v-if="isDisabled || !isEditAble" class="tbd-select-selection-rendered">{{currentSelected}}</span>
-        <span class="tbd-select-arrow" @click.stop="toggle"></span>
+        <span class="tbd-select-arrow"></span>
         </span>
     </pv-dropdown>
 </template>
