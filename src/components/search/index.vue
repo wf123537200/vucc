@@ -15,7 +15,7 @@
     <div :style="appendStyle" :class="['vc-input-wrap vc-input-wrap-search', appendClass, sizeClass]">
         <pv-input type="text" @keyup.enter="onSearch" class="vc-input" placeholder="{{placeholder}}" v-model="value"></pv-input>
         <button class="vc-input-wrap-extra" @click.stop="onSearch">
-            <i class="tbdi tbdi-search"></i>
+            <i class="vci vci-search"></i>
         </button>
     </div>
 </template>

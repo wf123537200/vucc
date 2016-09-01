@@ -19,7 +19,7 @@
                     <th>字段英文名</th>
                     <th>字段类型
                         <!--<div class="vc-tooltip-wrap">-->
-                            <!--<i class="tbdi tbdi-question-circle-o"></i>-->
+                            <!--<i class="vci vci-question-circle-o"></i>-->
                             <!--<div-->
                                     <!--class="vc-tooltip vc-tooltip-placement-rightTop"-->
                                     <!--style="min-width:200px;-->

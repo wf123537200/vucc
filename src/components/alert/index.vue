@@ -26,7 +26,7 @@
 -->
 <template>
     <div :style="appendStyle" v-if="isShow" :class="['vc-alert', appendClass, typeClass, {'show': isShow, 'vc-alert-with-description': explain}]">
-        <a v-if="isCloseAble" @click="closeFn" href="javascript: void 0" class="vc-alert-close-icon"><i class="tbdi tbdi-cross"></i></a>
+        <a v-if="isCloseAble" @click="closeFn" href="javascript: void 0" class="vc-alert-close-icon"><i class="vci vci-cross"></i></a>
         <h3 class="vc-alert-message">{{title}}</h3>
         <div class="vc-alert-description">{{explain}}</div>
     </div>
@@ -46,7 +46,7 @@
         constructor ({id, type, title, explain, isCloseAble, showTime, appendClass = '', appendStyle = ''}) {
             const Alert = window.Alert;
             const typeClass = TYPE_CLASS[type];
-            const close = isCloseAble ? `<a href="javascript: void 0" class="vc-alert-close-icon"><i class="tbdi tbdi-cross"></i></a>` : ``
+            const close = isCloseAble ? `<a href="javascript: void 0" class="vc-alert-close-icon"><i class="vci vci-cross"></i></a>` : ``
 
             Alert[id] = this;
 

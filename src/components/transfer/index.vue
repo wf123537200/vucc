@@ -33,10 +33,10 @@
         <div class="vc-transfer-btns">
             <pv-button :size="'vc-btn-sm'" :type="'outline'" @click.stop="addSelect">
                 {{addText}}
-                <i class="tbdi tbdi-right"></i>
+                <i class="vci vci-right"></i>
             </pv-button>
             <pv-button :size="'vc-btn-sm'" :type="'outline'" :is-disabled="isDeleteAble" @click.stop="removeSelect">
-                <i class="tbdi tbdi-left"></i>
+                <i class="vci vci-left"></i>
                 {{deleteText}}
             </pv-button>
         </div>

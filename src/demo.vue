@@ -24,10 +24,10 @@
           <h3>带图标button:</h3>
           <v-button>
             <span>default</span>
-            <span class="tbdi tbdi-down"></span>
+            <span class="vci vci-down"></span>
           </v-button>
           <v-button>
-            <span class="tbdi tbdi-down"></span>
+            <span class="vci vci-down"></span>
             <span>default</span>
           </v-button>
         </section>
@@ -163,7 +163,7 @@
 
           <div slot="header">
             <div class="a">
-              <i class="tbdi tbdi-apple"></i>
+              <i class="vci vci-apple"></i>
               <span>选项卡1</span>
             </div>
             <div>选项卡2</div>
@@ -238,10 +238,10 @@
       <h2>徽标数</h2>
       <div class="doc-example">
         <v-badge :number="10" :is-show-number="true">
-          <i class="tbdi tbdi-mail"></i>
+          <i class="vci vci-mail"></i>
         </v-badge>
         <v-badge style="margin-left: 30px;">
-          <i class="tbdi tbdi-mail"></i>
+          <i class="vci vci-mail"></i>
         </v-badge>
       </div>
 
@@ -553,7 +553,7 @@
     </section>
 
     <div class="doc-footer">
-      <p>维护： Zakwu / <a href="mailto:zakwu@tencent.com">email: zakwu@tencent.com</a></p>
+      <p>维护： Zakwu / <a href="mailto:123537200@qq.com">email: 123537200@qq.com</a></p>
     </div>
   </div>
 </template>
@@ -1441,7 +1441,7 @@
     vertical-align: middle;
   }
 
-  .doc-icons .tbdi {
+  .doc-icons .vci {
     margin-bottom: 10px;
     font-size: 24px;
   }

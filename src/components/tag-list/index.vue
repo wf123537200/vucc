@@ -19,14 +19,14 @@
         <label v-for="it in data" :class="['vc-tag', 'vc-tag-active', {'vc-tag-with-close': isDeleteAble}]">
             <span>
                 {{it.content}}
-                <i class="tbdi tbdi-cross" v-if="isDeleteAble" @click.stop="deleteItem(it)"></i>
+                <i class="vci vci-cross" v-if="isDeleteAble" @click.stop="deleteItem(it)"></i>
             </span>
         </label>
         <!-- input -->
         <div class="vc-input-wrap">
             <pv-input v-model="text"></pv-input>
             <button class="vc-input-wrap-extra" @click.stop="addItem">
-                <i class="tbdi tbdi-plus"></i>
+                <i class="vci vci-plus"></i>
             </button>
         </div>
     </div>

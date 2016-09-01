@@ -33,7 +33,7 @@
               :ok-text="okText" >
 
             <div class="vc-confirm-body">
-                <i class=" tbdi {{iconClass}}"></i>
+                <i class=" vci {{iconClass}}"></i>
                 <span class="vc-confirm-title">{{title}}</span>
                 <div class="vc-confirm-content">{{explain}}</div>
             </div>
@@ -83,10 +83,10 @@
         data() {
             return {
                 iconClass: {
-                    info: 'tbdi-info-circle',
-                    error: 'tbdi-exclamation-circle',
-                    success: 'tbdi-check-circle',
-                    confirm: 'tbdi-question-circle'
+                    info: 'vci-info-circle',
+                    error: 'vci-exclamation-circle',
+                    success: 'vci-check-circle',
+                    confirm: 'vci-question-circle'
                 }[this.type],
                 hasCancelBtn: this.type === 'confirm'
             }

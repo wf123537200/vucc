@@ -16,10 +16,10 @@
         <pv-input type="text" placeholder="{{min}}" v-model="value"></pv-input>
         <div class="vc-input-number-handle-wrap">
             <button class="vc-input-number-handle" @mousedown.stop="stepUp" @mouseup.stop="cleanTimer">
-                <i class="tbdi tbdi-up"></i>
+                <i class="vci vci-up"></i>
             </button>
             <button class="vc-input-number-handle vc-input-number-handle-down" @mousedown.stop="stepDown" @mouseup.stop="cleanTimer">
-                <i class="tbdi tbdi-down"></i>
+                <i class="vci vci-down"></i>
             </button>
         </div>
     </div>
