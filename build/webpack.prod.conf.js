@@ -43,11 +43,13 @@ function getEntry() {
     fileList.forEach(function(it) {
         var path = it.substr(srcPath.length);
         res[path.substr(0, path.length - 4)] = [it];
+        if(path.substr(0, path.length - 4) === 'message-box') {
+            // message-box 有一个单独的打包文件
+            res['message-box'].push('./src/components/message-box/wrap.js');
+        }
         res['app'].push(it);
     });
 
-    // message-box 有一个单独的打包文件
-    res['message-box'].push('./src/components/message-box/wrap.js');
     console.log(res);
 
     return res;
