@@ -44,11 +44,12 @@
    @param {Number} onSizeChange 当每页页数变化时产生的数据
    @param {Boolean} isShowPagination 是否显示分页栏
    @param {Boolean} isReal 是否采用真分页,如果真分页,则每次传入数据都以外部为准
+   @param {Function} trClick 行点击事件,会传入行的数据
    @param {String} appendClass 自定义class
    @param {Object} appendClass 自定义Style对象
 -->
 <template>
-    <div class="tbd-table">
+    <div :style="appendStyle" :class="['tbd-table', appendClass]">
         <div class="tbd-table-body">
             <table>
                 <thead>
@@ -61,7 +62,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-for="row in currentData" track-by="$index">
+                <tr v-for="row in currentData" track-by="$index" @click.stop="trClick(row, currentData)">
                     <td v-if="hasAllSelect" @click.stop="itemClick(row.isChecked, row)">
                         <pv-checkbox :value.sync="row.isChecked"></pv-checkbox>
                     </td>
@@ -78,6 +79,7 @@
     </div>
 
     <pv-pagination :total.sync="totalNum"
+                   v-if="isShowPagination"
                    :current-page.sync="currentPage"
                    :page-size.sync="pageSize"
                    :on-size-change="onSizeChange"
@@ -87,9 +89,11 @@
 <script>
     import pvPagination from '../pagination'
     import pvCheckbox from '../checkbox'
+    import {componentBaseParamConfig} from '../base-config';
+
 
     export default {
-        props: {
+        props: Object.assign({}, componentBaseParamConfig, {
             data: {
                 type: Array
             },
@@ -136,8 +140,14 @@
             isReal: {
                 type: Boolean,
                 default: false
+            },
+            trClick: {
+                type: Function,
+                default() {
+                    return () => {};
+                }
             }
-        },
+        }),
 
         data () {
             return {
@@ -159,7 +169,7 @@
             data(val, newVal) {
                 // 每一个data增加key值,为了全选
                 this.data.forEach((it) => {
-                   it.__el__id__ = Math.random().toString(36).substr(3)
+                    it.__el__id__ = Math.random().toString(36).substr(3)
                 });
                 // 表格数据变化 分页重置为默认
                 this.refreshCurrentData();
@@ -179,7 +189,7 @@
 
                 this.currentData.forEach((it) => {
                     let temp = this.data.filter((el) => {
-                       return el.__el__id__ === it.__el__id__;
+                        return el.__el__id__ === it.__el__id__;
                     });
 
                     temp[0].isChecked = it.isChecked = val;
@@ -195,7 +205,7 @@
                     let temp = this.isReal ? this.data : this.data.slice(this.pageSize * (this.currentPage - 1), this.pageSize * this.currentPage);
 
                     temp.forEach((it, index) => {
-                            this.currentData.push(Object.assign({}, {
+                        this.currentData.push(Object.assign({}, {
                             isChecked: false
                         }, it))
                     });
@@ -235,11 +245,11 @@
                 let cols = [];
 
                 this.data[0] && (cols = Object.keys(this.data[0]).map((col) => {
-                            return {
-                                dataIndex: col,
-                                title: col
-                            }
-                        }));
+                    return {
+                        dataIndex: col,
+                        title: col
+                    }
+                }));
 
                 return cols;
             },

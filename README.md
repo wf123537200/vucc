@@ -60,4 +60,6 @@ npm run dev
 
 npm run res
 
+三 历史
+0.9.4 table组件增加trClick方法,便于给行绑定事件
 
