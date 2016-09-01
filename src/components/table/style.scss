@@ -40,8 +40,8 @@ $table-head-background-color: lighten($base-bg, 3%);
     position: relative;
     font-weight: normal;
 
-    .tbdi-filter,
-    .tbdi-question-circle-o {
+    .vci-filter,
+    .vci-question-circle-o {
       margin-left: 4px;
       font-size: 14px;
       cursor: pointer;
@@ -52,19 +52,19 @@ $table-head-background-color: lighten($base-bg, 3%);
       }
     }
 
-    .tbdi-filter {
+    .vci-filter {
       @include iconfont-size-under-12px(10px);
     }
 
-    .#{$table-prefix-cls}-filter-selected.tbdi-filter {
+    .#{$table-prefix-cls}-filter-selected.vci-filter {
       color: $primary-color;
     }
 
-    .tbd-form-explain {
+    .vc-form-explain {
       vertical-align: middle;
     }
 
-    .tbd-label {
+    .vc-label {
       margin-right: 0;
 
       + span {
@@ -162,18 +162,18 @@ $table-head-background-color: lighten($base-bg, 3%);
       display: block;
       width: 12px;
       cursor: pointer;
-      &:hover .tbdi {
+      &:hover .vci {
         color: $base-color;
       }
       &.on {
-        .tbdi-caret-up,
-        .tbdi-caret-down {
+        .vci-caret-up,
+        .vci-caret-down {
           color: $primary-color;
         }
       }
     }
-    .tbdi-caret-up,
-    .tbdi-caret-down {
+    .vci-caret-up,
+    .vci-caret-down {
       @include iconfont-size-under-12px(6px);
       line-height: 6px;
       height: 6px;
@@ -249,7 +249,7 @@ $table-head-background-color: lighten($base-bg, 3%);
       height: 18px;
       text-align: center;
       user-select: none;
-      font-family: 'tbdicon';
+      font-family: 'vcicon';
       font-style: normal;
       color: $gray-color;
 
@@ -279,7 +279,7 @@ $table-head-background-color: lighten($base-bg, 3%);
 }
 
 .#{$table-prefix-cls}-filter-dropdown {
-  .tbd-label {
+  .vc-label {
     display: block;
     margin: -7px -15px;
     padding: 4px 15px;

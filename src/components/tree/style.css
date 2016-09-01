@@ -40,7 +40,7 @@
 /* line 48, style.scss */
 .vc-tree-caret:after {
   content: '\E60A';
-  font-family: 'tbdicon';
+  font-family: 'vcicon';
   line-height: 1;
   font-style: normal;
   display: inline-block;

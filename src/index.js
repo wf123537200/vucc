@@ -1,7 +1,7 @@
 // 自动装载css
 try {
     require('./style/main.css');
-    //require('../assets/css/tbd-index.css');
+    //require('../assets/css/vc-index.css');
 } catch (e) {
     console.error('如果不使用css-load,请手动拷贝css,使用link标签进行加载!');
 }
@@ -48,17 +48,17 @@ var vMultiSelect = require('./components/multi-select');
 require('./components/message-box/wrap.js');
 
 /* 为不支持模块化的系统提供简单支持 */
-window.__tbd_design__ = {vMultiSelect, vSearch, vFormItem, vForm, vTransfer, vTree, vTagList, vTimeLine, vToolTip, vSteps, vLoading, vProgress, vStepInput, vPagination, vPane, vCollapseGroup, vCollapse, vInput, vTextarea, vBadge, vAlert, vTableEdit, vLabelDropdown, vSlider, vTable, vButton, vButtonGroup, vSwitch, vCheckbox, vRadio, vDropdown, vSelect, vTips, vDialog, vMask, vMessageBox, vTabs, vButtonGroup};
+window.__vc_design__ = {vMultiSelect, vSearch, vFormItem, vForm, vTransfer, vTree, vTagList, vTimeLine, vToolTip, vSteps, vLoading, vProgress, vStepInput, vPagination, vPane, vCollapseGroup, vCollapse, vInput, vTextarea, vBadge, vAlert, vTableEdit, vLabelDropdown, vSlider, vTable, vButton, vButtonGroup, vSwitch, vCheckbox, vRadio, vDropdown, vSelect, vTips, vDialog, vMask, vMessageBox, vTabs, vButtonGroup};
 module.exports = {vMultiSelect, vSearch, vFormItem, vForm, vTransfer, vTree, vTagList, vTimeLine, vToolTip, vSteps, vLoading, vProgress, vStepInput, vPagination, vPane, vCollapseGroup, vCollapse, vInput, vTextarea, vBadge, vAlert, vTableEdit, vLabelDropdown, vSlider, vTable, vButton, vButtonGroup, vSwitch, vCheckbox, vRadio, vDropdown, vSelect, vTips, vDialog, vMask, vMessageBox, vTabs, vButtonGroup};
 
 // 配置
-window.tbdConfig = function(conf) {
+window.vcConfig = function(conf) {
     var res = {};
     var prefix = conf.prefix;
-    var tbdDesign = window.__tbd_design__;
+    var vcDesign = window.__vc_design__;
 
-    for(var key in tbdDesign) {
-        res[prefix + key.slice(1)] = tbdDesign[key];
+    for(var key in vcDesign) {
+        res[prefix + key.slice(1)] = vcDesign[key];
     }
 
     return res;

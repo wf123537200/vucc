@@ -87,7 +87,7 @@ $input-prefix-cls: $css-prefix + "input";
     &-last:after {
       display: inline-block;
       @include iconfont-size-under-12px(8px);
-      font-family: 'tbdicon';
+      font-family: 'vcicon';
       font-weight: bold;
       content: '\e62c';
     }

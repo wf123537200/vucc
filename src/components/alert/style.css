@@ -62,12 +62,12 @@
   cursor: pointer;
 }
 /* line 67, style.scss */
-.vc-alert-close-icon .tbdi-cross {
+.vc-alert-close-icon .vci-cross {
   color: #8b91a0;
   transition: color .3s ease;
 }
 /* line 70, style.scss */
-.vc-alert-close-icon .tbdi-cross:hover {
+.vc-alert-close-icon .vci-cross:hover {
   color: #1b1e25;
 }
 /* line 76, style.scss */

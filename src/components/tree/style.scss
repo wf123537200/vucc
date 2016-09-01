@@ -47,7 +47,7 @@ $tree-disabled-color: $gray-color;
 
     &:after {
       content: '\E60A';
-      font-family: 'tbdicon';
+      font-family: 'vcicon';
       line-height: 1;
       font-style: normal;
       @include iconfont-size-under-12px(8px);

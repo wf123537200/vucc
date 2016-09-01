@@ -1,9 +1,9 @@
 /* line 7, style.scss */
-.vc-confirm .tbd-dialog-header {
+.vc-confirm .vc-dialog-header {
   display: none;
 }
 /* line 11, style.scss */
-.vc-confirm .tbd-dialog-body {
+.vc-confirm .vc-dialog-body {
   padding: 30px 40px;
 }
 /* line 15, style.scss */
@@ -25,26 +25,26 @@
   margin-top: 8px;
 }
 /* line 32, style.scss */
-.vc-confirm .vc-confirm-body .tbdi {
+.vc-confirm .vc-confirm-body .vci {
   position: absolute;
   left: 0;
   top: 0;
   font-size: 32px;
 }
 /* line 39, style.scss */
-.vc-confirm .vc-confirm-body .tbdi-exclamation-circle {
+.vc-confirm .vc-confirm-body .vci-exclamation-circle {
   color: #f35958;
 }
 /* line 43, style.scss */
-.vc-confirm .vc-confirm-body .tbdi-question-circle {
+.vc-confirm .vc-confirm-body .vci-question-circle {
   color: #f9ba46;
 }
 /* line 47, style.scss */
-.vc-confirm .vc-confirm-body .tbdi-check-circle {
+.vc-confirm .vc-confirm-body .vci-check-circle {
   color: #57cc95;
 }
 /* line 51, style.scss */
-.vc-confirm .vc-confirm-body .tbdi-info-circle {
+.vc-confirm .vc-confirm-body .vci-info-circle {
   color: #3598dc;
 }
 /* line 56, style.scss */

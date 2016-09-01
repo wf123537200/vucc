@@ -213,11 +213,11 @@ $slider-tooltip-arrow-color: $slider-tooltip-bg;
     display: none;
   }
 
-  .tbd-slider-handle:hover .show-tips {
+  .vc-slider-handle:hover .show-tips {
     display: block;
   }
 
-  .show-tips .tbd-tooltip-inner {
+  .show-tips .vc-tooltip-inner {
     min-width: 5em;
     text-align: center;
   }

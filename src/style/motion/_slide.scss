@@ -12,12 +12,12 @@
   }
 }
 
-@include slide-motion(slide-up, tbdSlideUp);
-@include slide-motion(slide-down, tbdSlideDown);
-@include slide-motion(slide-left, tbdSlideLeft);
-@include slide-motion(slide-right, tbdSlideRight);
+@include slide-motion(slide-up, vcSlideUp);
+@include slide-motion(slide-down, vcSlideDown);
+@include slide-motion(slide-left, vcSlideLeft);
+@include slide-motion(slide-right, vcSlideRight);
 
-@include keyframes(tbdSlideUpIn) {
+@include keyframes(vcSlideUpIn) {
   0% {
     opacity: 0;
     transform-origin: 0% 0%;
@@ -30,7 +30,7 @@
   }
 }
 
-@include keyframes(tbdSlideUpOut) {
+@include keyframes(vcSlideUpOut) {
   0% {
     opacity: 1;
     transform-origin: 0% 0%;
@@ -43,7 +43,7 @@
   }
 }
 
-@include keyframes(tbdSlideDownIn) {
+@include keyframes(vcSlideDownIn) {
   0% {
     opacity: 0;
     transform-origin: 100% 100%;
@@ -56,7 +56,7 @@
   }
 }
 
-@include keyframes(tbdSlideDownOut) {
+@include keyframes(vcSlideDownOut) {
   0% {
     opacity: 1;
     transform-origin: 100% 100%;
@@ -69,7 +69,7 @@
   }
 }
 
-@include keyframes(tbdSlideLeftIn) {
+@include keyframes(vcSlideLeftIn) {
   0% {
     opacity: 0;
     transform-origin: 0% 0%;
@@ -82,7 +82,7 @@
   }
 }
 
-@include keyframes(tbdSlideLeftOut) {
+@include keyframes(vcSlideLeftOut) {
   0% {
     opacity: 1;
     transform-origin: 0% 0%;
@@ -95,7 +95,7 @@
   }
 }
 
-@include keyframes(tbdSlideRightIn) {
+@include keyframes(vcSlideRightIn) {
   0% {
     opacity: 0;
     transform-origin: 100% 0%;
@@ -108,7 +108,7 @@
   }
 }
 
-@include keyframes(tbdSlideRightOut) {
+@include keyframes(vcSlideRightOut) {
   0% {
     opacity: 1;
     transform-origin: 100% 0%;

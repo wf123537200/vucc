@@ -4,11 +4,11 @@ $confirm-prefix-cls: $css-prefix + "confirm";
 
 .#{$confirm-prefix-cls} {
 
-  .tbd-dialog-header {
+  .vc-dialog-header {
     display: none;
   }
   
-  .tbd-dialog-body {
+  .vc-dialog-body {
     padding: 30px 40px;
   }
 
@@ -29,26 +29,26 @@ $confirm-prefix-cls: $css-prefix + "confirm";
       margin-top: 8px;
     }
 
-    .tbdi {
+    .vci {
       position: absolute;
       left: 0;
       top: 0;
       font-size: 32px;
     }
 
-    .tbdi-exclamation-circle {
+    .vci-exclamation-circle {
       color: $error-color;
     }
 
-    .tbdi-question-circle {
+    .vci-question-circle {
       color: $warning-color;
     }
 
-    .tbdi-check-circle {
+    .vci-check-circle {
       color: $success-color;
     }
 
-    .tbdi-info-circle {
+    .vci-info-circle {
       color: $info-color;
     }
   }

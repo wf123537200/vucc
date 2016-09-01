@@ -50,7 +50,7 @@ $input-prefix-cls: $css-prefix + "input";
   box-sizing: border-box;
 
   &-row {
-    > [class*="tbd-col-"] {
+    > [class*="vc-col-"] {
       padding-right: 8px;
     }
   }
@@ -79,7 +79,7 @@ $input-prefix-cls: $css-prefix + "input";
     }
   }
 
-  > [class*="tbd-col-"] {
+  > [class*="vc-col-"] {
     padding-right: 8px;
   }
 
@@ -111,7 +111,7 @@ $input-prefix-cls: $css-prefix + "input";
 .#{$css-prefix}form-footer {
   margin-top: 24px;
 
-  .tbd-btn {
+  .vc-btn {
     margin-right: 10px;
   }
 }
@@ -237,7 +237,7 @@ $input-prefix-cls: $css-prefix + "input";
     position: absolute;
     top: 0;
     right: 0;
-    font-family: "tbdicon" !important;
+    font-family: "vcicon" !important;
     width: $height-lg;
     height: $height-lg;
     line-height: $height-lg;

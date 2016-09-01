@@ -143,22 +143,22 @@
   position: relative;
 }
 /* line 182, style.scss */
-.vc-tooltip-wrap > .tbdi {
+.vc-tooltip-wrap > .vci {
   font-size: 16px;
   color: #8b91a0;
   cursor: pointer;
 }
 /* line 188, style.scss */
-.vc-tooltip-wrap > a.tbdi {
+.vc-tooltip-wrap > a.vci {
   color: #3598dc;
   text-decoration: none;
 }
 /* line 194, style.scss */
-.vc-tooltip-wrap:hover > .tbdi {
+.vc-tooltip-wrap:hover > .vci {
   color: #1b1e25;
 }
 /* line 198, style.scss */
-.vc-tooltip-wrap:hover > a.tbdi {
+.vc-tooltip-wrap:hover > a.vci {
   color: #3598dc;
 }
 /* line 202, style.scss */

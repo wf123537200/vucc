@@ -155,13 +155,13 @@ a {
   background: lighten($gray-color, 5%);
 }
 
-.tbd-inline {
+.vc-inline {
   display: inline-block;
   vertical-align: middle;
 }
 
-a.tbd-inline,
-a.tbd-link {
+a.vc-inline,
+a.vc-link {
   color: $link-color;
   text-decoration: $link-hover-decoration;
   outline: none;

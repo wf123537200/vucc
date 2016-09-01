@@ -12,10 +12,10 @@
   }
 }
 
-@include fade-motion(fade, tbdFade);
-@include fade-motion(tbd-modal-fade, tbdFade);
+@include fade-motion(fade, vcFade);
+@include fade-motion(vc-modal-fade, vcFade);
 
-@include keyframes(tbdFadeIn) {
+@include keyframes(vcFadeIn) {
   0% {
     opacity: 0;
   }
@@ -24,7 +24,7 @@
   }
 }
 
-@include keyframes(tbdFadeOut) {
+@include keyframes(vcFadeOut) {
   0% {
     opacity: 1;
   }

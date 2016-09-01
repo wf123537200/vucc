@@ -45,7 +45,7 @@
 
                     <td>
 
-                        <div class="tbdb-edit-table-select-group">
+                        <div class="vcb-edit-table-select-group">
                             <!-- select -->
                             <pv-select :value.sync="item.columnType" :data="types">
                             </pv-select>

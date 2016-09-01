@@ -103,7 +103,7 @@ $duration: .3s;
         &:before {
           content: "\e62d";
           display: block;
-          font-family: "tbdicon" !important;
+          font-family: "vcicon" !important;
         }
       }
     }
@@ -111,20 +111,20 @@ $duration: .3s;
 
   &.slide-up-enter.slide-up-enter-active
   &.slide-up-appear.slide-up-appear-active {
-    animation-name: tbdSlideUpIn;
+    animation-name: vcSlideUpIn;
   }
 
   &.slide-up-enter.slide-up-enter-active
   &.slide-up-appear.slide-up-appear-active {
-    animation-name: tbdSlideDownIn;
+    animation-name: vcSlideDownIn;
   }
 
   &.slide-up-leave.slide-up-leave-active {
-    animation-name: tbdSlideUpOut;
+    animation-name: vcSlideUpOut;
   }
 
   &.slide-up-leave.slide-up-leave-active {
-    animation-name: tbdSlideDownOut;
+    animation-name: vcSlideDownOut;
   }
 
   &-hidden {
@@ -307,7 +307,7 @@ $duration: .3s;
         position: absolute;
         right: 5px;
         content: '\E600';
-        font-family: 'tbdicon';
+        font-family: 'vcicon';
         @include iconfont-size-under-12px(8px);
       }
     }

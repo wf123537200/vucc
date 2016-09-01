@@ -203,11 +203,11 @@
   display: none;
 }
 /* line 216, style.scss */
-.vc-slider .tbd-slider-handle:hover .show-tips {
+.vc-slider .vc-slider-handle:hover .show-tips {
   display: block;
 }
 /* line 220, style.scss */
-.vc-slider .show-tips .tbd-tooltip-inner {
+.vc-slider .show-tips .vc-tooltip-inner {
   min-width: 5em;
   text-align: center;
 }

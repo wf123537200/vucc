@@ -36,7 +36,7 @@
 /* line 70, ../../style/_mixins.scss */
 .vc-select-arrow:before {
   display: block;
-  font-family: "tbdicon" !important;
+  font-family: "vcicon" !important;
 }
 /* line 11, ../../style/_compatibility.scss */
 :root .vc-select-arrow {
@@ -224,7 +224,7 @@
 /* line 70, ../../style/_mixins.scss */
 .vc-select-selection-multiple .vc-select-selection-choice-remove:before {
   display: block;
-  font-family: "tbdicon" !important;
+  font-family: "vcicon" !important;
 }
 /* line 11, ../../style/_compatibility.scss */
 :root .vc-select-selection-multiple .vc-select-selection-choice-remove {

@@ -51,7 +51,7 @@
 /* line 70, ../../style/_mixins.scss */
 .vc-collapse-header-trigger:before {
   display: block;
-  font-family: "tbdicon" !important;
+  font-family: "vcicon" !important;
 }
 /* line 33, style.scss */
 .vc-collapse-header-trigger:before {

@@ -107,7 +107,7 @@
 /* line 114, style.scss */
 .vc-tabs-tab-prev-icon:before, .vc-tabs-tab-next-icon:before {
   display: block;
-  font-family: "tbdicon" !important;
+  font-family: "vcicon" !important;
 }
 /* line 120, style.scss */
 .vc-tabs-tab-prev.vc-tabs-tab-btn-disabled, .vc-tabs-tab-next.vc-tabs-tab-btn-disabled {
@@ -441,7 +441,7 @@
   margin-bottom: 0;
 }
 /* line 441, style.scss */
-.vc-tabs-panel > .vc-tabs-bar .vc-tabs-tab-inner .tbdi-cross {
+.vc-tabs-panel > .vc-tabs-bar .vc-tabs-tab-inner .vci-cross {
   margin-right: 0;
   color: #8b91a0;
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -452,7 +452,7 @@
   overflow: hidden;
 }
 /* line 450, style.scss */
-.vc-tabs-panel > .vc-tabs-bar .vc-tabs-tab-inner .tbdi-cross:hover {
+.vc-tabs-panel > .vc-tabs-bar .vc-tabs-tab-inner .vci-cross:hover {
   color: #57cc95;
   font-weight: bold;
 }

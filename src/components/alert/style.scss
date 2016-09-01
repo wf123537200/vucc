@@ -64,7 +64,7 @@ $alert-title-prefix-cls: $css-prefix + "alert-with-description";
     overflow: hidden;
     cursor: pointer;
 
-    .tbdi-cross {
+    .vci-cross {
       color: $gray-color;
       transition: color .3s ease;
       &:hover {

@@ -1,10 +1,10 @@
 @import "ver";
 
-$icon-url: '../resource/font/tbdicon';
+$icon-url: '../resource/font/vcicon';
 // font-face
 // @icon-url： 字体源文件的地址
 @font-face {
-  font-family: 'tbdicon';
+  font-family: 'vcicon';
   //src: url('#{$icon-url}.eot'); /* IE9*/
   src:
   //url('#{$icon-url}.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
@@ -24,7 +24,7 @@ $icon-url: '../resource/font/tbdicon';
 
   &:before {
     display: block;
-    font-family: "tbdicon" !important;
+    font-family: "vcicon" !important;
   }
 }
 

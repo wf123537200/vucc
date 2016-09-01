@@ -179,23 +179,23 @@ $tooltip-arrow-color: $tooltip-bg;
   display: inline-block;
   position: relative;
 
-  > .tbdi {
+  > .vci {
     font-size: 16px;
     color: $gray-color;
     cursor: pointer;
   }
 
-  > a.tbdi {
+  > a.vci {
     color: $blue-color;
     text-decoration: none;
   }
 
   &:hover {
-     > .tbdi {
+     > .vci {
        color: $base-color;
      }
 
-     > a.tbdi {
+     > a.vci {
        color: $blue-color;
      }
 

@@ -64,7 +64,7 @@
 .vc-dialog-close-x:before {
   content: "\e62d";
   display: block;
-  font-family: "tbdicon" !important;
+  font-family: "vcicon" !important;
 }
 /* line 71, style.scss */
 .vc-dialog-close:hover {

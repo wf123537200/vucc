@@ -17,15 +17,15 @@ $grid-gutter-width:     0;
     width: percentage(($i / $grid-columns))
   }
 
-  .tbd-col-push-#{$i} {
+  .vc-col-push-#{$i} {
     left: percentage(($i / $grid-columns));
   }
 
-  .tbd-col-pull-#{$i} {
+  .vc-col-pull-#{$i} {
     right: percentage(($i / $grid-columns));
   }
 
-  .tbd-col-offset-#{$i} {
+  .vc-col-offset-#{$i} {
     margin-left: percentage(($i / $grid-columns));
   }
 }

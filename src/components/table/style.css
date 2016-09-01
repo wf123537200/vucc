@@ -33,8 +33,8 @@
   font-weight: normal;
 }
 /* line 43, style.scss */
-.vc-table th .tbdi-filter,
-.vc-table th .tbdi-question-circle-o {
+.vc-table th .vci-filter,
+.vc-table th .vci-question-circle-o {
   margin-left: 4px;
   font-size: 14px;
   cursor: pointer;
@@ -42,12 +42,12 @@
   transition: all 0.3s ease;
 }
 /* line 50, style.scss */
-.vc-table th .tbdi-filter:hover,
-.vc-table th .tbdi-question-circle-o:hover {
+.vc-table th .vci-filter:hover,
+.vc-table th .vci-question-circle-o:hover {
   color: #1b1e25;
 }
 /* line 55, style.scss */
-.vc-table th .tbdi-filter {
+.vc-table th .vci-filter {
   display: inline-block;
   font-size: 12px;
   font-size: "10px 	";
@@ -57,23 +57,23 @@
   transform: scale(0.83333) rotate(0deg);
 }
 /* line 11, ../../style/_compatibility.scss */
-:root .vc-table th .tbdi-filter {
+:root .vc-table th .vci-filter {
   font-size: 12px;
 }
 /* line 59, style.scss */
-.vc-table th .vc-table-filter-selected.tbdi-filter {
+.vc-table th .vc-table-filter-selected.vci-filter {
   color: #57cc95;
 }
 /* line 63, style.scss */
-.vc-table th .tbd-form-explain {
+.vc-table th .vc-form-explain {
   vertical-align: middle;
 }
 /* line 67, style.scss */
-.vc-table th .tbd-label {
+.vc-table th .vc-label {
   margin-right: 0;
 }
 /* line 70, style.scss */
-.vc-table th .tbd-label + span {
+.vc-table th .vc-label + span {
   margin-left: 5px;
 }
 /* line 76, style.scss */
@@ -177,18 +177,18 @@
   cursor: pointer;
 }
 /* line 165, style.scss */
-.vc-table-column-sorter-up:hover .tbdi, .vc-table-column-sorter-down:hover .tbdi {
+.vc-table-column-sorter-up:hover .vci, .vc-table-column-sorter-down:hover .vci {
   color: #1b1e25;
 }
 /* line 169, style.scss */
-.vc-table-column-sorter-up.on .tbdi-caret-up,
-.vc-table-column-sorter-up.on .tbdi-caret-down, .vc-table-column-sorter-down.on .tbdi-caret-up,
-.vc-table-column-sorter-down.on .tbdi-caret-down {
+.vc-table-column-sorter-up.on .vci-caret-up,
+.vc-table-column-sorter-up.on .vci-caret-down, .vc-table-column-sorter-down.on .vci-caret-up,
+.vc-table-column-sorter-down.on .vci-caret-down {
   color: #57cc95;
 }
 /* line 175, style.scss */
-.vc-table-column-sorter .tbdi-caret-up,
-.vc-table-column-sorter .tbdi-caret-down {
+.vc-table-column-sorter .vci-caret-up,
+.vc-table-column-sorter .vci-caret-down {
   display: inline-block;
   font-size: 12px;
   font-size: "6px 	";
@@ -201,13 +201,13 @@
   color: #8b91a0;
 }
 /* line 11, ../../style/_compatibility.scss */
-:root .vc-table-column-sorter .tbdi-caret-up, :root
-.vc-table-column-sorter .tbdi-caret-down {
+:root .vc-table-column-sorter .vci-caret-up, :root
+.vc-table-column-sorter .vci-caret-down {
   font-size: 12px;
 }
 /* line 181, style.scss */
-.vc-table-column-sorter .tbdi-caret-up:before,
-.vc-table-column-sorter .tbdi-caret-down:before {
+.vc-table-column-sorter .vci-caret-up:before,
+.vc-table-column-sorter .vci-caret-down:before {
   -moz-transform-origin: 53% 50%;
   /* fix firefox position */
 }
@@ -261,7 +261,7 @@
   height: 18px;
   text-align: center;
   user-select: none;
-  font-family: 'tbdicon';
+  font-family: 'vcicon';
   font-style: normal;
   color: #8b91a0;
 }
@@ -288,7 +288,7 @@ tr
 }
 
 /* line 282, style.scss */
-.vc-table-filter-dropdown .tbd-label {
+.vc-table-filter-dropdown .vc-label {
   display: block;
   margin: -7px -15px;
   padding: 4px 15px;

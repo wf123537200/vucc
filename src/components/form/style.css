@@ -17,7 +17,7 @@
   box-sizing: border-box;
 }
 /* line 53, style.scss */
-.vc-form-item-row > [class*="tbd-col-"] {
+.vc-form-item-row > [class*="vc-col-"] {
   padding-right: 8px;
 }
 /* line 58, style.scss */
@@ -45,7 +45,7 @@
   margin: 0;
 }
 /* line 82, style.scss */
-.vc-form-item > [class*="tbd-col-"] {
+.vc-form-item > [class*="vc-col-"] {
   padding-right: 8px;
 }
 /* line 86, style.scss */
@@ -79,7 +79,7 @@
   margin-top: 24px;
 }
 /* line 114, style.scss */
-.vc-form-footer .tbd-btn {
+.vc-form-footer .vc-btn {
   margin-right: 10px;
 }
 
@@ -219,7 +219,7 @@
   position: absolute;
   top: 0;
   right: 0;
-  font-family: "tbdicon" !important;
+  font-family: "vcicon" !important;
   width: 40px;
   height: 40px;
   line-height: 40px;

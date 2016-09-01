@@ -13,12 +13,12 @@
   }
 }
 
-@include move-motion(move-up, tbdMoveUp);
-@include move-motion(move-down, tbdMoveDown);
-@include move-motion(move-left, tbdMoveLeft);
-@include move-motion(move-right, tbdMoveRight);
+@include move-motion(move-up, vcMoveUp);
+@include move-motion(move-down, vcMoveDown);
+@include move-motion(move-left, vcMoveLeft);
+@include move-motion(move-right, vcMoveRight);
 
-@include keyframes(tbdMoveDownIn) {
+@include keyframes(vcMoveDownIn) {
   0% {
     transform-origin: 0 0;
     transform: translateY(100%);
@@ -31,7 +31,7 @@
   }
 }
 
-@include keyframes(tbdMoveDownOut) {
+@include keyframes(vcMoveDownOut) {
   0% {
     transform-origin: 0 0;
     transform: translateY(0%);
@@ -44,7 +44,7 @@
   }
 }
 
-@include keyframes(tbdMoveLeftIn) {
+@include keyframes(vcMoveLeftIn) {
   0% {
     transform-origin: 0 0;
     transform: translateX(-100%);
@@ -57,7 +57,7 @@
   }
 }
 
-@include keyframes(tbdMoveLeftOut) {
+@include keyframes(vcMoveLeftOut) {
   0% {
     transform-origin: 0 0;
     transform: translateX(0%);
@@ -70,7 +70,7 @@
   }
 }
 
-@include keyframes(tbdMoveRightIn) {
+@include keyframes(vcMoveRightIn) {
   0% {
     opacity: 0;
     transform-origin: 0 0;
@@ -83,7 +83,7 @@
   }
 }
 
-@include keyframes(tbdMoveRightOut) {
+@include keyframes(vcMoveRightOut) {
   0% {
     transform-origin: 0 0;
     transform: translateX(0%);
@@ -96,7 +96,7 @@
   }
 }
 
-@include keyframes(tbdMoveUpIn) {
+@include keyframes(vcMoveUpIn) {
   0% {
     transform-origin: 0 0;
     transform: translateY(-100%);
@@ -109,7 +109,7 @@
   }
 }
 
-@include keyframes(tbdMoveUpOut) {
+@include keyframes(vcMoveUpOut) {
   0% {
     transform-origin: 0 0;
     transform: translateY(0%);

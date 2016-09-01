@@ -113,7 +113,7 @@ $effect-duration: .3s;
 
       &:before {
         display: block;
-        font-family: "tbdicon" !important;
+        font-family: "vcicon" !important;
       }
     }
 
@@ -438,7 +438,7 @@ $effect-duration: .3s;
   &-panel > &-bar &-nav-wrap {
     margin-bottom: 0;
   }
-  &-panel > &-bar &-tab-inner .tbdi-cross {
+  &-panel > &-bar &-tab-inner .vci-cross {
     margin-right: 0;
     color: $gray-color;
     transition: all 0.3s $ease-in-out;
