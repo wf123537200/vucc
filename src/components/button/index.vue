@@ -9,7 +9,7 @@
 -->
 
 <template>
-  <button :style="appendStyle" :class="['tbd-btn', typeClass, sizeClass, appendClass, {'tbd-btn-disabled': isDisabled}]">
+  <button :style="appendStyle" :class="['vc-btn', typeClass, sizeClass, appendClass, {'vc-btn-disabled': isDisabled}]">
     <span>
         <slot></slot>
     </span>
@@ -39,15 +39,15 @@
       return {
         typeClass: {
           'default': '',
-          'primary': 'tbd-btn-primary',
-          'outline': 'tbd-btn-outline',
-          'error': 'tbd-btn-error',
-          'link': 'tbd-btn-link'
+          'primary': 'vc-btn-primary',
+          'outline': 'vc-btn-outline',
+          'error': 'vc-btn-error',
+          'link': 'vc-btn-link'
         }[this.type],
         sizeClass: {
           'normal': '',
-          'large': 'tbd-btn-lg',
-          'small': 'tbd-btn-sm'
+          'large': 'vc-btn-lg',
+          'small': 'vc-btn-sm'
         }[this.size]
       }
     }

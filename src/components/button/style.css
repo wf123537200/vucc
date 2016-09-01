@@ -1,7 +1,7 @@
 /* input */
 /* icon fonts */
 /* line 22, style.scss */
-.tbd-btn {
+.vc-btn {
   display: inline-block;
   box-sizing: border-box;
   height: 36px;
@@ -17,94 +17,94 @@
   cursor: pointer;
 }
 /* line 37, style.scss */
-.tbd-btn:hover, .tbd-btn:active, .tbd-btn:focus {
+.vc-btn:hover, .vc-btn:active, .vc-btn:focus {
   border-color: #57cc95;
   color: #57cc95;
   outline: none;
 }
 /* line 46, style.scss */
-.tbd-btn-outline {
+.vc-btn-outline {
   border-color: #57cc95;
   background: transparent;
   color: #57cc95;
 }
 /* line 51, style.scss */
-.tbd-btn-outline:hover, .tbd-btn-outline:active, .tbd-btn-outline:focus {
+.vc-btn-outline:hover, .vc-btn-outline:active, .vc-btn-outline:focus {
   border-color: #38b87c;
   color: #38b87c;
 }
 /* line 59, style.scss */
-.tbd-btn-primary {
+.vc-btn-primary {
   border-color: #57cc95;
   background: #57cc95;
   color: #fff;
 }
 /* line 13, style.scss */
-.tbd-btn-primary:hover, .tbd-btn-primary:active, .tbd-btn-primary:focus {
+.vc-btn-primary:hover, .vc-btn-primary:active, .vc-btn-primary:focus {
   border-color: #38b87c;
   background: #38b87c;
   color: #fff;
 }
 /* line 63, style.scss */
-.tbd-btn-error {
+.vc-btn-error {
   border-color: #f35958;
   background: #f35958;
   color: #fff;
 }
 /* line 13, style.scss */
-.tbd-btn-error:hover, .tbd-btn-error:active, .tbd-btn-error:focus {
+.vc-btn-error:hover, .vc-btn-error:active, .vc-btn-error:focus {
   border-color: #f02a28;
   background: #f02a28;
   color: #fff;
 }
 /* line 68, style.scss */
-.tbd-btn-disabled, .tbd-btn-linktbd-btn-disabled, a .tbd-btn-linktbd-btn-disabled, .tbd-btn-disabled:hover, .tbd-btn-linktbd-btn-disabled:hover, .tbd-btn-disabled:active, .tbd-btn-linktbd-btn-disabled:active, .tbd-btn-disabled:focus, .tbd-btn-linktbd-btn-disabled:focus {
+.vc-btn-disabled, .vc-btn-linkvc-btn-disabled, a .vc-btn-linkvc-btn-disabled, .vc-btn-disabled:hover, .vc-btn-linkvc-btn-disabled:hover, .vc-btn-disabled:active, .vc-btn-linkvc-btn-disabled:active, .vc-btn-disabled:focus, .vc-btn-linkvc-btn-disabled:focus {
   border-color: #d2d4d8;
   background: #d2d4d8;
   color: #8b91a0;
   cursor: not-allowed;
 }
 /* line 79, style.scss */
-.tbd-btn-link, a .tbd-btn-link {
+.vc-btn-link, a .vc-btn-link {
   border-color: transparent;
   background: transparent;
   color: #3598dc;
 }
 /* line 85, style.scss */
-.tbd-btn-link:hover, .tbd-btn-link:active, .tbd-btn-link:focus, a .tbd-btn-link:hover, a .tbd-btn-link:active, a .tbd-btn-link:focus {
+.vc-btn-link:hover, .vc-btn-link:active, .vc-btn-link:focus, a .vc-btn-link:hover, a .vc-btn-link:active, a .vc-btn-link:focus {
   border-color: transparent;
   background: transparent;
   color: #3598dc;
   text-decoration: underline;
 }
 /* line 94, style.scss */
-.tbd-btn-linktbd-btn-disabled, a .tbd-btn-linktbd-btn-disabled {
+.vc-btn-linkvc-btn-disabled, a .vc-btn-linkvc-btn-disabled {
   color: #8b91a0;
   cursor: not-allowed;
 }
 /* line 99, style.scss */
-.tbd-btn-linktbd-btn-disabled:hover, .tbd-btn-linktbd-btn-disabled:active, .tbd-btn-linktbd-btn-disabled:focus, a .tbd-btn-linktbd-btn-disabled:hover, a .tbd-btn-linktbd-btn-disabled:active, a .tbd-btn-linktbd-btn-disabled:focus {
+.vc-btn-linkvc-btn-disabled:hover, .vc-btn-linkvc-btn-disabled:active, .vc-btn-linkvc-btn-disabled:focus, a .vc-btn-linkvc-btn-disabled:hover, a .vc-btn-linkvc-btn-disabled:active, a .vc-btn-linkvc-btn-disabled:focus {
   color: #8b91a0;
   text-decoration: none;
 }
 /* line 109, style.scss */
-.tbd-btn span + .tbdi-down {
+.vc-btn span + .vci-down {
   margin: 0 -10px 0 10px;
   font-size: 12px;
 }
 /* line 113, style.scss */
-.tbd-btn .tbdi + span {
+.vc-btn .vci + span {
   margin-left: 10px;
 }
 /* line 118, style.scss */
-.tbd-btn-xs {
+.vc-btn-xs {
   padding: 0 7px;
   height: 28px;
   line-height: 26px;
   font-size: 12px;
 }
 /* line 124, style.scss */
-.tbd-btn-xs span + .tbdi-down {
+.vc-btn-xs span + .vci-down {
   margin: 0 -5px 0 5px;
   display: inline-block;
   font-size: 12px;
@@ -115,22 +115,22 @@
   transform: scale(0.83333) rotate(0deg);
 }
 /* line 11, ../../style/_compatibility.scss */
-:root .tbd-btn-xs span + .tbdi-down {
+:root .vc-btn-xs span + .vci-down {
   font-size: 12px;
 }
 /* line 129, style.scss */
-.tbd-btn-xs .tbdi + span {
+.vc-btn-xs .vci + span {
   margin-left: 5px;
 }
 /* line 134, style.scss */
-.tbd-btn-sm {
+.vc-btn-sm {
   padding: 0 10px;
   height: 32px;
   line-height: 30px;
   font-size: 12px;
 }
 /* line 140, style.scss */
-.tbd-btn-sm span + .tbdi-down {
+.vc-btn-sm span + .vci-down {
   margin: 0 -5px 0 5px;
   display: inline-block;
   font-size: 12px;
@@ -141,27 +141,27 @@
   transform: scale(0.83333) rotate(0deg);
 }
 /* line 11, ../../style/_compatibility.scss */
-:root .tbd-btn-sm span + .tbdi-down {
+:root .vc-btn-sm span + .vci-down {
   font-size: 12px;
 }
 /* line 145, style.scss */
-.tbd-btn-sm .tbdi + span {
+.vc-btn-sm .vci + span {
   margin-left: 5px;
 }
 /* line 150, style.scss */
-.tbd-btn-lg {
+.vc-btn-lg {
   padding: 0 25px;
   height: 40px;
   font-size: 14px;
   line-height: 38px;
 }
 /* line 158, style.scss */
-.tbd-btn-loading {
+.vc-btn-loading {
   position: relative;
   padding-left: 30px;
 }
 /* line 162, style.scss */
-.tbd-btn-loading:after {
+.vc-btn-loading:after {
   position: absolute;
   left: 10px;
   top: 50%;
@@ -172,6 +172,6 @@
   font: 16px/1 'tbdicon';
 }
 /* line 175, style.scss */
-.tbd-btn-extra {
+.vc-btn-extra {
   padding: 0 10px;
 }

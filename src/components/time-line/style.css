@@ -1,23 +1,23 @@
 /* line 5, style.scss */
-.tbd-timeline {
+.vc-timeline {
   padding-left: 10px;
   margin-bottom: 20px;
 }
 /* line 9, style.scss */
-.tbd-timeline-item {
+.vc-timeline-item {
   position: relative;
   padding: 0 0 10px 15px;
   border-left: 2px solid #e5e9ec;
   min-height: 30px;
 }
 /* line 15, style.scss */
-.tbd-timeline-item:last-child {
+.vc-timeline-item:last-child {
   border-left-color: transparent;
   min-height: 0;
   padding-bottom: 0;
 }
 /* line 21, style.scss */
-.tbd-timeline-item-dot {
+.vc-timeline-item-dot {
   position: absolute;
   left: -9px;
   top: 0;
@@ -29,10 +29,10 @@
   border-radius: 50%;
 }
 /* line 33, style.scss */
-.tbd-timeline-item p {
+.vc-timeline-item p {
   margin-bottom: 5px;
 }
 /* line 37, style.scss */
-.tbd-timeline-item-info {
+.vc-timeline-item-info {
   margin-right: 10px;
 }

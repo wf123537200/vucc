@@ -27,12 +27,12 @@
 -->
 
 <template>
-    <ul :style="appendStyle" :class="['tbd-tree', appendClass]" >
-        <li v-for="it in data.leafs" :class="[{'tbd-tree-checked': it.isChecked, 'tbd-tree-disabled': it.isDisabled, 'tbd-tree-open': it.isOpened}]">
-            <a href="javascript: void 0;" class="tbd-tree-item">
-                <i @click.stop="toggleOpen(it)" v-if="it.subTree" class="tbd-tree-caret"></i>
-                <span class="tbd-tree-text" @click.stop="toggleOpen(it)">
-                    <i @click.stop="toggleChecked(it)" v-if="data.isHasCheckbox" class="tbd-tree-checkbox"></i>
+    <ul :style="appendStyle" :class="['vc-tree', appendClass]" >
+        <li v-for="it in data.leafs" :class="[{'vc-tree-checked': it.isChecked, 'vc-tree-disabled': it.isDisabled, 'vc-tree-open': it.isOpened}]">
+            <a href="javascript: void 0;" class="vc-tree-item">
+                <i @click.stop="toggleOpen(it)" v-if="it.subTree" class="vc-tree-caret"></i>
+                <span class="vc-tree-text" @click.stop="toggleOpen(it)">
+                    <i @click.stop="toggleChecked(it)" v-if="data.isHasCheckbox" class="vc-tree-checkbox"></i>
                     {{it.content}}
                 </span>
             </a>

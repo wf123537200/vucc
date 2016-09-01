@@ -23,9 +23,9 @@
 -->
 <template>
   <div v-for="it in data" track-by="$index" :style="appendStyle" :class="[appendClass]">
-    <label class="tbd-label" :class="{'tbd-label-checked': (resultList && resultList.includes(it.value) || value === true), 'tbd-label-disabled': it.isDisabled}" @click="toggleSwitch($index, it.value)">
-      <span class="tbd-checkbox"></span>
-      <span class="tbd-label-text">
+    <label class="vc-label" :class="{'vc-label-checked': (resultList && resultList.includes(it.value) || value === true), 'vc-label-disabled': it.isDisabled}" @click="toggleSwitch($index, it.value)">
+      <span class="vc-checkbox"></span>
+      <span class="vc-label-text">
           {{{it.label || it.value}}}
       </span>
     </label>

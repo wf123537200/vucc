@@ -20,8 +20,8 @@
   @param {Object} appendStyle 自定义Style对象
 -->
 <template>
-    <div id="{{id}}" :style="appendStyle" :class="['tbd-popover-wrap', appendClass, {'tbd-block': isShow, 'tbd-hidden': !isShow}]">
-        <div class="tbd-popover {{typeClass}}">
+    <div id="{{id}}" :style="appendStyle" :class="['vc-popover-wrap', appendClass, {'vc-block': isShow, 'vc-hidden': !isShow}]">
+        <div class="vc-popover {{typeClass}}">
             {{content}}
         </div>
     </div>
@@ -32,9 +32,9 @@
 
     const classMap = {
         'info': '',
-        'success': 'tbd-popover-success',
-        'error': 'tbd-popover-error',
-        'warn': 'tbd-popover-warning'
+        'success': 'vc-popover-success',
+        'error': 'vc-popover-error',
+        'warn': 'vc-popover-warning'
     };
 
     // Tips class 4 call way 2
@@ -47,8 +47,8 @@
             this.isNoId = !!id;
             id = id || ('tips' + Math.random().toString(36).substr(3, 15));
             this.id = id;
-            this.tpl = `<div id="${id}" style="${appendStyle || ''}" class="tbd-popover-wrap ${appendClass || ''}">
-                            <div class="tbd-popover ${classMap[type]}">
+            this.tpl = `<div id="${id}" style="${appendStyle || ''}" class="vc-popover-wrap ${appendClass || ''}">
+                            <div class="vc-popover ${classMap[type]}">
                                 ${content}
                             </div>
                         </div>`;

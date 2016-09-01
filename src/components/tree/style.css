@@ -1,11 +1,11 @@
 /* input */
 /* icon fonts */
 /* line 13, style.scss */
-.tbd-tree {
+.vc-tree {
   margin-bottom: 20px;
 }
 /* line 16, style.scss */
-.tbd-tree-item {
+.vc-tree-item {
   position: relative;
   display: block;
   margin-left: 15px;
@@ -17,17 +17,17 @@
   text-decoration: none;
 }
 /* line 27, style.scss */
-.tbd-tree-item:hover {
+.vc-tree-item:hover {
   color: #1b1e25;
   text-decoration: none;
   background-color: #f4f5f7;
 }
 /* line 32, style.scss */
-.tbd-tree-item:hover .tbd-tree-checkbox {
+.vc-tree-item:hover .vc-tree-checkbox {
   border-color: #d2d4d8;
 }
 /* line 38, style.scss */
-.tbd-tree-caret {
+.vc-tree-caret {
   position: absolute;
   left: -15px;
   top: 0;
@@ -38,7 +38,7 @@
   cursor: pointer;
 }
 /* line 48, style.scss */
-.tbd-tree-caret:after {
+.vc-tree-caret:after {
   content: '\E60A';
   font-family: 'tbdicon';
   line-height: 1;
@@ -52,15 +52,15 @@
   transform: scale(0.66667) rotate(0deg);
 }
 /* line 11, ../../style/_compatibility.scss */
-:root .tbd-tree-caret:after {
+:root .vc-tree-caret:after {
   font-size: 12px;
 }
 /* line 56, style.scss */
-.tbd-tree-caret:hover {
+.vc-tree-caret:hover {
   color: #1b1e25;
 }
 /* line 61, style.scss */
-.tbd-tree-checkbox {
+.vc-tree-checkbox {
   position: relative;
   top: -2px;
   display: inline-block;
@@ -75,7 +75,7 @@
   cursor: pointer;
 }
 /* line 75, style.scss */
-.tbd-tree-checkbox:after {
+.vc-tree-checkbox:after {
   display: none;
   position: absolute;
   top: 0px;
@@ -90,57 +90,57 @@
   transform: rotate(45deg);
 }
 /* line 91, style.scss */
-.tbd-tree-text {
+.vc-tree-text {
   display: block;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 /* line 96, style.scss */
-.tbd-tree ul {
+.vc-tree ul {
   margin-left: 15px;
   display: none;
 }
 /* line 104, style.scss */
-.tbd-tree-open > .tbd-tree-item .tbd-tree-caret:after {
+.vc-tree-open > .vc-tree-item .vc-tree-caret:after {
   content: '\E611';
 }
 /* line 109, style.scss */
-.tbd-tree-open > ul {
+.vc-tree-open > ul {
   display: block;
 }
 /* line 116, style.scss */
-.tbd-tree-checked > .tbd-tree-item {
+.vc-tree-checked > .vc-tree-item {
   color: #57cc95;
 }
 /* line 119, style.scss */
-.tbd-tree-checked > .tbd-tree-item .tbd-tree-checkbox {
+.vc-tree-checked > .vc-tree-item .vc-tree-checkbox {
   position: relative;
   border-color: #57cc95;
   background: #57cc95;
 }
 /* line 124, style.scss */
-.tbd-tree-checked > .tbd-tree-item .tbd-tree-checkbox:after {
+.vc-tree-checked > .vc-tree-item .vc-tree-checkbox:after {
   display: block;
 }
 /* line 133, style.scss */
-.tbd-tree-disabled > .tbd-tree-item {
+.vc-tree-disabled > .vc-tree-item {
   color: #8b91a0;
   cursor: not-allowed;
 }
 /* line 137, style.scss */
-.tbd-tree-disabled > .tbd-tree-item:hover {
+.vc-tree-disabled > .vc-tree-item:hover {
   background: transparent;
   color: #8b91a0;
 }
 /* line 142, style.scss */
-.tbd-tree-disabled > .tbd-tree-item .tbd-tree-checkbox {
+.vc-tree-disabled > .vc-tree-item .vc-tree-checkbox {
   position: relative;
   border-color: #d2d4d8;
   background: #e5e9ec;
   cursor: not-allowed;
 }
 /* line 148, style.scss */
-.tbd-tree-disabled > .tbd-tree-item .tbd-tree-checkbox:after {
+.vc-tree-disabled > .vc-tree-item .vc-tree-checkbox:after {
   border-color: #d2d4d8;
 }

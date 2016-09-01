@@ -7,7 +7,7 @@
 -->
 
 <template>
-    <div :style="appendStyle" :class="['tbd-collapse-group', appendClass]" @mousedown="open">
+    <div :style="appendStyle" :class="['vc-collapse-group', appendClass]" @mousedown="open">
         <slot></slot>
     </div>
 </template>

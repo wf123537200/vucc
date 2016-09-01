@@ -258,7 +258,7 @@
       <div class="doc-example">
         <v-collapse :title="'我是一个下拉面板'">
           <div slot="operate">
-            <a href="" class="tbd-link">额外操作</a>
+            <a href="" class="vc-link">额外操作</a>
           </div>
           <div style="padding: 20px 0;">
             <p>内容内容</p>
@@ -272,7 +272,7 @@
           <!-- xx -->
           <v-collapse :title="'我是一个下拉面板'">
             <div slot="operate">
-              <a href="" class="tbd-link">额外操作</a>
+              <a href="" class="vc-link">额外操作</a>
             </div>
             <div style="padding: 20px 0;">
               <p>内容内容</p>
@@ -280,7 +280,7 @@
           </v-collapse>
           <v-collapse :title="'我是一个下拉面板'">
             <div slot="operate">
-              <a href="" class="tbd-link">额外操作</a>
+              <a href="" class="vc-link">额外操作</a>
             </div>
             <div style="padding: 20px 0;">
               <p>内容内容</p>
@@ -288,7 +288,7 @@
           </v-collapse>
           <v-collapse :title="'我是一个下拉面板'">
             <div slot="operate">
-              <a href="" class="tbd-link">额外操作</a>
+              <a href="" class="vc-link">额外操作</a>
             </div>
             <div style="padding: 20px 0;">
               <p>内容内容</p>
@@ -723,9 +723,9 @@
             title: '操作',
             hasPartial: true,
             render(text, item) {
-              Vue.partial('xxx', `<a class="tbd-inline" @click="showTipsWay2">操作一</a>
-                        <span class="tbd-divider"></span>
-                      <a class="tbd-inline">操作二</a>`);
+              Vue.partial('xxx', `<a class="vc-inline" @click="showTipsWay2">操作一</a>
+                        <span class="vc-divider"></span>
+                      <a class="vc-inline">操作二</a>`);
 
               return {
                 id: 'xxx',
@@ -903,7 +903,14 @@
       },
 
       showMb2(id) {
-        window.MessageBox.init('', 'info', 'lalalala');
+        window.MessageBox.init({
+          type: 'confirm',
+          title: '标题',
+          explain: '我就是一个解释!',
+          onOk() {
+            console.log('我是OK!');
+          }
+        });
       },
 
       // 展示对话框

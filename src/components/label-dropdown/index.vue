@@ -28,30 +28,30 @@
    @param {Object} appendClass 自定义Style对象
 -->
 <template>
-    <div class="tbd-select" :class="[appendClass, {'tbd-dropdown-wrap-open' : showDropdown}]" :style="appendStyle">
-        <div class="tbd-select-selection tbd-select-selection-multiple"
+    <div class="vc-select" :class="[appendClass, {'vc-dropdown-wrap-open' : showDropdown}]" :style="appendStyle">
+        <div class="vc-select-selection vc-select-selection-multiple"
              @click.stop="focus">
-            <ul class="tbd-select-selection-rendered">
-                <li class="tbd-select-selection-choice tbd-select-selection-choice-disabled"
+            <ul class="vc-select-selection-rendered">
+                <li class="vc-select-selection-choice vc-select-selection-choice-disabled"
                     v-if="disabled.length > 0" v-for="item in disabled">
-                    <!-- 不可编辑或删除加上 tbd-select-selection-choice-disabled -->
-              <span class="tbd-select-selection-choice-content">
+                    <!-- 不可编辑或删除加上 vc-select-selection-choice-disabled -->
+              <span class="vc-select-selection-choice-content">
                   {{item.userName}}
               </span>
                 </li>
-                <li class="tbd-select-selection-choice" v-if="selected.length > 0"
+                <li class="vc-select-selection-choice" v-if="selected.length > 0"
                     v-for="item in selected">
-              <span class="tbd-select-selection-choice-content">
+              <span class="vc-select-selection-choice-content">
                   {{item.userName}}
               </span>
-              <span class="tbd-select-selection-choice-remove" @click.stop="deleteItem(item.userId)">
+              <span class="vc-select-selection-choice-remove" @click.stop="deleteItem(item.userId)">
               </span>
                 </li>
-                <li class="tbd-select-selection-choice tbd-select-selection-choice-editing">
-                    <!-- 正在编辑中加上 tbd-select-selection-choice-editing -->
-                    <input class="tbd-select-selection-choice-input" type="text" style="width:80px"
+                <li class="vc-select-selection-choice vc-select-selection-choice-editing">
+                    <!-- 正在编辑中加上 vc-select-selection-choice-editing -->
+                    <input class="vc-select-selection-choice-input" type="text" style="width:80px"
                            v-model="keyword" v-el:keyword>
-                    <span class="tbd-select-selection-choice-remove"></span>
+                    <span class="vc-select-selection-choice-remove"></span>
                 </li>
             </ul>
         </div>

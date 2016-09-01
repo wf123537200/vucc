@@ -10,7 +10,7 @@
 -->
 
 <template>
-    <form :class="[appendClass, {'tbd-form-inline': !isVertical, 'tbd-form-horizontal': isVertical}]"
+    <form :class="[appendClass, {'vc-form-inline': !isVertical, 'vc-form-horizontal': isVertical}]"
           :style="appendStyle">
         <slot></slot>
     </form>

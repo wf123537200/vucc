@@ -1,5 +1,5 @@
 /* line 22, style.scss */
-.tbd-tooltip {
+.vc-tooltip {
   position: absolute;
   z-index: 999;
   display: block;
@@ -11,32 +11,32 @@
   white-space: normal;
 }
 /* line 33, style.scss */
-.tbd-tooltip * {
+.vc-tooltip * {
   box-sizing: border-box;
 }
 /* line 37, style.scss */
-.tbd-tooltip-hidden {
+.vc-tooltip-hidden {
   display: none;
 }
 /* line 41, style.scss */
-.tbd-tooltip-placement-top, .tbd-tooltip-placement-topLeft, .tbd-tooltip-placement-topRight {
+.vc-tooltip-placement-top, .vc-tooltip-placement-topLeft, .vc-tooltip-placement-topRight {
   padding: 5px 0 8px 0;
 }
 /* line 46, style.scss */
-.tbd-tooltip-placement-right, .tbd-tooltip-placement-rightTop, .tbd-tooltip-placement-rightBottom {
+.vc-tooltip-placement-right, .vc-tooltip-placement-rightTop, .vc-tooltip-placement-rightBottom {
   padding: 0 5px 0 8px;
 }
 /* line 51, style.scss */
-.tbd-tooltip-placement-bottom, .tbd-tooltip-placement-bottomLeft, .tbd-tooltip-placement-bottomRight {
+.vc-tooltip-placement-bottom, .vc-tooltip-placement-bottomLeft, .vc-tooltip-placement-bottomRight {
   padding: 8px 0 5px 0;
 }
 /* line 56, style.scss */
-.tbd-tooltip-placement-left, .tbd-tooltip-placement-leftTop, .tbd-tooltip-placement-leftBottom {
+.vc-tooltip-placement-left, .vc-tooltip-placement-leftTop, .vc-tooltip-placement-leftBottom {
   padding: 0 8px 0 5px;
 }
 
 /* line 64, style.scss */
-.tbd-tooltip-inner {
+.vc-tooltip-inner {
   max-width: 200px;
   min-width: 150px;
   padding: 8px 10px;
@@ -52,7 +52,7 @@
 }
 
 /* line 80, style.scss */
-.tbd-tooltip-arrow {
+.vc-tooltip-arrow {
   position: absolute;
   width: 0;
   height: 0;
@@ -61,181 +61,181 @@
 }
 
 /* line 89, style.scss */
-.tbd-tooltip-placement-top .tbd-tooltip-arrow, .tbd-tooltip-placement-topLeft .tbd-tooltip-arrow, .tbd-tooltip-placement-topRight .tbd-tooltip-arrow {
+.vc-tooltip-placement-top .vc-tooltip-arrow, .vc-tooltip-placement-topLeft .vc-tooltip-arrow, .vc-tooltip-placement-topRight .vc-tooltip-arrow {
   bottom: 3px;
   border-width: 5px 5px 0;
   border-top-color: #1b1e24;
 }
 /* line 98, style.scss */
-.tbd-tooltip-placement-top .tbd-tooltip-arrow {
+.vc-tooltip-placement-top .vc-tooltip-arrow {
   left: 50%;
   margin-left: -5px;
 }
 /* line 103, style.scss */
-.tbd-tooltip-placement-topLeft .tbd-tooltip-arrow {
+.vc-tooltip-placement-topLeft .vc-tooltip-arrow {
   left: 16px;
 }
 /* line 107, style.scss */
-.tbd-tooltip-placement-topRight .tbd-tooltip-arrow {
+.vc-tooltip-placement-topRight .vc-tooltip-arrow {
   right: 16px;
 }
 /* line 111, style.scss */
-.tbd-tooltip-placement-right .tbd-tooltip-arrow, .tbd-tooltip-placement-rightTop .tbd-tooltip-arrow, .tbd-tooltip-placement-rightBottom .tbd-tooltip-arrow {
+.vc-tooltip-placement-right .vc-tooltip-arrow, .vc-tooltip-placement-rightTop .vc-tooltip-arrow, .vc-tooltip-placement-rightBottom .vc-tooltip-arrow {
   left: 3px;
   border-width: 5px 5px 5px 0;
   border-right-color: #1b1e24;
 }
 /* line 120, style.scss */
-.tbd-tooltip-placement-right .tbd-tooltip-arrow {
+.vc-tooltip-placement-right .vc-tooltip-arrow {
   top: 50%;
   margin-top: -5px;
 }
 /* line 125, style.scss */
-.tbd-tooltip-placement-rightTop .tbd-tooltip-arrow {
+.vc-tooltip-placement-rightTop .vc-tooltip-arrow {
   top: 8px;
 }
 /* line 129, style.scss */
-.tbd-tooltip-placement-rightBottom .tbd-tooltip-arrow {
+.vc-tooltip-placement-rightBottom .vc-tooltip-arrow {
   bottom: 8px;
 }
 /* line 133, style.scss */
-.tbd-tooltip-placement-left .tbd-tooltip-arrow, .tbd-tooltip-placement-leftTop .tbd-tooltip-arrow, .tbd-tooltip-placement-leftBottom .tbd-tooltip-arrow {
+.vc-tooltip-placement-left .vc-tooltip-arrow, .vc-tooltip-placement-leftTop .vc-tooltip-arrow, .vc-tooltip-placement-leftBottom .vc-tooltip-arrow {
   right: 3px;
   border-width: 5px 0 5px 5px;
   border-left-color: #1b1e24;
 }
 /* line 142, style.scss */
-.tbd-tooltip-placement-left .tbd-tooltip-arrow {
+.vc-tooltip-placement-left .vc-tooltip-arrow {
   top: 50%;
   margin-top: -5px;
 }
 /* line 147, style.scss */
-.tbd-tooltip-placement-leftTop .tbd-tooltip-arrow {
+.vc-tooltip-placement-leftTop .vc-tooltip-arrow {
   top: 8px;
 }
 /* line 151, style.scss */
-.tbd-tooltip-placement-leftBottom .tbd-tooltip-arrow {
+.vc-tooltip-placement-leftBottom .vc-tooltip-arrow {
   bottom: 8px;
 }
 /* line 155, style.scss */
-.tbd-tooltip-placement-bottom .tbd-tooltip-arrow, .tbd-tooltip-placement-bottomLeft .tbd-tooltip-arrow, .tbd-tooltip-placement-bottomRight .tbd-tooltip-arrow {
+.vc-tooltip-placement-bottom .vc-tooltip-arrow, .vc-tooltip-placement-bottomLeft .vc-tooltip-arrow, .vc-tooltip-placement-bottomRight .vc-tooltip-arrow {
   top: 3px;
   border-width: 0 5px 5px;
   border-bottom-color: #1b1e24;
 }
 /* line 164, style.scss */
-.tbd-tooltip-placement-bottom .tbd-tooltip-arrow {
+.vc-tooltip-placement-bottom .vc-tooltip-arrow {
   left: 50%;
   margin-left: -5px;
 }
 /* line 169, style.scss */
-.tbd-tooltip-placement-bottomLeft .tbd-tooltip-arrow {
+.vc-tooltip-placement-bottomLeft .vc-tooltip-arrow {
   left: 16px;
 }
 /* line 173, style.scss */
-.tbd-tooltip-placement-bottomRight .tbd-tooltip-arrow {
+.vc-tooltip-placement-bottomRight .vc-tooltip-arrow {
   right: 16px;
 }
 
 /* line 178, style.scss */
-.tbd-tooltip-wrap {
+.vc-tooltip-wrap {
   display: inline-block;
   position: relative;
 }
 /* line 182, style.scss */
-.tbd-tooltip-wrap > .tbdi {
+.vc-tooltip-wrap > .tbdi {
   font-size: 16px;
   color: #8b91a0;
   cursor: pointer;
 }
 /* line 188, style.scss */
-.tbd-tooltip-wrap > a.tbdi {
+.vc-tooltip-wrap > a.tbdi {
   color: #3598dc;
   text-decoration: none;
 }
 /* line 194, style.scss */
-.tbd-tooltip-wrap:hover > .tbdi {
+.vc-tooltip-wrap:hover > .tbdi {
   color: #1b1e25;
 }
 /* line 198, style.scss */
-.tbd-tooltip-wrap:hover > a.tbdi {
+.vc-tooltip-wrap:hover > a.tbdi {
   color: #3598dc;
 }
 /* line 202, style.scss */
-.tbd-tooltip-wrap:hover .tbd-tooltip {
+.vc-tooltip-wrap:hover .vc-tooltip {
   display: block;
 }
 /* line 207, style.scss */
-.tbd-tooltip-wrap .tbd-tooltip {
+.vc-tooltip-wrap .vc-tooltip {
   display: none;
   width: 200px;
 }
 /* line 213, style.scss */
-.tbd-tooltip-wrap .tbd-tooltip-placement-bottom {
+.vc-tooltip-wrap .vc-tooltip-placement-bottom {
   top: 100%;
   left: 50%;
   margin-left: -100px;
 }
 /* line 218, style.scss */
-.tbd-tooltip-wrap .tbd-tooltip-placement-bottomLeft {
+.vc-tooltip-wrap .vc-tooltip-placement-bottomLeft {
   top: 100%;
   left: 50%;
   margin-left: -30px;
 }
 /* line 223, style.scss */
-.tbd-tooltip-wrap .tbd-tooltip-placement-bottomRight {
+.vc-tooltip-wrap .vc-tooltip-placement-bottomRight {
   top: 100%;
   right: 50%;
   margin-right: -26px;
 }
 /* line 229, style.scss */
-.tbd-tooltip-wrap .tbd-tooltip-placement-top {
+.vc-tooltip-wrap .vc-tooltip-placement-top {
   bottom: 100%;
   left: 50%;
   margin-left: -100px;
 }
 /* line 234, style.scss */
-.tbd-tooltip-wrap .tbd-tooltip-placement-topLeft {
+.vc-tooltip-wrap .vc-tooltip-placement-topLeft {
   bottom: 100%;
   left: 50%;
   margin-left: -30px;
 }
 /* line 239, style.scss */
-.tbd-tooltip-wrap .tbd-tooltip-placement-topRight {
+.vc-tooltip-wrap .vc-tooltip-placement-topRight {
   bottom: 100%;
   right: 50%;
   margin-right: -26px;
 }
 /* line 245, style.scss */
-.tbd-tooltip-wrap .tbd-tooltip-placement-right {
+.vc-tooltip-wrap .vc-tooltip-placement-right {
   left: 100%;
   top: 0;
 }
 /* line 249, style.scss */
-.tbd-tooltip-wrap .tbd-tooltip-placement-rightTop {
+.vc-tooltip-wrap .vc-tooltip-placement-rightTop {
   left: 100%;
   top: 50%;
   margin-top: -13px;
 }
 /* line 254, style.scss */
-.tbd-tooltip-wrap .tbd-tooltip-placement-rightBottom {
+.vc-tooltip-wrap .vc-tooltip-placement-rightBottom {
   left: 100%;
   bottom: 50%;
   margin-bottom: -13px;
 }
 /* line 260, style.scss */
-.tbd-tooltip-wrap .tbd-tooltip-placement-left {
+.vc-tooltip-wrap .vc-tooltip-placement-left {
   right: 100%;
   top: 0;
 }
 /* line 264, style.scss */
-.tbd-tooltip-wrap .tbd-tooltip-placement-leftTop {
+.vc-tooltip-wrap .vc-tooltip-placement-leftTop {
   right: 100%;
   top: 50%;
   margin-top: -13px;
 }
 /* line 269, style.scss */
-.tbd-tooltip-wrap .tbd-tooltip-placement-leftBottom {
+.vc-tooltip-wrap .vc-tooltip-placement-leftBottom {
   right: 100%;
   bottom: 50%;
   margin-bottom: -13px;

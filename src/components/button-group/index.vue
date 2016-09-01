@@ -29,8 +29,8 @@
   @param {Object} appendClass 自定义Style对象
 -->
 <template>
-    <div :class="['tbd-btn-group', appendClass]" :style="appendStyle">
-        <pv-button v-for="it in data" :append-class="$index === curBtnIndex ? 'tbd-btn-primary' : ''"
+    <div :class="['vc-btn-group', appendClass]" :style="appendStyle">
+        <pv-button v-for="it in data" :append-class="$index === curBtnIndex ? 'vc-btn-primary' : ''"
                   @click="it.onClickWarp($index)"
                   :size="size"
                   :is-disabled="it.isDisabled">

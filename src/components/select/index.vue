@@ -38,10 +38,10 @@
                  :as-label="asLabel"
                  :as-value="asValue"
                  :filter="isEditAble ? inputSelect : ''">
-        <span class="tbd-select-selection tbd-select-selection-single" @click.stop="toggle">
+        <span class="vc-select-selection vc-select-selection-single" @click.stop="toggle">
         <pv-input v-if="isEditAble && !isDisabled" v-model="inputSelect" ></pv-input>
-        <span v-if="isDisabled || !isEditAble" class="tbd-select-selection-rendered">{{currentSelected}}</span>
-        <span class="tbd-select-arrow"></span>
+        <span v-if="isDisabled || !isEditAble" class="vc-select-selection-rendered">{{currentSelected}}</span>
+        <span class="vc-select-arrow"></span>
         </span>
     </pv-dropdown>
 </template>

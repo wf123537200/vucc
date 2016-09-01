@@ -20,27 +20,27 @@
    @param {Object} appendClass 自定义Style对象
 -->
 <template>
-    <div :class="['tbd-slider', appendClass, {'tbd-slider-disabled': isDisabled}]" :style="appendStyle"
+    <div :class="['vc-slider', appendClass, {'vc-slider-disabled': isDisabled}]" :style="appendStyle"
          @mousemove="mousemove($event)" @mousedown="mousedown($event)" @mouseup="mouseup($event)">
         <!-- 滑块 -->
-        <div class="tbd-slider-handle" v-el:dot-btn :style="{'left' : percentValue + '%'}"></div>
+        <div class="vc-slider-handle" v-el:dot-btn :style="{'left' : percentValue + '%'}"></div>
 
-        <div class="tbd-slider-track" style="left:0%;visibility:visible;"
+        <div class="vc-slider-track" style="left:0%;visibility:visible;"
              :style="{'width' : percentValue + '%'}"></div>
-        <div class="tbd-slider-step" v-el:step></div>
+        <div class="vc-slider-step" v-el:step></div>
 
         <!-- 没有传入 valueList 只有两个端点 end -->
-        <span v-if="!valueList" class="tbd-slider-dot tbd-slider-dot-active"
+        <span v-if="!valueList" class="vc-slider-dot vc-slider-dot-active"
               style="left:0%" v-el:dot-left
               @click="dotClick(min)">
         </span>
-        <span v-if="!valueList" class="tbd-slider-dot tbd-slider-dot-active"
+        <span v-if="!valueList" class="vc-slider-dot vc-slider-dot-active"
               style="left:100%" v-el:dot-right
               @click="dotClick(max)">
         </span><!-- 没有传入 valueList 只有两个端点 end -->
 
         <!-- 传入valueList -->
-        <span v-for="it in valueList" class="tbd-slider-dot tbd-slider-dot-active"
+        <span v-for="it in valueList" class="vc-slider-dot vc-slider-dot-active"
               :style="{'left': ($index / (valueList.length - 1) * 100) + '%'}" v-el:dot-left
               @click="dotClick($index)">
         </span>
@@ -48,22 +48,22 @@
 
 
         <!-- valueList 未传入 最小值滑块, 最大值滑块, 游标滑块下方为处理处理 -->
-        <div v-if="!valueList" class="tbd-slider-mark">
-            <span class="tbd-slider-mark-text tbd-slider-mark-text-active min">
+        <div v-if="!valueList" class="vc-slider-mark">
+            <span class="vc-slider-mark-text vc-slider-mark-text-active min">
                 {{parseInt(min) + text}}
             </span>
-            <span class="tbd-slider-mark-text tbd-slider-mark-text-active cur"
+            <span class="vc-slider-mark-text vc-slider-mark-text-active cur"
                   :style="{'left' : (percentValue) + '%'}">
                 {{type === 'percent' ? value + '%' : parseInt(value) + text}}
 
             </span>
-            <span class="tbd-slider-mark-text max">
+            <span class="vc-slider-mark-text max">
                 {{parseInt(max) + text}}
             </span>
         </div>
         <!-- valueList 未传入 最小值滑块, 最大值滑块, 游标滑块下方为处理处理 end -->
-        <div v-for="it in valueList" class="tbd-slider-mark">
-            <span class="tbd-slider-mark-text tbd-slider-mark-text-active min"
+        <div v-for="it in valueList" class="vc-slider-mark">
+            <span class="vc-slider-mark-text vc-slider-mark-text-active min"
                   :style="{'left': ($index / (valueList.length - 1) * 100) + '%'}">
                 {{it.label}}
             </span>

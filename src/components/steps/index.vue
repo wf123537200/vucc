@@ -25,12 +25,12 @@
 -->
 
 <template>
-    <ul :style="appendStyle" :class="['tbd-step', appendClass, sizeClass, {'tbd-step-vertical': isVertical}]">
-        <li v-for="it in data" :class="['tbd-step-item', {'tbd-step-item-finish': it.isFinished, 'tbd-step-item-active': it.isActive}]">
-            <i class="tbd-step-item-line"></i>
-            <span class="tbd-step-item-order">{{it.order}}</span>
-            <h3 class="tbd-step-item-title">{{it.title}}</h3>
-            <p class="tbd-step-item-explain">{{it.explain}}</p>
+    <ul :style="appendStyle" :class="['vc-step', appendClass, sizeClass, {'vc-step-vertical': isVertical}]">
+        <li v-for="it in data" :class="['vc-step-item', {'vc-step-item-finish': it.isFinished, 'vc-step-item-active': it.isActive}]">
+            <i class="vc-step-item-line"></i>
+            <span class="vc-step-item-order">{{it.order}}</span>
+            <h3 class="vc-step-item-title">{{it.title}}</h3>
+            <p class="vc-step-item-explain">{{it.explain}}</p>
         </li>
     </ul>
 </template>
@@ -57,7 +57,7 @@
             return {
                 sizeClass: {
                     'normal': '',
-                    'small': 'tbd-step-sm'
+                    'small': 'vc-step-sm'
                 }[this.size]
             }
         }

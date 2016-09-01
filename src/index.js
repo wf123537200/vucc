@@ -44,6 +44,8 @@ var vForm = require('./components/form');
 var vFormItem = require('./components/form-item');
 var vSearch = require('./components/search');
 var vMultiSelect = require('./components/multi-select');
+// message 的包装代码
+require('./components/message-box/wrap.js');
 
 /* 为不支持模块化的系统提供简单支持 */
 window.__tbd_design__ = {vMultiSelect, vSearch, vFormItem, vForm, vTransfer, vTree, vTagList, vTimeLine, vToolTip, vSteps, vLoading, vProgress, vStepInput, vPagination, vPane, vCollapseGroup, vCollapse, vInput, vTextarea, vBadge, vAlert, vTableEdit, vLabelDropdown, vSlider, vTable, vButton, vButtonGroup, vSwitch, vCheckbox, vRadio, vDropdown, vSelect, vTips, vDialog, vMask, vMessageBox, vTabs, vButtonGroup};

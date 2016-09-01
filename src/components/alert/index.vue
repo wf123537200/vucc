@@ -25,20 +25,20 @@
   @param {Object} appendStyle 自定义Style对象
 -->
 <template>
-    <div :style="appendStyle" v-if="isShow" :class="['tbd-alert', appendClass, typeClass, {'show': isShow, 'tbd-alert-with-description': explain}]">
-        <a v-if="isCloseAble" @click="closeFn" href="javascript: void 0" class="tbd-alert-close-icon"><i class="tbdi tbdi-cross"></i></a>
-        <h3 class="tbd-alert-message">{{title}}</h3>
-        <div class="tbd-alert-description">{{explain}}</div>
+    <div :style="appendStyle" v-if="isShow" :class="['vc-alert', appendClass, typeClass, {'show': isShow, 'vc-alert-with-description': explain}]">
+        <a v-if="isCloseAble" @click="closeFn" href="javascript: void 0" class="vc-alert-close-icon"><i class="tbdi tbdi-cross"></i></a>
+        <h3 class="vc-alert-message">{{title}}</h3>
+        <div class="vc-alert-description">{{explain}}</div>
     </div>
 </template>
 
 <script>
     import {componentBaseParamConfig} from '../base-config';
     const TYPE_CLASS = {
-        'info': 'tbd-alert-info',
-        'success': 'tbd-alert-success',
-        'error': 'tbd-alert-error',
-        'warn': 'tbd-alert-waring'
+        'info': 'vc-alert-info',
+        'success': 'vc-alert-success',
+        'error': 'vc-alert-error',
+        'warn': 'vc-alert-waring'
     };
 
     // Alert class 4 call way 2
@@ -46,7 +46,7 @@
         constructor ({id, type, title, explain, isCloseAble, showTime, appendClass = '', appendStyle = ''}) {
             const Alert = window.Alert;
             const typeClass = TYPE_CLASS[type];
-            const close = isCloseAble ? `<a href="javascript: void 0" class="tbd-alert-close-icon"><i class="tbdi tbdi-cross"></i></a>` : ``
+            const close = isCloseAble ? `<a href="javascript: void 0" class="vc-alert-close-icon"><i class="tbdi tbdi-cross"></i></a>` : ``
 
             Alert[id] = this;
 
@@ -54,10 +54,10 @@
             id = id || ('Alert' + Math.random().toString(36).substr(3, 15));
             this.id = id;
 
-            this.tpl = `<div id=${id} style="${appendStyle}" class="tbd-alert ${appendClass} ${typeClass} show tbd-alert-with-description">
+            this.tpl = `<div id=${id} style="${appendStyle}" class="vc-alert ${appendClass} ${typeClass} show vc-alert-with-description">
                             ${close}
-                            <h3 class="tbd-alert-message">${title}</h3>
-                            <div class="tbd-alert-description">${explain}</div>
+                            <h3 class="vc-alert-message">${title}</h3>
+                            <div class="vc-alert-description">${explain}</div>
                         </div>`;
 
             this.showTime = showTime;
@@ -106,7 +106,7 @@
 
         let alertEl = document.querySelector('#' + alert.id);
 
-        alertEl.querySelector('.tbd-alert-close-icon').addEventListener('click', () => {
+        alertEl.querySelector('.vc-alert-close-icon').addEventListener('click', () => {
             alert.hide();
         });
     };

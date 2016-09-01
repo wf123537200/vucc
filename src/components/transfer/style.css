@@ -1,25 +1,25 @@
 /* input */
 /* icon fonts */
 /* line 9, style.scss */
-.tbd-transfer {
+.vc-transfer {
   position: relative;
   zoom: 1;
   margin-bottom: 20px;
 }
 /* line 5, ../../style/_mixins.scss */
-.tbd-transfer:before, .tbd-transfer:after {
+.vc-transfer:before, .vc-transfer:after {
   content: " ";
   display: table;
 }
 /* line 10, ../../style/_mixins.scss */
-.tbd-transfer:after {
+.vc-transfer:after {
   clear: both;
   visibility: hidden;
   font-size: 0;
   height: 0;
 }
 /* line 14, style.scss */
-.tbd-transfer-btns {
+.vc-transfer-btns {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -29,18 +29,18 @@
   transform: translate(-50%, -50%);
 }
 /* line 20, style.scss */
-.tbd-transfer-btns .tbd-btn {
+.vc-transfer-btns .vc-btn {
   margin: 10px 0;
   display: block;
 }
 /* line 26, style.scss */
-.tbd-transfer-item {
+.vc-transfer-item {
   margin-bottom: 20px;
   border: 1px solid #e5e9ec;
   box-sizing: border-box;
 }
 /* line 31, style.scss */
-.tbd-transfer-item-header {
+.vc-transfer-item-header {
   padding: 0 20px;
   height: 40px;
   background: #f1f4f6;
@@ -49,45 +49,45 @@
   zoom: 1;
 }
 /* line 5, ../../style/_mixins.scss */
-.tbd-transfer-item-header:before, .tbd-transfer-item-header:after {
+.vc-transfer-item-header:before, .vc-transfer-item-header:after {
   content: " ";
   display: table;
 }
 /* line 10, ../../style/_mixins.scss */
-.tbd-transfer-item-header:after {
+.vc-transfer-item-header:after {
   clear: both;
   visibility: hidden;
   font-size: 0;
   height: 0;
 }
 /* line 39, style.scss */
-.tbd-transfer-item-header h3 {
+.vc-transfer-item-header h3 {
   float: left;
   font-size: 14px;
   font-weight: normal;
 }
 /* line 46, style.scss */
-.tbd-transfer-item-extra {
+.vc-transfer-item-extra {
   float: right;
 }
 /* line 49, style.scss */
-.tbd-transfer-item-extra .tbd-label {
+.vc-transfer-item-extra .vc-label {
   margin-right: 0;
 }
 /* line 54, style.scss */
-.tbd-transfer-item-search {
+.vc-transfer-item-search {
   padding: 10px 10px 0;
   box-sizing: border-box;
 }
 /* line 59, style.scss */
-.tbd-transfer-item-content {
+.vc-transfer-item-content {
   box-sizing: border-box;
   padding: 10px 0;
   height: 250px;
   overflow: auto;
 }
 /* line 65, style.scss */
-.tbd-transfer-item-content .tbd-label {
+.vc-transfer-item-content .vc-label {
   display: block;
   padding: 0 20px;
   margin-right: 0;
@@ -95,36 +95,36 @@
   transition: background 0.3s ease;
 }
 /* line 72, style.scss */
-.tbd-transfer-item-content .tbd-label:hover {
+.vc-transfer-item-content .vc-label:hover {
   background-color: #f4f5f7;
 }
 /* line 78, style.scss */
-.tbd-transfer-item-with-search .tbd-transfer-item-content {
+.vc-transfer-item-with-search .vc-transfer-item-content {
   height: 204px;
 }
 /* line 83, style.scss */
-.tbd-transfer .tbd-transfer-item {
+.vc-transfer .vc-transfer-item {
   margin-bottom: 0;
 }
 /* line 87, style.scss */
-.tbd-transfer .tbd-transfer-item-wrap {
+.vc-transfer .vc-transfer-item-wrap {
   float: left;
   padding-left: 50px;
   box-sizing: border-box;
   width: 50%;
 }
 /* line 93, style.scss */
-.tbd-transfer .tbd-transfer-item-wrap:first-child {
+.vc-transfer .vc-transfer-item-wrap:first-child {
   padding-right: 50px;
   padding-left: 0;
 }
 /* line 99, style.scss */
-.tbd-transfer .tbd-transfer-btns + .tbd-transfer-item-wrap {
+.vc-transfer .vc-transfer-btns + .vc-transfer-item-wrap {
   padding-right: 50px;
   padding-left: 0;
 }
 /* line 104, style.scss */
-.tbd-transfer .ellipsis {
+.vc-transfer .ellipsis {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

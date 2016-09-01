@@ -27,27 +27,27 @@
     @param {Object}     appendStyle 自定义Style对象
 -->
 <template>
-    <div :class="['tbd-dialog-wrap', {'tbd-block': isShow, 'tbd-hidden': !isShow}]" tabindex="10000" @keyup.esc="closeFn">
+    <div :class="['vc-dialog-wrap', {'vc-block': isShow, 'vc-hidden': !isShow}]" tabindex="10000" @keyup.esc="closeFn">
         <pv-mask :is-show="showMask"></pv-mask>
-        <div :class="['tbd-dialog tbd-dialog-autoscroll', appendClass]" :style="appendStyle">
-            <div class="tbd-dialog-content">
+        <div :class="['vc-dialog vc-dialog-autoscroll', appendClass]" :style="appendStyle">
+            <div class="vc-dialog-content">
                 <!-- header -->
                 <!-- close -->
-                <a v-if="hasHeader" href="javascript:void(0);" class="tbd-dialog-close" @click="closeFn">
-                    <span class="tbd-dialog-close-x"></span>
+                <a v-if="hasHeader" href="javascript:void(0);" class="vc-dialog-close" @click="closeFn">
+                    <span class="vc-dialog-close-x"></span>
                 </a>
 
-                <div v-if="hasHeader" class="tbd-dialog-header">
-                    <h3 class="tbd-dialog-title">{{title}}</h3>
+                <div v-if="hasHeader" class="vc-dialog-header">
+                    <h3 class="vc-dialog-title">{{title}}</h3>
                 </div><!-- header end -->
 
                 <!-- body -->
-                <div class="tbd-dialog-body">
+                <div class="vc-dialog-body">
                     <slot></slot>
                 </div>
 
                 <!-- footer -->
-                <div v-if="hasFooter" class="tbd-dialog-footer">
+                <div v-if="hasFooter" class="vc-dialog-footer">
                     <pv-button v-if="hasCancelBtn" @click="_onCancel">{{cancelText}}</pv-button>
                     <pv-button v-if="hasOkBtn"
                               type='primary'

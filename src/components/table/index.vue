@@ -33,9 +33,9 @@
                       }, {
                         title: '操作',
                         render(text, item) {
-                          return `<a class="tbd-inline" @click="clickOperate">操作一</a>
-                                    <span class="tbd-divider"></span>
-                                  <a class="tbd-inline">操作二</a>`;
+                          return `<a class="vc-inline" @click="clickOperate">操作一</a>
+                                    <span class="vc-divider"></span>
+                                  <a class="vc-inline">操作二</a>`;
                         }
                     }]
    @param {Function} onChangePage 用于传入分页组件页面变更事件进行响应
@@ -49,8 +49,8 @@
    @param {Object} appendClass 自定义Style对象
 -->
 <template>
-    <div :style="appendStyle" :class="['tbd-table', appendClass]">
-        <div class="tbd-table-body">
+    <div :style="appendStyle" :class="['vc-table', appendClass]">
+        <div class="vc-table-body">
             <table>
                 <thead>
                 <tr>

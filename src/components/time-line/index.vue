@@ -9,12 +9,12 @@
 -->
 
 <template>
-    <ul class="tbd-timeline">
-        <li class="tbd-timeline-item" v-for="it in data">
-            <i class="tbd-timeline-item-dot"></i>
-            <div class="tbd-timeline-item-content">
+    <ul class="vc-timeline">
+        <li class="vc-timeline-item" v-for="it in data">
+            <i class="vc-timeline-item-dot"></i>
+            <div class="vc-timeline-item-content">
                 <p>
-                    <span class="tbd-timeline-item-info">{{it}}</span>
+                    <span class="vc-timeline-item-info">{{it}}</span>
                 </p>
             </div>
         </li>

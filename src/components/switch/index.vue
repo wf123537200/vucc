@@ -6,7 +6,7 @@
   @param {Object} appendStyle 自定义Style对象
 -->
 <template>
-  <div :style="appendStyle" :class="['tbd-switch', appendClass, sizeClass, value ? '' : 'tbd-switch-off']" @click="toggleSwitch"><i></i></div>
+  <div :style="appendStyle" :class="['vc-switch', appendClass, sizeClass, value ? '' : 'vc-switch-off']" @click="toggleSwitch"><i></i></div>
 </template>
 
 <script>
@@ -32,7 +32,7 @@
     sizeClass() {
       const sizeMap = {
         'normal': '',
-        'small': 'tbd-switch-sm'
+        'small': 'vc-switch-sm'
       };
 
       return sizeMap[this.size]

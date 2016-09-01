@@ -14,6 +14,7 @@
     @param {String}     explain 弹出框说明文字
     @param {String}     cancelText 取消按钮的展示文字
     @param {String}     okText 确定按钮的展示文字
+    @param {String}     isShow 是否展示
     @param {Function}   onOk ok按钮的回调函数
     @param {Function}   onCancel cancel按钮的回调函数
     @param {Object}     appendClass 自定义class
@@ -28,12 +29,14 @@
               :on-ok="onOk"
               :cancel-text="cancelText"
               :has-cancel-btn="hasCancelBtn"
+              :is-show="isShow"
               :ok-text="okText" >
-        <div class="tbd-confirm-body">
-            <i class=" tbdi {{iconClass}}"></i>
-            <span class="tbd-confirm-title">{{title}}</span>
-            <div class="tbd-confirm-content">{{explain}}</div>
-        </div>
+
+            <div class="vc-confirm-body">
+                <i class=" tbdi {{iconClass}}"></i>
+                <span class="vc-confirm-title">{{title}}</span>
+                <div class="vc-confirm-content">{{explain}}</div>
+            </div>
     </pv-dialog>
 </template>
 
@@ -70,6 +73,10 @@
             },
             onCancel: {
                 type: Function
+            },
+            isShow: {
+                type: Boolean,
+                default: false
             }
         }),
 
@@ -86,7 +93,7 @@
         },
 
         compiled() {
-            this.appendClass = ' tbd-confirm ' + this.appendClass;
+            this.appendClass = ' vc-confirm ' + this.appendClass;
         },
 
         ready() {

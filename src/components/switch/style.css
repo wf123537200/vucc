@@ -1,5 +1,5 @@
 /* line 27, style.scss */
-.tbd-switch {
+.vc-switch {
   position: relative;
   display: inline-block;
   box-sizing: border-box;
@@ -9,18 +9,18 @@
   cursor: pointer;
 }
 /* line 13, style.scss */
-.tbd-switch {
+.vc-switch {
   width: 52px;
   height: 26px;
   border-radius: 13px;
 }
 /* line 18, style.scss */
-.tbd-switch > i {
+.vc-switch > i {
   width: 24px;
   height: 24px;
 }
 /* line 37, style.scss */
-.tbd-switch > i {
+.vc-switch > i {
   position: absolute;
   right: 0;
   top: 0;
@@ -30,28 +30,28 @@
   transition: all 0.3s linear;
 }
 /* line 48, style.scss */
-.tbd-switch-off {
+.vc-switch-off {
   border-color: #e5e9ec;
   background: #e5e9ec;
 }
 /* line 52, style.scss */
-.tbd-switch-off > i {
+.vc-switch-off > i {
   right: 100%;
   margin-right: -24px;
   box-shadow: 0 1px 2px rgba(154, 164, 171, 0.75);
 }
 /* line 13, style.scss */
-.tbd-switch-sm {
+.vc-switch-sm {
   width: 40px;
   height: 20px;
   border-radius: 10px;
 }
 /* line 18, style.scss */
-.tbd-switch-sm > i {
+.vc-switch-sm > i {
   width: 18px;
   height: 18px;
 }
 /* line 63, style.scss */
-.tbd-switch-sm.tbd-switch-off > i {
+.vc-switch-sm.vc-switch-off > i {
   margin-right: -18px;
 }

@@ -10,37 +10,37 @@
 -->
 
 <template>
-    <div class="tbd-pagination" v-if="isShow">
-        <div class="tbd-pagination-records">
+    <div class="vc-pagination" v-if="isShow">
+        <div class="vc-pagination-records">
             共<em>{{total}}</em>条记录，每页显示
             <pv-select :data="pageSizeObject" :value.sync="pageSize" :on-select="_onSizeChange"></pv-select>
             条
         </div>
 
-        <div class="tbd-pagination-btns">
-            <a class="tbd-pagination-btns-first"
+        <div class="vc-pagination-btns">
+            <a class="vc-pagination-btns-first"
                href="javascript:void(0);"
                @click="selectPage(1)"></a>
 
-            <a class="tbd-pagination-btns-prev"
+            <a class="vc-pagination-btns-prev"
                href="javascript:void(0);"
                @click="jumpPrev"></a>
 
             <a v-for="num in pageNums"
                track-by="$index"
                href="javascript:void(0);"
-               :class="{'tbd-pagination-btns-dot': num == '...',
-                'tbd-pagination-btns-active': currentPage == num}"
+               :class="{'vc-pagination-btns-dot': num == '...',
+                'vc-pagination-btns-active': currentPage == num}"
                @click="selectPage(num)">{{num}}</a>
 
-            <a class="tbd-pagination-btns-next"
+            <a class="vc-pagination-btns-next"
                href="javascript:void(0);"
                @click="jumpNext"></a>
 
             <a href="javascript:void(0);"
-               class="tbd-pagination-btns-last"
+               class="vc-pagination-btns-last"
                @click="selectPage(totalNum)"></a>
-            <span class="tbd-pagination-btns-records">共<em>{{totalNum}}</em>页</span>
+            <span class="vc-pagination-btns-records">共<em>{{totalNum}}</em>页</span>
         </div>
     </div>
 </template>

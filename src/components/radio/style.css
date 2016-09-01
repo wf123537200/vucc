@@ -1,7 +1,7 @@
 /* input */
 /* icon fonts */
 /* line 8, style.scss */
-.tbd-radio {
+.vc-radio {
   display: inline-block;
   box-sizing: border-box;
   width: 14px;
@@ -12,7 +12,7 @@
   cursor: pointer;
 }
 /* line 18, style.scss */
-.tbd-radio:after {
+.vc-radio:after {
   display: none;
   content: '';
   position: absolute;
@@ -26,7 +26,7 @@
 }
 
 /* line 19, ../../style/_mixins.scss */
-.tbd-label {
+.vc-label {
   display: inline-block;
   vertical-align: middle;
   margin-right: 10px;
@@ -35,66 +35,66 @@
   white-space: nowrap;
 }
 /* line 28, ../../style/_mixins.scss */
-.tbd-label-text {
+.vc-label-text {
   display: inline-block;
   vertical-align: middle;
   color: #1b1e25;
 }
 /* line 35, style.scss */
-.tbd-label .tbd-radio {
+.vc-label .vc-radio {
   position: relative;
   top: -1px;
   vertical-align: middle;
 }
 /* line 40, style.scss */
-.tbd-label .tbd-radio .tbd-label-text {
+.vc-label .vc-radio .vc-label-text {
   margin-left: 5px;
 }
 /* line 45, style.scss */
-.tbd-label input[type=radio] {
+.vc-label input[type=radio] {
   display: none;
 }
 /* line 50, style.scss */
-.tbd-label:hover .tbd-label-text {
+.vc-label:hover .vc-label-text {
   color: #1b1e25;
 }
 /* line 54, style.scss */
-.tbd-label:hover .tbd-radio {
+.vc-label:hover .vc-radio {
   border-color: #57cc95;
 }
 /* line 62, style.scss */
-.tbd-label-checked .tbd-label-text, .tbd-label-checked:hover .tbd-label-text {
+.vc-label-checked .vc-label-text, .vc-label-checked:hover .vc-label-text {
   color: #57cc95;
 }
 /* line 66, style.scss */
-.tbd-label-checked .tbd-radio, .tbd-label-checked:hover .tbd-radio {
+.vc-label-checked .vc-radio, .vc-label-checked:hover .vc-radio {
   position: relative;
   border-color: #57cc95;
 }
 /* line 70, style.scss */
-.tbd-label-checked .tbd-radio:after, .tbd-label-checked:hover .tbd-radio:after {
+.vc-label-checked .vc-radio:after, .vc-label-checked:hover .vc-radio:after {
   display: block;
 }
 /* line 76, style.scss */
-.tbd-label-disabled, .tbd-label-disabled:hover {
+.vc-label-disabled, .vc-label-disabled:hover {
   cursor: not-allowed;
 }
 /* line 80, style.scss */
-.tbd-label-disabled .tbd-label-text, .tbd-label-disabled:hover .tbd-label-text {
+.vc-label-disabled .vc-label-text, .vc-label-disabled:hover .vc-label-text {
   color: #8b91a0;
 }
 /* line 84, style.scss */
-.tbd-label-disabled .tbd-radio, .tbd-label-disabled:hover .tbd-radio {
+.vc-label-disabled .vc-radio, .vc-label-disabled:hover .vc-radio {
   border-color: #d2d4d8;
   background: #e5e9ec;
   cursor: not-allowed;
 }
 /* line 90, style.scss */
-.tbd-label-disabled .tbd-radio:after, .tbd-label-disabled:hover .tbd-radio:after {
+.vc-label-disabled .vc-radio:after, .vc-label-disabled:hover .vc-radio:after {
   border-color: #d2d4d8;
 }
 /* line 96, style.scss */
-.tbd-label-vertical {
+.vc-label-vertical {
   display: block;
   margin-right: 0;
 }

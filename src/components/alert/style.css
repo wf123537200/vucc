@@ -1,5 +1,5 @@
 /* line 6, style.scss */
-.tbd-alert {
+.vc-alert {
   position: relative;
   padding: 8px 8px 8px 16px;
   border-radius: 5px;
@@ -9,7 +9,7 @@
   margin-bottom: 20px;
 }
 /* line 7, style.scss */
-.tbd-alert.show {
+.vc-alert.show {
   position: fixed;
   top: 20%;
   left: 50%;
@@ -18,39 +18,39 @@
   z-index: 1001;
 }
 /* line 24, style.scss */
-.tbd-alert-message {
+.vc-alert-message {
   font-weight: normal;
   font-size: inherit;
 }
 /* line 29, style.scss */
-.tbd-alert-description {
+.vc-alert-description {
   font-size: 12px;
   color: #8b91a0;
   line-height: 1.8;
   display: none;
 }
 /* line 36, style.scss */
-.tbd-alert-success {
+.vc-alert-success {
   border: 1px solid #ddf5ea;
   background-color: #eefaf4;
 }
 /* line 41, style.scss */
-.tbd-alert-info {
+.vc-alert-info {
   border: 1px solid #d7eaf8;
   background-color: #ebf5fc;
 }
 /* line 46, style.scss */
-.tbd-alert-warning {
+.vc-alert-warning {
   border: 1px solid #fef1da;
   background-color: #fef8ed;
 }
 /* line 51, style.scss */
-.tbd-alert-error {
+.vc-alert-error {
   border: 1px solid #fddede;
   background-color: #feeeee;
 }
 /* line 56, style.scss */
-.tbd-alert-close-icon {
+.vc-alert-close-icon {
   font-size: 12px;
   position: absolute;
   right: 16px;
@@ -62,21 +62,21 @@
   cursor: pointer;
 }
 /* line 67, style.scss */
-.tbd-alert-close-icon .tbdi-cross {
+.vc-alert-close-icon .tbdi-cross {
   color: #8b91a0;
   transition: color .3s ease;
 }
 /* line 70, style.scss */
-.tbd-alert-close-icon .tbdi-cross:hover {
+.vc-alert-close-icon .tbdi-cross:hover {
   color: #1b1e25;
 }
 /* line 76, style.scss */
-.tbd-alert-close-text {
+.vc-alert-close-text {
   position: absolute;
   right: 16px;
 }
 /* line 81, style.scss */
-.tbd-alert-with-description {
+.vc-alert-with-description {
   padding: 16px;
   position: relative;
   border-radius: 5px;
@@ -85,7 +85,7 @@
   line-height: 1.5;
 }
 /* line 90, style.scss */
-.tbd-alert-with-description .tbd-alert-close-icon {
+.vc-alert-with-description .vc-alert-close-icon {
   position: absolute;
   top: 17px;
   right: 16px;
@@ -93,17 +93,17 @@
   font-size: 12px;
 }
 /* line 98, style.scss */
-.tbd-alert-with-description .tbd-alert-message {
+.vc-alert-with-description .vc-alert-message {
   font-size: 14px;
   color: #1b1e25;
   display: block;
 }
 /* line 104, style.scss */
-.tbd-alert-with-description .tbd-alert-description {
+.vc-alert-with-description .vc-alert-description {
   display: block;
 }
 /* line 108, style.scss */
-.tbd-alert-close {
+.vc-alert-close {
   height: 0;
   opacity: 0;
   margin: 0;

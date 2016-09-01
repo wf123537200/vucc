@@ -36,17 +36,17 @@
 -->
 <template>
     <div :style="appendStyle"
-         :class="['tbd-select', appendClass, sizeClass, {'tbd-select-disabled': isDisabled, 'tbd-dropdown-wrap-open': isOpened}]"
+         :class="['vc-select', appendClass, sizeClass, {'vc-select-disabled': isDisabled, 'vc-dropdown-wrap-open': isOpened}]"
          @click.stop="onClick">
         <slot></slot>
         <!-- 单选 -->
-        <div v-if="!isMultiple" class="tbd-dropdown" :class="{'hide': !isOpened}">
-            <ul class="tbd-dropdown-menu">
+        <div v-if="!isMultiple" class="vc-dropdown" :class="{'hide': !isOpened}">
+            <ul class="vc-dropdown-menu">
                 <li v-if="data.optsList.length === 0">
                     没有数据....
                 </li>
                 <li v-for="it in showData.optsList" value="it.value"
-                    :class="['tbd-dropdown-menu-item', {'tbd-dropdown-menu-item-disabled': it.isDisabled, 'tbd-dropdown-menu-item-active': $index === curIndex}]"
+                    :class="['vc-dropdown-menu-item', {'vc-dropdown-menu-item-disabled': it.isDisabled, 'vc-dropdown-menu-item-active': $index === curIndex}]"
                     @click.stop="onSelected($index)">
                     {{{renderLi($index)}}}
                 </li>
@@ -55,36 +55,36 @@
         <!-- 单选 end -->
 
         <!-- 多选 -->
-        <div v-if="isMultiple" class="tbd-dropdown tbd-dropdown-multi" :class="{'hide': !isOpened}">
+        <div v-if="isMultiple" class="vc-dropdown vc-dropdown-multi" :class="{'hide': !isOpened}">
             <pv-button v-if="hasSearch" type="outline" :style="{margin: '10px', border: 0}">清空</pv-button>
             <pv-search v-if="hasSearch" :value.sync="filter" :append-style="searchAppendStyle" :size="'small'"></pv-search>
 
-            <ul class="tbd-dropdown-menu">
+            <ul class="vc-dropdown-menu">
                 <li v-if="data.optsList.length === 0">
                     没有数据....
                 </li>
                 <li v-for="it in showData.optsList" value="it.value"
-                    :class="['tbd-dropdown-menu-item', {'tbd-dropdown-menu-item-disabled': it.isDisabled, 'tbd-dropdown-menu-item-active': indexList.includes($index)}]"
+                    :class="['vc-dropdown-menu-item', {'vc-dropdown-menu-item-disabled': it.isDisabled, 'vc-dropdown-menu-item-active': indexList.includes($index)}]"
                     @click.stop="onSelected($index, it)">
                     {{{renderLi($index)}}}
                 </li>
             </ul>
 
             <!-- 已选展示 -->
-            <div class="tbd-dropdown-multi-result">
-                <span class="tbd-dropdown-multi-result-title">已选:
-                    <a v-if="!hasSearch" href="javascript: void 0;" @click.stop="onClear" class="tbd-dropdown-multi-a">清空</a>
+            <div class="vc-dropdown-multi-result">
+                <span class="vc-dropdown-multi-result-title">已选:
+                    <a v-if="!hasSearch" href="javascript: void 0;" @click.stop="onClear" class="vc-dropdown-multi-a">清空</a>
                 </span>
                 <ul>
                     <li v-for="it in resultListTemp">
-                        <span class="tbd-dropdown-multi-result-text">{{it.label}}</span>
-                        <span class="tbd-dropdown-multi-result-delete" @click.stop="onDelete(it)"></span>
+                        <span class="vc-dropdown-multi-result-text">{{it.label}}</span>
+                        <span class="vc-dropdown-multi-result-delete" @click.stop="onDelete(it)"></span>
                     </li>
                 </ul>
             </div><!-- 已选展示 end -->
 
             <!-- 确定取消按钮 -->
-            <div v-if="hasFooter" class="tbd-dropdown-multi-footer">
+            <div v-if="hasFooter" class="vc-dropdown-multi-footer">
                 <pv-button :type="'primary'" @click.stop="_onOk">
                     {{okText}}
                 </pv-button>
@@ -177,8 +177,8 @@
             sizeClass() {
                 const sizeMap = {
                     'normal': '',
-                    'large': 'tbd-switch-lg',
-                    'small': 'tbd-switch-sm"'
+                    'large': 'vc-switch-lg',
+                    'small': 'vc-switch-sm"'
                 };
 
                 return sizeMap[this.size]

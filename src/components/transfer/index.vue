@@ -27,35 +27,35 @@
 -->
 
 <template>
-    <!-- 要限制穿梭框的宽度时，直接在 tbd-transfer 上写上总宽度 -->
-    <div class="tbd-transfer">
+    <!-- 要限制穿梭框的宽度时，直接在 vc-transfer 上写上总宽度 -->
+    <div class="vc-transfer">
         <!-- 中间按钮 -->
-        <div class="tbd-transfer-btns">
-            <pv-button :size="'tbd-btn-sm'" :type="'outline'" @click.stop="addSelect">
+        <div class="vc-transfer-btns">
+            <pv-button :size="'vc-btn-sm'" :type="'outline'" @click.stop="addSelect">
                 {{addText}}
                 <i class="tbdi tbdi-right"></i>
             </pv-button>
-            <pv-button :size="'tbd-btn-sm'" :type="'outline'" :is-disabled="isDeleteAble" @click.stop="removeSelect">
+            <pv-button :size="'vc-btn-sm'" :type="'outline'" :is-disabled="isDeleteAble" @click.stop="removeSelect">
                 <i class="tbdi tbdi-left"></i>
                 {{deleteText}}
             </pv-button>
         </div>
         <!-- 左侧框 -->
-        <div class="tbd-transfer-item-wrap">
-            <div class="tbd-transfer-item">
+        <div class="vc-transfer-item-wrap">
+            <div class="vc-transfer-item">
                 <!-- 标题栏 -->
-                <div v-if="srcTitle" class="tbd-transfer-item-header">
+                <div v-if="srcTitle" class="vc-transfer-item-header">
                     <h3>{{srcTitle}}</h3>
-                    <div class="tbd-transfer-item-extra">
-                        <label class="tbd-label">
+                    <div class="vc-transfer-item-extra">
+                        <label class="vc-label">
                             <pv-checkbox :data="[{label: '全选', value: true}]" :value.sync="selectAll"></pv-checkbox>
                         </label>
                     </div>
                 </div> <!-- 标题栏 end -->
 
                 <!-- 选择框 -->
-                <div class="tbd-transfer-item-content">
-                    <label v-for="it in data | orderBy '_index'" @click.stop="onCheckboxClick(it.isChecked)" :class="['tbd-label tbd-label-vertical', {'tbd-label-checked': it.isChecked}]">
+                <div class="vc-transfer-item-content">
+                    <label v-for="it in data | orderBy '_index'" @click.stop="onCheckboxClick(it.isChecked)" :class="['vc-label vc-label-vertical', {'vc-label-checked': it.isChecked}]">
                         <pv-checkbox :data="[{label: it.content, value: true}]" :value.sync="it.isChecked"></pv-checkbox>
                     </label>
                 </div><!-- 选择框 end -->
@@ -63,14 +63,14 @@
         </div>
 
         <!-- 右侧框 -->
-        <div class="tbd-transfer-item-wrap">
-            <div class="tbd-transfer-item">
+        <div class="vc-transfer-item-wrap">
+            <div class="vc-transfer-item">
                 <!-- 标题栏 -->
-                <div v-if="distTitle || srcTitle" class="tbd-transfer-item-header">
+                <div v-if="distTitle || srcTitle" class="vc-transfer-item-header">
                     <h3>{{distTitle || srcTitle}}</h3>
                 </div>
-                <div class="tbd-transfer-item-content">
-                    <label v-for="it in result" :class="['tbd-label tbd-label-vertical', {'tbd-label-checked': it.isChecked}]">
+                <div class="vc-transfer-item-content">
+                    <label v-for="it in result" :class="['vc-label vc-label-vertical', {'vc-label-checked': it.isChecked}]">
                         <pv-checkbox :data="[{label: it.content, value: true}]" :value.sync="it.isChecked"></pv-checkbox>
                     </label>
                 </div>

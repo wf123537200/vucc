@@ -7,11 +7,10 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue'
       },{
-        test: /\.js$/,
+        test: /\.js/,
         loader: 'babel',
         query: {
-          presets: ['es2015'],
-          plugins: ['transform-runtime']
+          presets: ['es2015']
         },
         exclude: /node_modules/
       },

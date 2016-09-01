@@ -1,7 +1,7 @@
 /* input */
 /* icon fonts */
 /* line 7, style.scss */
-.tbd-textarea {
+.vc-textarea {
   display: inline-block;
   box-sizing: border-box;
   padding: 3px 10px;
@@ -17,24 +17,24 @@
   height: auto;
 }
 /* line 46, ../../style/_mixins.scss */
-.tbd-textarea::-moz-placeholder {
+.vc-textarea::-moz-placeholder {
   color: #8b91a0;
   opacity: 1;
 }
 /* line 51, ../../style/_mixins.scss */
-.tbd-textarea:-ms-input-placeholder {
+.vc-textarea:-ms-input-placeholder {
   color: #8b91a0;
 }
 /* line 55, ../../style/_mixins.scss */
-.tbd-textarea::-webkit-input-placeholder {
+.vc-textarea::-webkit-input-placeholder {
   color: #8b91a0;
 }
 /* line 19, style.scss */
-.tbd-textarea:focus {
+.vc-textarea:focus {
   border-color: #d2d4d8;
 }
 /* line 23, style.scss */
-.tbd-textarea[disabled] {
+.vc-textarea[disabled] {
   border-color: #d2d4d8;
   background: #e5e9ec;
   color: #999eab;

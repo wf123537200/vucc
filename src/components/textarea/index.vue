@@ -5,7 +5,7 @@
   @param {Object} appendStyle 自定义Style对象
 -->
 <template>
-    <textarea :style="appendStyle" :class="['tbd-textarea', sizeClass, appendClass]"></textarea>
+    <textarea :style="appendStyle" :class="['vc-textarea', sizeClass, appendClass]"></textarea>
 </template>
 
 <script>

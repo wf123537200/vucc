@@ -9,9 +9,9 @@
 -->
 
 <template>
-    <div :style="appendStyle" :class="['tbd-tooltip', typeClass, appendClass]">
-        <i class="tbd-tooltip-arrow"></i>
-        <div class="tbd-tooltip-inner">
+    <div :style="appendStyle" :class="['vc-tooltip', typeClass, appendClass]">
+        <i class="vc-tooltip-arrow"></i>
+        <div class="vc-tooltip-inner">
             <slot></slot>
         </div>
     </div>
@@ -29,7 +29,7 @@
         }),
 
         data() {
-            const PRE_FIX = 'tbd-tooltip-placement-';
+            const PRE_FIX = 'vc-tooltip-placement-';
 
             return {
                 typeClass: PRE_FIX + this.type
@@ -37,7 +37,7 @@
         },
 
         ready() {
-            this.$el.parentElement.className += ' tbd-tooltip-wrap '
+            this.$el.parentElement.className += ' vc-tooltip-wrap '
         }
     }
 </script>

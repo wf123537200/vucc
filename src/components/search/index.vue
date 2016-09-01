@@ -12,9 +12,9 @@
 -->
 
 <template>
-    <div :style="appendStyle" :class="['tbd-input-wrap tbd-input-wrap-search', appendClass, sizeClass]">
-        <pv-input type="text" @keyup.enter="onSearch" class="tbd-input" placeholder="{{placeholder}}" v-model="value"></pv-input>
-        <button class="tbd-input-wrap-extra" @click.stop="onSearch">
+    <div :style="appendStyle" :class="['vc-input-wrap vc-input-wrap-search', appendClass, sizeClass]">
+        <pv-input type="text" @keyup.enter="onSearch" class="vc-input" placeholder="{{placeholder}}" v-model="value"></pv-input>
+        <button class="vc-input-wrap-extra" @click.stop="onSearch">
             <i class="tbdi tbdi-search"></i>
         </button>
     </div>
@@ -47,8 +47,8 @@
             return {
                 sizeClass: {
                     'normal': '',
-                    'large': 'tbd-input-wrap-lg',
-                    'small': 'tbd-input-wrap-sm'
+                    'large': 'vc-input-wrap-lg',
+                    'small': 'vc-input-wrap-sm'
                 }[this.size]
             }
         },

@@ -14,25 +14,25 @@
 -->
 
 <template>
-    <div :style="appendStyle" :class="['tbd-progress', appendClass, typeClass, sizeClass, {'status-active': isActive, 'tbd-progress-full': !isShowText}]">
+    <div :style="appendStyle" :class="['vc-progress', appendClass, typeClass, sizeClass, {'status-active': isActive, 'vc-progress-full': !isShowText}]">
         <!-- title -->
-        <div class="tbd-progress-title" v-if="!!title">
+        <div class="vc-progress-title" v-if="!!title">
             <h3>{{title}}</h3>
-            <span class="tbd-progress-title-info">{{info || progress + '%'}}</span>
+            <span class="vc-progress-title-info">{{info || progress + '%'}}</span>
         </div><!-- title end -->
 
         <!-- line -->
-        <div class="tbd-progress-line-wrap">
-            <span class="tbd-progress-line-text" v-if="isShowText">{{progress + '%'}}
+        <div class="vc-progress-line-wrap">
+            <span class="vc-progress-line-text" v-if="isShowText">{{progress + '%'}}
                 <slot></slot>
             </span>
-            <div class="tbd-progress-line">
-                <span class="tbd-progress-line-bg" :style="progressStyle"></span>
+            <div class="vc-progress-line">
+                <span class="vc-progress-line-bg" :style="progressStyle"></span>
             </div>
         </div><!-- line end -->
 
         <!-- explain -->
-        <div class="tbd-progress-explain" v-if="explain">{{explain}}</div>
+        <div class="vc-progress-explain" v-if="explain">{{explain}}</div>
     </div>
 </template>
 
@@ -81,7 +81,7 @@
                 }[this.type],
                 sizeClass: {
                     'normal': '',
-                    'large': 'tbd-progress-lg'
+                    'large': 'vc-progress-lg'
                 }[this.size]
             }
         },

@@ -15,17 +15,17 @@
 -->
 
 <template>
-    <div :style="appendStyle" :class="['tbd-tag-list', appendClass, sizeClass]">
-        <label v-for="it in data" :class="['tbd-tag', 'tbd-tag-active', {'tbd-tag-with-close': isDeleteAble}]">
+    <div :style="appendStyle" :class="['vc-tag-list', appendClass, sizeClass]">
+        <label v-for="it in data" :class="['vc-tag', 'vc-tag-active', {'vc-tag-with-close': isDeleteAble}]">
             <span>
                 {{it.content}}
                 <i class="tbdi tbdi-cross" v-if="isDeleteAble" @click.stop="deleteItem(it)"></i>
             </span>
         </label>
         <!-- input -->
-        <div class="tbd-input-wrap">
+        <div class="vc-input-wrap">
             <pv-input v-model="text"></pv-input>
-            <button class="tbd-input-wrap-extra" @click.stop="addItem">
+            <button class="vc-input-wrap-extra" @click.stop="addItem">
                 <i class="tbdi tbdi-plus"></i>
             </button>
         </div>
@@ -58,7 +58,7 @@
             return {
                 sizeClass: {
                     'default': '',
-                    'small': 'tbd-tag-list-sm'
+                    'small': 'vc-tag-list-sm'
                 }[this.size],
                 text: ''
             }

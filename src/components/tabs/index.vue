@@ -9,18 +9,18 @@
 -->
 <template>
     <!-- tabs头部-->
-    <div :class="['tbd-tabs tbd-tabs-top', type, appendClass, size]">
-        <div class="tbd-tabs-bar">
+    <div :class="['vc-tabs vc-tabs-top', type, appendClass, size]">
+        <div class="vc-tabs-bar">
             <!-- 额外操作 -->
-            <div class="tbd-tabs-extra-content">
+            <div class="vc-tabs-extra-content">
                 <slot name="operate"></slot>
             </div>
 
             <!-- 内容头部分 -->
-            <div class="tbd-tabs-nav-container" >
-                <div class="tbd-tabs-nav-wrap" >
-                    <div class="tbd-tabs-nav-scroll">
-                        <div class="tbd-tabs-nav" @click.stop="selectTab(curIndex, $event)">
+            <div class="vc-tabs-nav-container" >
+                <div class="vc-tabs-nav-wrap" >
+                    <div class="vc-tabs-nav-scroll">
+                        <div class="vc-tabs-nav" @click.stop="selectTab(curIndex, $event)">
                             <slot name="header"></slot>
                         </div>
                     </div>
@@ -29,7 +29,7 @@
         </div>
 
         <!-- 切换tab内容部分 -->
-        <div class="tbd-tabs-content" >
+        <div class="vc-tabs-content" >
             <slot></slot>
         </div>
     </div>
@@ -66,11 +66,11 @@
         methods: {
             selectTab(index, event) {
                 if(!event) {
-                    this.$el.querySelector('.tbd-tabs-tab-active').className = this.$el.querySelector('.tbd-tabs-tab-active').className.replace(/\s?tbd-tabs-tab-active\s?/, '');
+                    this.$el.querySelector('.vc-tabs-tab-active').className = this.$el.querySelector('.vc-tabs-tab-active').className.replace(/\s?vc-tabs-tab-active\s?/, '');
 
                     event = {};
-                    event.target = this.$el.querySelector('.tbd-tabs-nav > [slot=header]').children[index];
-                    event.target.className += ' tbd-tabs-tab-active';
+                    event.target = this.$el.querySelector('.vc-tabs-nav > [slot=header]').children[index];
+                    event.target.className += ' vc-tabs-tab-active';
 
                     return;
                 }
@@ -83,14 +83,14 @@
                 if(selectIndex === null || (event.type && selectIndex === +index)) return;
 
                 // switch header
-                this.$el.querySelector('.tbd-tabs-tab-active').className = this.$el.querySelector('.tbd-tabs-tab-active').className.replace(/\s?tbd-tabs-tab-active\s?/, '');
-                this.$el.querySelector('.tbd-tabs-nav [slot=header] > :nth-child(' + (selectIndex + 1) + ')').className += ' tbd-tabs-tab-active ';
+                this.$el.querySelector('.vc-tabs-tab-active').className = this.$el.querySelector('.vc-tabs-tab-active').className.replace(/\s?vc-tabs-tab-active\s?/, '');
+                this.$el.querySelector('.vc-tabs-nav [slot=header] > :nth-child(' + (selectIndex + 1) + ')').className += ' vc-tabs-tab-active ';
 
                 // switch context
-                let oldContextEl = this.$el.querySelector('.tbd-tabs-content > :nth-child(' + (index + 1) + ')');
-                oldContextEl.setAttribute('class',  oldContextEl.className + ' tbd-tabs-tabpane-hidden ');
-                let curContextEl = this.$el.querySelector('.tbd-tabs-content > :nth-child(' + (selectIndex + 1) + ')');
-                curContextEl.setAttribute('class',  curContextEl.className.replace(/\s?tbd-tabs-tabpane-hidden\s?/, ''));
+                let oldContextEl = this.$el.querySelector('.vc-tabs-content > :nth-child(' + (index + 1) + ')');
+                oldContextEl.setAttribute('class',  oldContextEl.className + ' vc-tabs-tabpane-hidden ');
+                let curContextEl = this.$el.querySelector('.vc-tabs-content > :nth-child(' + (selectIndex + 1) + ')');
+                curContextEl.setAttribute('class',  curContextEl.className.replace(/\s?vc-tabs-tabpane-hidden\s?/, ''));
 
                 this.curIndex = selectIndex;
 
@@ -100,42 +100,42 @@
 
         ready() {
             this.type = {
-               'line' : 'tbd-tabs-line',
-               'card' : 'tbd-tabs-card',
-               'panel' : 'tbd-tabs-panel'
+               'line' : 'vc-tabs-line',
+               'card' : 'vc-tabs-card',
+               'panel' : 'vc-tabs-panel'
             }[this.type];
 
             this.size = {
                'normal': '',
-               'large': 'tbd-tabs-lg',
-               'small': 'tbd-tabs-sm'
+               'large': 'vc-tabs-lg',
+               'small': 'vc-tabs-sm'
             }[this.size];
 
             // header slot 样式填充和插入,并绑定事件
-            const tabHeader = this.$el.querySelector('.tbd-tabs-nav > [slot=header]');
+            const tabHeader = this.$el.querySelector('.vc-tabs-nav > [slot=header]');
             let temp = '';
             let _this = this;
 
             tabHeader.children && Array.from(tabHeader.children).forEach(function(el, index) {
-                el.className += ' tbd-tabs-tab-inner ';
+                el.className += ' vc-tabs-tab-inner ';
                 el.setAttribute('tab_index', index);
 
                 if(index == _this.activeIndex) {
                     _this.curIndex = +index;
-                    temp += '<div class="tbd-tabs-tab tbd-tabs-tab-active" >' + el.outerHTML + '</div>';
+                    temp += '<div class="vc-tabs-tab vc-tabs-tab-active" >' + el.outerHTML + '</div>';
                 } else {
-                    temp += '<div class="tbd-tabs-tab" >' + el.outerHTML + '</div>';
+                    temp += '<div class="vc-tabs-tab" >' + el.outerHTML + '</div>';
                 }
             });
 
             tabHeader.innerHTML = temp;
 
             // panes class 绑定
-            const tabPanes = this.$el.querySelector('.tbd-tabs-content');
+            const tabPanes = this.$el.querySelector('.vc-tabs-content');
             let panes = '';
             tabPanes.children && Array.from(tabPanes.children).forEach(function(el, index) {
                 if(index !== _this.curIndex) {
-                    el.className += ' tbd-tabs-tabpane-hidden ';
+                    el.className += ' vc-tabs-tabpane-hidden ';
                 }
 
             });

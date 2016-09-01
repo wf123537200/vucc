@@ -1,7 +1,7 @@
 /* input */
 /* icon fonts */
 /* line 9, style.scss */
-.tbd-checkbox {
+.vc-checkbox {
   display: inline-block;
   box-sizing: border-box;
   width: 14px;
@@ -12,7 +12,7 @@
   cursor: pointer;
 }
 /* line 19, style.scss */
-.tbd-checkbox:after {
+.vc-checkbox:after {
   display: none;
   position: absolute;
   top: 0px;
@@ -31,7 +31,7 @@
 }
 
 /* line 19, ../../style/_mixins.scss */
-.tbd-label {
+.vc-label {
   display: inline-block;
   vertical-align: middle;
   margin-right: 10px;
@@ -40,70 +40,70 @@
   white-space: nowrap;
 }
 /* line 28, ../../style/_mixins.scss */
-.tbd-label-text {
+.vc-label-text {
   display: inline-block;
   vertical-align: middle;
   color: #1b1e25;
 }
 /* line 38, style.scss */
-.tbd-label .tbd-checkbox {
+.vc-label .vc-checkbox {
   position: relative;
   top: -1px;
   vertical-align: middle;
 }
 /* line 43, style.scss */
-.tbd-label .tbd-checkbox .tbd-label-text {
+.vc-label .vc-checkbox .vc-label-text {
   margin-left: 5px;
 }
 /* line 48, style.scss */
-.tbd-label input[type=checkbox] {
+.vc-label input[type=checkbox] {
   display: none;
 }
 /* line 53, style.scss */
-.tbd-label:hover .tbd-label-text {
+.vc-label:hover .vc-label-text {
   color: #1b1e25;
 }
 /* line 57, style.scss */
-.tbd-label:hover .tbd-checkbox {
+.vc-label:hover .vc-checkbox {
   border-color: #57cc95;
 }
 /* line 65, style.scss */
-.tbd-label-checked .tbd-label-text, .tbd-label-checked:hover .tbd-label-text {
+.vc-label-checked .vc-label-text, .vc-label-checked:hover .vc-label-text {
   color: #57cc95;
 }
 /* line 69, style.scss */
-.tbd-label-checked .tbd-checkbox, .tbd-label-checked:hover .tbd-checkbox {
+.vc-label-checked .vc-checkbox, .vc-label-checked:hover .vc-checkbox {
   position: relative;
   border-color: #57cc95;
 }
 /* line 73, style.scss */
-.tbd-label-checked .tbd-checkbox:after, .tbd-label-checked:hover .tbd-checkbox:after {
+.vc-label-checked .vc-checkbox:after, .vc-label-checked:hover .vc-checkbox:after {
   display: block;
 }
 /* line 78, style.scss */
-.tbd-label-checked .tbd-checkbox, .tbd-label-checked:hover .tbd-checkbox {
+.vc-label-checked .vc-checkbox, .vc-label-checked:hover .vc-checkbox {
   background: #57cc95;
 }
 /* line 83, style.scss */
-.tbd-label-disabled, .tbd-label-disabled:hover {
+.vc-label-disabled, .vc-label-disabled:hover {
   cursor: not-allowed;
 }
 /* line 87, style.scss */
-.tbd-label-disabled .tbd-label-text, .tbd-label-disabled:hover .tbd-label-text {
+.vc-label-disabled .vc-label-text, .vc-label-disabled:hover .vc-label-text {
   color: #8b91a0;
 }
 /* line 91, style.scss */
-.tbd-label-disabled .tbd-checkbox, .tbd-label-disabled:hover .tbd-checkbox {
+.vc-label-disabled .vc-checkbox, .vc-label-disabled:hover .vc-checkbox {
   border-color: #d2d4d8;
   background: #e5e9ec;
   cursor: not-allowed;
 }
 /* line 97, style.scss */
-.tbd-label-disabled .tbd-checkbox:after, .tbd-label-disabled:hover .tbd-checkbox:after {
+.vc-label-disabled .vc-checkbox:after, .vc-label-disabled:hover .vc-checkbox:after {
   border-color: #d2d4d8;
 }
 /* line 103, style.scss */
-.tbd-label-vertical {
+.vc-label-vertical {
   display: block;
   margin-right: 0;
 }

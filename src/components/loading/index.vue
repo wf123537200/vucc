@@ -12,15 +12,15 @@
 -->
 
 <template>
-    <div v-if="isShow" :style="appendStyle" :class="['tbd-spin', appendClass, sizeClass, {'tbd-spin-lg': isGlobal}]">
+    <div v-if="isShow" :style="appendStyle" :class="['vc-spin', appendClass, sizeClass, {'vc-spin-lg': isGlobal}]">
         <!-- 全局遮罩 -->
         <pv-mask :is-show="isGlobal && isShow"></pv-mask>
         <!-- 局部遮罩 -->
-        <div v-if="!isGlobal && isShow" class="tbd-spin-wrap-mask"></div>
+        <div v-if="!isGlobal && isShow" class="vc-spin-wrap-mask"></div>
 
-        <div :class="['tbd-spin-content']">
-            <span class="tbd-spin-circle"></span>
-            <span v-if="content" class="tbd-spin-text">{{content}}</span>
+        <div :class="['vc-spin-content']">
+            <span class="vc-spin-circle"></span>
+            <span v-if="content" class="vc-spin-text">{{content}}</span>
             <slot></slot>
         </div>
     </div>
@@ -58,8 +58,8 @@
             return {
                 sizeClass: {
                     'normal': '',
-                    'large': 'tbd-spin-lg',
-                    'small': 'tbd-spin-sm'
+                    'large': 'vc-spin-lg',
+                    'small': 'vc-spin-sm'
                 }[this.size]
             }
         },
@@ -69,12 +69,12 @@
                 if(!val) return;
 
                 const cName = this.$el.nextSibling.className;
-                if(cName.indexOf('tbd-spin-page') < 0 && this.isGlobal) {
-                    this.$el.nextSibling.className += ' tbd-spin-page';
+                if(cName.indexOf('vc-spin-page') < 0 && this.isGlobal) {
+                    this.$el.nextSibling.className += ' vc-spin-page';
                 }
 
-                if(this.$el.parentElement.className.indexOf('tbd-spin-warp') < 0 && !this.isGlobal) {
-                    this.$el.parentElement.className += ' tbd-spin-wrap';
+                if(this.$el.parentElement.className.indexOf('vc-spin-warp') < 0 && !this.isGlobal) {
+                    this.$el.parentElement.className += ' vc-spin-wrap';
                 }
 
             }

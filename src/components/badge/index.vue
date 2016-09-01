@@ -7,10 +7,10 @@
   @param {Object} appendStyle 自定义Style对象
 -->
 <template>
-    <span class="tbd-badge-wrap">
+    <span class="vc-badge-wrap">
         <slot></slot>
         <span v-if="number > 0 || !isShowNumber" :style="appendStyle"
-              :class="[appendClass, {'tbd-badge': isShowNumber, 'tbd-badge-dot': !isShowNumber}]">
+              :class="[appendClass, {'vc-badge': isShowNumber, 'vc-badge-dot': !isShowNumber}]">
             {{isShowNumber ? (+number > 100 ? '99+' : number) : ''}}
         </span>
     </span>

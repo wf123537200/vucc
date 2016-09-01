@@ -1,7 +1,7 @@
 /* input */
 /* icon fonts */
 /* line 11, style.scss */
-.tbd-dropdown {
+.vc-dropdown {
   background-color: white;
   border: 1px solid #e5e9ec;
   box-shadow: 0 1px 4px rgba(40, 40, 40, 0.15);
@@ -16,34 +16,34 @@
   line-height: 1.5;
 }
 /* line 25, style.scss */
-.tbd-dropdown-multi {
+.vc-dropdown-multi {
   min-width: 500px !important;
 }
 /* line 27, style.scss */
-.tbd-dropdown-multi .tbd-dropdown-menu {
+.vc-dropdown-multi .vc-dropdown-menu {
   border-bottom: 1px solid #e5e9ec;
   clear: both;
 }
 /* line 31, style.scss */
-.tbd-dropdown-multi .tbd-dropdown-menu-item {
+.vc-dropdown-multi .vc-dropdown-menu-item {
   float: left;
   width: 24.5%;
   margin: 1px 1px;
 }
 /* line 36, style.scss */
 :hover
-.tbd-dropdown-multi .tbd-dropdown-menu-item-active {
+.vc-dropdown-multi .vc-dropdown-menu-item-active {
   background-color: #57cc95;
   color: #f0f0f0;
 }
 /* line 43, style.scss */
-.tbd-dropdown-multi-a {
+.vc-dropdown-multi-a {
   color: #57cc95;
   float: right;
   text-decoration: none;
 }
 /* line 49, style.scss */
-.tbd-dropdown-multi-footer {
+.vc-dropdown-multi-footer {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -51,17 +51,17 @@
   text-align: center;
 }
 /* line 57, style.scss */
-.tbd-dropdown-multi-result {
+.vc-dropdown-multi-result {
   float: left;
   width: calc(100% - 90px);
   padding: 10px 15px;
 }
 /* line 61, style.scss */
-.tbd-dropdown-multi-result > ul {
+.vc-dropdown-multi-result > ul {
   margin: 8px 0;
 }
 /* line 64, style.scss */
-.tbd-dropdown-multi-result > ul > li {
+.vc-dropdown-multi-result > ul > li {
   float: left;
   position: relative;
   padding: 0 20px 0 10px;
@@ -76,7 +76,7 @@
   transition: padding 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 /* line 80, style.scss */
-.tbd-dropdown-multi-result-text {
+.vc-dropdown-multi-result-text {
   max-width: 80px;
   display: block;
   white-space: nowrap;
@@ -84,7 +84,7 @@
   text-overflow: ellipsis;
 }
 /* line 86, style.scss */
-.tbd-dropdown-multi-result-delete {
+.vc-dropdown-multi-result-delete {
   position: absolute;
   right: 4px;
   top: 0;
@@ -108,39 +108,39 @@
   transform: scale(0.83333) rotate(0deg);
 }
 /* line 11, ../../style/_compatibility.scss */
-:root .tbd-dropdown-multi-result-delete {
+:root .vc-dropdown-multi-result-delete {
   font-size: 12px;
 }
 /* line 103, style.scss */
-.tbd-dropdown-multi-result-delete:before {
+.vc-dropdown-multi-result-delete:before {
   content: "\e62d";
   display: block;
   font-family: "tbdicon" !important;
 }
 /* line 112, style.scss */
-.tbd-dropdown.slide-up-enter.slide-up-enter-active
-.tbd-dropdown.slide-up-appear.slide-up-appear-active {
+.vc-dropdown.slide-up-enter.slide-up-enter-active
+.vc-dropdown.slide-up-appear.slide-up-appear-active {
   animation-name: tbdSlideUpIn;
 }
 /* line 117, style.scss */
-.tbd-dropdown.slide-up-enter.slide-up-enter-active
-.tbd-dropdown.slide-up-appear.slide-up-appear-active {
+.vc-dropdown.slide-up-enter.slide-up-enter-active
+.vc-dropdown.slide-up-appear.slide-up-appear-active {
   animation-name: tbdSlideDownIn;
 }
 /* line 122, style.scss */
-.tbd-dropdown.slide-up-leave.slide-up-leave-active {
+.vc-dropdown.slide-up-leave.slide-up-leave-active {
   animation-name: tbdSlideUpOut;
 }
 /* line 126, style.scss */
-.tbd-dropdown.slide-up-leave.slide-up-leave-active {
+.vc-dropdown.slide-up-leave.slide-up-leave-active {
   animation-name: tbdSlideDownOut;
 }
 /* line 130, style.scss */
-.tbd-dropdown-hidden {
+.vc-dropdown-hidden {
   display: none;
 }
 /* line 134, style.scss */
-.tbd-dropdown-menu {
+.vc-dropdown-menu {
   outline: none;
   margin-bottom: 0;
   padding-left: 0;
@@ -149,22 +149,22 @@
   overflow: auto;
 }
 /* line 142, style.scss */
-.tbd-dropdown-menu-item-group-list {
+.vc-dropdown-menu-item-group-list {
   margin: 0;
   padding: 0;
 }
 /* line 146, style.scss */
-.tbd-dropdown-menu-item-group-list > .tbd-dropdown-menu-item {
+.vc-dropdown-menu-item-group-list > .vc-dropdown-menu-item {
   padding-left: 24px;
 }
 /* line 151, style.scss */
-.tbd-dropdown-menu-item-group-title {
+.vc-dropdown-menu-item-group-title {
   color: #8b91a0;
   line-height: 1.5;
   padding: 8px 15px;
 }
 /* line 157, style.scss */
-.tbd-dropdown-menu-item {
+.vc-dropdown-menu-item {
   position: relative;
   display: block;
   padding: 7px 15px;
@@ -177,7 +177,7 @@
   transition: background 0.3s ease;
 }
 /* line 169, style.scss */
-.tbd-dropdown-menu-item a {
+.vc-dropdown-menu-item a {
   display: block;
   margin: -7px -15px;
   padding: 7px 15px;
@@ -188,52 +188,52 @@
   text-decoration: none;
 }
 /* line 179, style.scss */
-.tbd-dropdown-menu-item a:hover {
+.vc-dropdown-menu-item a:hover {
   color: inherit;
   text-decoration: none;
 }
 /* line 185, style.scss */
-.tbd-dropdown-menu-item:first-child {
+.vc-dropdown-menu-item:first-child {
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
 }
 /* line 190, style.scss */
-.tbd-dropdown-menu-item:last-child {
+.vc-dropdown-menu-item:last-child {
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
 }
 /* line 194, style.scss */
-.tbd-dropdown-menu-item:hover, .tbd-dropdown-menu-item-active {
+.vc-dropdown-menu-item:hover, .vc-dropdown-menu-item-active {
   background-color: #f4f5f7;
   color: #1b1e25;
 }
 /* line 200, style.scss */
-.tbd-dropdown-menu-item-active {
+.vc-dropdown-menu-item-active {
   background-color: #ebeef0;
   color: #1b1e25;
 }
 /* line 204, style.scss */
-.tbd-dropdown-menu-item-active:hover {
+.vc-dropdown-menu-item-active:hover {
   background-color: #ebeef0;
 }
 /* line 209, style.scss */
-.tbd-dropdown-menu-item-disabled {
+.vc-dropdown-menu-item-disabled {
   color: #8b91a0;
   cursor: not-allowed;
   opacity: 0.6;
 }
 /* line 214, style.scss */
-.tbd-dropdown-menu-item-disabled a {
+.vc-dropdown-menu-item-disabled a {
   cursor: not-allowed;
 }
 /* line 218, style.scss */
-.tbd-dropdown-menu-item-disabled:hover {
+.vc-dropdown-menu-item-disabled:hover {
   color: #8b91a0;
   background-color: #fff;
   cursor: not-allowed;
 }
 /* line 225, style.scss */
-.tbd-dropdown-menu-item-divider {
+.vc-dropdown-menu-item-divider {
   height: 1px;
   margin: 1px 0;
   overflow: hidden;
@@ -241,23 +241,23 @@
   line-height: 0;
 }
 /* line 235, style.scss */
-.tbd-dropdown .tbd-dropdown-search {
+.vc-dropdown .vc-dropdown-search {
   display: block;
   padding: 5px;
 }
 /* line 240, style.scss */
-.tbd-dropdown * {
+.vc-dropdown * {
   box-sizing: border-box;
 }
 /* line 244, style.scss */
-.tbd-dropdown-wrap {
+.vc-dropdown-wrap {
   position: relative;
   display: inline-block;
   vertical-align: middle;
   box-sizing: border-box;
 }
 /* line 250, style.scss */
-.tbd-dropdown-wrap .tbd-btn > .tbdi-down {
+.vc-dropdown-wrap .vc-btn > .vci-down {
   display: inline-block;
   font-size: 12px;
   font-size: "10px 	";
@@ -267,19 +267,19 @@
   transform: scale(0.83333) rotate(0deg);
 }
 /* line 11, ../../style/_compatibility.scss */
-:root .tbd-dropdown-wrap .tbd-btn > .tbdi-down {
+:root .vc-dropdown-wrap .vc-btn > .vci-down {
   font-size: 12px;
 }
 /* line 254, style.scss */
-.tbd-dropdown-wrap .tbdi-down:before {
+.vc-dropdown-wrap .vci-down:before {
   transition: transform 0.2s ease;
 }
 /* line 258, style.scss */
-.tbd-dropdown-wrap .tbd-btn-group {
+.vc-dropdown-wrap .vc-btn-group {
   vertical-align: middle;
 }
 /* line 262, style.scss */
-.tbd-dropdown-wrap .tbd-dropdown {
+.vc-dropdown-wrap .vc-dropdown {
   left: 0;
   top: 100%;
   margin-top: 2px;
@@ -287,37 +287,37 @@
   display: none;
 }
 /* line 272, style.scss */
-.tbd-dropdown-wrap-open .tbdi-down:before {
+.vc-dropdown-wrap-open .vci-down:before {
   transform: rotate(180deg);
 }
 /* line 276, style.scss */
-.tbd-dropdown-wrap-open .tbd-dropdown {
+.vc-dropdown-wrap-open .vc-dropdown {
   display: block !important;
 }
 /* line 282, style.scss */
-.tbd-dropdown-wrap-open .tbd-select-arrow:before {
+.vc-dropdown-wrap-open .vc-select-arrow:before {
   transform: rotate(180deg);
 }
 /* line 287, style.scss */
-.tbd-dropdown-wrap-open .tbd-select-selection {
+.vc-dropdown-wrap-open .vc-select-selection {
   border-color: #d2d4d8;
 }
 /* line 294, style.scss */
-.tbd-dropdown-has-submenu .tbd-dropdown-menu {
+.vc-dropdown-has-submenu .vc-dropdown-menu {
   overflow: visible;
   max-height: none;
 }
 /* line 299, style.scss */
-.tbd-dropdown-submenu {
+.vc-dropdown-submenu {
   position: relative;
 }
 /* line 302, style.scss */
-.tbd-dropdown-submenu-item {
+.vc-dropdown-submenu-item {
   position: relative;
   padding-right: 20px;
 }
 /* line 306, style.scss */
-.tbd-dropdown-submenu-item:after {
+.vc-dropdown-submenu-item:after {
   position: absolute;
   right: 5px;
   content: '\E600';
@@ -331,18 +331,18 @@
   transform: scale(0.66667) rotate(0deg);
 }
 /* line 11, ../../style/_compatibility.scss */
-:root .tbd-dropdown-submenu-item:after {
+:root .vc-dropdown-submenu-item:after {
   font-size: 12px;
 }
 /* line 315, style.scss */
-.tbd-dropdown-submenu .tbd-dropdown {
+.vc-dropdown-submenu .vc-dropdown {
   display: none;
   left: 100%;
   top: 0;
   margin-left: 4px;
 }
 /* line 321, style.scss */
-.tbd-dropdown-submenu .tbd-dropdown:after {
+.vc-dropdown-submenu .vc-dropdown:after {
   content: '';
   position: absolute;
   right: 100%;
@@ -352,32 +352,32 @@
   opacity: 0;
 }
 /* line 333, style.scss */
-.tbd-dropdown-submenu:hover .tbd-dropdown {
+.vc-dropdown-submenu:hover .vc-dropdown {
   display: block;
 }
 /* line 340, style.scss */
-.tbd-dropdown-footer {
+.vc-dropdown-footer {
   border-top: 1px solid #f0f0f0;
   padding: 5px;
 }
 /* line 344, style.scss */
-.tbd-dropdown-btns {
+.vc-dropdown-btns {
   border-top: 1px solid #f0f0f0;
 }
 /* line 347, style.scss */
-.tbd-dropdown-btns button {
+.vc-dropdown-btns button {
   float: left;
   width: 50%;
 }
 
 /* line 354, style.scss */
-.tbd-dropdown-link {
+.vc-dropdown-link {
   font-size: 12px;
   color: #3598dc;
   text-decoration: none;
 }
 /* line 359, style.scss */
-.tbd-dropdown-link .tbdi-down {
+.vc-dropdown-link .vci-down {
   font-weight: bold;
   display: inline-block;
   font-size: 12px;
@@ -388,17 +388,17 @@
   transform: scale(0.66667) rotate(0deg);
 }
 /* line 11, ../../style/_compatibility.scss */
-:root .tbd-dropdown-link .tbdi-down {
+:root .vc-dropdown-link .vci-down {
   font-size: 12px;
 }
 /* line 364, style.scss */
-.tbd-dropdown-link:hover {
+.vc-dropdown-link:hover {
   text-decoration: none;
   color: #5dade3;
 }
 
 /* line 371, style.scss */
-.tbd-dropdown-button .tbdi-down {
+.vc-dropdown-button .vci-down {
   display: inline-block;
   font-size: 12px;
   font-size: "10px 	";
@@ -408,6 +408,6 @@
   transform: scale(0.83333) rotate(0deg);
 }
 /* line 11, ../../style/_compatibility.scss */
-:root .tbd-dropdown-button .tbdi-down {
+:root .vc-dropdown-button .vci-down {
   font-size: 12px;
 }

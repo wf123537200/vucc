@@ -11,11 +11,11 @@
 -->
 
 <template>
-    <div :class="['tbd-form-item', {'tbd-form-item-with-help': isExplainShow}]">
-        <label :class="['tbd-col-' + labelCol, {'tbd-form-item-required': isRequire}]">{{label}}</label>
-        <div :class="['tbd-form-item-control', explainClass, 'tbd-col-' + wrapperCol]">
+    <div :class="['vc-form-item', {'vc-form-item-with-help': isExplainShow}]">
+        <label :class="['vc-col-' + labelCol, {'vc-form-item-required': isRequire}]">{{label}}</label>
+        <div :class="['vc-form-item-control', explainClass, 'vc-col-' + wrapperCol]">
             <slot></slot>
-            <div class="tbd-form-explain">{{explainText}}</div>
+            <div class="vc-form-explain">{{explainText}}</div>
         </div>
     </div>
 </template>

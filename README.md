@@ -1,8 +1,8 @@
-tbd-design (fork from tencent big data component lib)
+vucc (vue 组件库)
 
 
 任何问题,可以联系
-zakwu@tencent.com
+123537200@qq.com
 
 vue 组件部分
 
@@ -10,23 +10,23 @@ vue 组件部分
 
 1 框架载入
 
-a) tnpm引入
+a) npm引入
 
-tnpm install @tencent/tbd-design-vue
+npm install vucc
 
 或者:
 
 package.json 中配置 dependencies
 
-"@tencent/tbd-design-vue": "^0.2.0",
+"vucc" : "^0.9.0"
 
 b) 标签引入
 
 下载源代码
 
-script引入/res/app.js(没有使用模块化系统的情况下,引入app4no-modules.js)
+script引入/dist/app.js
 
-link引入/assets/css/tbd-index.css
+link引入/dist/style.css
 
 2 使用
 
@@ -34,20 +34,20 @@ a) 全局使用,整个框架引入
 
 示例:
 
-var tbdDesign = require('@tencent/tbd-design-vue');
+var vucc = require('vucc');
 
 new Vue({
     el: '#app',
-    components: tbdDesign
+    components: vucc
 });
 
-b) 单组件使用
+b) 单组件使用,需要webpack环境
 
-var vButton = require('@tencent/tbd-design-vue').vButton;
+var vButton = require('vucc').vButton;
 
 或者
 
-var tbdDesign = require('@tencent/tbd-design-vue/scr/components/button');
+var vButton = require('vucc/scr/components/button');
 
 
 二 开发
@@ -58,7 +58,7 @@ npm run dev
 
 2,生产模式
 
-npm run res
+npm run prd
 
 三 历史
 0.9.4 table组件增加trClick方法,便于给行绑定事件

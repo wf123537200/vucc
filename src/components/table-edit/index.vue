@@ -11,22 +11,22 @@
    @param {Object} appendClass 自定义Style对象
 -->
 <template>
-    <div class="tbd-edit-table">
-        <div class="tbd-table tbd-table-bordered">
+    <div class="vc-edit-table">
+        <div class="vc-table vc-table-bordered">
             <table>
                 <thead>
                 <tr>
                     <th>字段英文名</th>
                     <th>字段类型
-                        <!--<div class="tbd-tooltip-wrap">-->
+                        <!--<div class="vc-tooltip-wrap">-->
                             <!--<i class="tbdi tbdi-question-circle-o"></i>-->
                             <!--<div-->
-                                    <!--class="tbd-tooltip tbd-tooltip-placement-rightTop"-->
+                                    <!--class="vc-tooltip vc-tooltip-placement-rightTop"-->
                                     <!--style="min-width:200px;-->
                             <!--position: absolute;-->
                             <!--left: 200%;">-->
-                                <!--<i class="tbd-tooltip-arrow"></i>-->
-                                <!--<div class="tbd-tooltip-inner">-->
+                                <!--<i class="vc-tooltip-arrow"></i>-->
+                                <!--<div class="vc-tooltip-inner">-->
                                     <!--char和varchar字段类型需要输入字段长度-->
                                     <!--array字段类型，需要输入值的类型-->
                                     <!--map字段类型，需要输入键和值的类型-->
@@ -41,7 +41,7 @@
                 </thead>
                 <tbody>
                 <tr v-for="item in objs">
-                    <td><input v-model="item.columnName" type="text" class="tbd-input tbd-input-sm"></td>
+                    <td><input v-model="item.columnName" type="text" class="vc-input vc-input-sm"></td>
 
                     <td>
 
@@ -50,43 +50,43 @@
                             <pv-select :value.sync="item.columnType" :data="types">
                             </pv-select>
 
-                            <div class="tbd-input-group tbd-input-group-sm" v-show="item.columnType === 'array'">
-                                <span class="tbd-input-extra">value=</span>
+                            <div class="vc-input-group vc-input-group-sm" v-show="item.columnType === 'array'">
+                                <span class="vc-input-extra">value=</span>
                                 <pv-select :value.sync="item.sub" :data="bases">
                                 </pv-select>
                             </div>
 
                             <!-- input group -->
-                            <div class="tbd-input-group tbd-input-group-sm" v-show="item.columnType === 'map'">
-                                <span class="tbd-input-extra">key=</span>
+                            <div class="vc-input-group vc-input-group-sm" v-show="item.columnType === 'map'">
+                                <span class="vc-input-extra">key=</span>
                                 <pv-select :value.sync="item.subKey" :data="bases">
                                 </pv-select>
                             </div>
                             <!-- input group -->
-                            <div class="tbd-input-group tbd-input-group-sm" v-show="item.columnType === 'map'">
-                                <span class="tbd-input-extra">value=</span>
+                            <div class="vc-input-group vc-input-group-sm" v-show="item.columnType === 'map'">
+                                <span class="vc-input-extra">value=</span>
                                 <pv-select :value.sync="item.subValue" :data="bases">
                                 </pv-select>
                             </div>
 
-                            <div class="tbd-input-group tbd-input-group-sm" v-show="item.columnType.indexOf('char') > -1">
-                                <span class="tbd-input-extra">size=</span>
-                                <input type="text" class="tbd-input tbd-input-sm" v-model="item.sub"  />
+                            <div class="vc-input-group vc-input-group-sm" v-show="item.columnType.indexOf('char') > -1">
+                                <span class="vc-input-extra">size=</span>
+                                <input type="text" class="vc-input vc-input-sm" v-model="item.sub"  />
                             </div>
                         </div>
 
                     </td>
 
-                    <td><input v-model="item.columnDesc" type="text" class="tbd-input tbd-input-sm"></td>
+                    <td><input v-model="item.columnDesc" type="text" class="vc-input vc-input-sm"></td>
                     <td><pv-checkbox :value.sync="item.isPartition"></pv-checkbox></td>
                     <td>
-                        <a href="javascript:void(0)" @click="removeItem(item, $index)" class="tbd-link">删除</a>
+                        <a href="javascript:void(0)" @click="removeItem(item, $index)" class="vc-link">删除</a>
                     </td>
                 </tr>
                 </tbody>
             </table>
         </div>
-        <a href="javascript:void(0)" @click="addItem(item)"  class="tbd-link">+ 增加一行</a>
+        <a href="javascript:void(0)" @click="addItem(item)"  class="vc-link">+ 增加一行</a>
     </div>
 </template>
 

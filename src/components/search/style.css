@@ -1,7 +1,7 @@
 /* input */
 /* icon fonts */
 /* line 16, style.scss */
-.tbd-input-wrap {
+.vc-input-wrap {
   display: inline-block;
   position: relative;
   width: 100%;
@@ -9,7 +9,7 @@
   line-height: 1.5;
 }
 /* line 23, style.scss */
-.tbd-input-wrap-extra {
+.vc-input-wrap-extra {
   position: absolute;
   right: 0;
   top: 0;
@@ -26,7 +26,7 @@
   color: #8b91a0;
 }
 /* line 36, style.scss */
-.tbd-input-wrap button.tbd-input-wrap-extra {
+.vc-input-wrap button.vc-input-wrap-extra {
   border-color: transparent;
   border-left-width: 0;
   background-color: #fff;
@@ -36,28 +36,28 @@
   transition: all .3s linear;
 }
 /* line 45, style.scss */
-:root .tbd-input-wrap button.tbd-input-wrap-extra {
+:root .vc-input-wrap button.vc-input-wrap-extra {
   background-color: #fff;
 }
 /* line 49, style.scss */
-.tbd-input-wrap button.tbd-input-wrap-extra:hover {
+.vc-input-wrap button.vc-input-wrap-extra:hover {
   color: #57cc95;
 }
 /* line 6, style.scss */
-.tbd-input-wrap-search .tbd-input {
+.vc-input-wrap-search .vc-input {
   border-radius: 18px !important;
 }
 /* line 10, style.scss */
-.tbd-input-wrap-search button.tbd-input-wrap-extra {
+.vc-input-wrap-search button.vc-input-wrap-extra {
   border-top-right-radius: 18px;
   border-bottom-right-radius: 18px;
 }
 /* line 58, style.scss */
-.tbd-input-wrap-search button.tbd-input-wrap-extra {
+.vc-input-wrap-search button.vc-input-wrap-extra {
   font-weight: bold;
 }
 /* line 66, style.scss */
-.tbd-input-wrap-sm .tbd-input, .tbd-input-wrap-sm .tbd-input-wrap-extra {
+.vc-input-wrap-sm .vc-input, .vc-input-wrap-sm .vc-input-wrap-extra {
   padding-top: 6px;
   padding-bottom: 6px;
   height: 32px;
@@ -65,16 +65,16 @@
   line-height: 1.5;
 }
 /* line 6, style.scss */
-.tbd-input-wrap-sm.tbd-input-wrap-search .tbd-input {
+.vc-input-wrap-sm.vc-input-wrap-search .vc-input {
   border-radius: 16px !important;
 }
 /* line 10, style.scss */
-.tbd-input-wrap-sm.tbd-input-wrap-search button.tbd-input-wrap-extra {
+.vc-input-wrap-sm.vc-input-wrap-search button.vc-input-wrap-extra {
   border-top-right-radius: 16px;
   border-bottom-right-radius: 16px;
 }
 /* line 78, style.scss */
-.tbd-input-wrap-lg .tbd-input, .tbd-input-wrap-lg .tbd-input-wrap-extra {
+.vc-input-wrap-lg .vc-input, .vc-input-wrap-lg .vc-input-wrap-extra {
   padding-top: 8.5px;
   padding-bottom: 8.5px;
   height: 40px;
@@ -82,15 +82,15 @@
   line-height: 1.5;
 }
 /* line 82, style.scss */
-.tbd-input-wrap-lg .tbd-input {
+.vc-input-wrap-lg .vc-input {
   padding: 3px 20px;
 }
 /* line 6, style.scss */
-.tbd-input-wrap-lg.tbd-input-wrap-search .tbd-input {
+.vc-input-wrap-lg.vc-input-wrap-search .vc-input {
   border-radius: 20px !important;
 }
 /* line 10, style.scss */
-.tbd-input-wrap-lg.tbd-input-wrap-search button.tbd-input-wrap-extra {
+.vc-input-wrap-lg.vc-input-wrap-search button.vc-input-wrap-extra {
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
 }

@@ -1,5 +1,5 @@
 /* line 13, style.scss */
-.tbd-slider {
+.vc-slider {
   position: relative;
   margin: 10px 8px;
   height: 12px;
@@ -12,11 +12,11 @@
   transition: background-color 0.3s ease;
 }
 /* line 25, style.scss */
-.tbd-slider * {
+.vc-slider * {
   box-sizing: border-box;
 }
 /* line 29, style.scss */
-.tbd-slider-track {
+.vc-slider-track {
   position: absolute;
   left: 0;
   height: 4px;
@@ -26,19 +26,19 @@
   transition: background-color 0.3s ease;
 }
 /* line 39, style.scss */
-.tbd-slider:hover {
+.vc-slider:hover {
   background-color: #e1e1e1;
 }
 /* line 41, style.scss */
-.tbd-slider:hover .tbd-slider-handle {
+.vc-slider:hover .vc-slider-handle {
   border-color: #79d6aa;
 }
 /* line 46, style.scss */
-.tbd-slider:hover .tbd-slider-track {
+.vc-slider:hover .vc-slider-track {
   background-color: #9ae0bf;
 }
 /* line 50, style.scss */
-.tbd-slider-handle {
+.vc-slider-handle {
   position: absolute;
   margin-left: -7px;
   margin-top: -5px;
@@ -52,16 +52,16 @@
   transition: border-color 0.3s ease;
 }
 /* line 63, style.scss */
-.tbd-slider-handle:hover {
+.vc-slider-handle:hover {
   border-color: #79d6aa;
 }
 /* line 68, style.scss */
-.tbd-slider-handle-active:active {
+.vc-slider-handle-active:active {
   border-color: #79d6aa;
   box-shadow: 0 0 0 2px rgba(87, 204, 149, 0.2);
 }
 /* line 76, style.scss */
-.tbd-slider-mark {
+.vc-slider-mark {
   position: absolute;
   top: 10px;
   left: 0;
@@ -71,7 +71,7 @@
   z-index: 3;
 }
 /* line 86, style.scss */
-.tbd-slider-mark-text {
+.vc-slider-mark-text {
   position: absolute;
   display: inline-block;
   vertical-align: middle;
@@ -80,11 +80,11 @@
   color: #999;
 }
 /* line 94, style.scss */
-.tbd-slider-mark-text-active {
+.vc-slider-mark-text-active {
   color: #666;
 }
 /* line 99, style.scss */
-.tbd-slider-step {
+.vc-slider-step {
   position: absolute;
   width: 100%;
   height: 4px;
@@ -92,7 +92,7 @@
   z-index: 1;
 }
 /* line 107, style.scss */
-.tbd-slider-dot {
+.vc-slider-dot {
   position: absolute;
   top: -2px;
   margin-left: -4px;
@@ -105,40 +105,40 @@
   vertical-align: middle;
 }
 /* line 118, style.scss */
-.tbd-slider-dot:first-child {
+.vc-slider-dot:first-child {
   margin-left: -4px;
 }
 /* line 121, style.scss */
-.tbd-slider-dot:last-child {
+.vc-slider-dot:last-child {
   margin-left: -4px;
 }
 /* line 124, style.scss */
-.tbd-slider-dot-active {
+.vc-slider-dot-active {
   border-color: #abe6ca;
 }
 /* line 129, style.scss */
-.tbd-slider-disabled {
+.vc-slider-disabled {
   cursor: not-allowed;
   background-color: #e9e9e9 !important;
 }
 /* line 133, style.scss */
-.tbd-slider-disabled .tbd-slider-track {
+.vc-slider-disabled .vc-slider-track {
   background-color: #ccc !important;
 }
 /* line 137, style.scss */
-.tbd-slider-disabled .tbd-slider-handle,
-.tbd-slider-disabled .tbd-slider-dot {
+.vc-slider-disabled .vc-slider-handle,
+.vc-slider-disabled .vc-slider-dot {
   border-color: #ccc !important;
   background-color: #fff;
   cursor: not-allowed;
 }
 /* line 144, style.scss */
-.tbd-slider-disabled .tbd-slider-mark-text,
-.tbd-slider-disabled .tbd-slider-dot {
+.vc-slider-disabled .vc-slider-mark-text,
+.vc-slider-disabled .vc-slider-dot {
   cursor: not-allowed !important;
 }
 /* line 151, style.scss */
-.tbd-slider-tooltip {
+.vc-slider-tooltip {
   position: absolute;
   left: -9999px;
   top: -9999px;
@@ -146,15 +146,15 @@
   visibility: visible;
 }
 /* line 158, style.scss */
-.tbd-slider-tooltip-hidden {
+.vc-slider-tooltip-hidden {
   display: none;
 }
 /* line 162, style.scss */
-.tbd-slider-tooltip-placement-points-bc-tc {
+.vc-slider-tooltip-placement-points-bc-tc {
   padding: 4px 0 8px 0;
 }
 /* line 166, style.scss */
-.tbd-slider-tooltip-inner {
+.vc-slider-tooltip-inner {
   padding: 6px;
   min-width: 24px;
   height: 24px;
@@ -167,7 +167,7 @@
   border-radius: 3px;
 }
 /* line 179, style.scss */
-.tbd-slider-tooltip-arrow {
+.vc-slider-tooltip-arrow {
   position: absolute;
   width: 0;
   height: 0;
@@ -175,7 +175,7 @@
   border-style: solid;
 }
 /* line 187, style.scss */
-.tbd-slider-tooltip-placement-points-bc-tc .tbd-slider-tooltip-arrow {
+.vc-slider-tooltip-placement-points-bc-tc .vc-slider-tooltip-arrow {
   bottom: 4px;
   left: 50%;
   margin-left: -4px;
@@ -183,18 +183,18 @@
   border-top-color: #6c6c6c;
 }
 /* line 196, style.scss */
-.tbd-slider .min, .tbd-slider .cur {
+.vc-slider .min, .vc-slider .cur {
   -ms-transform: translate(-50%);
   transform: translate(-50%);
 }
 /* line 201, style.scss */
-.tbd-slider .max {
+.vc-slider .max {
   left: 100%;
   -ms-transform: translate(-50%);
   transform: translate(-50%);
 }
 /* line 207, style.scss */
-.tbd-slider .show-tips {
+.vc-slider .show-tips {
   bottom: 100%;
   left: 50%;
   cursor: auto;
@@ -203,11 +203,11 @@
   display: none;
 }
 /* line 216, style.scss */
-.tbd-slider .tbd-slider-handle:hover .show-tips {
+.vc-slider .tbd-slider-handle:hover .show-tips {
   display: block;
 }
 /* line 220, style.scss */
-.tbd-slider .show-tips .tbd-tooltip-inner {
+.vc-slider .show-tips .tbd-tooltip-inner {
   min-width: 5em;
   text-align: center;
 }

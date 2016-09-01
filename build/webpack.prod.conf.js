@@ -46,7 +46,8 @@ function getEntry() {
         res['app'].push(it);
     });
 
-    res['alert'] = ['./src/components/alert/index.vue'];
+    // message-box 有一个单独的打包文件
+    res['message-box'].push('./src/components/message-box/wrap.js');
     console.log(res);
 
     return res;

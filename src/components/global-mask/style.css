@@ -1,5 +1,5 @@
 /* line 5, style.scss */
-.tbd-global-mask {
+.vc-global-mask {
   position: fixed;
   top: 0;
   right: 0;
@@ -12,6 +12,6 @@
   filter: alpha(opacity=50);
 }
 /* line 17, style.scss */
-.tbd-global-mask-hidden {
+.vc-global-mask-hidden {
   display: none;
 }

@@ -10,10 +10,10 @@
 -->
 <template>
   <div v-for="it in data" track-by="$index" :style="appendStyle" :class="[appendClass]">
-    <label class="tbd-label" :class="{'tbd-label-checked': it.value === (resultList ? resultList[isMultiple ? $index : 0] : value), 'tbd-label-disabled': it.isDisabled}"
+    <label class="vc-label" :class="{'vc-label-checked': it.value === (resultList ? resultList[isMultiple ? $index : 0] : value), 'vc-label-disabled': it.isDisabled}"
            @click.stop="check($index, value)">
-      <span class="tbd-radio"></span>
-      <span class="tbd-label-text">
+      <span class="vc-radio"></span>
+      <span class="vc-label-text">
           {{{it.label}}}
       </span>
     </label>

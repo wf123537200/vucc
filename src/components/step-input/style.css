@@ -1,16 +1,16 @@
 /* input */
 /* icon fonts */
 /* line 8, style.scss */
-.tbd-input-number {
+.vc-input-number {
   display: inline-block;
   position: relative;
 }
 /* line 12, style.scss */
-.tbd-input-number .tbd-input {
+.vc-input-number .vc-input {
   padding-right: 25px;
 }
 /* line 16, style.scss */
-.tbd-input-number-handle-wrap {
+.vc-input-number-handle-wrap {
   position: absolute;
   right: 1px;
   top: 1px;
@@ -19,7 +19,7 @@
   border-left: 1px solid #e5e9ec;
 }
 /* line 25, style.scss */
-.tbd-input-number-handle {
+.vc-input-number-handle {
   display: block;
   box-sizing: border-box;
   width: 100%;
@@ -31,15 +31,15 @@
   cursor: pointer;
 }
 /* line 36, style.scss */
-.tbd-input-number-handle-down {
+.vc-input-number-handle-down {
   border-top: 1px solid #e5e9ec;
 }
 /* line 40, style.scss */
-.tbd-input-number-handle:hover {
+.vc-input-number-handle:hover {
   color: #57cc95;
 }
 /* line 45, style.scss */
-.tbd-input-number .tbdi {
+.vc-input-number .vci {
   display: inline-block;
   font-size: 12px;
   font-size: "8px 	";
@@ -50,11 +50,11 @@
   font-weight: bold;
 }
 /* line 11, ../../style/_compatibility.scss */
-:root .tbd-input-number .tbdi {
+:root .vc-input-number .vci {
   font-size: 12px;
 }
 /* line 52, style.scss */
-.tbd-input-number-sm .tbd-input {
+.vc-input-number-sm .vc-input {
   padding-top: 6px;
   padding-bottom: 6px;
   height: 32px;
@@ -63,11 +63,11 @@
   padding-right: 20px;
 }
 /* line 57, style.scss */
-.tbd-input-number-sm .tbd-input-number-handle {
+.vc-input-number-sm .vc-input-number-handle {
   line-height: 16px;
 }
 /* line 63, style.scss */
-.tbd-input-number-lg .tbd-input {
+.vc-input-number-lg .vc-input {
   padding-top: 8.5px;
   padding-bottom: 8.5px;
   height: 40px;
@@ -76,30 +76,30 @@
   padding-right: 20px;
 }
 /* line 68, style.scss */
-.tbd-input-number-lg .tbd-input-number-handle {
+.vc-input-number-lg .vc-input-number-handle {
   line-height: 20px;
 }
 /* line 75, style.scss */
-.tbd-input-number-success .tbd-input {
+.vc-input-number-success .vc-input {
   border-color: #57cc95;
 }
 /* line 81, style.scss */
-.tbd-input-number-error .tbd-input {
+.vc-input-number-error .vc-input {
   border-color: #f35958;
 }
 /* line 87, style.scss */
-.tbd-input-number-warning .tbd-input {
+.vc-input-number-warning .vc-input {
   border-color: #f9ba46;
 }
 /* line 93, style.scss */
-.tbd-input-number-disabled .tbd-input-number-handle {
+.vc-input-number-disabled .vc-input-number-handle {
   cursor: not-allowed;
 }
 /* line 94, style.scss */
-.tbd-input-number-disabled .tbd-input-number-handle-wrap {
+.vc-input-number-disabled .vc-input-number-handle-wrap {
   border-left-color: #d2d4d8;
 }
 /* line 100, style.scss */
-.tbd-input-number-disabled .tbd-input-number-handle:hover {
+.vc-input-number-disabled .vc-input-number-handle:hover {
   color: #8b91a0;
 }

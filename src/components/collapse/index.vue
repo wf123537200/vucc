@@ -9,17 +9,17 @@
 -->
 
 <template>
-    <div :style="appendStyle" :class="['tbd-collapse', appendClass, {'tbd-collapse-open': isOpened, 'tbd-collapse-noborder': !isHasBorder}]">
-        <div class="tbd-collapse-header">
+    <div :style="appendStyle" :class="['vc-collapse', appendClass, {'vc-collapse-open': isOpened, 'vc-collapse-noborder': !isHasBorder}]">
+        <div class="vc-collapse-header">
             <div style="width: 80%; float: left; height: 100%;" @click="trigger">
-                <i class="tbd-collapse-header-trigger"></i>
-                <h3 class="tbd-collapse-header-title">{{title}}</h3>
+                <i class="vc-collapse-header-trigger"></i>
+                <h3 class="vc-collapse-header-title">{{title}}</h3>
             </div>
-            <div class="tbd-collapse-header-extra">
+            <div class="vc-collapse-header-extra">
                 <slot name="operate"></slot>
             </div>
         </div>
-        <div class="tbd-collapse-content">
+        <div class="vc-collapse-content">
             <slot></slot>
         </div>
     </div>

@@ -1,7 +1,7 @@
 /* input */
 /* icon fonts */
 /* line 37, style.scss */
-.tbd-form-item-required:before {
+.vc-form-item-required:before {
   display: inline-block;
   margin-right: 4px;
   content: "*";
@@ -11,45 +11,45 @@
 }
 
 /* line 47, style.scss */
-.tbd-form-item {
+.vc-form-item {
   font-size: 12px;
   margin-bottom: 24px;
   box-sizing: border-box;
 }
 /* line 53, style.scss */
-.tbd-form-item-row > [class*="tbd-col-"] {
+.vc-form-item-row > [class*="tbd-col-"] {
   padding-right: 8px;
 }
 /* line 58, style.scss */
-.tbd-form-item.tbd-form-item-with-help {
+.vc-form-item.vc-form-item-with-help {
   margin-bottom: 6px;
 }
 /* line 62, style.scss */
-.tbd-form-item.tbd-form-item-only-text {
+.vc-form-item.vc-form-item-only-text {
   margin-bottom: 0;
 }
 /* line 65, style.scss */
-.tbd-form-item.tbd-form-item-only-text > label {
+.vc-form-item.vc-form-item-only-text > label {
   padding-top: 0;
 }
 /* line 69, style.scss */
-.tbd-form-item.tbd-form-item-only-text .tbd-form-item-control {
+.vc-form-item.vc-form-item-only-text .vc-form-item-control {
   line-height: 1.5;
 }
 /* line 73, style.scss */
-.tbd-form-item.tbd-form-item-only-text .tbd-form-text {
+.vc-form-item.vc-form-item-only-text .vc-form-text {
   padding-top: 0;
 }
 /* line 77, style.scss */
-.tbd-form-item.tbd-form-item-only-text .tbd-switch {
+.vc-form-item.vc-form-item-only-text .vc-switch {
   margin: 0;
 }
 /* line 82, style.scss */
-.tbd-form-item > [class*="tbd-col-"] {
+.vc-form-item > [class*="tbd-col-"] {
   padding-right: 8px;
 }
 /* line 86, style.scss */
-.tbd-form-item > label {
+.vc-form-item > label {
   color: #1b1e25;
   text-align: right;
   vertical-align: middle;
@@ -58,45 +58,45 @@
   padding-bottom: 9px;
 }
 /* line 95, style.scss */
-.tbd-form-item .tbd-switch-sm {
+.vc-form-item .vc-switch-sm {
   margin: 8px 0;
 }
 /* line 99, style.scss */
-.tbd-form-item .tbd-input-wrap {
+.vc-form-item .vc-input-wrap {
   vertical-align: middle;
 }
 /* line 102, style.scss */
-.tbd-form-item textarea.tbd-input {
+.vc-form-item textarea.vc-input {
   vertical-align: middle;
 }
 /* line 106, style.scss */
-.tbd-form-item .tbd-label {
+.vc-form-item .vc-label {
   padding-top: 6px;
 }
 
 /* line 111, style.scss */
-.tbd-form-footer {
+.vc-form-footer {
   margin-top: 24px;
 }
 /* line 114, style.scss */
-.tbd-form-footer .tbd-btn {
+.vc-form-footer .tbd-btn {
   margin-right: 10px;
 }
 
 /* line 119, style.scss */
-.tbd-form-explain {
+.vc-form-explain {
   line-height: 1.5;
   margin-top: 3px;
   color: #8b91a0;
 }
 /* line 124, style.scss */
-.tbd-form-explain-inline {
+.vc-form-explain-inline {
   margin-top: 0;
   padding: 9px 0;
 }
 
 /* line 131, style.scss */
-.tbd-form-text {
+.vc-form-text {
   display: inline-block;
   padding: 9px 8px 9px 0;
   color: #1b1e25;
@@ -104,19 +104,19 @@
 }
 
 /* line 138, style.scss */
-.tbd-form-split {
+.vc-form-split {
   display: block;
   text-align: center;
   line-height: 36px;
 }
 
 /* line 145, style.scss */
-.tbd-form-horizontal {
+.vc-form-horizontal {
   max-width: 700px;
 }
 /* line 148, style.scss */
-.tbd-form-horizontal .tbd-form-item,
-.tbd-form-horizontal .tbd-form-item-row {
+.vc-form-horizontal .vc-form-item,
+.vc-form-horizontal .vc-form-item-row {
   position: relative;
   margin-left: 0;
   margin-right: 0;
@@ -125,15 +125,15 @@
   box-sizing: border-box;
 }
 /* line 5, ../../style/_mixins.scss */
-.tbd-form-horizontal .tbd-form-item:before, .tbd-form-horizontal .tbd-form-item:after,
-.tbd-form-horizontal .tbd-form-item-row:before,
-.tbd-form-horizontal .tbd-form-item-row:after {
+.vc-form-horizontal .vc-form-item:before, .vc-form-horizontal .vc-form-item:after,
+.vc-form-horizontal .vc-form-item-row:before,
+.vc-form-horizontal .vc-form-item-row:after {
   content: " ";
   display: table;
 }
 /* line 10, ../../style/_mixins.scss */
-.tbd-form-horizontal .tbd-form-item:after,
-.tbd-form-horizontal .tbd-form-item-row:after {
+.vc-form-horizontal .vc-form-item:after,
+.vc-form-horizontal .vc-form-item-row:after {
   clear: both;
   visibility: hidden;
   font-size: 0;
@@ -141,73 +141,73 @@
 }
 
 /* line 156, style.scss */
-.tbd-form-detail .tbd-form-item > label {
+.vc-form-detail .vc-form-item > label {
   color: #8b91a0;
 }
 
 /* line 162, style.scss */
-.tbd-form-inline {
+.vc-form-inline {
   margin-bottom: 20px;
 }
 /* line 165, style.scss */
-.tbd-form-inline .tbd-form-item {
+.vc-form-inline .vc-form-item {
   display: inline-block;
   vertical-align: middle;
   margin-right: 10px;
   margin-bottom: 0;
 }
 /* line 171, style.scss */
-.tbd-form-inline .tbd-form-item-with-help {
+.vc-form-inline .vc-form-item-with-help {
   margin-bottom: 24px;
 }
 /* line 175, style.scss */
-.tbd-form-inline .tbd-form-item > div {
+.vc-form-inline .vc-form-item > div {
   display: inline-block;
   vertical-align: middle;
 }
 /* line 181, style.scss */
-.tbd-form-inline .pull-right > .tbd-form-item {
+.vc-form-inline .pull-right > .vc-form-item {
   margin-left: 10px;
   margin-right: 0;
 }
 /* line 186, style.scss */
-.tbd-form-inline .tbd-input {
+.vc-form-inline .vc-input {
   display: inline-block;
   width: auto;
   vertical-align: middle;
 }
 /* line 191, style.scss */
-.tbd-form-inline .tbd-input-wrap {
+.vc-form-inline .vc-input-wrap {
   display: inline-block;
   width: auto;
   vertical-align: middle;
 }
 /* line 196, style.scss */
-.tbd-form-inline .tbd-input-wrap .tbd-input {
+.vc-form-inline .vc-input-wrap .vc-input {
   width: 100%;
 }
 /* line 202, style.scss */
-.tbd-form-inline .tbd-input-group .tbd-input {
+.vc-form-inline .vc-input-group .vc-input {
   width: 100%;
 }
 /* line 208, style.scss */
-.tbd-form-inline .tbd-form-text {
+.vc-form-inline .vc-form-text {
   display: inline-block;
 }
 /* line 212, style.scss */
-.tbd-form-inline .has-feedback {
+.vc-form-inline .has-feedback {
   display: inline-block;
 }
 /* line 216, style.scss */
-.tbd-form-inline .tbd-label {
+.vc-form-inline .vc-label {
   margin-right: 0;
 }
 
 /* line 224, style.scss */
-.tbd-form-horizontal label > input[type="radio"],
-.tbd-form-horizontal label > input[type="checkbox"],
-.tbd-form-inline label > input[type="radio"],
-.tbd-form-inline label > input[type="checkbox"] {
+.vc-form-horizontal label > input[type="radio"],
+.vc-form-horizontal label > input[type="checkbox"],
+.vc-form-inline label > input[type="radio"],
+.vc-form-inline label > input[type="checkbox"] {
   margin-right: 4px;
 }
 
@@ -244,20 +244,20 @@
 }
 
 /* line 11, style.scss */
-.has-success .tbd-form-explain,
-.has-success .tbd-form-split {
+.has-success .vc-form-explain,
+.has-success .vc-form-split {
   color: #57cc95;
 }
 /* line 17, style.scss */
-.has-success .tbd-input {
+.has-success .vc-input {
   border-color: #57cc95;
 }
 /* line 20, style.scss */
-.has-success .tbd-input:not([disabled]):hover {
+.has-success .vc-input:not([disabled]):hover {
   border-color: #57cc95;
 }
 /* line 25, style.scss */
-.has-success .tbd-input-group-extra {
+.has-success .vc-input-group-extra {
   color: #57cc95;
   border-color: #57cc95;
   background-color: #e5e9ec;
@@ -273,20 +273,20 @@
 }
 
 /* line 11, style.scss */
-.has-warning .tbd-form-explain,
-.has-warning .tbd-form-split {
+.has-warning .vc-form-explain,
+.has-warning .vc-form-split {
   color: #f9ba46;
 }
 /* line 17, style.scss */
-.has-warning .tbd-input {
+.has-warning .vc-input {
   border-color: #f9ba46;
 }
 /* line 20, style.scss */
-.has-warning .tbd-input:not([disabled]):hover {
+.has-warning .vc-input:not([disabled]):hover {
   border-color: #f9ba46;
 }
 /* line 25, style.scss */
-.has-warning .tbd-input-group-extra {
+.has-warning .vc-input-group-extra {
   color: #f9ba46;
   border-color: #f9ba46;
   background-color: #e5e9ec;
@@ -302,20 +302,20 @@
 }
 
 /* line 11, style.scss */
-.has-error .tbd-form-explain,
-.has-error .tbd-form-split {
+.has-error .vc-form-explain,
+.has-error .vc-form-split {
   color: #f35958;
 }
 /* line 17, style.scss */
-.has-error .tbd-input {
+.has-error .vc-input {
   border-color: #f35958;
 }
 /* line 20, style.scss */
-.has-error .tbd-input:not([disabled]):hover {
+.has-error .vc-input:not([disabled]):hover {
   border-color: #f35958;
 }
 /* line 25, style.scss */
-.has-error .tbd-input-group-extra {
+.has-error .vc-input-group-extra {
   color: #f35958;
   border-color: #f35958;
   background-color: #e5e9ec;

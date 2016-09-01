@@ -12,13 +12,13 @@
 -->
 
 <template>
-    <div :style="appendStyle" :class="['tbd-input-number', sizeClass, appendClass, {'tbd-input-number-disabled': isDisabled}]">
+    <div :style="appendStyle" :class="['vc-input-number', sizeClass, appendClass, {'vc-input-number-disabled': isDisabled}]">
         <pv-input type="text" placeholder="{{min}}" v-model="value"></pv-input>
-        <div class="tbd-input-number-handle-wrap">
-            <button class="tbd-input-number-handle" @mousedown.stop="stepUp" @mouseup.stop="cleanTimer">
+        <div class="vc-input-number-handle-wrap">
+            <button class="vc-input-number-handle" @mousedown.stop="stepUp" @mouseup.stop="cleanTimer">
                 <i class="tbdi tbdi-up"></i>
             </button>
-            <button class="tbd-input-number-handle tbd-input-number-handle-down" @mousedown.stop="stepDown" @mouseup.stop="cleanTimer">
+            <button class="vc-input-number-handle vc-input-number-handle-down" @mousedown.stop="stepDown" @mouseup.stop="cleanTimer">
                 <i class="tbdi tbdi-down"></i>
             </button>
         </div>
@@ -63,8 +63,8 @@
             return {
                 sizeClass: {
                     'normal': '',
-                    'large': 'tbd-input-number-lg',
-                    'small': 'tbd-input-number-sm'
+                    'large': 'vc-input-number-lg',
+                    'small': 'vc-input-number-sm'
                 }[this.size]
             }
         },

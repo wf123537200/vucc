@@ -7,7 +7,7 @@
   @param {Object} appendStyle 自定义Style对象
 -->
 <template>
-    <input :type="type" :style="appendStyle" :class="['tbd-input', sizeClass, appendClass]">
+    <input :type="type" :style="appendStyle" :class="['vc-input', sizeClass, appendClass]">
 </template>
 
 <script>
@@ -27,8 +27,8 @@
         data() {
             return {
                 sizeClass: {
-                    small: 'tbd-input-sm',
-                    large: 'tbd-input-lg'
+                    small: 'vc-input-sm',
+                    large: 'vc-input-lg'
                 }[this.size]
             }
         }

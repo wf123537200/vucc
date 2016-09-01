@@ -1,14 +1,14 @@
 /* input */
 /* icon fonts */
 /* line 6, style.scss */
-.tbd-collapse {
+.vc-collapse {
   margin-bottom: 20px;
   box-sizing: border-box;
   border: 1px solid #e5e9ec;
   background: #fff;
 }
 /* line 12, style.scss */
-.tbd-collapse-header {
+.vc-collapse-header {
   position: relative;
   box-sizing: border-box;
   height: 41px;
@@ -21,19 +21,19 @@
   transition: background 0.3s linear;
 }
 /* line 5, ../../style/_mixins.scss */
-.tbd-collapse-header:before, .tbd-collapse-header:after {
+.vc-collapse-header:before, .vc-collapse-header:after {
   content: " ";
   display: table;
 }
 /* line 10, ../../style/_mixins.scss */
-.tbd-collapse-header:after {
+.vc-collapse-header:after {
   clear: both;
   visibility: hidden;
   font-size: 0;
   height: 0;
 }
 /* line 24, style.scss */
-.tbd-collapse-header-trigger {
+.vc-collapse-header-trigger {
   float: left;
   width: 20px;
   display: inline-block;
@@ -49,88 +49,88 @@
   overflow: hidden;
 }
 /* line 70, ../../style/_mixins.scss */
-.tbd-collapse-header-trigger:before {
+.vc-collapse-header-trigger:before {
   display: block;
   font-family: "tbdicon" !important;
 }
 /* line 33, style.scss */
-.tbd-collapse-header-trigger:before {
+.vc-collapse-header-trigger:before {
   content: '\e60a';
 }
 /* line 38, style.scss */
-.tbd-collapse-header-title {
+.vc-collapse-header-title {
   float: left;
   font-weight: normal;
   font-size: 12px;
 }
 /* line 44, style.scss */
-.tbd-collapse-header-extra {
+.vc-collapse-header-extra {
   float: right;
 }
 /* line 48, style.scss */
-.tbd-collapse-header:hover {
+.vc-collapse-header:hover {
   background: #e5e9ec;
 }
 /* line 51, style.scss */
-.tbd-collapse-header:hover .tbd-collapse-header-trigger {
+.vc-collapse-header:hover .vc-collapse-header-trigger {
   color: #1b1e25;
 }
 /* line 57, style.scss */
-.tbd-collapse-content {
+.vc-collapse-content {
   display: none;
   box-sizing: border-box;
   padding: 15px;
   border-top: 1px solid #e5e9ec;
 }
 /* line 65, style.scss */
-.tbd-collapse-open .tbd-collapse-header-trigger {
+.vc-collapse-open .vc-collapse-header-trigger {
   transform: rotate(90deg);
 }
 /* line 68, style.scss */
-.tbd-collapse-open .tbd-collapse-content {
+.vc-collapse-open .vc-collapse-content {
   display: block;
 }
 /* line 73, style.scss */
-.tbd-collapse-active .tbd-collapse-header {
+.vc-collapse-active .vc-collapse-header {
   color: #fff;
   background: #57cc95;
 }
 /* line 77, style.scss */
-.tbd-collapse-active .tbd-collapse-header:hover {
+.vc-collapse-active .vc-collapse-header:hover {
   background: #43c689;
 }
 /* line 80, style.scss */
-.tbd-collapse-active .tbd-collapse-header:hover .tbd-collapse-header-trigger {
+.vc-collapse-active .vc-collapse-header:hover .vc-collapse-header-trigger {
   color: #fff;
 }
 /* line 85, style.scss */
-.tbd-collapse-active .tbd-collapse-header-trigger {
+.vc-collapse-active .vc-collapse-header-trigger {
   color: #fff;
 }
 /* line 88, style.scss */
-.tbd-collapse-active .tbd-collapse-header .tbd-link {
+.vc-collapse-active .vc-collapse-header .vc-link {
   color: #fff;
 }
 /* line 93, style.scss */
-.tbd-collapse-group {
+.vc-collapse-group {
   margin-bottom: 20px;
 }
 /* line 96, style.scss */
-.tbd-collapse-group > .tbd-collapse {
+.vc-collapse-group > .vc-collapse {
   margin-bottom: 0;
   border-bottom-width: 0;
 }
 /* line 100, style.scss */
-.tbd-collapse-group > .tbd-collapse:last-child {
+.vc-collapse-group > .vc-collapse:last-child {
   border-bottom-width: 1px;
 }
 /* line 107, style.scss */
-.tbd-collapse-noborder {
+.vc-collapse-noborder {
   margin-bottom: 10px;
   border: none;
 }
 /* line 111, style.scss */
-.tbd-collapse-noborder .tbd-collapse-header {
+.vc-collapse-noborder .vc-collapse-header {
   position: relative;
   padding: 0;
   height: 36px;
@@ -140,7 +140,7 @@
   *zoom: 1;
 }
 /* line 120, style.scss */
-.tbd-collapse-noborder .tbd-collapse-header:after {
+.vc-collapse-noborder .vc-collapse-header:after {
   content: '';
   display: block;
   position: absolute;
@@ -152,20 +152,20 @@
   visibility: visible;
 }
 /* line 132, style.scss */
-.tbd-collapse-noborder .tbd-collapse-header-trigger {
+.vc-collapse-noborder .vc-collapse-header-trigger {
   position: relative;
   z-index: 2;
   background: #fff;
 }
 /* line 137, style.scss */
-.tbd-collapse-noborder .tbd-collapse-header-title {
+.vc-collapse-noborder .vc-collapse-header-title {
   position: relative;
   z-index: 2;
   padding-right: 10px;
   background: #fff;
 }
 /* line 145, style.scss */
-.tbd-collapse-noborder .tbd-collapse-content {
+.vc-collapse-noborder .vc-collapse-content {
   padding: 5px 0 0;
   border: none;
 }
