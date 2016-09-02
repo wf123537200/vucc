@@ -153,7 +153,7 @@
                 this.hide();
             },
             _onOk() {
-                if(this.onBeforeClose && this.onclosebefore() === false) {
+                if(this.onBeforeClose && this.onBeforeClose() === false) {
                     return;
                 }
 
@@ -161,7 +161,7 @@
                 this.hide();
             },
             _onCancel() {
-                if(this.onBeforeClose && this.onclosebefore() === false) {
+                if(this.onBeforeClose && this.onBeforeClose() === false) {
                     return;
                 }
 

@@ -39,7 +39,7 @@ function getEntry() {
 
     //console.log(fileList);
 
-    res['app'] = [];
+    res['app'] = ['./src/index.js'];
     fileList.forEach(function(it) {
         var path = it.substr(srcPath.length);
         res[path.substr(0, path.length - 4)] = [it];
@@ -47,7 +47,6 @@ function getEntry() {
             // message-box 有一个单独的打包文件
             res['message-box'].push('./src/components/message-box/wrap.js');
         }
-        res['app'].push(it);
     });
 
     console.log(res);
