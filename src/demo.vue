@@ -47,12 +47,12 @@
         <!-- checkbox -->
         <section class="doc-part">
           <h3>checkbox: 横向{{checkboxResultList | json}}</h3>
-          <v-checkbox :data="commonListData" :result-list.sync="checkboxResultList"></v-checkbox>
+          <!--<v-checkbox :data="commonListData" :result-list.sync="checkboxResultList"></v-checkbox>-->
           <h3>checkbox: 横向使用别名{{checkboxResultList | json}}</h3>
           <v-checkbox :data="commonListData2" :as-value="'name'"
                       :as-label="'desc'" :result-list.sync="checkboxResultList"></v-checkbox>
           <h3>checkbox: 纵向{{checkboxResultList | json}}</h3>
-          <v-checkbox :data="commonListData" :result-list.sync="checkboxResultList" :is-vertical="true"></v-checkbox>
+          <!--<v-checkbox :data="commonListData" :result-list.sync="checkboxResultList" :is-vertical="true"></v-checkbox>-->
         </section>
 
         <!-- radio -->
@@ -953,6 +953,14 @@
           value: 2,
           label: 'value2',
           isDisabled: true
+        }];
+
+        _this.commonListData2 = [{
+          name: 0,
+          desc: 'value21123'
+        }, {
+          name: 3,
+          desc: 'value2123123123'
         }];
 
         // dropdown

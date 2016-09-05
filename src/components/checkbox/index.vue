@@ -22,7 +22,7 @@
   @param {String} asLabel 自定义label key
 -->
 <template>
-  <div v-for="it in data" track-by="$index" :style="appendStyle" :class="[appendClass]">
+  <div v-if="isShow" v-for="it in data" track-by="$index" :style="appendStyle" :class="[appendClass]">
     <label class="vc-label" :class="{'vc-label-checked': (resultList && resultList.includes(it.value) || value === true), 'vc-label-disabled': it.isDisabled}" @click="toggleSwitch($index, it.value)">
       <span class="vc-checkbox"></span>
       <span class="vc-label-text">
@@ -34,6 +34,8 @@
 
 <script>
   import {componentBaseParamConfig, alias, name2Alias} from '../base-config';
+
+  window.x = 1;
 
   export default {
     props: Object.assign({}, componentBaseParamConfig, alias, {
@@ -68,8 +70,20 @@
 
     data () {
       return {
-        isDisabled: ''
+        isDisabled: '',
+        isShow: true
       }
+    },
+
+    watch: {
+        data() {
+          // 为了解决异步刷新问题
+          name2Alias(this.data, this.asValue, this.asLabel);
+          this.isShow = false;
+          setTimeout(() => {
+            this.isShow = true;
+          }, 30)
+        }
     },
 
     methods: {

@@ -9,7 +9,7 @@
   @param {Object} appendStyle 自定义Style对象
 -->
 <template>
-  <div v-for="it in data" track-by="$index" :style="appendStyle" :class="[appendClass]">
+  <div v-if="isShow" v-for="it in data" track-by="$index" :style="appendStyle" :class="[appendClass]">
     <label class="vc-label" :class="{'vc-label-checked': it.value === (resultList ? resultList[isMultiple ? $index : 0] : value), 'vc-label-disabled': it.isDisabled}"
            @click.stop="check($index, value)">
       <span class="vc-radio"></span>
@@ -57,12 +57,22 @@
         this.appendStyle = Object.assign({}, this.appendStyle, {
           display: this.isVertical ? 'block' : 'inline-block'
         })
+      },
+      data() {
+        // 为了解决异步刷新问题
+        name2Alias(this.data, this.asValue, this.asLabel);
+        this.isShow = false;
+
+        window.setTimeout(() => {
+          this.isShow = true;
+        }, 30)
       }
     },
 
     data () {
       return {
-        isDisabled: ''
+        isDisabled: '',
+        isShow: true
       }
     },
 
