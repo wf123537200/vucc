@@ -137,7 +137,7 @@ $progress-extra-bg: $primary-color;
   }
 }
 
-@include keyframes(progress-active) {
+keyframes(progress-active) {
   0% {
     background-position: 0 0;
   }

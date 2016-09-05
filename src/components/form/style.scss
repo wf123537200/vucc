@@ -1,6 +1,5 @@
 @import "../../style/ver";
 @import "../../style/mixins";
-@import "compass/css3";
 
 $grid-gutter-width: 0;
 $label-color: $base-color;
@@ -302,7 +301,7 @@ $input-prefix-cls: $css-prefix + "input";
 
 // need there different zoom animation
 // otherwise won't trigger anim
-@include keyframes(diffZoomIn1) {
+keyframes(diffZoomIn1) {
   0% {
     transform: scale(0);
   }
@@ -311,7 +310,7 @@ $input-prefix-cls: $css-prefix + "input";
   }
 }
 
-@include keyframes(diffZoomIn2) {
+keyframes(diffZoomIn2) {
   0% {
     transform: scale(0);
   }
@@ -320,7 +319,7 @@ $input-prefix-cls: $css-prefix + "input";
   }
 }
 
-@include keyframes(diffZoomIn3) {
+keyframes(diffZoomIn3) {
   0% {
     transform: scale(0);
   }

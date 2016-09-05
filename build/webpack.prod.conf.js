@@ -37,17 +37,19 @@ function getEntry() {
         return it.match(/index\.vue/);
     });
 
-    //console.log(fileList);
+    console.log(fileList);
 
     res['app'] = ['./src/index.js'];
-    fileList.forEach(function(it) {
-        var path = it.substr(srcPath.length);
-        res[path.substr(0, path.length - 4)] = [it];
-        if(path.substr(0, path.length - 4) === 'message-box') {
-            // message-box 有一个单独的打包文件
-            res['message-box'].push('./src/components/message-box/wrap.js');
-        }
-    });
+    // 暂不提供分包模式,因为提供了也没有什么卵用
+    // fileList.forEach(function(it) {
+    //     var path = it.substr(srcPath.length);
+    //     res[path.substr(0, path.length - 4)] = [it];
+    //     if(path.substr(0, path.length - 4) === 'message-box') {
+    //         // message-box 有一个单独的打包文件
+    //         res['message-box'].push('./src/components/message-box/wrap.js');
+    //     }
+    // });
+    // res['alert'] = ['./src/components/alert/index.vue'];
 
     console.log(res);
 

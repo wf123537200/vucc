@@ -1,4 +1,5 @@
 var path = require('path');
+var utils = require('./utils');
 
 module.exports = {
   module: {
@@ -31,8 +32,8 @@ module.exports = {
         loader : 'url'
       },
       {
-        test: /\.scss$/,
-        loaders: ["style", "css", "sass"]
+        test: /\.(scss|sass)$/,
+        loaders: 'sass-loader'
       }
     ]
   },
@@ -42,5 +43,8 @@ module.exports = {
       'src': path.resolve(__dirname, '/src'),
       components: path.resolve(__dirname, '/src/components')
     }
+  },
+  vue: {
+    loaders: utils.cssLoaders()
   }
 };

@@ -1,6 +1,6 @@
 {
   "name": "vucc",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "vue 前端组件库",
   "main": "src",
   "devDependencies": {
@@ -9,31 +9,34 @@
     "babel-loader": "^6.0.0",
     "babel-plugin-transform-runtime": "^6.0.0",
     "babel-preset-es2015": "^1.0.0",
+    "casperjs": "^1.1.0-beta5",
     "css-loader": "^0.22.0",
+    "extract-text-webpack-plugin": "^1.0.0",
     "file-loader": "^0.8.5",
     "html-loader": "^0.3.0",
-    "webpack": "^1.11.0",
-    "webpack-dev-server": "^1.12.1",
+    "node-sass": "^3.9.0",
+    "phantomjs": "^1.9.17",
+    "sass-loader": "^4.0.1",
+    "scss-loader": "^0.0.1",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
     "vue": "^1.0.17",
     "vue-hot-reload-api": "^1.2.0",
     "vue-html-loader": "^1.2.0",
     "vue-loader": "^8.5.2",
     "vue-router": "^0.7.11",
     "vue-style-loader": "^1.0.0",
-    "scss-loader": "^0.0.1",
-    "style-loader": "^0.13.1",
-    "url-loader": "^0.5.7",
-    "extract-text-webpack-plugin": "^1.0.0",
-    "webpack-merge": "^0.8.3",
-    "casperjs": "^1.1.0-beta5",
-    "phantomjs": "^1.9.17"
+    "webpack": "^1.11.0",
+    "webpack-dev-server": "^1.12.1",
+    "webpack-merge": "^0.8.3"
   },
   "scripts": {
-    "dev": "webpack-dev-server --content-base src --inline --hot --quiet --host 0.0.0.0 --port 8090 --config build/webpack.dev.conf.js",
+    "dev": "webpack-dev-server --inline --hot --quiet --host 0.0.0.0 --port 8090 --config build/webpack.dev.conf.js",
     "dev-build": "webpack --colors --config build/webpack.dev.conf.js",
     "pre-prd": "compass compile --force",
     "prd": "webpack -p --progress --config build/webpack.prod.conf.js",
-    "e2e": "casperjs test --concise ./test/e2e"
+    "e2e": "casperjs test --concise ./test/e2e",
+    "test": "webpack -progress --config build/webpack.prod.conf.js"
   },
   "repository": {
     "type": "git",
