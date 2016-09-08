@@ -2,6 +2,7 @@ var webpack = require('webpack');
 var merge = require('webpack-merge');
 var baseConfig = require('./webpack.base.conf');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var BuildAll = require("./build-all");
 var fs = require("fs");
 var path = require('path');
 var SOURCE_MAP = false;
@@ -37,21 +38,15 @@ function getEntry() {
         return it.match(/index\.vue/);
     });
 
-    console.log(fileList);
-
-    res['app'] = ['./src/index.js'];
     // 暂不提供分包模式,因为提供了也没有什么卵用
-    // fileList.forEach(function(it) {
-    //     var path = it.substr(srcPath.length);
-    //     res[path.substr(0, path.length - 4)] = [it];
-    //     if(path.substr(0, path.length - 4) === 'message-box') {
-    //         // message-box 有一个单独的打包文件
-    //         res['message-box'].push('./src/components/message-box/wrap.js');
-    //     }
-    // });
-    // res['alert'] = ['./src/components/alert/index.vue'];
-
-    console.log(res);
+    fileList.forEach(function(it) {
+        var path = it.substr(srcPath.length);
+        res[path.substr(0, path.length - 4)] = [it];
+        if(path.substr(0, path.length - 4) === 'message-box') {
+            // message-box 有一个单独的打包文件
+            res['message-box'].push('./src/components/message-box/wrap.js');
+        }
+    });
 
     return res;
 };
@@ -59,11 +54,6 @@ function getEntry() {
 // 文件配置部分
 module.exports = merge(baseConfig, {
     entry: getEntry(),
-    vue: {
-        loaders: {
-            css: ExtractTextPlugin.extract("css")
-        }
-    },
     devtool: SOURCE_MAP ? '#source-map' : false,
     output: {
         path: "./dist",
@@ -76,10 +66,7 @@ module.exports = merge(baseConfig, {
             }
         }),
         new webpack.optimize.OccurenceOrderPlugin(),
-        new ExtractTextPlugin("style.css", {
-            allChunks: true,
-            disable: false
-        })
+        new BuildComponents(getEntry().keys())
     ],
     resolve: {
         extensions: ['', '.js', '.vue'],

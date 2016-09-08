@@ -15,7 +15,7 @@
 @include fade-motion(fade, vcFade);
 @include fade-motion(vc-modal-fade, vcFade);
 
-@include keyframes(vcFadeIn) {
+keyframes(vcFadeIn) {
   0% {
     opacity: 0;
   }
@@ -24,7 +24,7 @@
   }
 }
 
-@include keyframes(vcFadeOut) {
+keyframes(vcFadeOut) {
   0% {
     opacity: 1;
   }

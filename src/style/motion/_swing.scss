@@ -15,7 +15,7 @@
 
 @include swing-motion(swing, vcSwing);
 
-@include keyframes(vcSwingIn) {
+keyframes(vcSwingIn) {
   0%,
   100% {
     transform: translateX(0px);

@@ -17,7 +17,7 @@
 @include slide-motion(slide-left, vcSlideLeft);
 @include slide-motion(slide-right, vcSlideRight);
 
-@include keyframes(vcSlideUpIn) {
+keyframes(vcSlideUpIn) {
   0% {
     opacity: 0;
     transform-origin: 0% 0%;
@@ -30,7 +30,7 @@
   }
 }
 
-@include keyframes(vcSlideUpOut) {
+keyframes(vcSlideUpOut) {
   0% {
     opacity: 1;
     transform-origin: 0% 0%;
@@ -43,7 +43,7 @@
   }
 }
 
-@include keyframes(vcSlideDownIn) {
+keyframes(vcSlideDownIn) {
   0% {
     opacity: 0;
     transform-origin: 100% 100%;
@@ -56,7 +56,7 @@
   }
 }
 
-@include keyframes(vcSlideDownOut) {
+keyframes(vcSlideDownOut) {
   0% {
     opacity: 1;
     transform-origin: 100% 100%;
@@ -69,7 +69,7 @@
   }
 }
 
-@include keyframes(vcSlideLeftIn) {
+keyframes(vcSlideLeftIn) {
   0% {
     opacity: 0;
     transform-origin: 0% 0%;
@@ -82,7 +82,7 @@
   }
 }
 
-@include keyframes(vcSlideLeftOut) {
+keyframes(vcSlideLeftOut) {
   0% {
     opacity: 1;
     transform-origin: 0% 0%;
@@ -95,7 +95,7 @@
   }
 }
 
-@include keyframes(vcSlideRightIn) {
+keyframes(vcSlideRightIn) {
   0% {
     opacity: 0;
     transform-origin: 100% 0%;
@@ -108,7 +108,7 @@
   }
 }
 
-@include keyframes(vcSlideRightOut) {
+keyframes(vcSlideRightOut) {
   0% {
     opacity: 1;
     transform-origin: 100% 0%;

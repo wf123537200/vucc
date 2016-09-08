@@ -143,6 +143,7 @@
     }
 </script>
 
-<style scoped lang="scss">
+<!-- 这里控制了 dropdown 所以不能加上scoped -->
+<style lang="scss">
     @import "style.scss";
 </style>

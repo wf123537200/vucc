@@ -1,6 +1,7 @@
 @import "../../style/ver";
 @import "../../style/mixins";
 @import "../button/ver";
+@import "bourbon";
 
 $btn-group-cls: $css-prefix + 'btn';
 

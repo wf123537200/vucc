@@ -19,7 +19,7 @@
 @include zoom-motion(zoom-left, vcZoomLeft);
 @include zoom-motion(zoom-right, vcZoomRight);
 
-@include keyframes(vcZoomIn) {
+keyframes(vcZoomIn) {
   0% {
     opacity: 0;
     transform: scale(0);
@@ -29,7 +29,7 @@
   }
 }
 
-@include keyframes(vcZoomOut) {
+keyframes(vcZoomOut) {
   0% {
     transform: scale(1);
   }
@@ -39,7 +39,7 @@
   }
 }
 
-@include keyframes(vcZoomBigIn) {
+keyframes(vcZoomBigIn) {
   0% {
     opacity: 0;
     transform: scale(.8);
@@ -49,7 +49,7 @@
   }
 }
 
-@include keyframes(vcZoomBigOut) {
+keyframes(vcZoomBigOut) {
   0% {
     transform: scale(1);
   }
@@ -59,7 +59,7 @@
   }
 }
 
-@include keyframes(vcZoomUpIn) {
+keyframes(vcZoomUpIn) {
   0% {
     opacity: 0;
     transform-origin: 50% 0%;
@@ -71,7 +71,7 @@
   }
 }
 
-@include keyframes(vcZoomUpOut) {
+keyframes(vcZoomUpOut) {
   0% {
     transform-origin: 50% 0%;
     transform: scale(1);
@@ -83,7 +83,7 @@
   }
 }
 
-@include keyframes(vcZoomLeftIn) {
+keyframes(vcZoomLeftIn) {
   0% {
     opacity: 0;
     transform-origin: 0% 50%;
@@ -95,7 +95,7 @@
   }
 }
 
-@include keyframes(vcZoomLeftOut) {
+keyframes(vcZoomLeftOut) {
   0% {
     transform-origin: 0% 50%;
     transform: scale(1);
@@ -107,7 +107,7 @@
   }
 }
 
-@include keyframes(vcZoomRightIn) {
+keyframes(vcZoomRightIn) {
   0% {
     opacity: 0;
     transform-origin: 100% 50%;
@@ -119,7 +119,7 @@
   }
 }
 
-@include keyframes(vcZoomRightOut) {
+keyframes(vcZoomRightOut) {
   0% {
     transform-origin: 100% 50%;
     transform: scale(1);
@@ -131,7 +131,7 @@
   }
 }
 
-@include keyframes(vcZoomDownIn) {
+keyframes(vcZoomDownIn) {
   0% {
     opacity: 0;
     transform-origin: 50% 100%;
@@ -143,7 +143,7 @@
   }
 }
 
-@include keyframes(vcZoomDownOut) {
+keyframes(vcZoomDownOut) {
   0% {
     transform-origin: 50% 100%;
     transform: scale(1);

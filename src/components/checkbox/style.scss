@@ -1,5 +1,6 @@
 @import "../../style/ver";
 @import "../../style/mixins";
+@import "bourbon";
 
 $checkbox-prefix-cls: $css-prefix + 'checkbox';
 $label-prefix-cls: $css-prefix + 'label';

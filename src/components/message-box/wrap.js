@@ -30,7 +30,7 @@ MessageBox.init = function(obj) {
             explain: mb.explain,
             onOk: mb.onOk,
             onCancel: mb.onCancel,
-            isShow: mb.isShow,
+            isShow: mb.isShow || true,
         },
         methods: {
             onCancelWrap() {
@@ -47,4 +47,4 @@ MessageBox.init = function(obj) {
     })
 };
 
-window.MessageBox = MessageBox;
+module.exports = MessageBox;

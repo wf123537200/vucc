@@ -29,7 +29,7 @@
               :on-ok="onOk"
               :cancel-text="cancelText"
               :has-cancel-btn="hasCancelBtn"
-              :is-show="isShow"
+              :is-show.sync="isShow"
               :ok-text="okText" >
 
             <div class="vc-confirm-body">
@@ -107,6 +107,6 @@
     }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
     @import "style.scss";
 </style>

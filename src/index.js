@@ -1,7 +1,6 @@
 // 自动装载css
 try {
-    require('./style/main.css');
-    //require('../assets/css/vc-index.css');
+    require('./style/main.scss');
 } catch (e) {
     console.error('如果不使用css-load,请手动拷贝css,使用link标签进行加载!');
 }
@@ -45,11 +44,11 @@ var vFormItem = require('./components/form-item');
 var vSearch = require('./components/search');
 var vMultiSelect = require('./components/multi-select');
 // message 的包装代码
-require('./components/message-box/wrap.js');
+window.MessageBox = require('./components/message-box/wrap.js');
 
 /* 为不支持模块化的系统提供简单支持 */
 window.__vc_design__ = {vMultiSelect, vSearch, vFormItem, vForm, vTransfer, vTree, vTagList, vTimeLine, vToolTip, vSteps, vLoading, vProgress, vStepInput, vPagination, vPane, vCollapseGroup, vCollapse, vInput, vTextarea, vBadge, vAlert, vTableEdit, vLabelDropdown, vSlider, vTable, vButton, vButtonGroup, vSwitch, vCheckbox, vRadio, vDropdown, vSelect, vTips, vDialog, vMask, vMessageBox, vTabs, vButtonGroup};
-module.exports = {vMultiSelect, vSearch, vFormItem, vForm, vTransfer, vTree, vTagList, vTimeLine, vToolTip, vSteps, vLoading, vProgress, vStepInput, vPagination, vPane, vCollapseGroup, vCollapse, vInput, vTextarea, vBadge, vAlert, vTableEdit, vLabelDropdown, vSlider, vTable, vButton, vButtonGroup, vSwitch, vCheckbox, vRadio, vDropdown, vSelect, vTips, vDialog, vMask, vMessageBox, vTabs, vButtonGroup};
+module.exports = window.__vc_design__;
 
 // 配置
 window.vcConfig = function(conf) {

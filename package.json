@@ -1,8 +1,8 @@
 {
   "name": "vucc",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "vue 前端组件库",
-  "main": "src",
+  "main": "dist",
   "devDependencies": {
     "babel-cli": "^6.5.1",
     "babel-core": "^6.0.0",
@@ -14,6 +14,7 @@
     "extract-text-webpack-plugin": "^1.0.0",
     "file-loader": "^0.8.5",
     "html-loader": "^0.3.0",
+    "node-bourbon": "^4.2.8",
     "node-sass": "^3.9.0",
     "phantomjs": "^1.9.17",
     "sass-loader": "^4.0.1",
@@ -32,9 +33,10 @@
   },
   "scripts": {
     "dev": "webpack-dev-server --inline --hot --quiet --host 0.0.0.0 --port 8090 --config build/webpack.dev.conf.js",
-    "dev-build": "webpack --colors --config build/webpack.dev.conf.js",
-    "pre-prd": "compass compile --force",
-    "prd": "webpack -p --progress --config build/webpack.prod.conf.js",
+    "build-all": "webpack -p --progress --config build/webpack.index.conf.js",
+    "build-split": "webpack -p --progress --config build/webpack.split.conf.js",
+    "build-coms": "webpack -p --progress --config build/webpack.components.conf.js",
+    "prd": "webpack --progress --config build/webpack.prod.conf.js",
     "e2e": "casperjs test --concise ./test/e2e",
     "test": "webpack -progress --config build/webpack.prod.conf.js"
   },

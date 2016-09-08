@@ -1,5 +1,6 @@
 var path = require('path');
 var utils = require('./utils');
+var pathToBourbon = require('node-bourbon').includePaths;
 
 module.exports = {
   module: {
@@ -33,7 +34,7 @@ module.exports = {
       },
       {
         test: /\.(scss|sass)$/,
-        loaders: 'sass-loader'
+        loaders: ["style", "css", "sass"]
       }
     ]
   },
@@ -46,5 +47,8 @@ module.exports = {
   },
   vue: {
     loaders: utils.cssLoaders()
+  },
+  sassLoader: {
+    includePaths: [pathToBourbon]
   }
 };

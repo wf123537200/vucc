@@ -1,6 +1,7 @@
 @import "../../style/ver";
 @import "../../style/compatibility";
 @import "../../style/mixins";
+@import "bourbon";
 
 $progress-prefix-cls: $css-prefix + "progress";
 $progress-bg: $blue-color;

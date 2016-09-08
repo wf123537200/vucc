@@ -559,7 +559,12 @@
 </template>
 
 <script>
-  let components = require('./index');
+  // 方式1
+  let components = require('../dist/index');
+  // 方式2
+//  require('../dist/style.css');
+//  import x from '../dist/split';
+  console.log(x);
   import Vue from 'vue';
 
   export default {
@@ -903,6 +908,7 @@
       },
 
       showMb2(id) {
+        debugger
         window.MessageBox.init({
           type: 'confirm',
           title: '标题',
