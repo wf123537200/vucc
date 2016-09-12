@@ -29,15 +29,15 @@
 <template>
     <ul :style="appendStyle" :class="['vc-tree', appendClass]" >
         <li v-for="it in data.leafs" :class="[{'vc-tree-checked': it.isChecked, 'vc-tree-disabled': it.isDisabled, 'vc-tree-open': it.isOpened}]">
-            <a href="javascript: void 0;" class="vc-tree-item">
-                <i @click.stop="toggleOpen(it)" v-if="it.subTree" class="vc-tree-caret"></i>
-                <span class="vc-tree-text" @click.stop="toggleOpen(it)">
+            <a href="javascript: void 0;" class="vc-tree-item" @click.stop="onItemClick(it)">
+                <i @click="toggleOpen(it)" v-if="it.subTree" class="vc-tree-caret"></i>
+                <span class="vc-tree-text" @click="toggleOpen(it)">
                     <i @click.stop="toggleChecked(it)" v-if="data.isHasCheckbox" class="vc-tree-checkbox"></i>
                     {{it.content}}
                 </span>
             </a>
 
-            <pv-base v-if="it.subTree" :data="it.subTree" :is-parent-checked.sync="it.isChecked"></pv-base>
+            <pv-base v-if="it.subTree" :on-item-click="onItemClick" :data="it.subTree" :is-parent-checked.sync="it.isChecked"></pv-base>
         </li>
     </ul>
 </template>
@@ -58,6 +58,12 @@
                     return {
                         leafs: []
                     }
+                }
+            },
+            onItemClick: {
+                type: Function,
+                default() {
+                    return () => {};
                 }
             }
         }),

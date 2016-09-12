@@ -3,7 +3,6 @@
 @import "../../style/ver";
 @import "../../style/mixins";
 @import "../../style/compatibility";
-@import "bourbon";
 
 $dropdown-prefix-cls: $css-prefix + "dropdown";
 
@@ -45,20 +44,21 @@ $duration: .3s;
       color: $primary-color;
       float: right;
       text-decoration: none;
+      display: block;
+      padding: 10px 15px;
     }
 
     &-footer {
-      position: absolute;
-      bottom: 0;
-      right: 0;
       padding: 10px;
       text-align: center;
     }
 
     &-result {
       float: left;
-      width: calc(100% - 90px);
+      width: 100%;
       padding: 10px 15px;
+      padding-bottom: 0;
+
       > ul {
         margin: 8px 0;
 

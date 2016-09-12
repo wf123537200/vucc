@@ -65,7 +65,7 @@
                 </li>
                 <li v-for="it in showData.optsList" value="it.value"
                     :class="['vc-dropdown-menu-item', {'vc-dropdown-menu-item-disabled': it.isDisabled, 'vc-dropdown-menu-item-active': indexList.includes($index)}]"
-                    @click.stop="onSelected($index, it)">
+                    @click.stop="onSelected($index, it)" title="{{{renderLi($index)}}}">
                     {{{renderLi($index)}}}
                 </li>
             </ul>
@@ -73,11 +73,10 @@
             <!-- 已选展示 -->
             <div class="vc-dropdown-multi-result">
                 <span class="vc-dropdown-multi-result-title">已选:
-                    <a v-if="!hasSearch" href="javascript: void 0;" @click.stop="onClear" class="vc-dropdown-multi-a">清空</a>
                 </span>
                 <ul>
                     <li v-for="it in resultListTemp">
-                        <span class="vc-dropdown-multi-result-text">{{it.label}}</span>
+                        <span class="vc-dropdown-multi-result-text" title="{{it.label}}">{{it.label}}</span>
                         <span class="vc-dropdown-multi-result-delete" @click.stop="onDelete(it)"></span>
                     </li>
                 </ul>
@@ -85,9 +84,10 @@
 
             <!-- 确定取消按钮 -->
             <div v-if="hasFooter" class="vc-dropdown-multi-footer">
-                <pv-button :type="'primary'" @click.stop="_onOk">
+                <pv-button :type="'primary'" @click.stop="_onOk" :append-style="{float: 'right'}">
                     {{okText}}
                 </pv-button>
+                <a v-if="!hasSearch" href="javascript: void 0;" @click.stop="onClear" class="vc-dropdown-multi-a">清空</a>
             </div><!-- 确定取消按钮 End -->
         </div>
         <!-- 多选 end -->

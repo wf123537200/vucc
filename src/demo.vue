@@ -219,7 +219,7 @@
       <h2>表格</h2>
       <div class="doc-example">
         <h2>普通表格</h2>
-        <v-table :page-size="10" :has-all-select="true" :data="table.data" :columns="table.columns"></v-table>
+        <v-table :page-size="10" :has-all-select="true" :on-checkbox-click="table.checkboxClick" :data="table.data" :columns="table.columns"></v-table>
       </div>
 
       <h2>滑动输入条</h2>
@@ -412,7 +412,7 @@
 
       <h2>树形列表</h2>
       <div class="doc-example">
-        <v-tree :data="tree"></v-tree>
+        <v-tree :data="tree" :on-item-click="tree.onItemClick"></v-tree>
       </div>
 
       <h2>穿梭框</h2>
@@ -560,11 +560,11 @@
 
 <script>
   // 方式1
-  let components = require('../dist/index');
+//  let components = require('../dist/index');
   // 方式2
 //  require('../dist/style.css');
 //  import x from '../dist/split';
-  console.log(x);
+  let components = require('../src/index');
   import Vue from 'vue';
 
   export default {
@@ -698,6 +698,9 @@
 
         // table
         table: {
+          checkboxClick() {
+              console.log(arguments);
+          },
           data: (function() {
             var res = [];
             for (let i = 0; i < 50; i++) {
@@ -807,6 +810,9 @@
         }],
         // 树
         tree: {
+          onItemClick() {
+            console.log(arguments);
+          },
           isHasCheckbox: true,
           leafs: [{
             isOpened: true,

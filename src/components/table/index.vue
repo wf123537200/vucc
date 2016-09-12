@@ -146,13 +146,18 @@
                 default() {
                     return () => {};
                 }
+            },
+            onCheckboxClick: {
+                type: Function,
+                default() {
+                    return () => {};
+                }
             }
         }),
 
         data () {
             return {
-                currentData: [],
-
+                currentData: []
             }
         },
 
@@ -214,6 +219,9 @@
                 this.selectAll = false;
             },
             itemClick(isChecked, item) {
+                // 调用点击事件
+                this.onCheckboxClick(isChecked, item);
+
                 // 更新data内部值
                 let temp = this.data.filter((el) => {
                     return el.__el__id__ === item.__el__id__;
@@ -284,6 +292,9 @@
                         return row[col.dataIndex]
                     }
                 }
+            },
+            checkboxClickFn() {
+                this.checkboxClick();
             }
         }
     }

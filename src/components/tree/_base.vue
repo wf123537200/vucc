@@ -11,15 +11,15 @@
         name: 'tree_base',
         template:    `<ul>
                         <li v-for="it in data.leafs" :class="[{'vc-tree-checked': it.isChecked, 'vc-tree-disabled': it.isDisabled, 'vc-tree-open': it.isOpened}]">
-                            <a href="javascript: void 0;" class="vc-tree-item">
-                                <i @click.stop="toggleOpen(it)" v-if="it.subTree" class="vc-tree-caret"></i>
-                                <span class="vc-tree-text" @click.stop="toggleOpen(it)">
-                                    <i @click.stop="toggleChecked(it)" v-if="data.isHasCheckbox" class="vc-tree-checkbox"></i>
-                                    <span @click.stop="toggleChecked(it)">{{it.content}}</span>
+                            <a href="javascript: void 0;" class="vc-tree-item" @click.stop="onItemClick(it)">
+                                <i @click="toggleOpen(it)" v-if="it.subTree" class="vc-tree-caret"></i>
+                                <span class="vc-tree-text" @click="toggleOpen(it)">
+                                    <i @click="toggleChecked(it)" v-if="data.isHasCheckbox" class="vc-tree-checkbox"></i>
+                                    <span @click="toggleChecked(it)">{{it.content}}</span>
                                 </span>
                             </a>
 
-                            <tree_base v-if="it.subTree" :data="it.subTree" :is-parent-checked.sync="it.isChecked"></tree_base>
+                            <tree_base v-if="it.subTree" :data="it.subTree" :on-item-click="onItemClick" :is-parent-checked.sync="it.isChecked"></tree_base>
                         </li>
                      </ul>`,
         props: {
@@ -30,6 +30,14 @@
             isParentChecked: {
                 type: Boolean,
                 default: false
+            },
+            onItemClick: {
+                type: Function,
+                default() {
+                    return () => {
+                        console.log(111);
+                    };
+                }
             }
         },
         beforeCompile() {
