@@ -195,13 +195,18 @@
                     };
                 } else {
                     return {
-                        optsList: (this.filter === '' || this.filter === '请选择') ? this.data.optsList : this.data.optsList.filter((it) => {return it.label && it.label.includes(_this.filter)})
+                        optsList: (this.filter === '' || this.filter === '请选择') ? this.data.optsList : this.data.optsList.filter((it) => {return it.label && this.includeIgnore(it.label, _this.filter)})
                 };
                 }
             }
         },
 
         methods: {
+            includeIgnore(src, regx) {
+                let reg = new RegExp(regx, 'i');
+
+                return reg.test(src);
+            },
             onClick() {
                 if(this.isDisabled) return;
 

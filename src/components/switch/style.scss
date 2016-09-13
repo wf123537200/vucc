@@ -65,4 +65,8 @@ $switch-height-sm: 20px;
        }
      }
   }
+
+  &-disabled {
+    cursor: not-allowed;
+  }
 }

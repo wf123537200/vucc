@@ -42,6 +42,7 @@
         <section class="doc-part">
           <h3>switch: {{switchValue}}</h3>
           <v-switch :value.sync="switchValue" :onChange="switchChange"></v-switch>
+          <v-switch :value.sync="switchValue" :is-disabled="true" :onChange="switchChange"></v-switch>
         </section>
 
         <!-- checkbox -->

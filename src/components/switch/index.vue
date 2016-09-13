@@ -6,7 +6,7 @@
   @param {Object} appendStyle 自定义Style对象
 -->
 <template>
-  <div :style="appendStyle" :class="['vc-switch', appendClass, sizeClass, value ? '' : 'vc-switch-off']" @click="toggleSwitch"><i></i></div>
+  <div :style="appendStyle" :class="['vc-switch', appendClass, sizeClass, {'vc-switch-off': !value, 'vc-switch-disabled': isDisabled}]" @click="toggleSwitch"><i></i></div>
 </template>
 
 <script>
@@ -19,6 +19,10 @@
         default: 'normal'
       },
       value: {
+        type: Boolean,
+        default: false
+      },
+      isDisabled: {
         type: Boolean,
         default: false
       }
@@ -41,6 +45,8 @@
 
   methods: {
     toggleSwitch() {
+      if(this.isDisabled) return;
+
       this.value = !this.value;
     }
   }
