@@ -2,6 +2,7 @@
   switch 组件
   @param {Boolean} value 开关是否打开
   @param {String} [size=normal|large|small] 开关的大小
+  @param {Boolean} isDisabled 开关是否禁用
   @param {Object} appendClass 自定义class
   @param {Object} appendStyle 自定义Style对象
 -->

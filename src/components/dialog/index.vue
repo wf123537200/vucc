@@ -29,7 +29,7 @@
 <template>
     <div :class="['vc-dialog-wrap', {'vc-block': isShow, 'vc-hidden': !isShow}]" tabindex="10000" @keyup.esc="closeFn">
         <pv-mask :is-show="showMask"></pv-mask>
-        <div :class="['vc-dialog vc-dialog-autoscroll', appendClass]" :style="appendStyle">
+        <div :class="['vc-dialog vc-dialog-autoscroll', appendClass]">
             <div class="vc-dialog-content">
                 <!-- header -->
                 <!-- close -->
@@ -42,7 +42,7 @@
                 </div><!-- header end -->
 
                 <!-- body -->
-                <div class="vc-dialog-body">
+                <div class="vc-dialog-body" :style="appendStyle">
                     <slot></slot>
                 </div>
 

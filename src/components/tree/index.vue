@@ -22,6 +22,7 @@
                 }
             }]
         }
+   @param {Function} onItemClick 节点点击函数
    @param {String} appendClass 自定义class
    @param {Object} appendStyle 自定义Style对象
 -->
