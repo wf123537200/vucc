@@ -68,31 +68,31 @@
                 if(!event) {
                     this.$el.querySelector('.vc-tabs-tab-active').className = this.$el.querySelector('.vc-tabs-tab-active').className.replace(/\s?vc-tabs-tab-active\s?/, '');
 
-                    event = {};
-                    event.target = this.$el.querySelector('.vc-tabs-nav > [slot=header]').children[index];
-                    event.target.className += ' vc-tabs-tab-active';
-
-                    return;
+                    let tmp = this.$el.querySelector('.vc-tabs-nav > [slot=header]').children[index];
+                    tmp.className += ' vc-tabs-tab-active';
                 }
+                let selectIndex = 0;
+                if(event) {
+                    selectIndex = +(event.target.getAttribute('tab_index'));
+                    if(selectIndex === null) {
+                        selectIndex  = +(event.target.parentElement.getAttribute('tab_index'));
+                    }
 
-                let selectIndex = +(event.target.getAttribute('tab_index'));
-                if(selectIndex === null) {
-                    selectIndex  = +(event.target.parentElement.getAttribute('tab_index'));
+                    if(selectIndex === null || (event.type && selectIndex === +index)) return;
+
+                    // switch header
+                    this.$el.querySelector('.vc-tabs-tab-active').className = this.$el.querySelector('.vc-tabs-tab-active').className.replace(/\s?vc-tabs-tab-active\s?/, '');
+                    this.$el.querySelector('.vc-tabs-nav [slot=header] > :nth-child(' + (selectIndex + 1) + ')').className += ' vc-tabs-tab-active ';
                 }
-
-                if(selectIndex === null || (event.type && selectIndex === +index)) return;
-
-                // switch header
-                this.$el.querySelector('.vc-tabs-tab-active').className = this.$el.querySelector('.vc-tabs-tab-active').className.replace(/\s?vc-tabs-tab-active\s?/, '');
-                this.$el.querySelector('.vc-tabs-nav [slot=header] > :nth-child(' + (selectIndex + 1) + ')').className += ' vc-tabs-tab-active ';
 
                 // switch context
-                let oldContextEl = this.$el.querySelector('.vc-tabs-content > :nth-child(' + (index + 1) + ')');
+                let oldContextEl = this.$el.querySelector('.vc-tabs-content > :nth-child(' + ((event ? index : this.curIndex) + 1) + ')');
                 oldContextEl.setAttribute('class',  oldContextEl.className + ' vc-tabs-tabpane-hidden ');
-                let curContextEl = this.$el.querySelector('.vc-tabs-content > :nth-child(' + (selectIndex + 1) + ')');
-                curContextEl.setAttribute('class',  curContextEl.className.replace(/\s?vc-tabs-tabpane-hidden\s?/, ''));
+                let curContextEl = this.$el.querySelector('.vc-tabs-content > :nth-child(' + ((event ? selectIndex : index) + 1) + ')');
+                curContextEl.setAttribute('class',  curContextEl.className.replace(/\s?vc-tabs-tabpane-hidden\s?/g, ''));
 
-                this.curIndex = selectIndex;
+
+                this.curIndex = event ? selectIndex : index;
 
                 this.onChange && this.onChange(this.curIndex);
             }

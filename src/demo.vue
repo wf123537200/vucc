@@ -149,6 +149,13 @@
             <div>hi, 我是一个弹窗</div>
           </v-dialog>
 
+          <v-dialog :id="'dialog2'" :on-ok="dialogCallbackFn1" :on-cancel="dialogCallbackFn2">
+            <div>hi, 我是一个弹窗</div>
+            <div>hi, 我是一个弹窗</div>
+            <div>hi, 我是一个弹窗</div>
+            <div>hi, 我是一个弹窗</div>
+          </v-dialog>
+
           <v-button type="primary" @click="showDialog('dialog1')">show dialog</v-button>
         </section>
 
@@ -177,7 +184,7 @@
         </v-tabs>
 
         <h2>card tabs</h2>
-        <v-tabs type="card" :active-index="activeIndex">
+        <v-tabs type="card" :active-index.sync="activeIndex">
           <div slot="header">
             <div class="a">选项卡1</div>
             <div>选项卡2</div>
@@ -929,6 +936,7 @@
       // 展示对话框
       showDialog(id) {
         this.$root.$$dialog[id].show();
+        this.$root.$$dialog['dialog2'].show();
       },
 
       dialogCallbackFn1() {

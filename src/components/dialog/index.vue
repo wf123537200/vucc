@@ -23,11 +23,12 @@
     @param {Function}   onOk ok按钮的回调函数
     @param {Function}   onCancel cancel按钮的回调函数
     @param {Function}   onBeforeClose 窗口关闭前调用的函数,返回false可以阻止窗口关闭
+    @param {Boolean}    isMultiple 是否允许当前窗口为复合弹出,即一个页面可以弹出多个窗口
     @param {Object}     appendClass 自定义class
     @param {Object}     appendStyle 自定义Style对象
 -->
 <template>
-    <div :class="['vc-dialog-wrap', {'vc-block': isShow, 'vc-hidden': !isShow}]" tabindex="10000" @keyup.esc="closeFn">
+    <div id="{{id}}" :class="['vc-dialog-wrap', {'vc-block': isShow, 'vc-hidden': !isShow}]" tabindex="10000" @keyup.esc="closeFn">
         <pv-mask :is-show="showMask"></pv-mask>
         <div :class="['vc-dialog vc-dialog-autoscroll', appendClass]">
             <div class="vc-dialog-content">
@@ -113,6 +114,10 @@
             isShow: {
                 type: Boolean,
                 default: false
+            },
+            isMultiple: {
+                type: Boolean,
+                default: false
             }
         }),
 
@@ -122,6 +127,9 @@
 
         ready() {
             this.$root.$$dialog = this.$root.$$dialog || {};
+            if(this.$root.$$dialog[this.id]) {
+                console.warn(this.id + ' 此dialog id已经被使用,请确认id填写正确!');
+            }
             this.$root.$$dialog[this.id] = this;
         },
 
@@ -134,6 +142,14 @@
         watch: {
             isShow(val) {
                 this.showMask = val;
+                // 如果不是复合弹出,则清理掉当前页面的所有窗口
+                if(this.$root.$$dialog) {
+                    for(let it in this.$root.$$dialog) {
+                        if(this.$root.$$dialog[it].isMultiple) continue;
+
+                        if(this.$root.$$dialog[it].id !== this.id) this.$root.$$dialog[it].hide();
+                    }
+                }
             }
         },
 
