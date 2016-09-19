@@ -2,7 +2,6 @@ var path = require('path');
 var utils = require('./utils');
 var pathToBourbon = require('node-bourbon').includePaths;
 
-console.log([path.join(__dirname, '../src')]);
 module.exports = {
   module: {
     loaders: [
