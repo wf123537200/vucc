@@ -1,43 +1,16 @@
 <template>
-  <div class="doc-header">
-    <div class="inner">
-      <ul class="nav">
-        <li class="current"><a href="index.html">首页</a></li>
-      </ul>
-    </div>
-  </div>
   <!-- text body-->
   <div class="doc-index doc-container">
     <section class="doc-main">
       <h2>基本元素</h2>
 
       <div class="doc-example">
-        <section class="doc-part">
-          <h3>button:</h3>
-          <v-button>default</v-button>
-          <v-button type="primary" size="large" @click="buttonClick()">primary/large</v-button>
-          <v-button type="outline">outline</v-button>
-          <v-button type="error">error</v-button>
-          <v-button type="link" size="small" >link/small</v-button>
-          <v-button type="primary" :is-disabled="true" @click="buttonClick()">primary/disable</v-button>
-          <!-- 带图标 -->
-          <h3>带图标button:</h3>
-          <v-button>
-            <span>default</span>
-            <span class="vci vci-down"></span>
-          </v-button>
-          <v-button>
-            <span class="vci vci-down"></span>
-            <span>default</span>
-          </v-button>
-        </section>
+        <t-button></t-button>
 
         <section class="doc-part">
           <h2>按钮组</h2>
           <v-button-group :data="buttonGroupList"></v-button-group>
         </section>
-
-
         <!-- switch -->
         <section class="doc-part">
           <h3>switch: {{switchValue}}</h3>
@@ -567,19 +540,14 @@
 </template>
 
 <script>
-  // 方式1
-//  let components = require('../dist/index');
-  // 方式2
-//  require('../dist/style.css');
-//  import x from '../dist/split';
-  // 单独引用
-//  import vButton from '../dist/button';
+  import tButton from './button';
 
-  let components = require('../src/index');
   import Vue from 'vue';
 
   export default {
-    components: components,
+    components: Object.assign({}, {
+      tButton
+    }),
     data() {
       const _this = this;
       return {

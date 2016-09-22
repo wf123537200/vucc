@@ -11,7 +11,7 @@ baseConfig.module.loaders.push({
 // 整体配置
 module.exports = merge(baseConfig, {
     entry: {
-        demo: "./src/dev"
+        demo: "./test/dev"
     },
 
     output: {

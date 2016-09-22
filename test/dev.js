@@ -1,6 +1,5 @@
-//import App from './demo.vue'
 import Vue from 'vue';
-import App from './demo.vue';
+import App from '../test/index';
 
 new Vue({
     el: '#app',
