@@ -2,7 +2,7 @@ var webpack = require('webpack');
 var merge = require('webpack-merge');
 var baseConfig = require('./webpack.base.conf');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var BuildAll = require("./build-all");
+var BuildComponents = require("./build-components");
 var fs = require("fs");
 var path = require('path');
 var SOURCE_MAP = false;
@@ -66,7 +66,7 @@ module.exports = merge(baseConfig, {
             }
         }),
         new webpack.optimize.OccurenceOrderPlugin(),
-        new BuildComponents(getEntry().keys())
+        new BuildComponents(getEntry())
     ],
     resolve: {
         extensions: ['', '.js', '.vue'],

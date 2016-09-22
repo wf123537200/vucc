@@ -572,6 +572,9 @@
   // 方式2
 //  require('../dist/style.css');
 //  import x from '../dist/split';
+  // 单独引用
+//  import vButton from '../dist/button';
+
   let components = require('../src/index');
   import Vue from 'vue';
 
@@ -922,7 +925,6 @@
       },
 
       showMb2(id) {
-        debugger
         window.MessageBox.init({
           type: 'confirm',
           title: '标题',

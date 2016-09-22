@@ -1,6 +1,6 @@
 {
   "name": "vucc",
-  "version": "1.2.5",
+  "version": "1.3.0",
   "description": "vue 前端组件库",
   "main": "dist",
   "devDependencies": {
@@ -35,7 +35,7 @@
     "build-all": "webpack -p --progress --config build/webpack.index.conf.js",
     "build-split": "webpack -p --progress --config build/webpack.split.conf.js",
     "build-coms": "webpack -p --progress --config build/webpack.components.conf.js",
-    "prd": "npm run build-all && npm run build-split",
+    "prd": "npm run build-all && npm run build-split && npm run build-coms",
     "e2e": "casperjs test --concise ./test/e2e",
     "test": "webpack -progress --config build/webpack.prod.conf.js"
   },
