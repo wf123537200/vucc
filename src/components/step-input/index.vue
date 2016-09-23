@@ -35,7 +35,7 @@
         },
         props: Object.assign({}, componentBaseParamConfig, {
             value: {
-                type: Number
+                type: Number || String
             },
             min: {
                 type: Number,
@@ -75,6 +75,8 @@
         watch: {
             value(val, oldValue) {
                 if(isNaN(parseInt(val))) this.value = oldValue;
+
+                this.value = parseInt(val);
                 if(val <= this.min) this.value = this.min;
                 if(val >= this.max) this.value = this.max;
             }

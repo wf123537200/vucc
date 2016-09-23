@@ -1,9 +1,0 @@
-@import "../../style/ver";
-
-$edit-table-cls: $css-prefix + "edit-table";
-
-.#{$edit-table-cls} {
-  > .#{$css-prefix}table {
-   line-height: inherit;
-  }
-}

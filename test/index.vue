@@ -6,530 +6,117 @@
 
       <div class="doc-example">
         <t-button></t-button>
-
-        <section class="doc-part">
-          <h2>按钮组</h2>
-          <v-button-group :data="buttonGroupList"></v-button-group>
-        </section>
-        <!-- switch -->
-        <section class="doc-part">
-          <h3>switch: {{switchValue}}</h3>
-          <v-switch :value.sync="switchValue" :onChange="switchChange"></v-switch>
-          <v-switch :value.sync="switchValue" :is-disabled="true" :onChange="switchChange"></v-switch>
-        </section>
-
-        <!-- checkbox -->
-        <section class="doc-part">
-          <h3>checkbox: 横向{{checkboxResultList | json}}</h3>
-          <!--<v-checkbox :data="commonListData" :result-list.sync="checkboxResultList"></v-checkbox>-->
-          <h3>checkbox: 横向使用别名{{checkboxResultList | json}}</h3>
-          <v-checkbox :data="commonListData2" :as-value="'name'"
-                      :as-label="'desc'" :result-list.sync="checkboxResultList"></v-checkbox>
-          <h3>checkbox: 纵向{{checkboxResultList | json}}</h3>
-          <!--<v-checkbox :data="commonListData" :result-list.sync="checkboxResultList" :is-vertical="true"></v-checkbox>-->
-        </section>
-
-        <!-- radio -->
-        <section class="doc-part">
-          <h3>radio: 横向{{radioResultList | json}}</h3>
-          <v-radio :data="commonListData" :result-list.sync="radioResultList"></v-radio>
-          <h3>radio: 横向{{radioValue}}</h3>
-          <v-radio :data="commonListData2" :as-value="'name'"
-                   :as-label="'desc'" :value.sync="radioValue"></v-radio>
-          <h3>radio: 纵向/多选{{radioMulResultList | json}}</h3>
-          <v-radio :data="commonListData" :result-list.sync="radioMulResultList" :is-vertical="true" :is-multiple="true"></v-radio>
-        </section>
-
-        <!-- select -->
-        <section class="doc-part">
-          <h3>select: {{dropDownValue}}</h3>
-          <v-select :data="dropDownData" :append-style="{width: '200px'}" :value.sync="dropDownValue"></v-select>
-          <v-select :data="dropDownData2"
-                    :as-label="'desc'":append-style="{width: '200px'}" :value.sync="dropDownValue"></v-select>
-          <v-select :data="dropDownData" :is-disabled="true" :value.sync="dropDownValue"></v-select>
-        </section>
-      </div>
-
-      <h2>下拉列表(未完成)</h2>
-      <div class="doc-example">
-        <section class="doc-part">
-          <h3>dropdown单选: {{dropDownValue}}</h3>
-          <v-select :data="dropDownData" :append-style="{width: '200px'}" :value.sync="dropDownValue"></v-select>
-          <h3>dropdown多选: {{multiResList | json}}</h3>
-          <v-multi-select :data="multiDataList" :append-style="{width: '200px'}" :result-list.sync="multiResList">
-            <v-button>点击选择</v-button>
-          </v-multi-select>
-
-          <v-multi-select :has-search="false" :filter="search" :data="multiDataList" :append-style="{width: '200px'}" :result-list.sync="multiResList">
-            <v-search :value.sync="search"></v-search>
-          </v-multi-select>
-        </section>
+        <t-button-group></t-button-group>
+        <t-switch></t-switch>
+        <t-checkbox></t-checkbox>
+        <t-radio></t-radio>
+        <t-select></t-select>
+        <t-multi-select></t-multi-select>
       </div>
 
       <h2>弹窗</h2>
-      <section class="doc-example">
-        <h3>tips类弹窗</h3>
-        <section class="doc-part">
-          <v-tips :id="'infoTips1'" :content="'我是一个提示操作/类型是info'" type="info"></v-tips>
-          <v-tips :id="'infoTips2'" :content="'我是一个提示操作/类型是success'" type="success"></v-tips>
-          <v-tips :id="'infoTips3'" :content="'我是一个提示操作/类型是error'" type="error"></v-tips>
-          <v-tips :id="'infoTips4'" :content="'我是一个提示操作/类型是warn'" type="warn"></v-tips>
-
-          <!-- 第一种调用方法 -->
-          <v-button type="primary" @click="showTips('infoTips1', 'info')">tips info</v-button>
-          <v-button type="primary" @click="showTips('infoTips2', 'success')">tips success</v-button>
-          <v-button type="primary" @click="showTips('infoTips3', 'error')">tips error</v-button>
-          <v-button type="primary" @click="showTips('infoTips4', 'warn')">tips warn</v-button>
-
-          <!-- 第二种调用方法 -->
-          <v-button @click="showTipsWay2()">tips第二种调用方法</v-button>
-        </section>
-
-        <h3>警告提示组件</h3>
-        <section class="doc-part">
-          <v-alert :id="'alert1'" :title="'我是标题'" :explain="'辅助说明性文字'" :type="'success'"></v-alert>
-          <v-alert :id="'alert2'" :title="'我是标题'" :explain="'辅助说明性文字'" :type="'error'" :is-close-able="true"></v-alert>
-
-          <v-button type="primary" @click="showAlert('alert1')">alert success</v-button>
-          <v-button type="primary" @click="showAlert('alert2')">alert error</v-button>
-
-          <!-- 第二种调用方法 -->
-          <v-button @click="showAlert2()">alert第二种调用方法</v-button>
-        </section>
-
-        <h3>messageBox类弹窗</h3>
-        <section class="doc-part">
-          <v-message-box :id="'mb1'" type="info" :title="'这是一条通知信息'" :explain="'一些解释'" :on-ok="dialogCallbackFn1"></v-message-box>
-          <v-message-box :id="'mb2'" type="success" :title="'这是一条通知信息'" :explain="'一些解释'"></v-message-box>
-          <v-message-box :id="'mb3'" type="error" :title="'这是一条通知信息'" :explain="'一些解释'"></v-message-box>
-          <v-message-box :id="'mb4'" type="confirm" :title="'您是否确认要删除这项内容'" :explain="'一些解释'" :on-cancel="dialogCallbackFn1"></v-message-box>
-
-          <v-button type="primary" @click="showMb('mb1', 'info')">msgBox info</v-button>
-          <v-button type="primary" @click="showMb('mb2', 'success')">msgBox success</v-button>
-          <v-button type="primary" @click="showMb('mb3', 'error')">msgBox error</v-button>
-          <v-button type="primary" @click="showMb('mb4', 'confirm')">msgBox confirm</v-button>
-
-          <!-- 第二种调用方法 -->
-          <v-button @click="showMb2()">messagebox 第二种调用方法</v-button>
-        </section>
-
-        <h3>dialog类弹窗</h3>
-        <section class="doc-part">
-          <v-dialog :id="'dialog1'" :on-ok="dialogCallbackFn1" :on-cancel="dialogCallbackFn2">
-            <div>hi, 我是一个弹窗</div>
-            <div>hi, 我是一个弹窗</div>
-            <div>hi, 我是一个弹窗</div>
-            <div>hi, 我是一个弹窗</div>
-          </v-dialog>
-
-          <v-dialog :id="'dialog2'" :on-ok="dialogCallbackFn1" :on-cancel="dialogCallbackFn2">
-            <div>hi, 我是一个弹窗</div>
-            <div>hi, 我是一个弹窗</div>
-            <div>hi, 我是一个弹窗</div>
-            <div>hi, 我是一个弹窗</div>
-          </v-dialog>
-
-          <v-button type="primary" @click="showDialog('dialog1')">show dialog</v-button>
-        </section>
-
+      <div class="doc-example">
+        <t-tips></t-tips>
+        <t-alert></t-alert>
+        <t-message-box></t-message-box>
+        <t-dialog></t-dialog>
       </div>
 
-      <h2>tabs</h2>
+      <h2>标签页</h2>
       <div class="doc-example">
-        <h2>默认类型tabs</h2>
-        <v-tabs type="" :on-change="switchChange">
-          <div slot="operate">
-            <v-button>额外操作</v-button>
-          </div>
-
-          <div slot="header">
-            <div class="a">
-              <i class="vci vci-apple"></i>
-              <span>选项卡1</span>
-            </div>
-            <div>选项卡2</div>
-            <div>选项卡3</div>
-          </div>
-
-          <v-pane><v-button @click="buttonClick">测试按钮</v-button></v-pane>
-          <v-pane>选项卡222222内容</v-pane>
-          <v-pane>选项卡33333内容</v-pane>
-        </v-tabs>
-
-        <h2>card tabs</h2>
-        <v-tabs type="card" :active-index.sync="activeIndex">
-          <div slot="header">
-            <div class="a">选项卡1</div>
-            <div>选项卡2</div>
-            <div>选项卡3</div>
-          </div>
-
-          <v-pane>选项卡111111内容</v-pane>
-          <v-pane>选项卡222222内容</v-pane>
-          <v-pane>选项卡33333内容</v-pane>
-        </v-tabs>
-
-        <h2>panel tabs small</h2>
-        <v-tabs type="panel" size="small" :active-index="1">
-          <div slot="header">
-            <div class="a">选项卡1</div>
-            <div>选项卡2</div>
-            <div>选项卡3</div>
-          </div>
-
-          <v-pane>选项卡111111内容</v-pane>
-          <v-pane>选项卡222222内容</v-pane>
-          <v-pane>选项卡33333内容</v-pane>
-        </v-tabs>
-
-        <h2>panel tabs small</h2>
-        <v-tabs type="panel" size="large">
-          <div slot="header">
-            <div class="a">选项卡1</div>
-            <div>选项卡2</div>
-            <div>选项卡3</div>
-          </div>
-
-          <v-pane>选项卡111111内容</v-pane>
-          <v-pane>选项卡222222内容</v-pane>
-          <v-pane>选项卡33333内容</v-pane>
-        </v-tabs>
+        <t-tabs></t-tabs>
       </div>
 
       <!-- 以下为未来得及重构的组件 -->
       <h2>表格</h2>
       <div class="doc-example">
-        <h2>普通表格</h2>
-        <v-table :page-size="10" :has-all-select="true" :on-checkbox-click="table.checkboxClick" :data="table.data" :columns="table.columns"></v-table>
+        <t-table></t-table>
       </div>
 
       <h2>滑动输入条</h2>
       <div class="doc-example">
-        <div style="left: 10px; top: 200px; width: 400px;">
-          <v-slider min="100" max="1000" :value.sync="sliderValue" :text="'px'"></v-slider>
-        </div>
-        <input type="text" style="margin-top:20px;" v-model="sliderValue"></input>
-        <div style="left: 10px; top: 200px; width: 400px;">
-          <v-slider :value.sync="sliderValue2" :text="'px'" :value-list="sliderValueList"></v-slider>
-        </div>
-        <input type="text" style="margin-top:20px;" v-model="sliderValue2"></input>
+        <t-slider></t-slider>
       </div>
 
       <h2>徽标数</h2>
-      <h2>徽标数</h2>
       <div class="doc-example">
-        <v-badge :number="10" :is-show-number="true">
-          <i class="vci vci-mail"></i>
-        </v-badge>
-        <v-badge style="margin-left: 30px;">
-          <i class="vci vci-mail"></i>
-        </v-badge>
+        <t-badge></t-badge>
       </div>
 
       <h2>输入框和文本域</h2>
       <div class="doc-example">
-        <v-input type="text" size="small" placeholder="sm" v-model="radioValue"></v-input>
-        <v-input type="text" value="disabled" disabled></v-input>
-
-        <v-textarea rows="3" placeholder="textarea的高度由rows属性决定"></v-textarea>
-        <v-textarea rows="3" placeholder="textarea的高度由rows属性决定" disabled></v-textarea>
+        <t-input></t-input>
+        <t-textarea></t-textarea>
       </div>
 
       <h2>折叠面板</h2>
       <div class="doc-example">
-        <v-collapse :title="'我是一个下拉面板'">
-          <div slot="operate">
-            <a href="" class="vc-link">额外操作</a>
-          </div>
-          <div style="padding: 20px 0;">
-            <p>内容内容</p>
-          </div>
-        </v-collapse>
+        <t-collapse></t-collapse>
       </div>
 
       <h2>折叠面板组</h2>
       <div class="doc-example">
-        <v-collapse-group :is-multiple="false">
-          <!-- xx -->
-          <v-collapse :title="'我是一个下拉面板'">
-            <div slot="operate">
-              <a href="" class="vc-link">额外操作</a>
-            </div>
-            <div style="padding: 20px 0;">
-              <p>内容内容</p>
-            </div>
-          </v-collapse>
-          <v-collapse :title="'我是一个下拉面板'">
-            <div slot="operate">
-              <a href="" class="vc-link">额外操作</a>
-            </div>
-            <div style="padding: 20px 0;">
-              <p>内容内容</p>
-            </div>
-          </v-collapse>
-          <v-collapse :title="'我是一个下拉面板'">
-            <div slot="operate">
-              <a href="" class="vc-link">额外操作</a>
-            </div>
-            <div style="padding: 20px 0;">
-              <p>内容内容</p>
-            </div>
-          </v-collapse>
-        </v-collapse-group>
+        <t-collapse-group></t-collapse-group>
       </div>
 
       <h2>步进输入框</h2>
       <div class="doc-example">
-        <v-step-input size="small"></v-step-input>
-        <v-step-input></v-step-input>
-        <v-step-input :size="'large'" :min="10" :max="80" :step="5"></v-step-input>
+          <t-step-input></t-step-input>
       </div>
 
       <h2>进度条</h2>
       <div class="doc-example">
-        <v-progress :progress="20"></v-progress>
-        <v-progress :size="'large'" :progress="30"></v-progress>
-        <v-progress :progress="40" :title="'标题'" :info="'啦啦'"></v-progress>
-        <v-progress :progress="40" :is-show-text="true" :is-active="true"></v-progress>
-        <v-progress :type="'success'" :progress="50" :explain="'成功'"></v-progress>
-        <v-progress :type="'error'" :progress="50" :explain="'失败'"></v-progress>
-        <v-progress :type="'warn'" :progress="50" :explain="'警告'"></v-progress>
+        <t-progress></t-progress>
       </div>
 
       <h2>加载</h2>
       <div class="doc-example">
-        <v-button type="primary" @click="showLoading('Global')">全局loading</v-button>
-        <v-button type="primary" @click="showLoading('Part')">局部loading</v-button>
-
-        <v-loading :is-show="showGlobalLoading" :is-global="true" :content="'加载中..'"></v-loading>
-        <v-loading :is-show="showPartLoading" :size="'small'"></v-loading>
+        <t-loading></t-loading>
       </div>
 
       <h2>步骤条</h2>
       <div class="doc-example">
-        <v-steps :data="stepsData"></v-steps>
-        <v-steps :data="stepsData" :size="'small'"></v-steps>
-        <v-steps :data="stepsData" :is-vertical="true"></v-steps>
+        <t-steps></t-steps>
       </div>
 
       <h2>文字提示</h2>
       <div class="doc-example">
-        <!-- 底部 -->
-        <div style="margin-left: 50px;">
-          <div>底部</div>
-          <v-tool-tip>文字提示</v-tool-tip>
-        </div>
-
-        <div style="margin-left: 50px;">
-          <div>底部靠左</div>
-          <v-tool-tip :type="'bottomLeft'">文字提示</v-tool-tip>
-        </div>
-
-        <div style="margin-left: 50px;">
-          <div>底部靠右</div>
-          <v-tool-tip :type="'bottomRight'">文字提示</v-tool-tip>
-        </div>
-
-        <!-- 顶部 -->
-        <div style="margin-left: 50px;">
-          <div>顶部</div>
-          <v-tool-tip :type="'top'">文字提示</v-tool-tip>
-        </div>
-
-        <div style="margin-left: 50px;">
-          <div>顶部靠右</div>
-          <v-tool-tip :type="'topRight'">文字提示</v-tool-tip>
-        </div>
-
-        <div style="margin-left: 50px;">
-          <div>顶部靠左</div>
-          <v-tool-tip :type="'topLeft'">文字提示</v-tool-tip>
-        </div>
-
-        <br />
-        <!-- 右边 -->
-        <div style="margin-left: 50px;">
-          <div>右边</div>
-          <v-tool-tip :type="'right'">文字提示</v-tool-tip>
-        </div>
-
-        <div style="margin-left: 50px;">
-          <div>右边靠顶</div>
-          <v-tool-tip :type="'rightTop'">文字提示</v-tool-tip>
-        </div>
-
-        <div style="margin-left: 50px;">
-          <div>右边靠底</div>
-          <v-tool-tip :type="'rightBottom'">文字提示</v-tool-tip>
-        </div>
-
-        <!-- 左边 -->
-        <div style="margin-left: 50px;">
-          <div>左边</div>
-          <v-tool-tip :type="'left'">文字提示</v-tool-tip>
-        </div>
-
-        <div style="margin-left: 50px;">
-          <div>左边靠顶</div>
-          <v-tool-tip :type="'leftTop'">文字提示</v-tool-tip>
-        </div>
-
-        <div style="margin-left: 50px;">
-          <div>左边靠底</div>
-          <v-tool-tip :type="'leftBottom'">文字提示</v-tool-tip>
-        </div>
+        <t-tool-tip></t-tool-tip>
       </div>
 
       <h2>时间轴</h2>
       <div class="doc-example">
-          <v-time-line :data="timeLineData"></v-time-line>
+        <t-time-line></t-time-line>
       </div>
 
       <h2>标签列表</h2>
       <div class="doc-example">
-        <v-tag-list :data="tagList"></v-tag-list>
-        <v-tag-list :data="tagList" :size="'small'" :is-delete-able="true"></v-tag-list>
+        <t-tag-list></t-tag-list>
       </div>
 
       <h2>树形列表</h2>
       <div class="doc-example">
-        <v-tree :data="tree" :on-item-click="tree.onItemClick"></v-tree>
+        <t-tree></t-tree>
       </div>
 
       <h2>穿梭框</h2>
       <div class="doc-example">
-        <v-transfer :src-title="'原数据'" :dist-title="'选择'" :data="transfer" :result="transferRes"></v-transfer>
+        <t-transfer></t-transfer>
       </div>
 
-      <h2>表单-水平</h2>
+      <h2>表单</h2>
       <div class="doc-example">
-        <v-form>
-          <v-form-item
-                  :is-explain-show="true"
-                  :explain-text="'输入正确'"
-                  :explain-type="'success'"
-                  label="账户：">
-
-            <v-input placeholder="请输入账户名" ></v-input>
-          </v-form-item>
-
-          <v-form-item
-                  label="密码：">
-            <v-input type="password" placeholder="请输入密码"></v-input>
-          </v-form-item>
-
-          <v-form-item>
-            <label className="ant-checkbox-inline">
-              <v-checkbox :data="[{label: '记住我', value: true}]"></v-checkbox>
-            </label>
-          </v-form-item>
-
-          <v-button type="primary">登录</v-button>
-        </v-form>
+        <t-form></t-form>
       </div>
       
-      <h2>表单-垂直-验证</h2>
-      <div class="doc-example">
-        <v-form :is-vertical="true" :is-valid="false">
-          <v-form-item
-                  :is-require="true"
-                  :label="'账户：'"
-                  :is-explain-show="true"
-                  :explain-text="'输入错误'"
-                  :explain-type="'error'"
-                  :label-col=4
-                  :wrapper-col=8>
-            <v-input placeholder="请输入账户名" ></input>
-          </v-form-item>
-
-          <v-form-item
-                  :label="'密码：'"
-                  :is-explain-show="true"
-                  :explain-text="'输入正确'"
-                  :explain-type="'success'"
-                  :label-col=4
-                  :wrapper-col=8>
-            <v-input type="password" placeholder="请输入密码"></input>
-          </v-form-item>
-
-          <v-form-item
-                  :label="'密码：'"
-                  :is-explain-show="true"
-                  :explain-text="'警告提示'"
-                  :explain-type="'warning'"
-                  :label-col=4
-                  :wrapper-col=8>
-            <v-input placeholder="请输入密码"></input>
-          </v-form-item>
-
-          <v-form-item
-                  :label="'密码：'"
-                  :is-explain-show="true"
-                  :explain-text="'验证中提示'"
-                  :explain-type="'feedback'"
-                  :label-col=4
-                  :wrapper-col=8>
-            <v-input type="password" placeholder="请输入密码"></input>
-          </v-form-item>
-
-          <v-form-item
-                  label="选中："
-                  label-col=4
-                  wrapper-col=4>
-            <label className="ant-checkbox-inline">
-              <v-checkbox :data="[{label: '记住我', value: true}]"></v-checkbox>
-            </label>
-          </v-form-item>
-
-          <v-form-item
-                  label="多选："
-                  label-col=4
-                  wrapper-col=4>
-            <label className="ant-checkbox-inline">
-              <v-checkbox :data="[{label: '我是A', value: true}]"></v-checkbox>
-              <v-checkbox :data="[{label: '我是B', value: true}]"></v-checkbox>
-              <v-checkbox :data="[{label: '我是C', value: true}]"></v-checkbox>
-            </label>
-          </v-form-item>
-
-          <v-form-item
-                  label="开关："
-                  label-col=4
-                  wrapper-col=4>
-            <label className="ant-checkbox-inline">
-              <v-switch></v-switch>
-            </label>
-          </v-form-item>
-
-          <v-form-item
-                  label-col=4
-                  wrapper-col=4>
-            <v-button :type="'primary'">登录</vButton>
-          </v-form-item>
-        </v-form>
-      </div>
-
       <h2>搜索框</h2>
       <div class="doc-example">
-        {{search}}
-        <v-search :value.sync="search" :on-search="buttonClick" :placeholder="'sousou'"></v-search>
-      </div>
-
-      <h2>业务类型组件</h2>
-      <h2>编辑表组件</h2>
-      <div class="doc-example">
-        <v-table-edit :data.sync="tableEdit.data" :types="tableEdit.types"></v-table-edit>
-        <br />
-        <code>
-          {{tableEditResult}}
-        </code>
+        <t-search></t-search>
       </div>
 
       <h2>标签型下拉框</h2>
       <div class="doc-example">
-        <v-label-dropdown :data="staff.data"
-                          :selected.sync="staff.selected" :disabled="staff.disabled">
-        </v-label-dropdown>
+        <t-label-dropdown></t-label-dropdown>
       </div>
     </section>
 
@@ -541,438 +128,80 @@
 
 <script>
   import tButton from './button';
+  import tButtonGroup from './button-group';
+  import tSwitch from './switch';
+  import tCheckbox from './checkbox';
+  import tRadio from './radio';
+  import tSelect from './select';
+  import tMultiSelect from './multi-select';
+
+  import tTips from './tips';
+  import tAlert from './alert';
+  import tMessageBox from './message-box';
+  import tDialog from './dialog';
+
+  import tTabs from './tabs';
+  import tTable from './table';
+  import tSlider from './slider';
+  import tBadge from './badge';
+  import tInput from './input';
+  import tTextarea from './textarea';
+  import tCollapse from './collapse';
+  import tCollapseGroup from './collapse-group';
+  import tStepInput from './step-input';
+  import tProgress from './progress';
+  import tLoading from './loading';
+  import tSteps from './steps';
+  import tToolTip from './tool-tip';
+  import tTimeLine from './time-line';
+  import tTagList from './tag-list';
+  import tTree from './tree';
+  import tTransfer from './transfer';
+  import tForm from './form';
+  import tSearch from './search';
+  import tLabelDropdown from './label-dropdown';
 
   import Vue from 'vue';
 
   export default {
     components: Object.assign({}, {
-      tButton
+      tSearch,
+      tLabelDropdown,
+      tForm,
+      tTransfer,
+      tSteps,
+      tToolTip,
+      tTimeLine,
+      tTree,
+      tTagList,
+      tLoading,
+      tProgress,
+      tCollapse,
+      tCollapseGroup,
+      tStepInput,
+      tButton,
+      tButtonGroup,
+      tSwitch,
+      tCheckbox,
+      tRadio,
+      tSelect,
+      tMultiSelect,
+      tTips,
+      tAlert,
+      tMessageBox,
+      tDialog,
+      tTabs,
+      tTable,
+      tSlider,
+      tBadge,
+      tInput,
+      tTextarea
     }),
     data() {
-      const _this = this;
       return {
-        // multi-select
-        multiDataList: {
-          optsList: (function() {
-            var base =[{
-              value: 1,
-              label: 'value1value1value1value1value1',
-              renderLi: function() {
-                return `<a>111value1value1value1value1value1</a>`
-              }
-            }, {
-              value: 2,
-              label: 'value2disabledvalue2disabled',
-              isDisabled: true
-            }];
-
-            var other = [];
-            for(var i = 0; i < 30; i++) {
-              other.push({
-                value: i,
-                label: 'value' + i
-              })
-            }
-
-            return base.concat(other);
-          })()
-        },
-        multiResList: [ { "value": 7, "label": "value7" }, { "value": 9, "label": "value9" }, { "value": 17, "label": "value17" }, { "value": 11, "label": "value11" }],
-        // tabs
-        activeIndex: 2,
-        // button group
-        buttonGroupList: [{
-          text: 'btn1',
-          icon: 'android',
-          onClick: function() {
-            alert('btn1')
-          }
-        }, {
-          text: 'btn2',
-          icon: 'apple',
-          isSelected: true,
-          onClick: function() {
-            alert('btn2')
-          }
-        }, {
-          text: 'btn3',
-          icon: 'android',
-          onClick: function() {
-            alert('btn3')
-          },
-          isDisabled: true
-        }],
-
-        // switch
-        switchValue: false,
-
-        // checkbox / radio data
-        commonListData: [{
-          value: 0,
-          label: 'value0'
-        }, {
-          value: 1,
-          label: '<a>111</a>'
-        }, {
-          value: 2,
-          label: 'value1',
-          isDisabled: true
-        }],
-
-        commonListData2: [{
-          name: 0,
-          desc: 'value0'
-        }, {
-          name: 1,
-          desc: '<a>111</a>'
-        }, {
-          name: 2,
-          desc: 'value1',
-          isDisabled: true
-        }],
-
-        checkboxResultList: [0, 2],
-        radioValue: 0,
-
-        // radio
-        radioResultList: [1],
-        radioMulResultList: [0, ''],
-
-        // dropdown
-        dropDownData: {
-          optsList: [{
-            value: 0,
-            label: 0
-          }, {
-            value: 1,
-            label: 'value1',
-            renderLi: function() {
-              return `<a>111</a>`
-            }
-          }, {
-            value: 2,
-            label: 'value2',
-            isDisabled: true
-          }]
-        },
-
-        dropDownData2: {
-          optsList: [{
-            value: 0,
-            desc: 'value0'
-          }, {
-            value: 1,
-            desc: 'value1',
-            renderLi: function() {
-              return `<a>111</a>`
-            }
-          }, {
-            value: 2,
-            desc: 'value2',
-            isDisabled: true
-          }]
-        },
-
-        dropDownValue: 0,
-
-        // table
-        table: {
-          checkboxClick() {
-              console.log(arguments);
-          },
-          data: (function() {
-            var res = [];
-            for (let i = 0; i < 50; i++) {
-              res.push({
-                key: i,
-                name: `name${i}`,
-                age: 32,
-                address: `address${i}号`
-              });
-            }
-
-            return res;
-          })(),
-          columns: [{
-            title: '姓名',
-            style: {width: '200px'},
-            dataIndex: 'name',
-            render(text, item) {
-              return `<a href="#">${text}</a>`;
-            }
-          }, {
-            title: '年龄',
-            dataIndex: 'age'
-          }, {
-            title: '住址',
-            dataIndex: 'address'
-          }, {
-            title: '操作',
-            hasPartial: true,
-            render(text, item) {
-              Vue.partial('xxx', `<a class="vc-inline" @click="showTipsWay2">操作一</a>
-                        <span class="vc-divider"></span>
-                      <a class="vc-inline">操作二</a>`);
-
-              return {
-                id: 'xxx',
-                functions: {
-                  showTipsWay2: _this.showTipsWay2
-                }
-              };
-            }
-          }]
-        },
-
-        // slider
-        sliderValue: 10,
-
-        // edit table
-        tableEdit: {
-          'data': [{
-            columnName: 'name',
-            columnType: 'string',
-            columnDesc: 'init',
-            isPartition: true
-
-          }]
-        },
-
-        // staff
-        staff: {
-          data : [
-            {userId:1, userName: 'hill'},
-            {userId:2, userName: 'shijia'},
-            {userId:3, userName: 'zac'},
-            {userId:4, userName: 'admin'}
-          ],
-          selected : [{
-            userId : 1,
-            userName : 'hill'
-          },{
-            userId : 2,
-            userName : 'shijia'
-          }],
-          disabled : [{
-            userId : 100,
-            userName : 'admin'
-          }]
-        },
-
-        // loading
-        showGlobalLoading: false,
-        showPartLoading: false,
-
-        // steps
-        stepsData: [{
-            order: 1,
-            title: '完成',
-            explain: '说明文字',
-            isFinished: true
-        }, {
-            order: 2,
-            title: '进行中',
-            explain: '说明文字',
-            isActive: true
-        }, {
-            order: 3,
-            title: '默认尺寸',
-            explain: '说明文字'
-        }],
-
-        // time line
-        timeLineData: ['我们发布了alpha \n\r 再试试', '我们发布了beta'],
-
-        // tagList
-        tagList: [{
-          content: '内容'
-        }],
-        // 树
-        tree: {
-          onItemClick() {
-            console.log(arguments);
-          },
-          isHasCheckbox: true,
-          leafs: [{
-            isOpened: true,
-            isChecked: true,
-            isDisabled: true,
-            content: '文本内容1'
-          }, {
-            content: '文本内容2',
-            subTree: {
-              isHasCheckbox: true,
-              leafs: [{
-                content: '文本内容1'
-              }, {
-                content: '文本内容2'
-              }]
-            }
-          }]
-        },
-        // 穿梭框
-        transfer: [{
-          content: '我是选择框Aaa',
-          isChecked: true
-        }, {
-          content: '我是选择框Bbb'
-        }],
-        transferRes: [{
-          content: '我是选择框Ccc',
-          isChecked: true
-        }],
-
-        // 搜索框
-        search: '',
-
-        // 固定点阵的滑动输入条
-        sliderValueList: [{
-          label: '0ms',
-          value: 0
-        }, {
-          label: '25ms',
-          value: 25
-        }, {
-          label: '50ms',
-          value: 50
-        }, {
-          label: '100ms',
-          value: 100
-        }, {
-          label: '200ms',
-          value: 200
-        }, {
-          label: '400ms',
-          value: 400
-        }, {
-          label: '1s',
-          value: 1000
-        }, {
-          label: '2s',
-          value: 2000
-        }],
-        sliderValue2: 50
       }
-    },
-
-    methods: {
-      switchChange(value) {
-        console.log('Tab switch result is :', value)
-      },
-
-      buttonClick() {
-        console.log('u has been click')
-      },
-
-      // tips show way 1
-      showTips(id) {
-        this.$root.$$tips[id].show();
-      },
-
-      showTipsWay2() {
-        window.Tips.init('', 'info', 'lalalala');
-      },
-
-      // alert
-      showAlert(id) {
-        this.$root.$$alert[id].show();
-      },
-
-      showAlert2() {
-        window.Alert.init({
-            type: 'info',
-            title: '我是标题',
-            explain: '我是说明文字',
-            isCloseAble: true
-        });
-      },
-
-      // message box
-      showMb(id) {
-        this.$root.$$messageBox[id].show();
-      },
-
-      showMb2(id) {
-        window.MessageBox.init({
-          type: 'confirm',
-          title: '标题',
-          explain: '我就是一个解释!',
-          onOk() {
-            console.log('我是OK!');
-          }
-        });
-      },
-
-      // 展示对话框
-      showDialog(id) {
-        this.$root.$$dialog[id].show();
-        this.$root.$$dialog['dialog2'].show();
-      },
-
-      dialogCallbackFn1() {
-        alert('ok callback !');
-      },
-
-      dialogCallbackFn2() {
-        alert('cancel callback !');
-      },
-
-      showLoading(value) {
-        var _this = this;
-
-        _this['show' + value + 'Loading'] = true;
-
-        setTimeout(function() {
-          _this['show' + value + 'Loading'] = false;
-        }, 2000);
-      }
-    },
-
-    ready() {
-      // 动态化兼容测试
-      const _this = this;
-      setTimeout(function() {
-        _this.activeIndex = 1;
-        // checkbox / radio 测试
-        _this.commonListData = [{
-          value: 0,
-          label: 'value1'
-        }, {
-          value: 1,
-          label: '<a>222</a>'
-        }, {
-          value: 2,
-          label: 'value2',
-          isDisabled: true
-        }];
-
-        _this.commonListData2 = [{
-          name: 0,
-          desc: 'value21123'
-        }, {
-          name: 3,
-          desc: 'value2123123123'
-        }];
-
-        // dropdown
-        _this.dropDownData = {
-          optsList: [{
-            value: 0,
-            label: 'change1'
-          }, {
-            value: 1,
-            label: 'change2',
-            renderLi: function() {
-              return `<a>222</a>`
-            }
-          }, {
-            value: 2,
-            label: 'change3',
-            isDisabled: true
-          }]
-        };
-      }, 3000);
     }
+
   }
 </script>
 
