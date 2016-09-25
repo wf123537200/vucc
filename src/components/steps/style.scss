@@ -29,6 +29,9 @@ $step-prefix-cls: $css-prefix + "step";
       border-color: transparent;
       border-width: 0 24px;
     }
+    &-line-up {
+      top: 60px!important;
+    }
 
     &-order {
       position: relative;

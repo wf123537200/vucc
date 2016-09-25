@@ -27,10 +27,16 @@
 <template>
     <ul :style="appendStyle" :class="['vc-step', appendClass, sizeClass, {'vc-step-vertical': isVertical}]">
         <li v-for="it in data" :class="['vc-step-item', {'vc-step-item-finish': it.isFinished, 'vc-step-item-active': it.isActive}]">
-            <i class="vc-step-item-line"></i>
+            <div v-if="isTextUp">
+                <h3 class="vc-step-item-title">{{it.title}}</h3>
+                <p class="vc-step-item-explain">{{it.explain}}</p>
+            </div>
+            <i :class="['vc-step-item-line', {'vc-step-item-line-up': isTextUp}]"></i>
             <span class="vc-step-item-order">{{it.order}}</span>
-            <h3 class="vc-step-item-title">{{it.title}}</h3>
-            <p class="vc-step-item-explain">{{it.explain}}</p>
+            <div v-if="!isTextUp">
+                <h3 class="vc-step-item-title">{{it.title}}</h3>
+                <p class="vc-step-item-explain">{{it.explain}}</p>
+            </div>
         </li>
     </ul>
 </template>
@@ -48,6 +54,10 @@
                 default: 'normal'
             },
             isVertical: {
+                type: Boolean,
+                default: false
+            },
+            isTextUp: {
                 type: Boolean,
                 default: false
             }
