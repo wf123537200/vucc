@@ -1,6 +1,6 @@
 {
   "name": "vucc",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "vue 前端组件库",
   "main": "dist",
   "devDependencies": {
@@ -55,5 +55,6 @@
   },
   "homepage": "https://wf123537200.github.io/vucc.com/index.html",
   "dependencies": {
+    "babel-runtime": "^6.11.6"
   }
 }
