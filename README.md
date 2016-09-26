@@ -11,10 +11,17 @@ vucc (vue 组件库)
 简单使用,只需要:
 
 // 打包
+
 npm install vucc
+
 // 整体引入
+
 import components from 'vucc';
+
 // 引入
+```js
+
 export defalut {
     components
 }
+```
