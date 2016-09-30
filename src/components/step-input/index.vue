@@ -13,12 +13,12 @@
 
 <template>
     <div :style="appendStyle" :class="['vc-input-number', sizeClass, appendClass, {'vc-input-number-disabled': isDisabled}]">
-        <pv-input type="text" placeholder="{{min}}" v-model="value"></pv-input>
+        <pv-input type="text" placeholder="{{min}}" v-model="value" @change="onChangeWarp"></pv-input>
         <div class="vc-input-number-handle-wrap">
-            <button class="vc-input-number-handle" @mousedown.stop="stepUp" @mouseup.stop="cleanTimer">
+            <button class="vc-input-number-handle" @mousedown.stop="stepUp" @mouseup.stop="cleanTimerUp">
                 <i class="vci vci-up"></i>
             </button>
-            <button class="vc-input-number-handle vc-input-number-handle-down" @mousedown.stop="stepDown" @mouseup.stop="cleanTimer">
+            <button class="vc-input-number-handle vc-input-number-handle-down" @mousedown.stop="stepDown" @mouseup.stop="cleanTimerDown">
                 <i class="vci vci-down"></i>
             </button>
         </div>
@@ -34,9 +34,7 @@
             pvInput
         },
         props: Object.assign({}, componentBaseParamConfig, {
-            value: {
-                type: Number || String
-            },
+            value: {},
             min: {
                 type: Number,
                 default: 1
@@ -56,6 +54,18 @@
             isDisabled: {
                 type: Boolean,
                 default: false
+            },
+            onUp: {
+                type: Function
+            },
+            onDown: {
+                type: Function
+            },
+            isOnlyClick: {
+                type: Boolean
+            },
+            onChange: {
+                type: Function
             }
         }),
 
@@ -64,7 +74,8 @@
                 sizeClass: {
                     'normal': '',
                     'large': 'vc-input-number-lg',
-                    'small': 'vc-input-number-sm'
+                    'small': 'vc-input-number-sm',
+                    'xsmall': 'vc-input-number-xs'
                 }[this.size]
             }
         },
@@ -74,34 +85,49 @@
 
         watch: {
             value(val, oldValue) {
-                if(isNaN(parseInt(val))) this.value = oldValue;
+                if(isNaN(parseInt(val, 10))) this.value = oldValue;
 
-                this.value = parseInt(val);
+                this.value = parseInt(val, 10);
                 if(val <= this.min) this.value = this.min;
                 if(val >= this.max) this.value = this.max;
             }
         },
         methods: {
+            onChangeWarp() {
+                this.onChange && this.onChange(this.value, this);
+            },
             stepUp() {
-                const _this = this;
-                _this.value += _this.step;
+                this.value = parseInt(this.value, 10);
+                this.value += this.step;
+                this.onUp && this.onUp(this.value, this);
 
-                _this.upTimer = window.setInterval(function() {
-                    _this.value += _this.step;
-                }, 200)
+                if(!this.isOnlyClick) {
+                    this.upTimer = window.setInterval(() => {
+                        this.value += this.step;
+                        this.onUp && this.onUp(this.value, this);
+                    }, 200)
+                }
             },
 
             stepDown() {
-                const _this = this;
-                _this.value -= _this.step;
+                this.value = parseInt(this.value, 10);
+                this.value -= this.step;
+                this.onDown && this.onDown(this.value, this);
 
-                _this.downTimer = window.setInterval(function() {
-                    _this.value -= _this.step;
-                }, 200);
+                if(!this.isOnlyClick) {
+                    this.downTimer = window.setInterval(() => {
+                        this.value -= this.step;
+                        this.onDown && this.onDown(this.value, this);
+                    }, 200);
+                }
             },
 
-            cleanTimer() {
+            cleanTimerUp() {
                 window.clearInterval(this.upTimer);
+
+            },
+
+            cleanTimerDown() {
                 window.clearInterval(this.downTimer);
             }
         }
