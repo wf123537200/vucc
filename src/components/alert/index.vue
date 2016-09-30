@@ -100,8 +100,8 @@
         let alert = new Alert(obj);
         let document = window.document;
 
-        if(!document.body.__vue__.$root.$$alert) document.body.__vue__.$root.$$alert = {};
-        document.body.__vue__.$root.$$alert[alert.id] = alert;
+        if(!document.body.$$alert) document.body.$$alert.$$alert = {};
+        document.body.$$alert[alert.id] = alert;
         alert.show();
 
         let alertEl = document.querySelector('#' + alert.id);

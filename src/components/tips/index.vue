@@ -80,8 +80,8 @@
 
     Tips.init = function (id, type, content, showTime, appendClass, appendStyle) {
         let tips = new Tips(id, type, content, showTime, appendClass, appendStyle);
-        if(!document.body.__vue__.$root.$$tips) document.body.__vue__.$root.$$tips = {};
-        document.body.__vue__.$root.$$tips[tips.id] = tips;
+        if(!document.body.$$tips) document.body.$$tips = {};
+        document.body.$$tips[tips.id] = tips;
 
         tips.show();
     };
