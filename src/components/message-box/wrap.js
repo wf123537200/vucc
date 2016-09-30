@@ -22,6 +22,7 @@ MessageBox.init = function(obj) {
                                 :explain="explain"
                                 :on-ok="onOk"
                                 :on-cancel="onCancelWrap"
+                                :is-use-html="isUseHtml"
                                 :is-show.sync="isShow"></v-message-box>`,
         data: {
             type: mb.type,
@@ -31,6 +32,7 @@ MessageBox.init = function(obj) {
             onOk: mb.onOk,
             onCancel: mb.onCancel,
             isShow: mb.isShow || true,
+            isUseHtml: mb.isUseHtml || false
         },
         methods: {
             onCancelWrap() {
