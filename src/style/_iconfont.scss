@@ -107,7 +107,7 @@ $icon-url: '../resource/font/vcicon';
 .#{$iconfont-css-prefix}-customerservice:before          {content:"\e65e";}
 .#{$iconfont-css-prefix}-credit-card:before              {content:"\e65f";}
 .#{$iconfont-css-prefix}-code:before                     {content:"\e65d";}
-.#{$iconfont-css-prefix}-calendar:before                 {content:"\e654";}
+.#{$iconfont-css-prefix}-datepicker:before                 {content:"\e654";}
 .#{$iconfont-css-prefix}-bars:before                     {content:"\e650";}
 .#{$iconfont-css-prefix}-bar-chart:before                {content:"\e651";}
 .#{$iconfont-css-prefix}-area-chart:before               {content:"\e64c";}
@@ -195,7 +195,7 @@ $icon-url: '../resource/font/vcicon';
 .#{$iconfont-css-prefix}-forbid-circle-o:before             {content:"\e6a7";}
 .#{$iconfont-css-prefix}-heart:before                    {content:"\e68c";}
 .#{$iconfont-css-prefix}-heart-o:before                  {content:"\e6b0";}
-.#{$iconfont-css-prefix}-calculator:before               {content:"\e6b1";}
+.#{$iconfont-css-prefix}-calendar:before               {content:"\e6b1";}
 .#{$iconfont-css-prefix}-loading:before {
                          display: inline-block;
                          animation: loadingCircle 1s infinite linear;

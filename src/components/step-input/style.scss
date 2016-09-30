@@ -59,6 +59,18 @@ $input-prefix-cls: $css-prefix + "input";
     }
   }
 
+  &-xs {
+    .#{$input-prefix-cls} {
+      @include input($height-xs, $font-size-base);
+      padding-right: 20px;
+    }
+
+    .#{$input-number-prefix-cls}-handle {
+      line-height: $height-xs / 2;
+    }
+
+  }
+
   &-lg {
     .#{$input-prefix-cls} {
       @include input($height-lg, $font-size-lg);

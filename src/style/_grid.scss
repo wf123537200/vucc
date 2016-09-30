@@ -17,14 +17,6 @@ $grid-gutter-width:     0;
     width: percentage(($i / $grid-columns))
   }
 
-  .vc-col-push-#{$i} {
-    left: percentage(($i / $grid-columns));
-  }
-
-  .vc-col-pull-#{$i} {
-    right: percentage(($i / $grid-columns));
-  }
-
   .vc-col-offset-#{$i} {
     margin-left: percentage(($i / $grid-columns));
   }

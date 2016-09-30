@@ -108,7 +108,7 @@
       <div class="doc-example">
         <t-form></t-form>
       </div>
-      
+
       <h2>搜索框</h2>
       <div class="doc-example">
         <t-search></t-search>
@@ -118,6 +118,12 @@
       <div class="doc-example">
         <t-label-dropdown></t-label-dropdown>
       </div>
+
+      <h2>日期选择器</h2>
+          <div class="doc-example">
+          <t-datepicker></t-datepicker>
+      </div>
+
     </section>
 
     <div class="doc-footer">
@@ -160,6 +166,7 @@
   import tForm from './form';
   import tSearch from './search';
   import tLabelDropdown from './label-dropdown';
+  import tDatepicker from './datepicker';
 
   import Vue from 'vue';
 
@@ -195,7 +202,8 @@
       tSlider,
       tBadge,
       tInput,
-      tTextarea
+      tTextarea,
+      tDatepicker
     }),
     data() {
       return {

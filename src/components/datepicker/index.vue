@@ -1,0 +1,584 @@
+<template>
+    <div>
+        <!-- 按钮 -->
+        <div :class="['vc-datepicker-btn', appendClass, {lager: isRange, hms: hasHMS && isRange, 'hms-no-range': hasHMS && !isRange}]" :style="appendStyle" @click.stop="showDatepicker">
+            <span class="vc-datepicker-btn-input">
+                <div class="vc-datepicker-result">{{outputStr}}</div>
+            </span>
+            <span class="vc-datepicker-btn-icon">
+                <i class="vci vci-datepicker"></i>
+            </span>
+        </div>
+        <!-- 按钮 end -->
+
+        <!-- 日期选择框体1 -->
+        <div class="vc-datepicker" v-show="isShowDatePicker">
+            <div v-if="isReady" class="vc-datepicker-content">
+                <partial :name="tableName"></partial>
+                <partial :name="tableNameEnd"></partial>
+            </div>
+            <div v-if="hasFooter || hasHMS" class="vc-datepicker-footer">
+                <div v-if="hasHMS" class="vc-datepicker-footer-content">
+                    <div>
+                        <!-- start 小时,分钟,秒 -->
+                        <pv-step-input date-obj="dateStart"
+                                       :style="{width: '55px'}" :size="'xsmall'"
+                                       :min="0" :max="23"
+                                       :value="dateStart.hour"
+                                       :on-change="setHour"
+                                       :on-up="nextHour"
+                                       :on-down="nextHour"
+                                       :is-only-click="true">
+                        </pv-step-input>:
+                        <pv-step-input date-obj="dateStart"
+                                       :style="{width: '55px'}" :size="'xsmall'"
+                                       :min="0" :max="59"
+                                       :value="dateStart.minute"
+                                       :on-change="setMinute"
+                                       :on-up="nextMinute"
+                                       :on-down="prevMinute"
+                                       :is-only-click="true">
+                        </pv-step-input>:
+                        <pv-step-input date-obj="dateStart"
+                                       :style="{width: '55px'}" :size="'xsmall'"
+                                       :min="0" :max="59"
+                                       :value="dateStart.second"
+                                       :on-change="setSecond"
+                                       :on-up="nextSecond"
+                                       :on-down="prevSecond"
+                                       :is-only-click="true">
+                        </pv-step-input>
+                        <!-- start 小时,分钟,秒 end -->
+                        <span v-if="isRange">
+                            至
+                            <!-- end 小时,分钟,秒 -->
+                            <pv-step-input date-obj="dateEnd"
+                                           :style="{width: '55px'}" :size="'xsmall'"
+                                           :min="0" :max="23"
+                                           :value="dateEnd.hour"
+                                           :on-change="setHour"
+                                           :on-up="nextHour"
+                                           :on-down="nextHour"
+                                           :is-only-click="true">
+                            </pv-step-input>:
+                            <pv-step-input date-obj="dateEnd"
+                                           :style="{width: '55px'}" :size="'xsmall'"
+                                           :min="0" :max="59"
+                                           :value="dateEnd.minute"
+                                           :on-change="setMinute"
+                                           :on-up="nextMinute"
+                                           :on-down="prevMinute"
+                                           :is-only-click="true">
+                            </pv-step-input>:
+                            <pv-step-input date-obj="dateEnd"
+                                           :style="{width: '55px'}" :size="'xsmall'"
+                                           :min="0" :max="59"
+                                           :value="dateEnd.second"
+                                           :on-change="setSecond"
+                                           :on-up="nextSecond"
+                                           :on-down="prevSecond"
+                                           :is-only-click="true">
+                            </pv-step-input>
+                            <!-- end 小时,分钟,秒 end -->
+                        </span>
+                    </div>
+                </div>
+                <br v-if="!isRange" />
+                <div :class="['vc-datepicker-footer-btns', {'range-btn': !isRange}]">
+                    <pv-button :type="'primary'" :size="'small'" @click.stop="onOk">确定</pv-button>
+                    <pv-button :type="'outline'" :size="'small'" @click.stop="onCancel">取消</pv-button>
+                </div>
+            </div>
+        </div>
+        <!-- 日期选择框体1 end -->
+    </div>
+</template>
+
+<script>
+    // TODO 时分秒问题
+    import pvInput from '../input';
+    import pvButton from '../button';
+    import pvStepInput from '../step-input';
+    import {componentBaseParamConfig} from '../base-config';
+    import DateX from './dateUtils';
+    import Vue from 'vue';
+
+    export default {
+        props: Object.assign({}, componentBaseParamConfig, {
+            isRange: {
+                type: Boolean,
+                default: false
+            },
+            startTime: {
+            },
+            endTime: {
+            },
+            time: {
+            },
+            format: {
+                type: String,
+                default: 'YYYY-MM-DD'
+            },
+            hasFooter: {
+                type: Boolean,
+                default: false
+            },
+            disableFilter: {
+                type: Function,
+                default: false
+            }
+        }),
+        data() {
+            // 范围选择,将展示两个月历
+            if(this.isRange) {
+                return {
+                    dateRes: Date.now(),
+                    dateStart: new DateX({date: this.startTime, format: this.format, disableFilter: this.disableFilter}),
+                    dateEnd: new DateX({date: this.endTime, format: this.format, disableFilter: this.disableFilter}),
+                    isReady: false,
+                    tableName: '',
+                    tableNameEnd: '',
+                    startDate: -1,
+                    endDate: -1,
+                    outputStr: '',
+                    outputStart: '',
+                    outputEnd: '',
+                    hasHMS: this.format.split(' ')[1],
+                    isShowDatePicker: false
+                }
+            }
+
+            return {
+                dateRes: Date.now(),
+                dateStart: new DateX({date: this.time, format: this.format, disableFilter: this.disableFilter}),
+                isReady: false,
+                tableName: '',
+                startDate: -1,
+                endDate: -1,
+                outputStr: '',
+                hasHMS: this.format.split(' ')[1],
+                isShowDatePicker: false
+            }
+        },
+        components: {
+            pvInput,
+            pvStepInput,
+            pvButton
+        },
+        methods: {
+            // 展示
+            showDatepicker() {
+                this.isShowDatePicker = true;
+            },
+
+            // 确定按钮
+            onOk() {
+                this.resultOutput(true);
+                this.isShowDatePicker = false;
+            },
+
+            // 取消按钮
+            onCancel() {
+                this.isShowDatePicker = false;
+            },
+
+            // step-input,无法传入具体参数,所以通过属性的方式传递
+            getDateObj(vm) {
+                return vm.$parent[vm.$el.getAttribute('date-obj')]
+            },
+
+            // 年
+            nextYear(value, stepVm) {
+                let dateObj = this.getDateObj(stepVm);
+                dateObj.nextYear();
+                this.clearSelectDate(dateObj);
+            },
+            prevYear(value, stepVm) {
+                let dateObj = this.getDateObj(stepVm);
+                dateObj.prevYear();
+                this.clearSelectDate(dateObj);
+            },
+            setYear(value, stepVm) {
+                let dateObj = this.getDateObj(stepVm);
+                dateObj.setYear(value);
+            },
+            
+            // 月
+            prevMonth(dateObj, stepVm) {
+                // 双框联动
+                if(this.isRange && dateObj && dateObj.nextDateX) dateObj.nextDateX.prevMonth();
+                if(stepVm) dateObj = this.getDateObj(stepVm);
+                dateObj.prevMonth();
+
+                this.clearSelectDate(dateObj);
+            },
+            nextMonth(dateObj, stepVm) {
+                // 双框联动
+                if(this.isRange && dateObj && dateObj.prevDateX) dateObj.prevDateX.nextMonth();
+                if(stepVm) dateObj = this.getDateObj(stepVm);
+                dateObj.nextMonth();
+
+                this.clearSelectDate(dateObj);
+            },
+            setMonth(value, stepVm) {
+                let dateObj = this.getDateObj(stepVm);
+                dateObj.setMonth(value - 1);
+            },
+
+            // 小时
+            nextHour(val, stepVm) {
+                this.setHour(val, stepVm);
+            },
+            prevHour(val, stepVm) {
+                this.setHour(val, stepVm);
+            },
+            setHour(val, stepVm) {
+                let dateObj = this.getDateObj(stepVm);
+                dateObj.setTime('Hours', val);
+                this.resultOutput();
+            },
+            
+            // 分钟
+            nextMinute(val, stepVm) {
+                this.setMinute(val, stepVm);
+            },
+            prevMinute(val, stepVm) {
+                this.setMinute(val, stepVm);
+            },
+            setMinute(val, stepVm) {
+                let dateObj = this.getDateObj(stepVm);
+                dateObj.setTime('Minutes', val);
+                this.resultOutput();
+            },
+            
+            // 秒
+            nextSecond(val, stepVm) {
+                this.setSecond(val, stepVm);
+            },
+            prevSecond(val, stepVm) {
+                this.setSecond(val, stepVm);
+            },
+            setSecond(val, stepVm) {
+                let dateObj = this.getDateObj(stepVm);
+                dateObj.setTime('Seconds', val);
+                this.resultOutput();
+            },
+
+            // 日期选择后的样式输出,初始化时不进行值输出
+            dateSelect(dateObj, index, dateObjName, isInit = false) {
+                let dateList = dateObj.dateList;
+                let date = dateList[index];
+                if(date.isDisabled && !isInit) return;
+
+                // 多选
+                if(this.isRange) {
+                    this.clearSelectStyle(dateObj);
+
+                    // 范围选择
+                    if(this.startDate === -1) {
+                        this.startDate = dateObjName + ',' + index;
+                        this.nextSelectIndex = 'endDate';
+                        date.isActive = true;
+                        return;
+                    } else if(this.endDate === -1) {
+                        this.endDate = dateObjName + ',' + index;
+                        this.nextSelectIndex = 'startDate';
+                    } else {
+                        this.nextSelectIndex = this.nextSelectIndex === 'startDate' ? 'endDate' : 'startDate';
+                        this[this.nextSelectIndex] = dateObjName + ',' + index;
+                    }
+
+                    // 当选择端点时
+                    if(this.startDate === this.endDate && this.startDate !== -1 && this.endDate != -1) {
+                        let tmpArr = this.startDate.split(',');
+                        this[tmpArr[0]].dateList[tmpArr[1]].isActive = true;
+
+                        this.resultOutputWithDate(isInit);
+                        return;
+                    }
+
+                    let startDateArr = this.startDate.split(',');
+                    let endDateArr = this.endDate.split(',');
+                    let start = '';
+                    let end = '';
+                    // 展示,同一日历
+                    if(startDateArr[0] === endDateArr[0]) {
+                        start = parseInt(startDateArr[1]);
+                        end = parseInt(endDateArr[1]);
+                        if (start > end) [start, end] = [end, start];
+
+                        dateList[start].isStart = true;
+                        dateList[end].isEnd = true;
+                        for (let i = start + 1; i < end; i++) {
+                            if(!dateList[i].isDisabled) dateList[i].isCross = true;
+                        }
+                    } else {
+                        if(startDateArr[0] === 'dateEnd') {
+                            [startDateArr, endDateArr] = [endDateArr, startDateArr];
+                        }
+
+                        // dateStart处理
+                        start = parseInt(startDateArr[1]);
+                        end = parseInt(this.dateStart.lastCanSelect);
+                        this.dateStart.dateList[start].isStart = true;
+                        for (let i = start + 1; i <= end; i++) {
+                            if(!this.dateStart.dateList[i].isDisabled) this.dateStart.dateList[i].isCross = true;
+                        }
+
+                        // date2处理
+                        start = parseInt(this.dateEnd.firstCanSelect);
+                        end = parseInt(endDateArr[1]);
+                        this.dateEnd.dateList[end].isEnd = true;
+                        for (let i = start; i < end; i++) {
+                            if(!this.dateEnd.dateList[i].isDisabled) this.dateEnd.dateList[i].isCross = true;
+                        }
+                    }
+
+                    // 输出
+                    this.resultOutputWithDate(isInit);
+                } else {
+                    if(this.startDate != -1) dateList[this.startDate].isActive = false;
+                    this.startDate = +index;
+                    // 重置输出数据,刷新数据对象
+                    dateObj.refresh(dateObj.dateOrigin.setDate(dateList[this.startDate].label));
+                    this.time = this.outputStr = dateObj.outPutRes;
+
+                    date.isActive = true;
+                    if(!this.hasFooter && !this.hasHMS) this.isShowDatePicker = false;
+                }
+            },
+            clearSelectDate(dateObj) {
+                this.startDate = -1;
+                this.endDate = -1;
+
+                this.clearSelectStyle(dateObj);
+            },
+
+            clearSelectStyle(dateObj) {
+                // 先清空样式
+                dateObj.clearAllState();
+                dateObj.nextDateX && dateObj.nextDateX.clearAllState();
+                dateObj.prevDateX && dateObj.prevDateX.clearAllState();
+            },
+
+            // 渲染日期部分表格
+            renderTable(dateObj, dateName, isStart) {
+                let tableName = '__datepicker__table__' + Math.random().toString(36).substr(3, 15);
+                let res = '';
+                let date = dateName;
+                let preArrow = `<a href="javascript:void(0)" @click="prevMonth(${date})">
+                                    <i class="vc-datepicker-prev"></i>
+                                </a>`;
+                let nextArrow = `<a href="javascript:void(0)">
+                                    <i class="vc-datepicker-next"  @click="nextMonth(${date})"></i>
+                                </a>`;
+
+                if(this.isRange && isStart) {
+                    nextArrow = ``;
+                }
+                if(this.isRange && !isStart) {
+                    preArrow = ``;
+                }
+
+                // 因为vue不能插入{{{}}}到table中
+                let tableHeader = `<table class="vc-datepicker-table">
+                                        <caption>
+                                            ${preArrow}
+                                            <div>
+                                                <pv-step-input date-obj="${date}"
+                                                               :style="{width: '67px'}" :min="1970" :max="9999"
+                                                               :size="'xsmall'"
+                                                               :value="${date}.year"
+                                                               :on-change="setYear"
+                                                               :on-up="nextYear"
+                                                               :on-down="prevYear"
+                                                               :is-only-click="true">
+                                                </pv-step-input>年
+                                                <pv-step-input date-obj="${date}"
+                                                               :style="{width: '55px'}" :size="'xsmall'"
+                                                               :min="1" :max="12"
+                                                               :value="${date}.month"
+                                                               :on-change="setMonth"
+                                                               :on-up="nextMonth"
+                                                               :on-down="prevMonth"
+                                                               :is-only-click="true">
+                                                </pv-step-input>月
+                                            </div>
+                                            ${nextArrow}
+                                        </caption>
+                                        <thead>
+                                            <tr>
+                                                <th>日</th>
+                                                <th>一</th>
+                                                <th>二</th>
+                                                <th>三</th>
+                                                <th>四</th>
+                                                <th>五</th>
+                                                <th>六</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            `;
+                let tableTail = `</tbody></table>`;
+
+                // 组装table体,逻辑基本在此
+                dateObj.dateList.forEach((el, index) => {
+                    let it = `${date}.dateList[${index}]`;
+                    let td = `<td :class="{disabled: ${el.isDisabled}, 'active': ${it} && ${it}.isActive
+                                    , 'start': ${it} && ${it}.isStart, 'end': ${it} && ${it}.isEnd, 'cross': ${it} && ${it}.isCross}"
+                                  @click="dateSelect(${date}, ${index}, '${date}')">
+                                ${el.label}
+                              </td>`;
+
+                    if((index + 1) % 7 === 1) res += `<tr>${td}`;
+                    else if((index + 1) % 7 === 0) res += `${td}</tr>`;
+                    else res += `${td}`;
+                });
+
+                res = /<\/tr>$/.test(res) ? res + '</tr>' : res;
+                res =  tableHeader + res + tableTail;
+
+                return {
+                    res,
+                    tableName
+                }
+            },
+
+            // 结果输出
+            resultOutput(onOk) {
+                if(!onOk && (this.hasFooter || this.hasHMS)) return;
+                if(this.isRange) {
+                    this.startTime = this.outputStart = this.dateStart.outPutRes;
+                    this.endTime = this.outputEnd = this.dateEnd.outPutRes;
+                    this.outputStr = this.startTime + ' 至 ' + this.endTime;
+                    return;
+                }
+
+                this.outputStr = this.dateStart.outPutRes;
+            },
+            resultOutputWithDate(isInit) {
+                if(!isInit && (this.hasFooter || this.hasHMS)) return;
+                if(this.isRange) {
+                    // 起始日期
+                    let startArr = this.startDate.split(',');
+                    let startYear = this[startArr[0]].year;
+                    let startMonth = this[startArr[0]].month;
+                    let startDate = this[startArr[0]].dateList[+startArr[1]].label;
+                    let startDateX = new DateX({
+                        date: [startYear, startMonth, startDate].join('/'),
+                        format: this.format
+                    });
+                    // 结束日期
+                    let endArr = this.endDate.split(',');
+                    let endYear = this[endArr[0]].year;
+                    let endMonth = this[endArr[0]].month;
+                    let endDate = this[endArr[0]].dateList[+endArr[1]].label;
+                    let endDateX = new DateX({
+                        date: [endYear, endMonth, endDate].join('/'),
+                        format: this.format
+                    });
+                    // 输出值
+                    if(endDateX.dateOrigin.getTime() < startDateX.dateOrigin.getTime()) [startDateX, endDateX] = [endDateX, startDateX];
+                    this.outputStart = startDateX.outPutRes;
+                    this.outputEnd = endDateX.outPutRes;
+                    this.outputStr = startDateX.outPutRes + ' 至 ' + endDateX.outPutRes;
+                    // 对外输出
+                    if(!isInit) {
+                        this.startTime = this.outputStart;
+                        this.endTime = this.outputEnd;
+                    }
+
+                    return;
+                }
+
+                this.outputStr = this.dateStart.outPutRes;
+            },
+
+            // 初始化日期对象和日期组件渲染
+            initDataAndRender(isInit) {
+                // 挂在渲染函数到dateStart上
+                this.dateStart.renderTable = () => {
+                    let {tableName, res} = this.renderTable(this.dateStart, 'dateStart', true);
+                    this.tableName = tableName;
+                    Vue.partial(this.tableName, res);
+                };
+                this.dateStart.renderTable();
+
+                // 选中
+                if(this.isRange) {
+                    // 挂在第渲染函数
+                    this.dateEnd.renderTable = () => {
+                        let {tableName, res} = this.renderTable(this.dateEnd, 'dateEnd');
+                        this.tableNameEnd = tableName + 'End';
+                        Vue.partial(this.tableNameEnd, res);
+                    };
+                    this.dateEnd.renderTable();
+
+                    // 两个月历联系起来
+                    this.dateStart.setNextDateX(this.dateEnd);
+                    this.dateEnd.setPrevDateX(this.dateStart);
+
+                    // 初始化
+                    if(this.dateStart.month === this.dateEnd.month && this.dateStart.year === this.dateEnd.year) {
+                        this.dateSelect(this.dateStart, this.getSelectIndexWithDate(this.dateStart), 'dateStart', isInit);
+                        this.dateSelect(this.dateStart, this.getSelectIndexWithDate(this.dateEnd), 'dateStart', isInit);
+                    } else {
+                        this.dateSelect(this.dateStart, this.getSelectIndexWithDate(this.dateStart), 'dateStart', isInit);
+                        this.dateSelect(this.dateEnd, this.getSelectIndexWithDate(this.dateEnd), 'dateEnd', isInit);
+                    }
+                } else {
+                    this.resultOutputWithDate();
+                    this.dateSelect(this.dateStart, this.getSelectIndexWithDate(this.dateStart))
+                }
+            },
+            // 根据当前日期获取选择日期的位置
+            getSelectIndexWithDate(dateObj) {
+                return dateObj.dateList.findIndex((it, index) => {
+                    if(index < dateObj.lastCanSelect && index >= dateObj.firstCanSelect) {
+                        return +it.label === parseInt(dateObj.date, 10);
+                    }
+                });
+            }
+        },
+
+        watch: {
+            // 外部时间变化,重新初始化选择器
+            time(val) {
+                let time = new DateX({date: val, format: this.format});
+                if(time.outPutRes !== this.dateStart.outPutRes) {
+                    this.dateStart = new DateX({date: val, format: this.format});
+                    this.initDataAndRender();
+                }
+            },
+
+            startTime(val) {
+                let time = new DateX({date: val, format: this.format});
+                if(val !== this.outputStart) {
+                    this.dateStart = new DateX({date: val, format: this.format});
+                    this.initDataAndRender(true);
+                }
+            },
+
+            endTime(val) {
+                let time = new DateX({date: val, format: this.format});
+                if(val !== this.outputEnd) {
+                    this.dateEnd = new DateX({date: val, format: this.format});
+                    this.initDataAndRender(true);
+                }
+            }
+        },
+
+        ready() {
+            this.initDataAndRender(true);
+            this.isReady = true;
+
+            document.addEventListener('click', () => {
+                this.isShowDatePicker = false;
+            });
+        }
+    }
+</script>
+
+<style lang="scss">
+    @import "style.scss";
+</style>

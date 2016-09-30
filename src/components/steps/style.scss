@@ -139,6 +139,10 @@ $step-prefix-cls: $css-prefix + "step";
         border-width: 0 16px;
       }
 
+      &-line-up {
+        top: 48px!important;
+      }
+
       &-order {
         width: 24px;
         height: 24px;
