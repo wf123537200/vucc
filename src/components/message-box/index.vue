@@ -17,6 +17,7 @@
     @param {String}     isShow 是否展示
     @param {Function}   onOk ok按钮的回调函数
     @param {Function}   onCancel cancel按钮的回调函数
+    @param {Boolean}    isUseHtml explain是否允许使用html进行展示,而不进行转义
     @param {Object}     appendClass 自定义class
     @param {Object}     appendStyle 自定义Style对象
 -->
@@ -35,7 +36,8 @@
             <div class="vc-confirm-body">
                 <i class=" vci {{iconClass}}"></i>
                 <span class="vc-confirm-title">{{title}}</span>
-                <div class="vc-confirm-content">{{explain}}</div>
+                <div v-if="!isUseHtml" class="vc-confirm-content">{{explain}}</div>
+                <div v-if="isUseHtml" class="vc-confirm-content">{{{explain}}}</div>
             </div>
     </pv-dialog>
 </template>
@@ -44,6 +46,12 @@
     import {componentBaseParamConfig} from '../base-config';
     import pvDialog from '../dialog';
 
+    const TYPE_CLASS = {
+        info: 'vci-info-circle',
+        error: 'vci-exclamation-circle',
+        success: 'vci-check-circle',
+        confirm: 'vci-question-circle'
+    };
     export default {
         props: Object.assign({}, componentBaseParamConfig, {
             id: {
@@ -77,17 +85,16 @@
             isShow: {
                 type: Boolean,
                 default: false
+            },
+            isUseHtml: {
+                type: Boolean,
+                default: false
             }
         }),
 
         data() {
             return {
-                iconClass: {
-                    info: 'vci-info-circle',
-                    error: 'vci-exclamation-circle',
-                    success: 'vci-check-circle',
-                    confirm: 'vci-question-circle'
-                }[this.type],
+                iconClass: TYPE_CLASS[this.type],
                 hasCancelBtn: this.type === 'confirm'
             }
         },
@@ -99,6 +106,12 @@
         ready() {
             this.$root.$$messageBox = this.$root.$$messageBox || {};
             this.$root.$$messageBox[this.id] = this.$root.$$dialog[this.id];
+        },
+
+        watch: {
+            type(val) {
+                this.iconClass = TYPE_CLASS[val];
+            }
         },
 
         components: {
