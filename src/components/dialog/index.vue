@@ -131,6 +131,7 @@
                 console.warn(this.id + ' 此dialog id已经被使用,请确认id填写正确!');
             }
             this.$root.$$dialog[this.id] = this;
+            this.showMask = this.isShow;
         },
 
         data() {
@@ -142,14 +143,6 @@
         watch: {
             isShow(val) {
                 this.showMask = val;
-                // 如果不是复合弹出,则清理掉当前页面的所有窗口
-                if(this.$root.$$dialog) {
-                    for(let it in this.$root.$$dialog) {
-                        if(this.$root.$$dialog[it].isMultiple) continue;
-
-                        if(this.$root.$$dialog[it].id !== this.id) this.$root.$$dialog[it].hide();
-                    }
-                }
             }
         },
 
@@ -161,6 +154,14 @@
                 setTimeout(function() {
                     _this.$el.querySelector('.shortcut').focus();
                 }, 20);
+                // 如果不是复合弹出,则清理掉当前页面的所有窗口
+                if(this.$root.$$dialog) {
+                    for(let it in this.$root.$$dialog) {
+                        if(this.$root.$$dialog[it].isMultiple) continue;
+
+                        if(this.$root.$$dialog[it].id !== this.id) this.$root.$$dialog[it].hide();
+                    }
+                }
             },
             hide() {
                 this.isShow = false;
