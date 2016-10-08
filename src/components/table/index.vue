@@ -64,17 +64,21 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-for="row in currentData" track-by="$index" @click.stop="trClick(row, currentData)">
-                    <td v-if="hasAllSelect" @click.stop="itemClick(row.isChecked, row)">
-                        <pv-checkbox :value.sync="row.isChecked"></pv-checkbox>
-                    </td>
-                    <td v-for="col in cols" v-show="col.isShow === undefined">
-                        <span v-if="!col.hasPartial">{{{renderTD(col, row)}}}</span>
-                        <span v-if="col.hasPartial">
+                    <tr v-for="row in currentData" track-by="$index" @click.stop="trClick(row, currentData)">
+                        <td v-if="hasAllSelect" @click.stop="itemClick(row.isChecked, row)" v-show="!row.colspan">
+                            <pv-checkbox :value.sync="row.isChecked"></pv-checkbox>
+                        </td>
+                        <td v-if="!row.colspan" v-for="col in cols" v-show="col.isShow === undefined">
+                            <span v-if="!col.hasPartial">{{{renderTD(col, row)}}}</span>
+                            <span v-if="col.hasPartial">
+                                <partial :name="renderTD(col, row).id"></partial>
+                            </span>
+                        </td>
+                        <td v-if="row.colspan" v-show="row.isShow" :class="row.addClass"
+                            colspan="{{row.colspan === 'all' ? (hasAllSelect ? cols.length + 1 : cols.length) : row.colspan}}">
                             <partial :name="renderTD(col, row).id"></partial>
-                        </span>
-                    </td>
-                </tr>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -154,7 +158,8 @@
                 default() {
                     return () => {};
                 }
-            }
+            },
+            crossLineTr: {}
         }),
 
         data () {
@@ -281,6 +286,14 @@
             // 根据传入的渲染函数,对列进行渲染
             renderTD() {
                 return (col, row) => {
+                    if(row.render) {
+                        const rowRenderRes = row.render(row);
+                        for(let k in rowRenderRes.functions) {
+                            this[k] = rowRenderRes.functions[k];
+                        }
+
+                        return rowRenderRes
+                    }
                     if (col.render && typeof col.render === 'function') {
                         const renderRes = col.render(row[col.dataIndex], row);
                         if(col.hasPartial && renderRes.functions) {

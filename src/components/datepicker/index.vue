@@ -500,6 +500,10 @@
                     this.startDateX = startDateX;
                     this.endDateX = endDateX;
 
+                    if(!this.hasFooter && !isInit) {
+                        this.resultOutput(true);
+                    }
+
                     return;
                 } else {
                     this.outputStr = this.dateStart.outPutRes;

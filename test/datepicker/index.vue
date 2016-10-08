@@ -11,6 +11,12 @@
                   :disable-filter="disableFilter"
                   :end-time.sync="endTime"
                   :format="'YYYY/MM/DD hh:mm:ss'"></v-datepicker>
+
+    {{startTime}} -- {{endTime}}
+    <v-datepicker :is-range="true" :start-time.sync="startTime"
+                  :disable-filter="disableFilter"
+                  :end-time.sync="endTime"
+                  :format="'YYYY/MM/DD'"></v-datepicker>
 </template>
 
 <script>
