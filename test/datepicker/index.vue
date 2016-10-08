@@ -1,9 +1,9 @@
 <template>
-    {{time}}
-    <v-datepicker :time="time"></v-datepicker>
+    {{time1}}
+    <v-datepicker :time.sync="time1"></v-datepicker>
 
     {{time}}
-    <v-datepicker :time="time" :format="'YYYY/MM/DD hh:mm:ss'"></v-datepicker>
+    <v-datepicker :time.sync="time" :format="'YYYY/MM/DD hh:mm:ss'"></v-datepicker>
 
 
     {{startTime}} -- {{endTime}}
@@ -24,6 +24,7 @@
             return {
                 startTime: '2016-09-27',
                 endTime: '2016-10-30',
+                time1: '2015/12/11',
                 time: '2015/12/12'
             }
         },
@@ -33,10 +34,10 @@
             }
         },
         ready() {
-//            setTimeout(() => {
-//                this.startTime = '2016-10-1';
-//                this.endTime = '2016-11-1';
-//            }, 2000)
+            setTimeout(() => {
+                this.startTime = '2016-10-1';
+                this.endTime = '2016-11-1';
+            }, 2000)
         }
     }
 </script>

@@ -95,7 +95,6 @@
 </template>
 
 <script>
-    // TODO 时分秒问题
     import pvInput from '../input';
     import pvButton from '../button';
     import pvStepInput from '../step-input';
@@ -341,10 +340,14 @@
                     this.startDate = +index;
                     // 重置输出数据,刷新数据对象
                     dateObj.refresh(dateObj.dateOrigin.setDate(dateList[this.startDate].label));
-                    this.time = this.outputStr = dateObj.outPutRes;
+
+                    if(isInit) this.outputStr = dateObj.outPutRes;
 
                     date.isActive = true;
-                    if(!this.hasFooter && !this.hasHMS) this.isShowDatePicker = false;
+                    if(!this.hasFooter) {
+                        this.time = this.outputStr = dateObj.outPutRes;
+                        this.isShowDatePicker = false;
+                    }
                 }
             },
             clearSelectDate(dateObj) {
@@ -446,8 +449,12 @@
 
             // 结果输出
             resultOutput(onOk) {
-                if(!onOk && (this.hasFooter || this.hasHMS)) return;
+                if(!onOk && this.hasFooter) return;
+
                 if(this.isRange) {
+                    this.dateStart.setTime('Date', this.startDateX.date);
+                    this.dateEnd.setTime('Date', this.endDateX.date);
+
                     this.startTime = this.outputStart = this.dateStart.outPutRes;
                     this.endTime = this.outputEnd = this.dateEnd.outPutRes;
                     this.outputStr = this.startTime + ' 至 ' + this.endTime;
@@ -455,9 +462,12 @@
                 }
 
                 this.outputStr = this.dateStart.outPutRes;
+
+                if(onOk && !this.isRange) {
+                    this.time = this.outputStr;
+                }
             },
             resultOutputWithDate(isInit) {
-                if(!isInit && (this.hasFooter || this.hasHMS)) return;
                 if(this.isRange) {
                     // 起始日期
                     let startArr = this.startDate.split(',');
@@ -466,7 +476,8 @@
                     let startDate = this[startArr[0]].dateList[+startArr[1]].label;
                     let startDateX = new DateX({
                         date: [startYear, startMonth, startDate].join('/'),
-                        format: this.format
+                        format: this.format,
+                        isInit: false
                     });
                     // 结束日期
                     let endArr = this.endDate.split(',');
@@ -475,23 +486,24 @@
                     let endDate = this[endArr[0]].dateList[+endArr[1]].label;
                     let endDateX = new DateX({
                         date: [endYear, endMonth, endDate].join('/'),
-                        format: this.format
+                        format: this.format,
+                        isInit: false
                     });
                     // 输出值
                     if(endDateX.dateOrigin.getTime() < startDateX.dateOrigin.getTime()) [startDateX, endDateX] = [endDateX, startDateX];
-                    this.outputStart = startDateX.outPutRes;
-                    this.outputEnd = endDateX.outPutRes;
-                    this.outputStr = startDateX.outPutRes + ' 至 ' + endDateX.outPutRes;
-                    // 对外输出
-                    if(!isInit) {
-                        this.startTime = this.outputStart;
-                        this.endTime = this.outputEnd;
+                    if(isInit || (!this.hasFooter)) {
+                        this.outputStart = startDateX.outPutRes;
+                        this.outputEnd = endDateX.outPutRes;
+                        this.outputStr = startDateX.outPutRes + ' 至 ' + endDateX.outPutRes;
                     }
 
-                    return;
-                }
+                    this.startDateX = startDateX;
+                    this.endDateX = endDateX;
 
-                this.outputStr = this.dateStart.outPutRes;
+                    return;
+                } else {
+                    this.outputStr = this.dateStart.outPutRes;
+                }
             },
 
             // 初始化日期对象和日期组件渲染
@@ -528,7 +540,7 @@
                     }
                 } else {
                     this.resultOutputWithDate();
-                    this.dateSelect(this.dateStart, this.getSelectIndexWithDate(this.dateStart))
+                    this.dateSelect(this.dateStart, this.getSelectIndexWithDate(this.dateStart), undefined, isInit);
                 }
             },
             // 根据当前日期获取选择日期的位置
@@ -544,26 +556,28 @@
         watch: {
             // 外部时间变化,重新初始化选择器
             time(val) {
-                let time = new DateX({date: val, format: this.format});
+                let time = new DateX({date: val, format: this.format, isInit: false});
                 if(time.outPutRes !== this.dateStart.outPutRes) {
-                    this.dateStart = new DateX({date: val, format: this.format});
+                    this.dateStart = new DateX({date: val, format: this.format, disableFilter: this.disableFilter});
                     this.initDataAndRender();
                 }
             },
 
             startTime(val) {
-                let time = new DateX({date: val, format: this.format});
                 if(val !== this.outputStart) {
-                    this.dateStart = new DateX({date: val, format: this.format});
+                    this.dateStart = new DateX({date: val, format: this.format, disableFilter: this.disableFilter});
                     this.initDataAndRender(true);
                 }
             },
 
             endTime(val) {
-                let time = new DateX({date: val, format: this.format});
+                let time = new DateX({date: val, format: this.format, isInit: false});
                 if(val !== this.outputEnd) {
-                    this.dateEnd = new DateX({date: val, format: this.format});
+                    this.dateEnd = new DateX({date: val, format: this.format, disableFilter: this.disableFilter});
                     this.initDataAndRender(true);
+                }
+                if(this.isRange && time.year === this.startTime.year && time.month === this.endTime()) {
+                    this.dateEnd.nextMonth();
                 }
             }
         },
@@ -571,9 +585,12 @@
         ready() {
             this.initDataAndRender(true);
             this.isReady = true;
+            if(this.hasHMS) this.hasFooter = true;
 
             document.addEventListener('click', () => {
-                this.isShowDatePicker = false;
+                if(!this.hasFooter) {
+                    this.isShowDatePicker = false;
+                }
             });
         }
     }

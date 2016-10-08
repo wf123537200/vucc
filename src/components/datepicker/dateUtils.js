@@ -1,10 +1,11 @@
 // date帮助类
 class DateX {
-    constructor({date = Date.now(), format = 'YYYY-MM-DD', isRange = false, disableFilter}) {
+    constructor({date = Date.now(), format = 'YYYY-MM-DD', isRange = false, disableFilter, isInit = true}) {
         if(!this.isDate()) return console.error('传入date对象非法!');
         this.disableFilter = disableFilter;
         this.format = format;
         this.isRange = isRange;
+        this.isInit = isInit;
         this.init(date);
     }
 
@@ -13,7 +14,7 @@ class DateX {
         // 浏览器兼容
         if(/-/.test(date)) date = date.replace('/-/g', '/');
 
-        this.refresh(date, true);
+        this.refresh(date, this.isInit);
         this.dateList = this.getDateList(this.dateOrigin.getTime());
     }
 
