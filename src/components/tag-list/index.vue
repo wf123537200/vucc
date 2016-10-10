@@ -5,6 +5,7 @@
 
    @param {String} [size=normal|large|small] 按钮的大小
    @param {Boolean} isDeleteAble 展示列表是否有删除按钮
+   @param {Function} onAdd 标签列表增加时的回调函数
    @param {Array} data 渲染数据
     ex:
         tagList: [{
@@ -51,6 +52,9 @@
             size: {
                 type: String,
                 default: 'default'
+            },
+            onAdd: {
+                type: Function
             }
         }),
 
@@ -71,7 +75,9 @@
                 this.data = this.data || [];
                 this.data.push({
                     content: this.text.trim()
-                })
+                });
+
+                this.onAdd && this.onAdd();
             },
             deleteItem(item) {
                 this.data.$remove(item);
