@@ -369,11 +369,11 @@
                 let tableName = '__datepicker__table__' + Math.random().toString(36).substr(3, 15);
                 let res = '';
                 let date = dateName;
-                let preArrow = `<a href="javascript:void(0)" @click="prevMonth(${date})">
+                let preArrow = `<a href="javascript:void(0)" @click.stop="prevMonth(${date})">
                                     <i class="vc-datepicker-prev"></i>
                                 </a>`;
                 let nextArrow = `<a href="javascript:void(0)">
-                                    <i class="vc-datepicker-next"  @click="nextMonth(${date})"></i>
+                                    <i class="vc-datepicker-next"  @click.stop="nextMonth(${date})"></i>
                                 </a>`;
 
                 if(this.isRange && isStart) {
@@ -516,7 +516,7 @@
                 this.dateStart.renderTable = () => {
                     let {tableName, res} = this.renderTable(this.dateStart, 'dateStart', true);
                     this.tableName = tableName;
-                    Vue.partial(this.tableName, res);
+                    this.$options.partials[this.tableName] = res;
                 };
                 this.dateStart.renderTable();
 
@@ -526,7 +526,7 @@
                     this.dateEnd.renderTable = () => {
                         let {tableName, res} = this.renderTable(this.dateEnd, 'dateEnd');
                         this.tableNameEnd = tableName + 'End';
-                        Vue.partial(this.tableNameEnd, res);
+                        this.$options.partials[this.tableNameEnd] = res;
                     };
                     this.dateEnd.renderTable();
 
@@ -590,6 +590,7 @@
             this.initDataAndRender(true);
             this.isReady = true;
             if(this.hasHMS) this.hasFooter = true;
+            if(this.isRange) this.hasFooter = true;
 
             document.addEventListener('click', () => {
                 if(!this.hasFooter) {

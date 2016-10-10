@@ -19,6 +19,7 @@ $datepicker-prefix-cls: $css-prefix + 'datepicker';
     @include input($height, $font-size-base);
     color: $base-color;
     min-width: 105px;
+    background-color: #fff;
   }
 
   // 日期选择器触发按钮

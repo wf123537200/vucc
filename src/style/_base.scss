@@ -155,13 +155,13 @@ a {
   background: lighten($gray-color, 5%);
 }
 
-.vc-inline {
+.#{$css-prefix}inline {
   display: inline-block;
   vertical-align: middle;
 }
 
-a.vc-inline,
-a.vc-link {
+a.#{$css-prefix}inline,
+a.#{$css-prefix}link {
   color: $link-color;
   text-decoration: $link-hover-decoration;
   outline: none;

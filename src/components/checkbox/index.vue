@@ -22,20 +22,20 @@
   @param {String} asLabel 自定义label key
 -->
 <template>
-  <div v-if="isShow" v-for="it in data" track-by="$index" :style="appendStyle" :class="[appendClass]">
-    <label class="vc-label" :class="{'vc-label-checked': (resultList && resultList.includes(it.value) || value === true), 'vc-label-disabled': it.isDisabled}" @click="toggleSwitch($index, it.value)">
-      <span class="vc-checkbox"></span>
-      <span class="vc-label-text">
-          {{{it.label || it.value}}}
-      </span>
-    </label>
+  <div v-if="isShow">
+    <div v-for="it in data" track-by="$index" :style="appendStyle" :class="[appendClass]">
+      <label class="vc-label" :class="{'vc-label-checked': (resultList && resultList.includes(it.value) || value === true), 'vc-label-disabled': it.isDisabled}" @click="toggleSwitch($index, it.value)">
+        <span class="vc-checkbox"></span>
+        <span class="vc-label-text">
+            {{{it.label || it.value}}}
+        </span>
+      </label>
+    </div>
   </div>
 </template>
 
 <script>
   import {componentBaseParamConfig, alias, name2Alias} from '../base-config';
-
-  window.x = 1;
 
   export default {
     props: Object.assign({}, componentBaseParamConfig, alias, {
