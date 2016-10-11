@@ -1,7 +1,11 @@
 // date帮助类
 class DateX {
     constructor({date = Date.now(), format = 'YYYY-MM-DD', isRange = false, disableFilter, isInit = true}) {
-        if(!this.isDate()) return console.error('传入date对象非法!');
+        if(!this.isDate()) {
+            console.error('传入date对象非法!, 使用当前日期代替');
+            date = Date.now();
+        }
+
         this.disableFilter = disableFilter;
         this.format = format;
         this.isRange = isRange;

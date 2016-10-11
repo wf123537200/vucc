@@ -1,3 +1,23 @@
+<!--
+   datepicker 日期选择器
+
+   @require input
+   @require button
+   @require step-input
+
+   @param {Boolean} isRange 是否是范围类型的日期选择器
+   @param {} startTime 传入的起始日期,当isRange为true时使用
+   @param {} endTime 传入的结束日期,当isRange为true时使用
+   @param {} time 传入的结束日期,当isRange为true时使用
+   @param {String} format 日期的输出格式,现在支持 "YYYY-MM-DD hh:mm:ss"
+   @param {Boolean} hasFooter 是否有确定,取消两个按钮,当isRange和有时分秒的情况下不起作用
+   @param {Function} disableFilter 禁用过滤器,日期根据返回值直接禁用过滤器
+   @param {Boolean} isForceRefresh 是否强制刷新,为true时,每次都调用禁用过滤器
+   @param {Function} onOk 确定按钮回调
+   @param {Function} onCancel 取消按钮回调
+   @param {String} appendClass 自定义class
+   @param {Object} appendStyle 自定义Style对象
+-->
 <template>
     <div>
         <!-- 按钮 -->
@@ -22,6 +42,7 @@
                     <div>
                         <!-- start 小时,分钟,秒 -->
                         <pv-step-input date-obj="dateStart"
+                                       :append-style="{'border-color': '#e5e9ec'}"
                                        :style="{width: '55px'}" :size="'xsmall'"
                                        :min="0" :max="23"
                                        :value="dateStart.hour"
@@ -31,6 +52,7 @@
                                        :is-only-click="true">
                         </pv-step-input>:
                         <pv-step-input date-obj="dateStart"
+                                       :append-style="{'border-color': '#e5e9ec'}"
                                        :style="{width: '55px'}" :size="'xsmall'"
                                        :min="0" :max="59"
                                        :value="dateStart.minute"
@@ -40,6 +62,7 @@
                                        :is-only-click="true">
                         </pv-step-input>:
                         <pv-step-input date-obj="dateStart"
+                                       :append-style="{'border-color': '#e5e9ec'}"
                                        :style="{width: '55px'}" :size="'xsmall'"
                                        :min="0" :max="59"
                                        :value="dateStart.second"
@@ -53,6 +76,7 @@
                             至
                             <!-- end 小时,分钟,秒 -->
                             <pv-step-input date-obj="dateEnd"
+                                           :append-style="{'border-color': '#e5e9ec'}"
                                            :style="{width: '55px'}" :size="'xsmall'"
                                            :min="0" :max="23"
                                            :value="dateEnd.hour"
@@ -62,6 +86,7 @@
                                            :is-only-click="true">
                             </pv-step-input>:
                             <pv-step-input date-obj="dateEnd"
+                                           :append-style="{'border-color': '#e5e9ec'}"
                                            :style="{width: '55px'}" :size="'xsmall'"
                                            :min="0" :max="59"
                                            :value="dateEnd.minute"
@@ -71,6 +96,7 @@
                                            :is-only-click="true">
                             </pv-step-input>:
                             <pv-step-input date-obj="dateEnd"
+                                           :append-style="{'border-color': '#e5e9ec'}"
                                            :style="{width: '55px'}" :size="'xsmall'"
                                            :min="0" :max="59"
                                            :value="dateEnd.second"
@@ -85,8 +111,8 @@
                 </div>
                 <br v-if="!isRange" />
                 <div :class="['vc-datepicker-footer-btns', {'range-btn': !isRange}]">
-                    <pv-button :type="'primary'" :size="'small'" @click.stop="onOk">确定</pv-button>
-                    <pv-button :type="'outline'" :size="'small'" @click.stop="onCancel">取消</pv-button>
+                    <pv-button :type="'primary'" :size="'small'" @click.stop="onOkFn">确定</pv-button>
+                    <pv-button :type="'outline'" :size="'small'" @click.stop="onCancelFn">取消</pv-button>
                 </div>
             </div>
         </div>
@@ -125,6 +151,16 @@
             disableFilter: {
                 type: Function,
                 default: false
+            },
+            isForceRefresh: {
+                type: Boolean,
+                default: false
+            },
+            onOk: {
+                type: Function
+            },
+            onCancel: {
+                type: Function
             }
         }),
         data() {
@@ -171,13 +207,15 @@
             },
 
             // 确定按钮
-            onOk() {
+            onOkFn() {
                 this.resultOutput(true);
+                this.onOk && this.onOk();
                 this.isShowDatePicker = false;
             },
 
             // 取消按钮
-            onCancel() {
+            onCancelFn() {
+                this.onCancel && this.onCancel();
                 this.isShowDatePicker = false;
             },
 
@@ -201,7 +239,7 @@
                 let dateObj = this.getDateObj(stepVm);
                 dateObj.setYear(value);
             },
-            
+
             // 月
             prevMonth(dateObj, stepVm) {
                 // 双框联动
@@ -236,7 +274,7 @@
                 dateObj.setTime('Hours', val);
                 this.resultOutput();
             },
-            
+
             // 分钟
             nextMinute(val, stepVm) {
                 this.setMinute(val, stepVm);
@@ -249,7 +287,7 @@
                 dateObj.setTime('Minutes', val);
                 this.resultOutput();
             },
-            
+
             // 秒
             nextSecond(val, stepVm) {
                 this.setSecond(val, stepVm);
@@ -344,7 +382,7 @@
                     if(isInit) this.outputStr = dateObj.outPutRes;
 
                     date.isActive = true;
-                    if(!this.hasFooter) {
+                    if(!this.hasFooter && !isInit) {
                         this.time = this.outputStr = dateObj.outPutRes;
                         this.isShowDatePicker = false;
                     }
@@ -389,6 +427,7 @@
                                             ${preArrow}
                                             <div>
                                                 <pv-step-input date-obj="${date}"
+                                                               :append-style="{'border-color': '#e5e9ec'}"
                                                                :style="{width: '67px'}" :min="1970" :max="9999"
                                                                :size="'xsmall'"
                                                                :value="${date}.year"
@@ -398,6 +437,7 @@
                                                                :is-only-click="true">
                                                 </pv-step-input>年
                                                 <pv-step-input date-obj="${date}"
+                                                               :append-style="{'border-color': '#e5e9ec'}"
                                                                :style="{width: '55px'}" :size="'xsmall'"
                                                                :min="1" :max="12"
                                                                :value="${date}.month"
@@ -583,12 +623,23 @@
                 if(this.isRange && time.year === this.startTime.year && time.month === this.endTime()) {
                     this.dateEnd.nextMonth();
                 }
+            },
+            isShowDatePicker(val) {
+                if(!val || !this.isForceRefresh) return;
+
+                this.dateStart = new DateX({date: this.startTime, format: this.format, disableFilter: this.disableFilter});
+                this.dateEnd = new DateX({date: this.endTime, format: this.format, disableFilter: this.disableFilter});
+                this.initDataAndRender(true);
             }
         },
 
-        ready() {
+        compiled() {
             this.initDataAndRender(true);
+        },
+
+        ready() {
             this.isReady = true;
+
             if(this.hasHMS) this.hasFooter = true;
             if(this.isRange) this.hasFooter = true;
 

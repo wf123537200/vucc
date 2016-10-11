@@ -1,6 +1,6 @@
 <template>
     {{time1}}
-    <v-datepicker :time.sync="time1"></v-datepicker>
+    <v-datepicker :time.sync="time1" :disable-filter="disableFilter" :is-force-refresh="true"></v-datepicker>
 
     {{time}}
     <v-datepicker :time.sync="time" :format="'YYYY/MM/DD hh:mm:ss'"></v-datepicker>
@@ -36,14 +36,20 @@
         },
         methods: {
             disableFilter(date) {
-                return date.getDay() === 0 || date.getDay() === 6;
+                if(this.xx) {
+                    return date.getDay() === 0 || date.getDay() === 6;
+                } else {
+                    return false;
+                }
+
             }
         },
         ready() {
             setTimeout(() => {
                 this.startTime = '2016-10-1';
                 this.endTime = '2016-11-1';
-            }, 2000)
+                this.xx = true;
+            }, 5000)
         }
     }
 </script>
