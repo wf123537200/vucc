@@ -101,7 +101,10 @@
     export default {
         props: Object.assign({}, componentBaseParamConfig, {
             data: {
-                type: Array
+                type: Array,
+                default() {
+                    return [];
+                }
             },
 
             columns: {
@@ -158,8 +161,7 @@
                 default() {
                     return () => {};
                 }
-            },
-            crossLineTr: {}
+            }
         }),
 
         data () {
