@@ -170,19 +170,21 @@
                 this.hide();
             },
             _onOk() {
+                this.onOk && this.onOk();
+
                 if(this.onBeforeClose && this.onBeforeClose() === false) {
                     return;
                 }
 
-                this.onOk && this.onOk();
                 this.hide();
             },
             _onCancel() {
+                this.onCancel && this.onCancel();
+
                 if(this.onBeforeClose && this.onBeforeClose() === false) {
                     return;
                 }
 
-                this.onCancel && this.onCancel();
                 this.hide();
             }
         },
