@@ -13,15 +13,18 @@
    @param {Boolean} hasFooter 是否有确定,取消两个按钮,当isRange和有时分秒的情况下不起作用
    @param {Function} disableFilter 禁用过滤器,日期根据返回值直接禁用过滤器
    @param {Boolean} isForceRefresh 是否强制刷新,为true时,每次都调用禁用过滤器
+   @param {Boolean} isDisabled 日期选择器是否禁用
    @param {Function} onOk 确定按钮回调
    @param {Function} onCancel 取消按钮回调
+   @param {Function} onSuccess 选中按钮回调
    @param {String} appendClass 自定义class
    @param {Object} appendStyle 自定义Style对象
 -->
 <template>
     <div>
         <!-- 按钮 -->
-        <div :class="['vc-datepicker-btn', appendClass, {lager: isRange, hms: hasHMS && isRange, 'hms-no-range': hasHMS && !isRange}]" :style="appendStyle" @click.stop="showDatepicker">
+        <div :class="['vc-datepicker-btn', appendClass, {lager: isRange, hms: hasHMS && isRange, 'hms-no-range': hasHMS && !isRange, disabled: isDisabled}]"
+             :style="appendStyle" @click.stop="showDatepicker">
             <span class="vc-datepicker-btn-input">
                 <div class="vc-datepicker-result">{{outputStr}}</div>
             </span>
@@ -156,10 +159,17 @@
                 type: Boolean,
                 default: false
             },
+            isDisabled: {
+                type: Boolean,
+                default: false
+            },
             onOk: {
                 type: Function
             },
             onCancel: {
+                type: Function
+            },
+            onSuccess: {
                 type: Function
             }
         }),
@@ -203,6 +213,8 @@
         methods: {
             // 展示
             showDatepicker() {
+                if(this.isDisabled) return;
+
                 this.isShowDatePicker = true;
             },
 
@@ -385,6 +397,7 @@
                     if(!this.hasFooter && !isInit) {
                         this.time = this.outputStr = dateObj.outPutRes;
                         this.isShowDatePicker = false;
+                        this.onSuccess && this.onSuccess(this.time);
                     }
                 }
             },
@@ -627,7 +640,12 @@
             isShowDatePicker(val) {
                 if(!val || !this.isForceRefresh) return;
 
-                this.dateStart = new DateX({date: this.startTime, format: this.format, disableFilter: this.disableFilter});
+                if(this.isRange) {
+                    this.dateStart = new DateX({date: this.startTime, format: this.format, disableFilter: this.disableFilter});
+                } else {
+                    this.dateStart = new DateX({date: this.time, format: this.format, disableFilter: this.disableFilter});
+                }
+
                 this.dateEnd = new DateX({date: this.endTime, format: this.format, disableFilter: this.disableFilter});
                 this.initDataAndRender(true);
             }

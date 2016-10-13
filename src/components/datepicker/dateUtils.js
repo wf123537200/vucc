@@ -1,11 +1,10 @@
 // date帮助类
 class DateX {
     constructor({date = Date.now(), format = 'YYYY-MM-DD', isRange = false, disableFilter, isInit = true}) {
-        if(!this.isDate()) {
+        if(!this.isDate(date)) {
             console.error('传入date对象非法!, 使用当前日期代替');
             date = Date.now();
         }
-
         this.disableFilter = disableFilter;
         this.format = format;
         this.isRange = isRange;
@@ -24,7 +23,8 @@ class DateX {
 
     // date校验
     isDate(date) {
-        return isNaN(new Date(+date).getTime());
+        if(date === '') return false;
+        return !(isNaN(new Date(date).getTime()) && isNaN(new Date(+date).getTime()));
     }
 
     // 小于10的日期补0
@@ -146,11 +146,11 @@ class DateX {
     }
 
     nextYear() {
-       return this.setYear(this.year + 1);
+        return this.setYear(this.year + 1);
     }
 
     prevYear() {
-       return this.setYear(this.year - 1);
+        return this.setYear(this.year - 1);
     }
 
     // 获取输出

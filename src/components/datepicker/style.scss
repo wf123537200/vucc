@@ -43,6 +43,15 @@ $datepicker-prefix-cls: $css-prefix + 'datepicker';
       min-width: 150px;
     }
 
+    &.disabled {
+      .#{$datepicker-prefix-cls}-result {
+        border-color: $border-focus-color;
+        background: $base-bg;
+        color: #999eab;
+        cursor: not-allowed;
+      }
+    }
+
     &-icon {
       position: absolute;
       right: 0;
@@ -240,7 +249,7 @@ $datepicker-prefix-cls: $css-prefix + 'datepicker';
   &-next {
     position: absolute;
     font-size: 18px;
-    font-family: 'vcicon';
+    font-family: 'tbdicon';
     color: $gray-color;
     font-style: normal;
     opacity: 0.5;
