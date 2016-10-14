@@ -7,6 +7,7 @@
    @param {Boolean} isDeleteAble 展示列表是否有删除按钮
    @param {Function} onAdd 标签列表增加时的回调函数
    @param {Function} onDelete 标签列表删除时的回调函数
+   @param {String} placeholder 占位符
    @param {Array} data 渲染数据
     ex:
         tagList: [{
@@ -26,7 +27,7 @@
         </label>
         <!-- input -->
         <div class="vc-input-wrap">
-            <pv-input v-model="text"></pv-input>
+            <pv-input v-model="text" :placeholder="placeholder"></pv-input>
             <button class="vc-input-wrap-extra" @click.stop="addItem">
                 <i class="vci vci-plus"></i>
             </button>
@@ -59,6 +60,9 @@
             },
             onDelete: {
                 type: Function
+            },
+            placeholder: {
+                type: String
             }
         }),
 

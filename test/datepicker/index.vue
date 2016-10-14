@@ -1,6 +1,8 @@
 <template>
     {{time1}}
     <v-datepicker :time.sync="time1" :disable-filter="disableFilter" :is-force-refresh="true"></v-datepicker>
+    {{time1}}
+    <v-datepicker :is-disabled="true" :time.sync="time1" :disable-filter="disableFilter" :is-force-refresh="true"></v-datepicker>
 
     {{time}}
     <v-datepicker :time.sync="time" :format="'YYYY/MM/DD hh:mm:ss'"></v-datepicker>
@@ -30,7 +32,7 @@
             return {
                 startTime: '2016-09-27',
                 endTime: '2016-10-30',
-                time1: '2015/12/11',
+                time1: '',
                 time: '2015/12/12'
             }
         },

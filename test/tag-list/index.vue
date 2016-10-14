@@ -1,5 +1,5 @@
 <template>
-    <v-tag-list :data="tagList"></v-tag-list>
+    <v-tag-list :data="tagList" :placeholder="'请填写内容'"></v-tag-list>
     <v-tag-list :data="tagList" :size="'small'" :is-delete-able="true"></v-tag-list>
 </template>
 

@@ -22,6 +22,7 @@
   @param {String | Number} value 绑定外部数据对象的结果
   @param {Boolean} isDisabled 当前下拉列表是否可选
   @param {Boolean} isOpened 下拉列表是否显示
+  @param {Function} onOpen 下拉列表展示时回调
   @param {Boolean} isEditAble 下拉列表是否可编辑,如果可编辑,则展示框变成输入框,并自带过滤功能
   @param {Function} onSelect 选择事件
   @param {Object} appendClass 自定义class
@@ -77,6 +78,9 @@
             isEditAble: {
                 type: Boolean,
                 default: false
+            },
+            onOpen: {
+                type: Function
             }
         }),
 
@@ -97,10 +101,10 @@
 
                 if(!res) return returnValue;
 
-                if(res.label !== undefined) {
-                    returnValue = res.label;
-                } else if(res.value !== undefined) {
-                    returnValue = res.value;
+                if(res.label !== undefined || res[this.asLabel] !== undefined) {
+                    returnValue = res.label || res[this.asLabel];
+                } else if(res.value !== undefined || res[this.asValue] !== undefined) {
+                    returnValue = res.value || res[this.asValue];
                 }
 
                 return returnValue;
@@ -121,6 +125,8 @@
                 if(this.isDisabled) return;
 
                 this.isOpened = !this.isOpened;
+
+                if(this.isOpened) this.onOpen && this.onOpen();
             }
         },
 
