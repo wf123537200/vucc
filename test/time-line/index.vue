@@ -1,5 +1,7 @@
 <template>
     <v-time-line :data="timeLineData"></v-time-line>
+
+    <a class="demo-link" href="../components/time-line.html">组件连接</a>
 </template>
 
 <script>

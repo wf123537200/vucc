@@ -7,6 +7,8 @@
     <v-multi-select :has-search="false" :filter="search" :data="multiDataList" :append-style="{width: '200px'}" :result-list.sync="multiResList">
         <v-search :value.sync="search"></v-search>
     </v-multi-select>
+
+    <a class="demo-link" href="../components/multi-select.html">组件连接</a>
 </template>
 
 <script>

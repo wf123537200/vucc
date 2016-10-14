@@ -2,7 +2,9 @@
     <v-steps :data="stepsData"></v-steps>
     <v-steps :data="stepsData" :size="'small'"></v-steps>
     <v-steps :data="stepsData" :is-text-up="true" :size="'small'"></v-steps>
-    <v-steps :data="stepsData" :is-vertical="true"></v-steps>
+    <v-steps :data="stepsData" :append-style="{'margin-left': '30%!important'}" :is-vertical="true"></v-steps>
+
+    <a class="demo-link" href="../components/steps.html">组件连接</a>
 </template>
 
 <script>

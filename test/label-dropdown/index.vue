@@ -2,6 +2,8 @@
     <v-label-dropdown :data="staff.data"
                       :selected.sync="staff.selected" :disabled="staff.disabled">
     </v-label-dropdown>
+
+    <a class="demo-link" href="../components/label-dropdown.html">组件连接</a>
 </template>
 
 <script>

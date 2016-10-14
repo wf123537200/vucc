@@ -3,6 +3,8 @@
         <h3>switch: {{switchValue}}</h3>
         <v-switch :value.sync="switchValue" :onChange="switchChange"></v-switch>
         <v-switch :value.sync="switchValue" :is-disabled="true" :onChange="switchChange"></v-switch>
+
+        <a class="demo-link" href="../components/switch.html">组件连接</a>
     </section>
 </template>
 

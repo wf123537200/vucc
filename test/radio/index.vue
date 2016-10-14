@@ -7,6 +7,8 @@
                  :as-label="'desc'" :value.sync="radioValue"></v-radio>
         <h3>radio: 纵向/多选{{radioMulResultList | json}}</h3>
         <v-radio :data="commonListData" :result-list.sync="radioMulResultList" :is-vertical="true" :is-multiple="true"></v-radio>
+
+        <a class="demo-link" href="../components/radio.html">组件连接</a>
     </section>
 </template>
 

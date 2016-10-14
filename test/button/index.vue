@@ -17,6 +17,8 @@
             <span class="vci vci-down"></span>
             <span>default</span>
         </v-button>
+
+        <a class="demo-link" href="../components/button.html">组件连接</a>
     </section>
 </template>
 

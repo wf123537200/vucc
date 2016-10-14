@@ -7,6 +7,8 @@
                     :as-label="'desc'" :result-list.sync="checkboxResultList"></v-checkbox>
         <h3>checkbox: 纵向{{checkboxResultList | json}}</h3>
         <v-checkbox :data="commonListData" :result-list.sync="checkboxResultList" :is-vertical="true"></v-checkbox>
+
+        <a class="demo-link" href="../components/checkbox.html">组件连接</a>
     </section>
 </template>
 

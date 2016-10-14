@@ -36,7 +36,7 @@
     "build-all": "webpack -p --progress --config build/webpack.index.conf.js",
     "build-split": "webpack -p --progress --config build/webpack.split.conf.js",
     "build-coms": "webpack -p --progress --config build/webpack.components.conf.js",
-    "build-dev": "webpack --progress --config build/webpack.dev.conf.js",
+    "build-dev": "webpack -p --progress --config build/webpack.dev.conf.js",
     "prd": "npm run build-all && npm run build-split && npm run build-coms",
     "e2e": "casperjs test --concise ./test/e2e",
     "test": "webpack -progress --config build/webpack.prod.conf.js"

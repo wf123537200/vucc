@@ -9,6 +9,8 @@
 
         <!-- 第二种调用方法 -->
         <v-button @click="showAlert2()">alert第二种调用方法</v-button>
+
+        <a class="demo-link" href="../components/loading.html">组件连接</a>
     </section>
 </template>
 

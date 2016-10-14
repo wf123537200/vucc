@@ -13,6 +13,8 @@
 
         <!-- 第二种调用方法 -->
         <v-button @click="showMb2()">messagebox 第二种调用方法</v-button>
+
+        <a class="demo-link" href="../components/message-box.html">组件连接</a>
     </section>
 </template>
 

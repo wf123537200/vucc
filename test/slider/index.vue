@@ -7,6 +7,8 @@
         <v-slider :value.sync="sliderValue2" :text="'px'" :value-list="sliderValueList"></v-slider>
     </div>
     <input type="text" style="margin-top:20px;" v-model="sliderValue2"></input>
+
+    <a class="demo-link" href="../components/slider.html">组件连接</a>
 </template>
 
 <script>

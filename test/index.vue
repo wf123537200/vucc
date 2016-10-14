@@ -686,4 +686,8 @@
     padding: 10px;
     border: 1px solid #999;
   }
+
+  .demo-link {
+    float: right;
+  }
 </style>

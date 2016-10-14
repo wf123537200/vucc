@@ -26,6 +26,8 @@
             </div>
         </v-collapse>
     </v-collapse-group>
+
+    <a class="demo-link" href="../components/collapse-group.html">组件连接</a>
 </template>
 
 <script>

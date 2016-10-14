@@ -7,6 +7,8 @@
             <p>内容内容</p>
         </div>
     </v-collapse>
+
+    <a class="demo-link" href="../components/collapse.html">组件连接</a>
 </template>
 
 <script>

@@ -1,5 +1,7 @@
 <template>
     <v-transfer :src-title="'原数据'" :dist-title="'选择'" :data="transfer" :result="transferRes"></v-transfer>
+
+    <a class="demo-link" href="../components/transfer.html">组件连接</a>
 </template>
 
 <script>

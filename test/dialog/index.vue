@@ -16,6 +16,8 @@
         </v-dialog>
 
         <v-button type="primary" @click="showDialog('dialog1')">show dialog</v-button>
+
+        <a class="demo-link" href="../components/dialog.html">组件连接</a>
     </section>
 </template>
 

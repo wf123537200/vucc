@@ -6,6 +6,8 @@
     <v-progress :type="'success'" :progress="50" :explain="'成功'"></v-progress>
     <v-progress :type="'error'" :progress="50" :explain="'失败'"></v-progress>
     <v-progress :type="'warn'" :progress="50" :explain="'警告'"></v-progress>
+
+    <a class="demo-link" href="../components/progress.html">组件连接</a>
 </template>
 
 <script>

@@ -174,7 +174,7 @@
                     return a._index - b._index;
                 });
 
-                onAdd && onAdd(transfer);
+                this.onAdd && this.onAdd(transfer);
             },
 
             removeSelect() {
@@ -192,7 +192,7 @@
                     return a._index - b._index;
                 });
 
-                onDelete && onDelete(transfer);
+                this.onDelete && this.onDelete(transfer);
             },
 
             onCheckboxClick(val) {

@@ -14,6 +14,8 @@
 
         <!-- 第二种调用方法 -->
         <v-button @click="showTipsWay2()">tips第二种调用方法</v-button>
+
+        <a class="demo-link" href="../components/tips.html">组件连接</a>
     </section>
 </template>
 

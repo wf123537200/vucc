@@ -11,4 +11,13 @@
     <app></app>
 </body>
 <script src="../dist/demo.js"></script>
+<script>
+    // 当处在文档链接上下文时,连接文档
+    if(document.querySelector('#app') === document.body) {
+        var links = document.querySelectorAll('.demo-link');
+        for(var i = 0; i < links.length; i++) {
+            links[i].style.display = 'none';
+        }
+    }
+</script>
 </html>

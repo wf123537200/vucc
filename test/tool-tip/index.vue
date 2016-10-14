@@ -63,6 +63,8 @@
         <div>左边靠底</div>
         <v-tool-tip :type="'leftBottom'">文字提示</v-tool-tip>
     </div>
+
+    <a class="demo-link" href="../components/tool-tip.html">组件连接</a>
 </template>
 
 <script>

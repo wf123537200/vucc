@@ -108,6 +108,8 @@
             </v-form>
         </div>
     </div>
+
+    <a class="demo-link" href="../components/form.html">组件连接</a>
 </template>
 
 <script>

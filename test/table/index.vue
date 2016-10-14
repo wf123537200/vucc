@@ -1,5 +1,7 @@
 <template>
     <v-table :page-size="10" :has-all-select="true" :on-checkbox-click="table.checkboxClick" :data="table.data" :columns="table.columns"></v-table>
+
+    <a class="demo-link" href="../components/table.html">组件连接</a>
 </template>
 
 <script>

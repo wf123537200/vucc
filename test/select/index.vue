@@ -5,6 +5,8 @@
         <v-select :data="dropDownData2"
                   :as-label="'desc'":append-style="{width: '200px'}" :value.sync="dropDownValue"></v-select>
         <v-select :data="dropDownData" :is-disabled="true" :value.sync="dropDownValue"></v-select>
+
+        <a class="demo-link" href="../components/select.html">组件连接</a>
     </section>
 </template>
 

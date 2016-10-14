@@ -4,6 +4,8 @@
 
     <v-loading :is-show="showGlobalLoading" :is-global="true" :content="'加载中..'"></v-loading>
     <v-loading :is-show="showPartLoading" :size="'small'"></v-loading>
+
+    <a class="demo-link" href="../components/loading.html">组件连接</a>
 </template>
 
 <script>

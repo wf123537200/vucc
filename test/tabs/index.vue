@@ -57,6 +57,8 @@
         <v-pane>选项卡222222内容</v-pane>
         <v-pane>选项卡33333内容</v-pane>
     </v-tabs>
+
+    <a class="demo-link" href="../components/tabs.html">组件连接</a>
 </template>
 
 <script>

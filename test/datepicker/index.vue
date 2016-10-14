@@ -19,6 +19,8 @@
                   :disable-filter="disableFilter"
                   :end-time.sync="endTime"
                   :format="'YYYY/MM/DD'"></v-datepicker>
+
+    <a class="demo-link" href="../components/template.html">组件连接</a>
 </template>
 
 <script>

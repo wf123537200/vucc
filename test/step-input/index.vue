@@ -3,6 +3,8 @@
     <v-step-input size="small" :value.sync="value"></v-step-input>
     <v-step-input></v-step-input>
     <v-step-input :size="'large'" :min="10" :max="80" :step="5"></v-step-input>
+
+    <a class="demo-link" href="../components/step-input.html">组件连接</a>
 </template>
 
 <script>
