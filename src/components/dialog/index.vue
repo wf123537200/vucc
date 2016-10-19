@@ -43,7 +43,7 @@
                 </div><!-- header end -->
 
                 <!-- body -->
-                <div class="vc-dialog-body" :style="appendStyle">
+                <div class="vc-dialog-body d-body" :style="appendStyle">
                     <slot></slot>
                 </div>
 

@@ -11,7 +11,7 @@
 
     @param {String}     type 对话框展示的类型,可选枚举值有:info, success, confirm, error
     @param {String}     title 弹出框主标题
-    @param {String}     explain 弹出框说明文字
+    @param {String}     explain 弹出框说明文字,当isUseHtml打开时,将可以传入dom结构
     @param {String}     cancelText 取消按钮的展示文字
     @param {String}     okText 确定按钮的展示文字
     @param {String}     isShow 是否展示

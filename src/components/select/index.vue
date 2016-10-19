@@ -29,22 +29,24 @@
   @param {Object} appendStyle 自定义Style对象
 -->
 <template>
-    <pv-dropdown :data="data"
-                 :append-style="appendStyle"
-                 :append-class="appendClass"
-                 :value.sync="value"
-                 :is-disabled="isDisabled"
-                 :on-select="onSelected"
-                 :is-opened.sync="isOpened"
-                 :as-label="asLabel"
-                 :as-value="asValue"
-                 :filter="isEditAble ? inputSelect : ''">
-        <span class="vc-select-selection vc-select-selection-single" @click.stop="toggle">
-        <pv-input v-if="isEditAble && !isDisabled" v-model="inputSelect" ></pv-input>
-        <span v-if="isDisabled || !isEditAble" class="vc-select-selection-rendered">{{currentSelected}}</span>
-        <span class="vc-select-arrow"></span>
-        </span>
-    </pv-dropdown>
+    <span @click.stop>
+        <pv-dropdown :data="data"
+                     :append-style="appendStyle"
+                     :append-class="appendClass"
+                     :value.sync="value"
+                     :is-disabled="isDisabled"
+                     :on-select="onSelected"
+                     :is-opened.sync="isOpened"
+                     :as-label="asLabel"
+                     :as-value="asValue"
+                     :filter="isEditAble ? inputSelect : ''">
+            <span class="vc-select-selection vc-select-selection-single">
+            <pv-input v-if="isEditAble && !isDisabled" v-model="inputSelect" ></pv-input>
+            <span v-if="isDisabled || !isEditAble" class="vc-select-selection-rendered">{{currentSelected}}</span>
+            <span class="vc-select-arrow"></span>
+            </span>
+        </pv-dropdown>
+    </span>
 </template>
 
 <script>
@@ -102,6 +104,7 @@
                 if(!res) return returnValue;
 
                 if(res.label !== undefined || res[this.asLabel] !== undefined) {
+                    if(res.label !== undefined) res.label += '';
                     returnValue = res.label || res[this.asLabel];
                 } else if(res.value !== undefined || res[this.asValue] !== undefined) {
                     returnValue = res.value || res[this.asValue];
@@ -119,14 +122,6 @@
 
                 this.inputSelect = this.currentSelected = opts[index].label || this.value;
                 this.onSelect && this.onSelect(item.value, index);
-            },
-
-            toggle() {
-                if(this.isDisabled) return;
-
-                this.isOpened = !this.isOpened;
-
-                if(this.isOpened) this.onOpen && this.onOpen();
             }
         },
 

@@ -2,7 +2,7 @@
    分页栏 组件
 
    @param {Boolean} isShow 是否显示分页栏组件
-   @param {Function} onChange 当选择那一页时调用
+   @param {Function} onChange 当选择分页时调用
    @param {Number} pageSize 每页的大小
    @param {Number} currentPage 当前页的页码
    @param {Number} total 总页数
@@ -47,15 +47,15 @@
 
 <script>
     import pvSelect from '../select/';
+    import {componentBaseParamConfig, alias} from '../base-config';
 
     export default {
-        props: {
+        props: Object.assign({}, componentBaseParamConfig, {
             isShow: {
                 type: Boolean,
                 default: true
             },
             onChange: {
-                require: true,
                 type: Function
             },
             pageSize: {
@@ -73,7 +73,7 @@
             onSizeChange: {
                 type: Function
             }
-        },
+        }),
 
         data () {
             return {
@@ -99,11 +99,6 @@
             },
 
             pageNums() {
-                // 测试 用例
-                // current=7 => 1,2 ...5,6,7,8,9 ...,25
-                // current=3 => 1,2,3,4,5...,25
-                // current=25 => 1,2,...,23,24,25
-
                 let pageNums = [1,2];
 
                 let totalNum = this.totalNum;
@@ -150,18 +145,18 @@
                     return;
                 }
                 this.currentPage = num;
-                this.onChange(this.currentPage)
+                this.onChange && this.onChange(this.currentPage)
             },
 
             jumpPrev() {
                 this.currentPage = (this.currentPage - 1 > 0 ? this.currentPage - 1 : 1);
-                this.onChange(this.currentPage)
+                this.onChange && this.onChange(this.currentPage)
 
             },
 
             jumpNext() {
                 this.currentPage = (this.currentPage + 1 > this.totalNum ? this.totalNum : this.currentPage + 1 );
-                this.onChange(this.currentPage)
+                this.onChange && this.onChange(this.currentPage)
 
             },
             _onSizeChange() {

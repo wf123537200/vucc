@@ -27,10 +27,14 @@
         <t-tabs></t-tabs>
       </div>
 
-      <!-- 以下为未来得及重构的组件 -->
       <h2>表格</h2>
       <div class="doc-example">
         <t-table></t-table>
+      </div>
+
+      <h2>分页</h2>
+      <div class="doc-example">
+        <t-pagination></t-pagination>
       </div>
 
       <h2>滑动输入条</h2>
@@ -148,6 +152,7 @@
 
   import tTabs from './tabs';
   import tTable from './table';
+  import tPagination from './pagination';
   import tSlider from './slider';
   import tBadge from './badge';
   import tInput from './input';
@@ -203,7 +208,8 @@
       tBadge,
       tInput,
       tTextarea,
-      tDatepicker
+      tDatepicker,
+      tPagination
     }),
     data() {
       return {

@@ -37,7 +37,7 @@
 <template>
     <div :style="appendStyle"
          :class="['vc-select', appendClass, sizeClass, {'vc-select-disabled': isDisabled, 'vc-dropdown-wrap-open': isOpened}]"
-         @click.stop="onClick">
+         @click="onClick">
         <slot></slot>
         <!-- 单选 -->
         <div v-if="!isMultiple" class="vc-dropdown" :class="{'hide': !isOpened}">
@@ -210,7 +210,7 @@
             onClick() {
                 if(this.isDisabled) return;
 
-                this.isOpened = true;
+                this.isOpened = this.isMultiple ? true : !this.isOpened;
             },
 
             onSelected (index, item){

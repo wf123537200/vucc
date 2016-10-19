@@ -20,6 +20,7 @@
             }]
    @param {String} [size=normal|small] 组件的大小
    @param {Boolean} isVertical 组件是否竖向排列
+   @param {Boolean} isTextUp 组件文字是否展示在步进条上方
    @param {String} appendClass 自定义class
    @param {Object} appendStyle 自定义Style对象
 -->

@@ -7,6 +7,7 @@
    @param {Boolean} isDeleteAble 展示列表是否有删除按钮
    @param {Function} onAdd 标签列表增加时的回调函数
    @param {Function} onDelete 标签列表删除时的回调函数
+   @param {Function} onBeforeAdd addItem之前调用,如有传入,则会将addItem作为回调函数传入,同时回调函数支持自定义传入item
    @param {String} placeholder 占位符
    @param {Array} data 渲染数据
     ex:
@@ -63,6 +64,9 @@
             },
             placeholder: {
                 type: String
+            },
+            onBeforeAdd: {
+                type: Function
             }
         }),
 
@@ -80,12 +84,19 @@
             addItem() {
                 if(!this.text || !this.text.trim()) return;
 
-                this.data = this.data || [];
-                this.data.push({
+                const addedItem = {
                     content: this.text.trim()
+                };
+                this.data = this.data || [];
+
+                // 如果有传入先执行的方法
+                if(this.onBeforeAdd) return this.onBeforeAdd((item) => {
+                    this.data.push(item || addedItem);
+                    this.onAdd && this.onAdd(item || addedItem);
                 });
 
-                this.onAdd && this.onAdd();
+                this.data.push(addedItem);
+                this.onAdd && this.onAdd(addedItem);
             },
             deleteItem(item) {
                 this.data.$remove(item);

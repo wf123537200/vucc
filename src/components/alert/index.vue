@@ -21,6 +21,7 @@
   @param {String} title alert框的标题
   @param {String} explain alert框的解释性文字
   @param {Boolean} isCloseAble 是否带有关闭按钮
+  @param {Boolean} isUseHtml 当传入为true时,explain允许传入html参数
   @param {Object} appendClass 自定义class
   @param {Object} appendStyle 自定义Style对象
 -->
@@ -28,7 +29,8 @@
     <div :style="appendStyle" v-if="isShow" :class="['vc-alert', appendClass, typeClass, {'show': isShow, 'vc-alert-with-description': explain}]">
         <a v-if="isCloseAble" @click="closeFn" href="javascript: void 0" class="vc-alert-close-icon"><i class="vci vci-cross"></i></a>
         <h3 class="vc-alert-message">{{title}}</h3>
-        <div class="vc-alert-description">{{explain}}</div>
+        <div v-if="!isUseHtml" class="vc-alert-description">{{explain}}</div>
+        <div v-if="isUseHtml" class="vc-alert-description">{{{explain}}}</div>
     </div>
 </template>
 
@@ -137,6 +139,10 @@
                 default: ''
             },
             isCloseAble: {
+                type: Boolean,
+                default: false
+            },
+            isUseHtml: {
                 type: Boolean,
                 default: false
             }

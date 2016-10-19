@@ -32,24 +32,26 @@
   @param {Object} appendStyle 自定义Style对象
 -->
 <template>
-    <pv-dropdown :data="data"
-                 :is-disabled="isDisabled"
-                 :is-opened="isOpened"
-                 :has-search="hasSearch"
-                 :result-list.sync="resultList"
-                 :ok-text="okText"
-                 :on-ok="onOk"
-                 :on-cancel="onCancel"
-                 :cancel-text="cancelText"
-                 :append-style="appendStyle"
-                 :filter="filter"
-                 :as-label="asLabel"
-                 :as-value="asValue"
-                 :has-footer="true"
-                 :is-multiple="true"
-                 :append-class="appendClass">
-        <slot></slot>
-    </pv-dropdown>
+    <span @click.stop>
+        <pv-dropdown :data="data"
+                     :is-disabled="isDisabled"
+                     :is-opened="isOpened"
+                     :has-search="hasSearch"
+                     :result-list.sync="resultList"
+                     :ok-text="okText"
+                     :on-ok="onOk"
+                     :on-cancel="onCancel"
+                     :cancel-text="cancelText"
+                     :append-style="appendStyle"
+                     :filter="filter"
+                     :as-label="asLabel"
+                     :as-value="asValue"
+                     :has-footer="true"
+                     :is-multiple="true"
+                     :append-class="appendClass">
+            <slot></slot>
+        </pv-dropdown>
+    </span>
 </template>
 
 <script>

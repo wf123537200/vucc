@@ -1,7 +1,7 @@
 <template>
     <section class="doc-part">
         <h3>select: {{dropDownValue}}</h3>
-        <v-select :on-open="buttonClick" :data="dropDownData" :append-style="{width: '200px'}" :value.sync="dropDownValue"></v-select>
+        <v-select @click.stop="buttonClick($event)" :data="dropDownData" :append-style="{width: '200px'}" :value.sync="dropDownValue"></v-select>
         <v-select :data="dropDownData2"
                   :as-label="'desc'":append-style="{width: '200px'}" :value.sync="dropDownValue"></v-select>
         <v-select :data="dropDownData" :is-disabled="true" :value.sync="dropDownValue"></v-select>
@@ -59,7 +59,7 @@
         },
         methods: {
             buttonClick() {
-                console.log('u has been click')
+                console.log(arguments)
             }
         },
         ready() {

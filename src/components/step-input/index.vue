@@ -6,6 +6,11 @@
    @param {Number} min 当前步进输入框的最小值
    @param {Number} max 当前步进输入框的最大值
    @param {Number} step 步进值,每次增加或者减少多少
+   @param {Function} onUp 点击向上按钮时的回调,会传入值和当前vm对象
+   @param {Function} onDown 点击向下按钮时的回调,会传入值和当前vm对象
+   @param {Boolean} isOnlyClick 限制只能点击改变数值,而不能按住,防止onUp/onDown中的大量逻辑被触发
+   @param {Function} onChange 输入框填写改变事件
+   @param {Number} step 步进值,每次增加或者减少多少
    @param {String} [size=normal|large|small] 组件的大小
    @param {String} appendClass 自定义class
    @param {Object} appendStyle 自定义Style对象

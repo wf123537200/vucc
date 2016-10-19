@@ -40,7 +40,8 @@
                     }]
    @param {Function} onChangePage 用于传入分页组件页面变更事件进行响应
    @param {Number} currentPage 当前组件停留页
-   @param {Number} pageSize 总页数
+   @param {Number} pageSize 每一页展示多少条数据
+   @param {Number} total 总页数
    @param {Number} onSizeChange 当每页页数变化时产生的数据
    @param {Boolean} isShowPagination 是否显示分页栏
    @param {Boolean} isReal 是否采用真分页,如果真分页,则每次传入数据都以外部为准
