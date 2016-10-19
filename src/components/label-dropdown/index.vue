@@ -28,7 +28,7 @@
    @param {Object} appendClass 自定义Style对象
 -->
 <template>
-    <div class="vc-select" :class="[appendClass, {'vc-dropdown-wrap-open' : showDropdown}]" :style="appendStyle">
+    <div class="vc-select" :class="[appendClass, {'vc-dropdown-wrap-open' : isOpen}]" :style="appendStyle">
         <div class="vc-select-selection vc-select-selection-multiple"
              @click.stop="focus">
             <ul class="vc-select-selection-rendered">
@@ -58,7 +58,7 @@
         <!-- select 下拉选项 -->
         <pv-dropdown :data="dropDownList"
                      :on-select="selectItem"
-                     :is-opened="showDropdown"
+                     :is-opened="isOpen"
                      :filter = "keyword"
                      :result-list="resultList"
                      :append-style="{width: '305px','margin-top': '-24px'}">
@@ -88,6 +88,10 @@
             },
             resultList: {
                 type: Array
+            },
+            isOpen: {
+                type: Boolean,
+                default: false
             }
         }),
 
@@ -111,7 +115,6 @@
         data() {
             return {
                 keyword : '',
-                showDropdown : false,
                 optionData : [],
                 optionsKey : {
                     userId : 'userId',
@@ -134,7 +137,7 @@
                     let selectedId = this.selected[i].userId + '';
 
                     if(userId === selectedId) {
-                        this.showDropdown = false;
+                        this.isOpen = false;
                         return
                     }
                 }
@@ -149,7 +152,7 @@
 
                 this.selected.push(item);
                 this.keyword = '';
-                this.showDropdown = false;
+                this.isOpen = false;
             },
 
             deleteItem(userId) {
@@ -165,13 +168,13 @@
             },
 
             getData() {
-                this.showDropdown = true;
+                this.isOpen = true;
             }
         },
 
         watch : {
             keyword() {
-                if(this.keyword === '' && this.showDropdown === false) {
+                if(this.keyword === '' && this.isOpen === false) {
                     return
                 } else {
                     this.getData()
@@ -192,7 +195,7 @@
             }
 
             document.addEventListener('click', function() {
-                _this.showDropdown = false
+                _this.isOpen = false
             });
         }
     }
