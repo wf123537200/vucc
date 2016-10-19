@@ -1,6 +1,6 @@
 {
   "name": "vucc",
-  "version": "1.4.47",
+  "version": "1.5.0",
   "description": "vue 前端组件库",
   "main": "dist",
   "devDependencies": {
