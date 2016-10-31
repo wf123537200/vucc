@@ -43,7 +43,7 @@ MessageBox.init = function(obj) {
         components: {
             vMessageBox
         },
-        ready() {
+        mounted() {
             this.isShow = true;
         }
     })

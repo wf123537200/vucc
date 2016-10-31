@@ -48,7 +48,7 @@
 
             }
         },
-        ready() {
+        mounted() {
             setTimeout(() => {
                 this.startTime = '2016-10-1';
                 this.endTime = '2016-11-1';

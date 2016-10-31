@@ -1,6 +1,6 @@
 <template>
     <section class="doc-part">
-        <h2>按钮组</h2>
+        <h3>按钮组 button-group</h3>
         <v-button-group :data="buttonGroupList"></v-button-group>
 
         <a class="demo-link" href="../components/button-group.html">组件连接</a>
@@ -19,10 +19,7 @@
                 // button group
                 buttonGroupList: [{
                     text: 'btn1',
-                    icon: 'android',
-                    onClick: function() {
-                        alert('btn1')
-                    }
+                    icon: 'android'
                 }, {
                     text: 'btn2',
                     icon: 'apple',

@@ -21,6 +21,8 @@
 <script>
     import vMessageBox from '../../src/components/message-box';
     import vButton from '../../src/components/button';
+    // message 的包装代码
+    window.MessageBox = require('../../src/components/message-box/wrap.js');
 
     export default {
         components: {

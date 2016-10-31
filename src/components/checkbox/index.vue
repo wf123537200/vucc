@@ -22,12 +22,12 @@
   @param {String} asLabel 自定义label key
 -->
 <template>
-  <div v-if="isShow">
-    <div v-for="it in data" track-by="$index" :style="appendStyle" :class="[appendClass]">
-      <label class="vc-label" :class="{'vc-label-checked': (resultList && resultList.includes(it.value) || value === true), 'vc-label-disabled': it.isDisabled}" @click="toggleSwitch($index, it.value)">
+  <div>
+    <div v-for="(it, index) in data" track-by="index" :style="_appendStyle" :class="[appendClass]">
+      <label class="vc-label" :class="{'vc-label-checked': (resultList && resultList.includes(it.value) || value === true), 'vc-label-disabled': it.isDisabled}"
+             @click="toggleSwitch(index, it.value)">
         <span class="vc-checkbox"></span>
-        <span class="vc-label-text">
-            {{{it.label || it.value}}}
+        <span class="vc-label-text" v-html="it.label || it.value">
         </span>
       </label>
     </div>
@@ -58,20 +58,21 @@
       value: {}
     }),
 
-    beforeCompile() {
+    created() {
       name2Alias(this.data, this.asValue, this.asLabel);
     },
 
-    compiled() {
-      this.appendStyle = Object.assign({}, this.appendStyle, {
-        display: this.isVertical ? 'block' : 'inline-block'
-      })
+    computed: {
+      _appendStyle() {
+        return Object.assign({}, this.appendStyle, {
+          display: this.isVertical ? 'block' : 'inline-block'
+        });
+      }
     },
 
     data () {
       return {
-        isDisabled: '',
-        isShow: true
+        isDisabled: ''
       }
     },
 
@@ -79,10 +80,6 @@
         data() {
           // 为了解决异步刷新问题
           name2Alias(this.data, this.asValue, this.asLabel);
-          this.isShow = false;
-          setTimeout(() => {
-            this.isShow = true;
-          }, 30)
         }
     },
 
@@ -94,12 +91,13 @@
           if(!this.resultList.includes(value)) {
             this.resultList.push(value);
           } else {
-            this.resultList.$remove(value);
+            const i = this.resultList.indexOf(value);
+            this.resultList.splice(i, 1);
           }
 
-          this.value = this.resultList[0];
+          this.$emit('input', this.resultList[0]);
         } else {
-          this.value = !this.value;
+          this.$emit('input', !this.value);
         }
       }
     }

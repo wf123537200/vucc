@@ -125,7 +125,7 @@
             }
         },
 
-        ready() {
+        mounted() {
             // 初始化input数据
             this.inputSelect = this.currentSelected;
         },

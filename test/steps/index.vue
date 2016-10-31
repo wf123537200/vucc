@@ -33,7 +33,7 @@
                 }]
             }
         },
-        ready() {
+        mounted() {
             setTimeout(() => {
                 this.stepsData = [{
                     order: 1,

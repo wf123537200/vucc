@@ -85,7 +85,7 @@
                 console.log('u has been click')
             }
         },
-        ready() {
+        mounted() {
             setTimeout(() => {
                 this.activeIndex = 1
             }, 3000)

@@ -125,7 +125,7 @@
             this.appendStyle = Object.assign({ width: '500px'}, this.appendStyle);
         },
 
-        ready() {
+        mounted() {
             this.$root.$$dialog = this.$root.$$dialog || {};
             if(this.$root.$$dialog[this.id]) {
                 console.warn(this.id + ' 此dialog id已经被使用,请确认id填写正确!');

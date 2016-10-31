@@ -62,7 +62,7 @@
                 console.log(arguments)
             }
         },
-        ready() {
+        mounted() {
             // 动态化兼容测试
             setTimeout(() =>{
                 this.dropDownData = {

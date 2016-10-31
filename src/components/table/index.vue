@@ -69,7 +69,7 @@
                         <td v-if="hasAllSelect" @click.stop="itemClick(row.isChecked, row)" v-show="!row.colspan">
                             <pv-checkbox :value.sync="row.isChecked"></pv-checkbox>
                         </td>
-                        <td v-if="!row.colspan" v-for="col in cols" v-show="col.isShow === undefined">
+                        <td v-if="!row.colspan" v-for="col in cols" v-show="col.isShow === undefined" :style="col.style">
                             <span v-if="!col.hasPartial">{{{renderTD(col, row)}}}</span>
                             <span v-if="col.hasPartial">
                                 <partial :name="renderTD(col, row).id"></partial>

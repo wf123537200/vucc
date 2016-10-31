@@ -1,12 +1,14 @@
 <template>
     <section class="doc-part">
-        <h3>checkbox: 横向{{checkboxResultList | json}}</h3>
-        <v-checkbox :data="commonListData" :result-list.sync="checkboxResultList"></v-checkbox>
-        <h3>checkbox: 横向使用别名{{checkboxResultList | json}}</h3>
+        <h3>复选框 checkbox: {{value}}</h3>
+        <v-checkbox :data="[{label: '真'}]" v-model="value"></v-checkbox>
+        <h3>复选框组 横向: {{checkboxResultList}}</h3>
+        <v-checkbox :data="commonListData" :result-list="checkboxResultList"></v-checkbox>
+        <h3>复选框组 纵向</h3>
+        <v-checkbox :data="commonListData" :result-list="checkboxResultList" :is-vertical="true"></v-checkbox>
+        <h3>复选框组(别名)</h3>
         <v-checkbox :data="commonListData2" :as-value="'name'"
-                    :as-label="'desc'" :result-list.sync="checkboxResultList"></v-checkbox>
-        <h3>checkbox: 纵向{{checkboxResultList | json}}</h3>
-        <v-checkbox :data="commonListData" :result-list.sync="checkboxResultList" :is-vertical="true"></v-checkbox>
+        :as-label="'desc'" :result-list="checkboxResultList"></v-checkbox>
 
         <a class="demo-link" href="../components/checkbox.html">组件连接</a>
     </section>
@@ -21,6 +23,7 @@
         },
         data() {
             return {
+                value: true,
                 checkboxResultList: [0, 2],
                 // checkbox / radio data
                 commonListData: [{
@@ -53,7 +56,7 @@
                 console.log('Tab switch result is :', value)
             }
         },
-        ready() {
+        mounted() {
             setTimeout(() => {
                 this.commonListData = [{
                     value: 0,

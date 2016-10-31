@@ -78,11 +78,9 @@
     export default {
         props: Object.assign({}, componentBaseParamConfig, {
             max : {
-                type: String,
                 default : 100
             },
             min: {
-                type: String,
                 default: 0
             },
             text : {
@@ -219,7 +217,7 @@
                 })
             }
         },
-        ready() {
+        mounted() {
             if(!this.valueList) return;
 
             this.min = this.valueList[0].value;

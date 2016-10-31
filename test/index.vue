@@ -10,123 +10,123 @@
         <t-switch></t-switch>
         <t-checkbox></t-checkbox>
         <t-radio></t-radio>
-        <t-select></t-select>
-        <t-multi-select></t-multi-select>
+        <!--<t-select></t-select>-->
+        <!--<t-multi-select></t-multi-select>-->
       </div>
 
-      <h2>弹窗</h2>
-      <div class="doc-example">
-        <t-tips></t-tips>
-        <t-alert></t-alert>
-        <t-message-box></t-message-box>
-        <t-dialog></t-dialog>
-      </div>
+      <!--<h2>弹窗</h2>-->
+      <!--<div class="doc-example">-->
+        <!--<t-tips></t-tips>-->
+        <!--<t-alert></t-alert>-->
+        <!--<t-message-box></t-message-box>-->
+        <!--<t-dialog></t-dialog>-->
+      <!--</div>-->
 
-      <h2>标签页</h2>
-      <div class="doc-example">
-        <t-tabs></t-tabs>
-      </div>
+      <!--<h2>标签页</h2>-->
+      <!--<div class="doc-example">-->
+        <!--<t-tabs></t-tabs>-->
+      <!--</div>-->
 
-      <h2>表格</h2>
-      <div class="doc-example">
-        <t-table></t-table>
-      </div>
+      <!--<h2>表格</h2>-->
+      <!--<div class="doc-example">-->
+        <!--<t-table></t-table>-->
+      <!--</div>-->
 
-      <h2>分页</h2>
-      <div class="doc-example">
-        <t-pagination></t-pagination>
-      </div>
+      <!--<h2>分页</h2>-->
+      <!--<div class="doc-example">-->
+        <!--<t-pagination></t-pagination>-->
+      <!--</div>-->
 
-      <h2>滑动输入条</h2>
-      <div class="doc-example">
-        <t-slider></t-slider>
-      </div>
+      <!--<h2>滑动输入条</h2>-->
+      <!--<div class="doc-example">-->
+        <!--<t-slider></t-slider>-->
+      <!--</div>-->
 
-      <h2>徽标数</h2>
-      <div class="doc-example">
-        <t-badge></t-badge>
-      </div>
+      <!--<h2>徽标数</h2>-->
+      <!--<div class="doc-example">-->
+        <!--<t-badge></t-badge>-->
+      <!--</div>-->
 
-      <h2>输入框和文本域</h2>
-      <div class="doc-example">
-        <t-input></t-input>
-        <t-textarea></t-textarea>
-      </div>
+      <!--<h2>输入框和文本域</h2>-->
+      <!--<div class="doc-example">-->
+        <!--<t-input></t-input>-->
+        <!--<t-textarea></t-textarea>-->
+      <!--</div>-->
 
-      <h2>折叠面板</h2>
-      <div class="doc-example">
-        <t-collapse></t-collapse>
-      </div>
+      <!--<h2>折叠面板</h2>-->
+      <!--<div class="doc-example">-->
+        <!--<t-collapse></t-collapse>-->
+      <!--</div>-->
 
-      <h2>折叠面板组</h2>
-      <div class="doc-example">
-        <t-collapse-group></t-collapse-group>
-      </div>
+      <!--<h2>折叠面板组</h2>-->
+      <!--<div class="doc-example">-->
+        <!--<t-collapse-group></t-collapse-group>-->
+      <!--</div>-->
 
-      <h2>步进输入框</h2>
-      <div class="doc-example">
-          <t-step-input></t-step-input>
-      </div>
+      <!--<h2>步进输入框</h2>-->
+      <!--<div class="doc-example">-->
+          <!--<t-step-input></t-step-input>-->
+      <!--</div>-->
 
-      <h2>进度条</h2>
-      <div class="doc-example">
-        <t-progress></t-progress>
-      </div>
+      <!--<h2>进度条</h2>-->
+      <!--<div class="doc-example">-->
+        <!--<t-progress></t-progress>-->
+      <!--</div>-->
 
-      <h2>加载</h2>
-      <div class="doc-example">
-        <t-loading></t-loading>
-      </div>
+      <!--<h2>加载</h2>-->
+      <!--<div class="doc-example">-->
+        <!--<t-loading></t-loading>-->
+      <!--</div>-->
 
-      <h2>步骤条</h2>
-      <div class="doc-example">
-        <t-steps></t-steps>
-      </div>
+      <!--<h2>步骤条</h2>-->
+      <!--<div class="doc-example">-->
+        <!--<t-steps></t-steps>-->
+      <!--</div>-->
 
-      <h2>文字提示</h2>
-      <div class="doc-example">
-        <t-tool-tip></t-tool-tip>
-      </div>
+      <!--<h2>文字提示</h2>-->
+      <!--<div class="doc-example">-->
+        <!--<t-tool-tip></t-tool-tip>-->
+      <!--</div>-->
 
-      <h2>时间轴</h2>
-      <div class="doc-example">
-        <t-time-line></t-time-line>
-      </div>
+      <!--<h2>时间轴</h2>-->
+      <!--<div class="doc-example">-->
+        <!--<t-time-line></t-time-line>-->
+      <!--</div>-->
 
-      <h2>标签列表</h2>
-      <div class="doc-example">
-        <t-tag-list></t-tag-list>
-      </div>
+      <!--<h2>标签列表</h2>-->
+      <!--<div class="doc-example">-->
+        <!--<t-tag-list></t-tag-list>-->
+      <!--</div>-->
 
-      <h2>树形列表</h2>
-      <div class="doc-example">
-        <t-tree></t-tree>
-      </div>
+      <!--<h2>树形列表</h2>-->
+      <!--<div class="doc-example">-->
+        <!--<t-tree></t-tree>-->
+      <!--</div>-->
 
-      <h2>穿梭框</h2>
-      <div class="doc-example">
-        <t-transfer></t-transfer>
-      </div>
+      <!--<h2>穿梭框</h2>-->
+      <!--<div class="doc-example">-->
+        <!--<t-transfer></t-transfer>-->
+      <!--</div>-->
 
-      <h2>表单</h2>
-      <div class="doc-example">
-        <t-form></t-form>
-      </div>
+      <!--<h2>表单</h2>-->
+      <!--<div class="doc-example">-->
+        <!--<t-form></t-form>-->
+      <!--</div>-->
 
-      <h2>搜索框</h2>
-      <div class="doc-example">
-        <t-search></t-search>
-      </div>
+      <!--<h2>搜索框</h2>-->
+      <!--<div class="doc-example">-->
+        <!--<t-search></t-search>-->
+      <!--</div>-->
 
-      <h2>标签型下拉框</h2>
-      <div class="doc-example">
-        <t-label-dropdown></t-label-dropdown>
-      </div>
+      <!--<h2>标签型下拉框</h2>-->
+      <!--<div class="doc-example">-->
+        <!--<t-label-dropdown></t-label-dropdown>-->
+      <!--</div>-->
 
-      <h2>日期选择器</h2>
-          <div class="doc-example">
-          <t-datepicker></t-datepicker>
-      </div>
+      <!--<h2>日期选择器</h2>-->
+          <!--<div class="doc-example">-->
+          <!--<t-datepicker></t-datepicker>-->
+      <!--</div>-->
 
     </section>
 
@@ -142,74 +142,74 @@
   import tSwitch from './switch';
   import tCheckbox from './checkbox';
   import tRadio from './radio';
-  import tSelect from './select';
-  import tMultiSelect from './multi-select';
+//  import tSelect from './select';
+//  import tMultiSelect from './multi-select';
+//
+//  import tTips from './tips';
+//  import tAlert from './alert';
+//  import tMessageBox from './message-box';
+//  import tDialog from './dialog';
+//
+//  import tTabs from './tabs';
+//  import tTable from './table';
+//  import tPagination from './pagination';
+//  import tSlider from './slider';
+//  import tBadge from './badge';
+//  import tInput from './input';
+//  import tTextarea from './textarea';
+//  import tCollapse from './collapse';
+//  import tCollapseGroup from './collapse-group';
+//  import tStepInput from './step-input';
+//  import tProgress from './progress';
+//  import tLoading from './loading';
+//  import tSteps from './steps';
+//  import tToolTip from './tool-tip';
+//  import tTimeLine from './time-line';
+//  import tTagList from './tag-list';
+//  import tTree from './tree';
+//  import tTransfer from './transfer';
+//  import tForm from './form';
+//  import tSearch from './search';
+//  import tLabelDropdown from './label-dropdown';
+//  import tDatepicker from './datepicker';
 
-  import tTips from './tips';
-  import tAlert from './alert';
-  import tMessageBox from './message-box';
-  import tDialog from './dialog';
-
-  import tTabs from './tabs';
-  import tTable from './table';
-  import tPagination from './pagination';
-  import tSlider from './slider';
-  import tBadge from './badge';
-  import tInput from './input';
-  import tTextarea from './textarea';
-  import tCollapse from './collapse';
-  import tCollapseGroup from './collapse-group';
-  import tStepInput from './step-input';
-  import tProgress from './progress';
-  import tLoading from './loading';
-  import tSteps from './steps';
-  import tToolTip from './tool-tip';
-  import tTimeLine from './time-line';
-  import tTagList from './tag-list';
-  import tTree from './tree';
-  import tTransfer from './transfer';
-  import tForm from './form';
-  import tSearch from './search';
-  import tLabelDropdown from './label-dropdown';
-  import tDatepicker from './datepicker';
-
-  import Vue from 'vue';
+//  import Vue from 'vue';
 
   export default {
     components: Object.assign({}, {
-      tSearch,
-      tLabelDropdown,
-      tForm,
-      tTransfer,
-      tSteps,
-      tToolTip,
-      tTimeLine,
-      tTree,
-      tTagList,
-      tLoading,
-      tProgress,
-      tCollapse,
-      tCollapseGroup,
-      tStepInput,
+//      tSearch,
+//      tLabelDropdown,
+//      tForm,
+//      tTransfer,
+//      tSteps,
+//      tToolTip,
+//      tTimeLine,
+//      tTree,
+//      tTagList,
+//      tLoading,
+//      tProgress,
+//      tCollapse,
+//      tCollapseGroup,
+//      tStepInput,
       tButton,
       tButtonGroup,
       tSwitch,
       tCheckbox,
       tRadio,
-      tSelect,
-      tMultiSelect,
-      tTips,
-      tAlert,
-      tMessageBox,
-      tDialog,
-      tTabs,
-      tTable,
-      tSlider,
-      tBadge,
-      tInput,
-      tTextarea,
-      tDatepicker,
-      tPagination
+//      tSelect,
+//      tMultiSelect,
+//      tTips,
+//      tAlert,
+//      tMessageBox,
+//      tDialog,
+//      tTabs,
+//      tTable,
+//      tSlider,
+//      tBadge,
+//      tInput,
+//      tTextarea,
+//      tDatepicker,
+//      tPagination
     }),
     data() {
       return {

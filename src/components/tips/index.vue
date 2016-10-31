@@ -109,7 +109,7 @@
             }
         }),
 
-        ready() {
+        mounted() {
             this.$root.$$tips = this.$root.$$tips || {};
 
             this.$root.$$tips[this.id] = this;

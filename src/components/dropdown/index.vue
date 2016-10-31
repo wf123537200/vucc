@@ -275,7 +275,7 @@
             }
         },
 
-        ready() {
+        mounted() {
             let _this = this;
 
             document.addEventListener('click', function() {

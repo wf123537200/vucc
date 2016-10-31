@@ -103,7 +103,7 @@
             this.appendClass = ' vc-confirm ' + this.appendClass;
         },
 
-        ready() {
+        mounted() {
             this.$root.$$messageBox = this.$root.$$messageBox || {};
             this.$root.$$messageBox[this.id] = this.$root.$$dialog[this.id];
         },

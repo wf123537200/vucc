@@ -9,6 +9,7 @@
    @param {Function} onDelete 标签列表删除时的回调函数
    @param {Function} onBeforeAdd addItem之前调用,如有传入,则会将addItem作为回调函数传入,同时回调函数支持自定义传入item
    @param {String} placeholder 占位符
+   @param {String} asContent content别名
    @param {Array} data 渲染数据
     ex:
         tagList: [{
@@ -19,7 +20,7 @@
 -->
 
 <template>
-    <div :style="appendStyle" :class="['vc-tag-list', appendClass, sizeClass]">
+    <div v-if="isShow" :style="appendStyle" :class="['vc-tag-list', appendClass, sizeClass]">
         <label v-for="it in data" :class="['vc-tag', 'vc-tag-active', {'vc-tag-with-close': isDeleteAble}]">
             <span>
                 {{it.content}}
@@ -67,6 +68,9 @@
             },
             onBeforeAdd: {
                 type: Function
+            },
+            asContent: {
+                type: String
             }
         }),
 
@@ -76,7 +80,29 @@
                     'default': '',
                     'small': 'vc-tag-list-sm'
                 }[this.size],
-                text: ''
+                text: '',
+                isShow: true
+            }
+        },
+
+        beforeCompile() {
+            if(!this.data || !this.asContent) return;
+            this.data.forEach((it) => {
+                it.content = it[this.asContent];
+            });
+        },
+
+        watch: {
+            data() {
+                // 为了解决异步刷新问题
+                this.data.forEach((it) => {
+                    this.data.content = it[this.asContent];
+                });
+
+                this.isShow = false;
+                setTimeout(() => {
+                    this.isShow = true;
+                }, 30)
             }
         },
 
@@ -87,6 +113,9 @@
                 const addedItem = {
                     content: this.text.trim()
                 };
+
+                // 如果有别名
+                if(this.asContent) addedItem[this.asContent] = this.text.trim();
                 this.data = this.data || [];
 
                 // 如果有传入先执行的方法
@@ -100,7 +129,7 @@
             },
             deleteItem(item) {
                 this.data.$remove(item);
-                this.onDelete && this.onDelete();
+                this.onDelete && this.onDelete(item);
             }
         }
     }

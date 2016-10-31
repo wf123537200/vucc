@@ -1,11 +1,13 @@
 <template>
     <section class="doc-part">
-        <h3>radio: 横向{{radioResultList | json}}</h3>
+        <h3>单radio: {{radioResultList}}</h3>
         <v-radio :data="commonListData" :result-list.sync="radioResultList"></v-radio>
-        <h3>radio: 横向{{radioValue}}</h3>
+        <h3>横向: {{radioResultList}}</h3>
+        <v-radio :data="commonListData" :result-list.sync="radioResultList"></v-radio>
+        <h3>横向使用别名:{{radioValue}}</h3>
         <v-radio :data="commonListData2" :as-value="'name'"
-                 :as-label="'desc'" :value.sync="radioValue"></v-radio>
-        <h3>radio: 纵向/多选{{radioMulResultList | json}}</h3>
+                 :as-label="'desc'" v-model="radioValue"></v-radio>
+        <h3>纵向/多选{{radioMulResultList}}</h3>
         <v-radio :data="commonListData" :result-list.sync="radioMulResultList" :is-vertical="true" :is-multiple="true"></v-radio>
 
         <a class="demo-link" href="../components/radio.html">组件连接</a>
@@ -21,6 +23,7 @@
         },
         data() {
             return {
+                value: true,
                 commonListData: [{
                     value: 0,
                     label: 'value0'
@@ -56,7 +59,7 @@
                 console.log('Tab switch result is :', value)
             }
         },
-        ready() {
+        mounted() {
             setTimeout(() => {
                 this.commonListData = [{
                     value: 0,

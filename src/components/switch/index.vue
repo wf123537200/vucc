@@ -8,10 +8,13 @@
   @param {Object} appendStyle 自定义Style对象
 -->
 <template>
-  <div :style="appendStyle" :class="['vc-switch', appendClass, sizeClass, {'vc-switch-off': !value, 'vc-switch-disabled': isDisabled}]" @click="toggleSwitch">
-    {{text}}
-    <i></i>
-  </div>
+  <section class="vc-switch-warp">
+    <div :style="appendStyle" :class="['vc-switch', appendClass, sizeClass, {'vc-switch-off': !value, 'vc-switch-disabled': isDisabled}]" @click="toggleSwitch">
+      <span class="on-text" v-if="value">{{onText}}</span>
+      <span class="off-text" v-if="!value">{{offText}}</span>
+      <i></i>
+    </div>
+  </section>
 </template>
 
 <script>
@@ -31,7 +34,11 @@
         type: Boolean,
         default: false
       },
-      text: {
+      onText: {
+        type: String,
+        default: ''
+      },
+      offText: {
         type: String,
         default: ''
       }
@@ -56,7 +63,7 @@
     toggleSwitch() {
       if(this.isDisabled) return;
 
-      this.value = !this.value;
+      this.$emit('input', !this.value);
     }
   }
 

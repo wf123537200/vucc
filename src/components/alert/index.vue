@@ -148,10 +148,9 @@
             }
         }),
 
-        ready() {
-            this.$root.$$alert = this.$root.$$alert || {};
-
-            this.$root.$$alert[this.id] = this;
+        mounted() {
+            document.body.$$alert = document.body.$$alert || {};
+            document.body.$$alert[this.id] = this;
         },
 
         data() {

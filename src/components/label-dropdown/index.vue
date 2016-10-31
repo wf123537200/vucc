@@ -24,6 +24,8 @@
             {userId:3, userName: 'zac'},
             {userId:4, userName: 'admin'}
         ]
+   @param {Boolean} isOpen 下拉列表是否展开
+   @param {String} placeholder 提示文字
    @param {String} appendClass 自定义class
    @param {Object} appendClass 自定义Style对象
 -->
@@ -35,22 +37,22 @@
                 <li class="vc-select-selection-choice vc-select-selection-choice-disabled"
                     v-if="disabled.length > 0" v-for="item in disabled">
                     <!-- 不可编辑或删除加上 vc-select-selection-choice-disabled -->
-              <span class="vc-select-selection-choice-content">
-                  {{item.userName}}
-              </span>
+                    <span class="vc-select-selection-choice-content">
+                          {{item.userName}}
+                      </span>
                 </li>
                 <li class="vc-select-selection-choice" v-if="selected.length > 0"
                     v-for="item in selected">
-              <span class="vc-select-selection-choice-content">
-                  {{item.userName}}
-              </span>
-              <span class="vc-select-selection-choice-remove" @click.stop="deleteItem(item.userId)">
-              </span>
+                      <span class="vc-select-selection-choice-content">
+                          {{item.userName}}
+                      </span>
+                    <span class="vc-select-selection-choice-remove" @click.stop="deleteItem(item.userId)">
+                      </span>
                 </li>
                 <li class="vc-select-selection-choice vc-select-selection-choice-editing">
                     <!-- 正在编辑中加上 vc-select-selection-choice-editing -->
                     <input class="vc-select-selection-choice-input" type="text" style="width:80px"
-                           v-model="keyword" v-el:keyword>
+                           v-model="keyword" v-el:keyword placeholder="{{placeholder}}">
                     <span class="vc-select-selection-choice-remove"></span>
                 </li>
             </ul>
@@ -92,6 +94,9 @@
             isOpen: {
                 type: Boolean,
                 default: false
+            },
+            placeholder: {
+                type: String
             }
         }),
 
@@ -182,7 +187,7 @@
             }
         },
 
-        ready() {
+        mounted() {
             let _this = this;
 
             if(this.selected.length > 0) {

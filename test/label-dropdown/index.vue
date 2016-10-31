@@ -1,5 +1,5 @@
 <template>
-    <v-label-dropdown :data="staff.data"
+    <v-label-dropdown :data="staff.data" :placeholder="'输入查询'"
                       :selected.sync="staff.selected" :disabled="staff.disabled">
     </v-label-dropdown>
 

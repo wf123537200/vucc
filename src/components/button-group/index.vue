@@ -30,8 +30,8 @@
 -->
 <template>
     <div :class="['vc-btn-group', appendClass]" :style="appendStyle">
-        <pv-button v-for="it in data" :append-class="$index === curBtnIndex ? 'vc-btn-primary' : ''"
-                  @click="it.onClickWarp($index)"
+        <pv-button v-for="(it, index) in data" :append-class="index === curBtnIndex ? 'vc-btn-primary' : ''"
+                  @click.native="it.onClickWarp(index)"
                   :size="size"
                   :is-disabled="it.isDisabled">
             <span>{{it.text}}</span>
@@ -69,7 +69,7 @@
             }
         },
 
-        beforeCompile() {
+        created() {
             const _this = this;
 
             this.data.map(function(it) {
@@ -78,7 +78,7 @@
                 it.onClickWarp = function(index) {
                     _this.curBtnIndex = index;
 
-                    it.onClick();
+                    it.onClick && it.onClick();
                 }
             });
         },

@@ -11,7 +11,7 @@ $switch-height-sm: 20px;
 
 @mixin switch($height){
   & {
-    width: $height * 2;
+    min-width: $height * 2;
     height: $height;
     border-radius: floor($height / 2);
 
@@ -24,8 +24,14 @@ $switch-height-sm: 20px;
 
 // 开关按钮
 .#{$switch-prefix-cls} {
+  &-warp {
+    clear: both;
+    height: $switch-height;
+  }
+
   & {
     position: relative;
+    float: left;
     display: inline-block;
     box-sizing: border-box;
     border: 1px solid $switch-border-color;
@@ -64,9 +70,33 @@ $switch-height-sm: 20px;
          margin-right: -($switch-height-sm - 2px);
        }
      }
+
+    .on-text {
+      font-size: 12px!important;
+      padding: 6px 22px 6px 9px!important;
+    }
+
+    .off-text {
+      font-size: 12px!important;
+      padding: 6px 9px 6px 23px!important;
+    }
   }
 
   &-disabled {
     cursor: not-allowed;
+  }
+
+  .on-text {
+    width: 100%;
+    color: #fff;
+    font-size: 15px;
+    padding: 6px 28px 6px 9px;
+  }
+
+  .off-text {
+    width: 100%;
+    color: #777;
+    font-size: 15px;
+    padding: 6px 14px 6px 29px;
   }
 }

@@ -36,7 +36,7 @@
             }
         },
 
-        ready() {
+        mounted() {
             this.$el.parentElement.className += ' vc-tooltip-wrap '
         }
     }

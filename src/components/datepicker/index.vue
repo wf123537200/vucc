@@ -655,7 +655,7 @@
             this.initDataAndRender(true);
         },
 
-        ready() {
+        mounted() {
             this.isReady = true;
 
             if(this.hasHMS) this.hasFooter = true;

@@ -98,7 +98,7 @@
             }
         },
 
-        ready() {
+        mounted() {
             this.type = {
                'line' : 'vc-tabs-line',
                'card' : 'vc-tabs-card',

@@ -9,19 +9,21 @@
   @param {Object} appendStyle 自定义Style对象
 -->
 <template>
-  <div v-if="isShow" v-for="it in data" track-by="$index" :style="appendStyle" :class="[appendClass]">
-    <label class="vc-label" :class="{'vc-label-checked': it.value === (resultList ? resultList[isMultiple ? $index : 0] : value), 'vc-label-disabled': it.isDisabled}"
-           @click.stop="check($index, value)">
-      <span class="vc-radio"></span>
-      <span class="vc-label-text">
-          {{{it.label}}}
-      </span>
-    </label>
+  <div>
+    <div v-for="(it, index) in data" track-by="index" :style="_appendStyle" :class="[appendClass]">
+      <label class="vc-label" :class="{'vc-label-checked': it.value === (resultList ? resultList[isMultiple ? index : 0] : value), 'vc-label-disabled': it.isDisabled}"
+             @click.stop="check(index, value)">
+        <span class="vc-radio"></span>
+        <span class="vc-label-text" v-html="it.label">
+        </span>
+      </label>
+    </div>
   </div>
 </template>
 
 <script>
   import {componentBaseParamConfig, alias, name2Alias} from '../base-config';
+  import Vue from 'vue';
 
   export default {
     props: Object.assign({}, componentBaseParamConfig, alias, {
@@ -42,14 +44,16 @@
       value: {}
     }),
 
-    beforeCompile() {
+    created() {
       name2Alias(this.data, this.asValue, this.asLabel);
     },
 
-    compiled() {
-      this.appendStyle = Object.assign({}, this.appendStyle, {
-        display: this.isVertical ? 'block' : 'inline-block'
-      })
+    computed: {
+      _appendStyle() {
+        return Object.assign({}, this.appendStyle, {
+          display: this.isVertical ? 'block' : 'inline-block'
+        });
+      }
     },
 
     watch: {
@@ -61,18 +65,12 @@
       data() {
         // 为了解决异步刷新问题
         name2Alias(this.data, this.asValue, this.asLabel);
-        this.isShow = false;
-
-        window.setTimeout(() => {
-          this.isShow = true;
-        }, 30)
       }
     },
 
     data () {
       return {
-        isDisabled: '',
-        isShow: true
+        isDisabled: ''
       }
     },
 
@@ -81,12 +79,12 @@
         if(this.data[index].isDisabled) return;
 
         if(this.isMultiple) {
-          this.resultList.$set(index, this.data[index].value);
+          Vue.set(this.resultList, index, this.data[index].value);
         } else {
           if(this.resultList) {
-            this.resultList.$set(0, this.data[index].value);
+            Vue.set(this.resultList, 0, this.data[index].value);
           } else {
-            this.value = this.data[index].value;
+            this.$emit('input', this.data[index].value);
           }
         }
       }

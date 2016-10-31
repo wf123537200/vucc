@@ -32,7 +32,7 @@
                     })(),
                     columns: [{
                         title: '姓名',
-                        style: {width: '200px'},
+                        style: {width: '100px'},
                         dataIndex: 'name',
                         render(text, item) {
                             return `<a href="#">${text}</a>`;
