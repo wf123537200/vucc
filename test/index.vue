@@ -10,8 +10,8 @@
         <t-switch></t-switch>
         <t-checkbox></t-checkbox>
         <t-radio></t-radio>
-        <!--<t-select></t-select>-->
-        <!--<t-multi-select></t-multi-select>-->
+        <t-select></t-select>
+        <t-multi-select></t-multi-select>
       </div>
 
       <!--<h2>弹窗</h2>-->
@@ -142,8 +142,8 @@
   import tSwitch from './switch';
   import tCheckbox from './checkbox';
   import tRadio from './radio';
-//  import tSelect from './select';
-//  import tMultiSelect from './multi-select';
+  import tSelect from './select';
+  import tMultiSelect from './multi-select';
 //
 //  import tTips from './tips';
 //  import tAlert from './alert';
@@ -196,8 +196,8 @@
       tSwitch,
       tCheckbox,
       tRadio,
-//      tSelect,
-//      tMultiSelect,
+      tSelect,
+      tMultiSelect,
 //      tTips,
 //      tAlert,
 //      tMessageBox,

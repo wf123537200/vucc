@@ -59,7 +59,8 @@ class DateX {
         let preMonth = new Date(dateTime);
         preMonth.setDate(1);
         let preDays = preMonth.getDay();
-        let preMonthDays = this.getMonthDays(new Date().setMonth(new Date(dateTime).getMonth() - 1));
+
+        let preMonthDays = this.getMonthDays([preMonth.getFullYear(), preMonth.getMonth(), 1].join('/'));
         // 记录能选择的第一个索引
         this.firstCanSelect = preDays;
         while(preDays > 0) {
@@ -103,6 +104,7 @@ class DateX {
     // 获取月份数
     getMonthDays(date) {
         let d = new Date(date);
+        d.setDate(1);
         d.setMonth(d.getMonth() + 1);
         d.setDate(0);
 
@@ -110,10 +112,9 @@ class DateX {
     }
 
     setMonth(month) {
-        this.dateOrigin.setYear(this.year);
-        this.dateOrigin.setMonth(month);
+        var date = [this.year, parseInt(month, 10) + 1, 1].join('/') + ' ' + [this.hour, this.minute, this.second].join(':');
 
-        this.init(this.dateOrigin);
+        this.init(date);
         this.renderTable && this.renderTable();
 
         return this;

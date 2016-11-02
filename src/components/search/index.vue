@@ -13,7 +13,7 @@
 
 <template>
     <div :style="appendStyle" :class="['vc-input-wrap vc-input-wrap-search', appendClass, sizeClass]">
-        <pv-input type="text" @keyup.enter="onSearch" class="vc-input" placeholder="{{placeholder}}" v-model="value"></pv-input>
+        <pv-input type="text" @keyup.native.enter="onSearch" class="vc-input" :placeholder="placeholder" v-model="searchStr"></pv-input>
         <button class="vc-input-wrap-extra" @click.stop="onSearch">
             <i class="vci vci-search"></i>
         </button>
@@ -50,6 +50,16 @@
                     'large': 'vc-input-wrap-lg',
                     'small': 'vc-input-wrap-sm'
                 }[this.size]
+            }
+        },
+        computed: {
+            searchStr: {
+                get() {
+                    return this.value
+                },
+                set(val) {
+                    this.$emit('input', val);
+                }
             }
         },
 

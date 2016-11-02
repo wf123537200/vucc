@@ -1,14 +1,17 @@
 <template>
-    <h3>多选: {{multiResList | json}}</h3>
-    <v-multi-select :data="multiDataList" :append-style="{width: '200px'}" :result-list.sync="multiResList">
-        <v-button>点击选择</v-button>
-    </v-multi-select>
+    <div>
+        <h3>多选 multi-select: {{multiResList}}</h3>
+        <v-multi-select :data="multiDataList" :append-style="{width: '200px'}" v-model="multiResList">
+            <v-button>点击选择</v-button>
+        </v-multi-select>
 
-    <v-multi-select :has-search="false" :filter="search" :data="multiDataList" :append-style="{width: '200px'}" :result-list.sync="multiResList">
-        <v-search :value.sync="search"></v-search>
-    </v-multi-select>
+        <v-multi-select :has-search="false" :filter="search" :data="multiDataList" :append-style="{width: '200px'}"
+                        v-model="multiResList">
+            <v-search v-model="search"></v-search>
+        </v-multi-select>
 
-    <a class="demo-link" href="../components/multi-select.html">组件连接</a>
+        <a class="demo-link" href="../components/multi-select.html">组件连接</a>
+    </div>
 </template>
 
 <script>
@@ -24,9 +27,9 @@
         },
         data() {
             return {
+                search: '',
                 // multi-select
-                multiDataList: {
-                    optsList: (function() {
+                multiDataList: (function() {
                         var base =[{
                             value: 1,
                             label: 'value1value1value1value1value1',
@@ -48,8 +51,7 @@
                         }
 
                         return base.concat(other);
-                    })()
-                },
+                    })(),
                 multiResList: [ { "value": 7, "label": "value7" }, { "value": 9, "label": "value9" }, { "value": 17, "label": "value17" }, { "value": 11, "label": "value11" }]
             }
         },

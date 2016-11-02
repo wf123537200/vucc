@@ -603,7 +603,7 @@
             // 根据当前日期获取选择日期的位置
             getSelectIndexWithDate(dateObj) {
                 return dateObj.dateList.findIndex((it, index) => {
-                    if(index < dateObj.lastCanSelect && index >= dateObj.firstCanSelect) {
+                    if(index <= dateObj.lastCanSelect && index >= dateObj.firstCanSelect) {
                         return +it.label === parseInt(dateObj.date, 10);
                     }
                 });

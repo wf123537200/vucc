@@ -7,7 +7,7 @@
   @param {Object} appendStyle 自定义Style对象
 -->
 <template>
-    <input :type="type" :style="appendStyle" :class="['vc-input', sizeClass, appendClass]">
+    <input :type="type" :style="appendStyle" :class="['vc-input', sizeClass, appendClass]" @input="onInput">
 </template>
 
 <script>
@@ -31,7 +31,13 @@
                     large: 'vc-input-lg'
                 }[this.size]
             }
+        },
+        methods: {
+            onInput(event) {
+                this.$emit('input', event.target.value)
+            }
         }
+
     }
 </script>
 

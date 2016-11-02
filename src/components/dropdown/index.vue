@@ -20,7 +20,6 @@
       }]
     }
   @param {String} [size = normal | large | small] 组件大小,单选时使用
-  @param {String} value 绑定外部数据对象的结果
   @param {Boolean} isDisabled 当前下拉列表是否可选
   @param {Boolean} isOpened 下拉列表是否显示
   @param {Boolean} isMultiple 是否展现多选
@@ -42,13 +41,12 @@
         <!-- 单选 -->
         <div v-if="!isMultiple" class="vc-dropdown" :class="{'hide': !isOpened}">
             <ul class="vc-dropdown-menu">
-                <li v-if="data.optsList.length === 0">
+                <li v-if="data.length === 0">
                     没有数据....
                 </li>
-                <li v-for="it in showData.optsList" value="it.value"
-                    :class="['vc-dropdown-menu-item', {'vc-dropdown-menu-item-disabled': it.isDisabled, 'vc-dropdown-menu-item-active': $index === curIndex}]"
-                    @click.stop="onSelected($index)">
-                    {{{renderLi($index)}}}
+                <li v-for="(it, index) in showData" value="it.value"
+                    :class="['vc-dropdown-menu-item', {'vc-dropdown-menu-item-disabled': it.isDisabled, 'vc-dropdown-menu-item-active': index === curIndex}]"
+                    @click.stop="onSelected(index)" v-html="renderLi(index)">
                 </li>
             </ul>
         </div>
@@ -57,16 +55,15 @@
         <!-- 多选 -->
         <div v-if="isMultiple" class="vc-dropdown vc-dropdown-multi" :class="{'hide': !isOpened}">
             <pv-button v-if="hasSearch" type="outline" :style="{margin: '10px', border: 0}">清空</pv-button>
-            <pv-search v-if="hasSearch" :value.sync="filter" :append-style="searchAppendStyle" :size="'small'"></pv-search>
+            <pv-search v-if="hasSearch" v-model="filter" :append-style="searchAppendStyle" :size="'small'"></pv-search>
 
             <ul class="vc-dropdown-menu">
-                <li v-if="data.optsList.length === 0">
+                <li v-if="data.length === 0">
                     没有数据....
                 </li>
-                <li v-for="it in showData.optsList" value="it.value"
-                    :class="['vc-dropdown-menu-item', {'vc-dropdown-menu-item-disabled': it.isDisabled, 'vc-dropdown-menu-item-active': indexList.includes($index)}]"
-                    @click.stop="onSelected($index, it)" title="{{{renderLi($index)}}}">
-                    {{{renderLi($index)}}}
+                <li v-for="(it, index) in showData" value="it.value"
+                    :class="['vc-dropdown-menu-item', {'vc-dropdown-menu-item-disabled': it.isDisabled, 'vc-dropdown-menu-item-active': indexList.includes(index)}]"
+                    @click.stop="onSelected(index, it)" v-html="renderLi(index)" :title="renderLi(index)">
                 </li>
             </ul>
 
@@ -76,7 +73,7 @@
                 </span>
                 <ul>
                     <li v-for="it in resultListTemp">
-                        <span class="vc-dropdown-multi-result-text" title="{{it.label}}">{{it.label}}</span>
+                        <span class="vc-dropdown-multi-result-text" :title="it.label">{{it.label}}</span>
                         <span class="vc-dropdown-multi-result-delete" @click.stop="onDelete(it)"></span>
                     </li>
                 </ul>
@@ -84,10 +81,10 @@
 
             <!-- 确定取消按钮 -->
             <div v-if="hasFooter" class="vc-dropdown-multi-footer">
-                <pv-button :type="'primary'" @click.stop="_onOk" :append-style="{float: 'right'}">
+                <pv-button :type="'primary'" @click.native.stop="_onOk" :append-style="{float: 'right'}">
                     {{okText}}
                 </pv-button>
-                <a v-if="!hasSearch" href="javascript: void 0;" @click.stop="onClear" class="vc-dropdown-multi-a">清空</a>
+                <a v-if="!hasSearch" href="javascript: void 0;" @click.native.stop="onClear" class="vc-dropdown-multi-a">清空</a>
             </div><!-- 确定取消按钮 End -->
         </div>
         <!-- 多选 end -->
@@ -106,21 +103,13 @@
                 default: 'normal'
             },
             data: {
-                type: Object,
-                default: {
-                    optsList: []
-                }
-            },
-            value: {
+                type: Array,
+                default:  []
             },
             onSelect: {
                 type: Function
             },
             isDisabled: {
-                type: Boolean,
-                default: false
-            },
-            isOpened: {
                 type: Boolean,
                 default: false
             },
@@ -156,7 +145,7 @@
             let _this = this;
             return {
                 curIndex: (function() {
-                    return _this.data.optsList.findIndex(function(it) {
+                    return _this.data.findIndex(function(it) {
                         return it.value == _this.value;
                     });
                 })(),
@@ -169,7 +158,8 @@
                     float: 'right',
                     margin: '10px 10px 5px 0',
                     width: '200px'
-                }
+                },
+                isOpened: false
             }
         },
 
@@ -186,17 +176,16 @@
 
             showData() {
                 var _this = this;
-                name2Alias(this.data.optsList, this.asValue, this.asLabel);
+                name2Alias(this.data, this.asValue, this.asLabel);
 
                 if(!this.filter) return this.data;
                 if(Object.prototype.toString.call(this.filter) === '[object Function]') {
-                    return {
-                        optsList: this.filter(this.data)
-                    };
+                    return this.filter(this.data)
                 } else {
-                    return {
-                        optsList: (this.filter === '' || this.filter === '请选择') ? this.data.optsList : this.data.optsList.filter((it) => {return it.label && this.includeIgnore(it.label, _this.filter)})
-                };
+                    return (this.filter === '' || this.filter === '请选择') ? this.data : this.data.filter((it) => {
+                        const tag = it.renderLi ? it.renderLi() : it.label;
+                        return this.includeIgnore(tag, _this.filter);
+                    })
                 }
             }
         },
@@ -210,15 +199,15 @@
             onClick() {
                 if(this.isDisabled) return;
 
-                this.isOpened = this.isMultiple ? true : !this.isOpened;
+                this.$emit('isOpenedChange', this.isOpened = this.isMultiple ? true : !this.isOpened);
             },
 
             onSelected (index, item){
-                let opts = this.showData.optsList;
+                let opts = this.showData;
 
                 if(opts[index].isDisabled) return;
 
-                if(opts[index].value === undefined) console.warn('%c the value is undefinde, please check it!', 'color: red;');
+                if(opts[index].value === undefined) console.warn('%c the value is undefined, please check it!', 'color: red;');
 
                 // 多选
                 if(this.isMultiple) {
@@ -226,14 +215,15 @@
                         this.resultListTemp.push(opts[index]);
                         this.indexList.push(index);
                     } else {
-                        this.indexList.$remove(index);
+                        const insListIndex = this.indexList.findIndex((it) => {
+                            return it === index;
+                        });
+                        this.indexList.splice(insListIndex, 1);
                         const existIndex = this.resultListTemp.findIndex((it) => {return it.value === opts[index].value});
                         if(existIndex >= 0) this.resultListTemp.splice(existIndex, 1);
-                        this.resultListTemp.$remove(item);
                     }
                 } else {
-                    this.value = opts[index].value;
-                    this.isOpened = false;
+                    this.$emit('isOpenedChange', this.isOpened = false);
                     this.onSelect && this.onSelect(index, opts[index]);
                     this.curIndex = index;
                 }
@@ -242,7 +232,7 @@
             },
 
             renderLi(index) {
-                let opts = this.showData.optsList;
+                let opts = this.showData;
                 let curObj = opts[index];
 
                 if(curObj.renderLi && typeof curObj.renderLi == 'function') {
@@ -253,9 +243,8 @@
             },
 
             _onOk() {
-                this.resultList = Array.from(this.resultListTemp);
                 this.onOk && this.onOk(this.resultListTemp);
-                this.isOpened = false;
+                this.$emit('isOpenedChange', this.isOpened = false);
             },
 
             onClear() {
@@ -263,7 +252,7 @@
                 this.indexList.splice(0);
             },
             onDelete(item) {
-                let opts = this.showData.optsList;
+                let opts = this.showData;
                 // 删除展示list中的数据
                 const realIndex = opts.findIndex((it) => {return it.value === item.value});
                 if(realIndex >= 0) {
@@ -279,26 +268,26 @@
             let _this = this;
 
             document.addEventListener('click', function() {
-                _this.isOpened = false
+                _this.$emit('isOpenedChange', _this.isOpened = false);
             });
         },
 
         watch: {
             isOpened() {
-                if(!this.isMultiple) return;
+                if (!this.isMultiple) return;
 
                 this.indexList = (() => {
-                            let res = [];
-                this.data.optsList.map((it, index) => {
-                    if(this.resultList.find((el) => {
-                    return el.value == it.value;
-            })) {
-                    res.push(index);
-                }
-            });
+                    let res = [];
+                    this.data.map((it, index) => {
+                        if (this.resultList.find((el) => {
+                                    return el.value == it.value;
+                                })) {
+                            res.push(index);
+                        }
+                    });
 
-                return res;
-            })();
+                    return res;
+                })();
 
                 this.resultListTemp = Array.from(this.resultList);
             }
