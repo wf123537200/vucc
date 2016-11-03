@@ -30,7 +30,7 @@
         <a v-if="isCloseAble" @click="closeFn" href="javascript: void 0" class="vc-alert-close-icon"><i class="vci vci-cross"></i></a>
         <h3 class="vc-alert-message">{{title}}</h3>
         <div v-if="!isUseHtml" class="vc-alert-description">{{explain}}</div>
-        <div v-if="isUseHtml" class="vc-alert-description">{{{explain}}}</div>
+        <div v-if="isUseHtml" class="vc-alert-description" v-html="explain"></div>
     </div>
 </template>
 

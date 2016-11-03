@@ -8,7 +8,7 @@
 
 
     调用统一通过
-    vm.$root.$$dialog.yourId.show();
+    document.body.$$dialog.yourId.show();
 
     @param {String}     id 必填,dialog的id,指代整个dialog
     @param {String}     title 弹窗的title部分
@@ -17,7 +17,7 @@
     @param {Boolean}    hasOkBtn 尾部中是否存在确定按钮
     @param {Boolean}    hasCancelBtn 尾部中是否存在取消按钮
     @param {Boolean}    hasCancelBtn 尾部中是否存在取消按钮
-    @param {Boolean}    isShow 绑定外部变量,控制弹框是否显示
+    @param {Boolean}    isShow 绑定value
     @param {String}     cancelText 取消按钮的展示文字
     @param {String}     okText 确定按钮的展示文字
     @param {Function}   onOk ok按钮的回调函数
@@ -28,7 +28,7 @@
     @param {Object}     appendStyle 自定义Style对象
 -->
 <template>
-    <div id="{{id}}" :class="['vc-dialog-wrap', {'vc-block': isShow, 'vc-hidden': !isShow}]" tabindex="10000" @keyup.esc="closeFn">
+    <div :id="id" :class="['vc-dialog-wrap', {'vc-block': isShow, 'vc-hidden': !isShow}]" tabindex="10000" @keyup.esc="closeFn">
         <pv-mask :is-show="showMask"></pv-mask>
         <div :class="['vc-dialog vc-dialog-autoscroll', appendClass]">
             <div class="vc-dialog-content">
@@ -49,11 +49,11 @@
 
                 <!-- footer -->
                 <div v-if="hasFooter" class="vc-dialog-footer">
-                    <pv-button v-if="hasCancelBtn" @click="_onCancel">{{cancelText}}</pv-button>
+                    <pv-button v-if="hasCancelBtn" @click.native="_onCancel">{{cancelText}}</pv-button>
                     <pv-button v-if="hasOkBtn"
                               type='primary'
-                              @keyup.enter="_onOk"
-                              @click="_onOk">
+                              @keyup.native.enter="_onOk"
+                              @click.native="_onOk">
                         {{okText}}
                     </pv-button>
                 </div>
@@ -111,7 +111,7 @@
             onBeforeClose: {
                 type: Function
             },
-            isShow: {
+            value: {
                 type: Boolean,
                 default: false
             },
@@ -131,18 +131,20 @@
                 console.warn(this.id + ' 此dialog id已经被使用,请确认id填写正确!');
             }
             this.$root.$$dialog[this.id] = this;
-            this.showMask = this.isShow;
+            this.isShow = this.value;
         },
 
         data() {
             return {
-                showMask: false
+                showMask: false,
+                isShow: false
             }
         },
 
         watch: {
-            isShow(val) {
-                this.showMask = val;
+            isShow(v) {
+                this.showMask = v;
+                this.$emit('input', v);
             }
         },
 

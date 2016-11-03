@@ -34,10 +34,10 @@
               :ok-text="okText" >
 
             <div class="vc-confirm-body">
-                <i class=" vci {{iconClass}}"></i>
+                <i :class="['vci', iconClass]"></i>
                 <span class="vc-confirm-title">{{title}}</span>
                 <div v-if="!isUseHtml" class="vc-confirm-content">{{explain}}</div>
-                <div v-if="isUseHtml" class="vc-confirm-content">{{{explain}}}</div>
+                <div v-if="isUseHtml" class="vc-confirm-content" v-html="explain"></div>
             </div>
     </pv-dialog>
 </template>

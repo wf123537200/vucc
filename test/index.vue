@@ -14,13 +14,13 @@
         <t-multi-select></t-multi-select>
       </div>
 
-      <!--<h2>弹窗</h2>-->
-      <!--<div class="doc-example">-->
-        <!--<t-tips></t-tips>-->
-        <!--<t-alert></t-alert>-->
-        <!--<t-message-box></t-message-box>-->
-        <!--<t-dialog></t-dialog>-->
-      <!--</div>-->
+      <h2>弹窗</h2>
+      <div class="doc-example">
+        <t-tips></t-tips>
+        <t-alert></t-alert>
+        <t-message-box></t-message-box>
+        <t-dialog></t-dialog>
+      </div>
 
       <!--<h2>标签页</h2>-->
       <!--<div class="doc-example">-->
@@ -145,10 +145,10 @@
   import tSelect from './select';
   import tMultiSelect from './multi-select';
 //
-//  import tTips from './tips';
-//  import tAlert from './alert';
-//  import tMessageBox from './message-box';
-//  import tDialog from './dialog';
+  import tTips from './tips';
+  import tAlert from './alert';
+  import tMessageBox from './message-box';
+  import tDialog from './dialog';
 //
 //  import tTabs from './tabs';
 //  import tTable from './table';
@@ -198,10 +198,10 @@
       tRadio,
       tSelect,
       tMultiSelect,
-//      tTips,
-//      tAlert,
-//      tMessageBox,
-//      tDialog,
+      tTips,
+      tAlert,
+      tMessageBox,
+      tDialog,
 //      tTabs,
 //      tTable,
 //      tSlider,

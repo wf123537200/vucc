@@ -1,24 +1,26 @@
 <template>
-    <h3>dialog类弹窗</h3>
-    <section class="doc-part">
-        <v-dialog :id="'dialog1'" :on-ok="dialogCallbackFn1" :on-cancel="dialogCallbackFn2">
-            <div>hi, 我是一个弹窗</div>
-            <div>hi, 我是一个弹窗</div>
-            <div>hi, 我是一个弹窗</div>
-            <div>hi, 我是一个弹窗</div>
-        </v-dialog>
+    <div>
+        <h3>普通 dialog</h3>
+        <section class="doc-part">
+            <v-dialog :id="'dialog1'" :on-ok="dialogCallbackFn1" :on-cancel="dialogCallbackFn2">
+                <div>hi, 我是一个弹窗</div>
+                <div>hi, 我是一个弹窗</div>
+                <div>hi, 我是一个弹窗</div>
+                <div>hi, 我是一个弹窗</div>
+            </v-dialog>
 
-        <v-dialog :id="'dialog2'" :on-ok="dialogCallbackFn1" :on-cancel="dialogCallbackFn2">
-            <div>hi, 我是一个弹窗</div>
-            <div>hi, 我是一个弹窗</div>
-            <div>hi, 我是一个弹窗</div>
-            <div>hi, 我是一个弹窗</div>
-        </v-dialog>
+            <v-dialog :id="'dialog2'" :on-ok="dialogCallbackFn1" :on-cancel="dialogCallbackFn2">
+                <div>hi, 我是一个弹窗</div>
+                <div>hi, 我是一个弹窗</div>
+                <div>hi, 我是一个弹窗</div>
+                <div>hi, 我是一个弹窗</div>
+            </v-dialog>
 
-        <v-button type="primary" @click="showDialog('dialog1')">show dialog</v-button>
+            <v-button type="primary" @click.native="showDialog('dialog1')">show dialog</v-button>
 
-        <a class="demo-link" href="../components/dialog.html">组件连接</a>
-    </section>
+            <a class="demo-link" href="../components/dialog.html">组件连接</a>
+        </section>
+    </div>
 </template>
 
 <script>
@@ -30,11 +32,7 @@
             vDialog,
             vButton
         },
-        data() {
-            return {
 
-            }
-        },
         methods: {
             // 展示对话框
             showDialog(id) {

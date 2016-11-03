@@ -20,8 +20,8 @@
   @param {Object} appendStyle 自定义Style对象
 -->
 <template>
-    <div id="{{id}}" :style="appendStyle" :class="['vc-popover-wrap', appendClass, {'vc-block': isShow, 'vc-hidden': !isShow}]">
-        <div class="vc-popover {{typeClass}}">
+    <div :id="id" :style="appendStyle" :class="['vc-popover-wrap', appendClass, {'vc-block': isShow, 'vc-hidden': !isShow}]">
+        <div :class="['vc-popover', typeClass]">
             {{content}}
         </div>
     </div>

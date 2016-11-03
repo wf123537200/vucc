@@ -1,17 +1,20 @@
 <template>
-    <h3>警告提示组件</h3>
-    <section class="doc-part">
-        <v-alert :id="'alert1'" :title="'我是标题'" :explain="'辅助说明性文字'" :type="'success'"></v-alert>
-        <v-alert :id="'alert2'" :title="'我是标题'" :explain="'辅助说明性文字'" :type="'error'" :is-close-able="true"></v-alert>
+    <div>
+        <h3>警告 alert</h3>
+        <section class="doc-part">
+            <v-alert :id="'alert1'" :title="'我是标题'" :explain="'辅助说明性文字'" :type="'success'"></v-alert>
+            <v-alert :id="'alert2'" :title="'我是标题'" :explain="'辅助说明性文字'" :type="'error'"
+                     :is-close-able="true"></v-alert>
 
-        <v-button type="primary" @click="showAlert('alert1')">alert success</v-button>
-        <v-button type="primary" @click="showAlert('alert2')">alert error</v-button>
+            <v-button type="primary" @click.native="showAlert('alert1')">alert success</v-button>
+            <v-button type="primary" @click.native="showAlert('alert2')">alert error</v-button>
 
-        <!-- 第二种调用方法 -->
-        <v-button @click="showAlert2()">alert第二种调用方法</v-button>
+            <!-- 第二种调用方法 -->
+            <v-button @click.native="showAlert2()">alert第二种调用方法</v-button>
 
-        <a class="demo-link" href="../components/loading.html">组件连接</a>
-    </section>
+            <a class="demo-link" href="../components/loading.html">组件连接</a>
+        </section>
+    </div>
 </template>
 
 <script>
@@ -31,7 +34,7 @@
         methods: {
             // alert
             showAlert(id) {
-                this.$root.$$alert[id].show();
+                document.body.$$alert[id].show();
             },
 
             showAlert2() {
