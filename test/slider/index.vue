@@ -1,14 +1,19 @@
 <template>
-    <div style="left: 10px; top: 200px; width: 400px;">
-        <v-slider min="100" max="1000" :value.sync="sliderValue" :text="'px'"></v-slider>
-    </div>
-    <input type="text" style="margin-top:20px;" v-model="sliderValue"></input>
-    <div style="left: 10px; top: 200px; width: 400px;">
-        <v-slider :value.sync="sliderValue2" :text="'px'" :value-list="sliderValueList"></v-slider>
-    </div>
-    <input type="text" style="margin-top:20px;" v-model="sliderValue2"></input>
+    <div>
+        <h3>滑动条 slider: {{sliderValue}}</h3>
+        <div style="left: 10px; top: 200px; width: 400px;">
+            <v-slider min="100" max="1000" v-model="sliderValue" :text="'px'"></v-slider>
+        </div>
 
-    <a class="demo-link" href="../components/slider.html">组件连接</a>
+        <br />
+        <br />
+        <h3>固定点: {{sliderValue2}}</h3>
+        <div style="left: 10px; top: 200px; width: 400px;">
+            <v-slider v-model="sliderValue2" :value-list="sliderValueList"></v-slider>
+        </div>
+
+        <a class="demo-link" href="../components/slider.html">组件连接</a>
+    </div>
 </template>
 
 <script>
@@ -22,6 +27,7 @@
             return {
                 // slider
                 sliderValue: 10,
+                sliderValue2: 50,
                 // 固定点阵的滑动输入条
                 sliderValueList: [{
                     label: '0ms',
@@ -47,8 +53,7 @@
                 }, {
                     label: '2s',
                     value: 2000
-                }],
-                sliderValue2: 50
+                }]
             }
         }
     }

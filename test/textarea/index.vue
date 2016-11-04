@@ -1,9 +1,11 @@
 <template>
-    <div>{{value}}</div>
-    <v-textarea rows="3" placeholder="textarea的高度由rows属性决定" v-model="value"></v-textarea>
-    <v-textarea rows="3" placeholder="textarea的高度由rows属性决定" disabled></v-textarea>
+    <div>
+        <div>{{value}}</div>
+        <v-textarea rows="3" placeholder="textarea的高度由rows属性决定" v-model="value"></v-textarea>
+        <v-textarea rows="3" placeholder="textarea的高度由rows属性决定" disabled></v-textarea>
 
-    <a class="demo-link" href="../components/textarea.html">组件连接</a>
+        <a class="demo-link" href="../components/textarea.html">组件连接</a>
+    </div>
 </template>
 
 <script>
@@ -15,7 +17,7 @@
         },
         data() {
             return {
-                value: '我是一个文本框!我是一个文本框!我是一个文本框!我是一个文本框!我是一个文本框!'
+                value: '我是一个文本框!'
             }
         }
     }

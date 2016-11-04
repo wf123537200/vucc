@@ -1,10 +1,11 @@
 <template>
-    <v-tag-list :data="tagList" :placeholder="'请填写内容'"></v-tag-list>
-    <v-tag-list :data="tagList" :size="'small'" :is-delete-able="true"></v-tag-list>
-    <v-tag-list :data="tagList" :on-before-add="onBeforeAdd" :is-delete-able="true"></v-tag-list>
-    <v-tag-list :data="tagList2" :on-before-add="onBeforeAdd" :is-delete-able="true" :as-content="'tags'"></v-tag-list>
+    <div>
+        <v-tag-list :data="tagList" :placeholder="'请填写内容'" :on-before-add="onBeforeAdd" :is-delete-able="true"></v-tag-list>
+        <v-tag-list :data="tagList2" :on-before-add="onBeforeAdd" :is-delete-able="true"
+                    :as-content="'tags'"></v-tag-list>
 
-    <a class="demo-link" href="../components/tag-list.html">组件连接</a>
+        <a class="demo-link" href="../components/tag-list.html">组件连接</a>
+    </div>
 </template>
 
 <script>
@@ -26,6 +27,7 @@
         },
         methods: {
             onBeforeAdd(next) {
+                console.log('before add function is trigger!');
                 next();
             }
         }

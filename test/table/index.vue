@@ -1,7 +1,13 @@
 <template>
-    <v-table :page-size="10" :has-all-select="true" :on-checkbox-click="table.checkboxClick" :data="table.data" :columns="table.columns"></v-table>
+    <div>
+        {{table.data}}
+        <v-table :page-size="10" :has-all-select="true" :on-checkbox-click="table.checkboxClick" :data="table.data"
+                 :columns="table.columns">
+            <v-table-columns v-for=""></v-table-columns>
+        </v-table>
 
-    <a class="demo-link" href="../components/table.html">组件连接</a>
+        <a class="demo-link" href="../components/table.html">组件连接</a>
+    </div>
 </template>
 
 <script>
@@ -10,7 +16,7 @@
 
     export default {
         components: {
-            vTable,
+            vTable
         },
         data() {
             const _this = this;
@@ -32,11 +38,8 @@
                     })(),
                     columns: [{
                         title: '姓名',
-                        style: {width: '100px'},
                         dataIndex: 'name',
-                        render(text, item) {
-                            return `<a href="#">${text}</a>`;
-                        }
+                        style: {width: '100px'}
                     }, {
                         title: '年龄',
                         dataIndex: 'age'
@@ -45,20 +48,6 @@
                         dataIndex: 'address'
                     }, {
                         title: '操作',
-                        hasPartial: true,
-                        render(text, item) {
-                            var id = 'xxx' + Date.now();
-                            Vue.partial(id, `<a class="vc-inline" @click="clicked(row)">操作一</a>
-                                    <span class="vc-divider"></span>
-                                  <a class="vc-inline">操作二</a>`);
-
-                            return {
-                                id,
-                                functions: {
-                                    clicked: _this.clicked
-                                }
-                            };
-                        }
                     }]
                 }
             }

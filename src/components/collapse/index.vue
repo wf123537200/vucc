@@ -2,7 +2,7 @@
    折叠面板 组件
 
    @param {String} title 下拉列表标题
-   @param {Boolean} isOpened 下拉列表是否展开
+   @param {Boolean} isOpened 下拉列表是否展开,v-model绑定属性
    @param {Boolean} isHasBorder 下拉列表是否有边框
    @param {String} appendClass 自定义class
    @param {Object} appendClass 自定义Style对象
@@ -34,7 +34,7 @@
                 type: String,
                 default: '标题'
             },
-            isOpened: {
+            value: {
                 type: Boolean,
                 default: false
             },
@@ -46,13 +46,18 @@
 
         data() {
             return {
-
+                isOpened: this.value
             }
         },
-
+        watch: {
+            value(v) {
+                this.isOpened = v;
+            }
+        },
         methods: {
             trigger() {
                 this.isOpened = !this.isOpened;
+                this.$emit('input', !this.isOpened)
             }
         }
     }

@@ -52,45 +52,48 @@
    @param {Object} appendClass 自定义Style对象
 -->
 <template>
-    <div :style="appendStyle" :class="['vc-table', appendClass]">
-        <div class="vc-table-body">
-            <table>
-                <thead>
-                <tr>
-                    <!-- 全选框 -->
-                    <th v-if="hasAllSelect" style="width: 50px;">
-                        <pv-checkbox :value.sync="selectAll"></pv-checkbox>
-                    </th>
-                    <th :style="col.style" v-for="col in cols" v-show="col.isShow === undefined">{{col.title}}</th>
-                </tr>
-                </thead>
-                <tbody>
+    <div>
+        <div :style="appendStyle" :class="['vc-table', appendClass]">
+            <div class="vc-table-body">
+                <table>
+                    <thead>
+                    <tr>
+                        <!-- 全选框 -->
+                        <th v-if="hasAllSelect" style="width: 50px;">
+                            <pv-checkbox :value.sync="selectAll"></pv-checkbox>
+                        </th>
+                        <th :style="col.style" v-for="col in cols" v-show="col.isShow === undefined">{{col.title}}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
                     <tr v-for="row in currentData" track-by="$index" @click.stop="trClick(row, currentData)">
                         <td v-if="hasAllSelect" @click.stop="itemClick(row.isChecked, row)" v-show="!row.colspan">
                             <pv-checkbox :value.sync="row.isChecked"></pv-checkbox>
                         </td>
-                        <td v-if="!row.colspan" v-for="col in cols" v-show="col.isShow === undefined" :style="col.style">
-                            <span v-if="!col.hasPartial">{{{renderTD(col, row)}}}</span>
+                        <td v-if="!row.colspan" v-for="col in cols" v-show="col.isShow === undefined"
+                            :style="col.style">
+                            <span v-if="!col.hasPartial" v-html="renderTD(col, row)"></span>
                             <span v-if="col.hasPartial">
                                 <partial :name="renderTD(col, row).id"></partial>
                             </span>
                         </td>
                         <td v-if="row.colspan" v-show="row.isShow" :class="row.addClass"
-                            colspan="{{row.colspan === 'all' ? (hasAllSelect ? cols.length + 1 : cols.length) : row.colspan}}">
+                            :colspan="row.colspan === 'all' ? (hasAllSelect ? cols.length + 1 : cols.length) : row.colspan">
                             <partial :name="renderTD(col, row).id"></partial>
                         </td>
                     </tr>
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
 
-    <pv-pagination :total.sync="totalNum"
-                   v-if="isShowPagination"
-                   :current-page.sync="currentPage"
-                   :page-size.sync="pageSize"
-                   :on-size-change="onSizeChange"
-                   :on-change="onChangePage"></pv-pagination>
+        <pv-pagination :total.sync="totalNum"
+                       v-if="isShowPagination"
+                       :current-page.sync="currentPage"
+                       :page-size.sync="pageSize"
+                       :on-size-change="onSizeChange"
+                       :on-change="onChangePage"></pv-pagination>
+    </div>
 </template>
 
 <script>

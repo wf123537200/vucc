@@ -23,26 +23,26 @@
     <div :class="['vc-slider', appendClass, {'vc-slider-disabled': isDisabled}]" :style="appendStyle"
          @mousemove="mousemove($event)" @mousedown="mousedown($event)" @mouseup="mouseup($event)">
         <!-- 滑块 -->
-        <div class="vc-slider-handle" v-el:dot-btn :style="{'left' : percentValue + '%'}"></div>
+        <div class="vc-slider-handle" ref="dot-btn" :style="{'left' : percentValue + '%'}"></div>
 
         <div class="vc-slider-track" style="left:0%;visibility:visible;"
              :style="{'width' : percentValue + '%'}"></div>
-        <div class="vc-slider-step" v-el:step></div>
+        <div class="vc-slider-step" ref="step"></div>
 
         <!-- 没有传入 valueList 只有两个端点 end -->
         <span v-if="!valueList" class="vc-slider-dot vc-slider-dot-active"
-              style="left:0%" v-el:dot-left
-              @click="dotClick(min)">
+              style="left:0%" ref="dot-left"
+              @click="dotClick(minShow)">
         </span>
         <span v-if="!valueList" class="vc-slider-dot vc-slider-dot-active"
-              style="left:100%" v-el:dot-right
-              @click="dotClick(max)">
+              style="left:100%" ref="dot-right"
+              @click="dotClick(maxShow)">
         </span><!-- 没有传入 valueList 只有两个端点 end -->
 
         <!-- 传入valueList -->
-        <span v-for="it in valueList" class="vc-slider-dot vc-slider-dot-active"
-              :style="{'left': ($index / (valueList.length - 1) * 100) + '%'}" v-el:dot-left
-              @click="dotClick($index)">
+        <span v-for="(it, index) in valueList" class="vc-slider-dot vc-slider-dot-active"
+              :style="{'left': (index / (valueList.length - 1) * 100) + '%'}" ref="dot-left"
+              @click="dotClick(index)">
         </span>
         <!-- 传入valueList end -->
 
@@ -50,21 +50,21 @@
         <!-- valueList 未传入 最小值滑块, 最大值滑块, 游标滑块下方为处理处理 -->
         <div v-if="!valueList" class="vc-slider-mark">
             <span class="vc-slider-mark-text vc-slider-mark-text-active min">
-                {{parseInt(min) + text}}
+                {{parseInt(minShow) + text}}
             </span>
             <span class="vc-slider-mark-text vc-slider-mark-text-active cur"
                   :style="{'left' : (percentValue) + '%'}">
-                {{type === 'percent' ? value + '%' : parseInt(value) + text}}
+                {{type === 'percent' ? valueShow + '%' : parseInt(value) + text}}
 
             </span>
             <span class="vc-slider-mark-text max">
-                {{parseInt(max) + text}}
+                {{parseInt(maxShow) + text}}
             </span>
         </div>
         <!-- valueList 未传入 最小值滑块, 最大值滑块, 游标滑块下方为处理处理 end -->
-        <div v-for="it in valueList" class="vc-slider-mark">
-            <span class="vc-slider-mark-text vc-slider-mark-text-active min"
-                  :style="{'left': ($index / (valueList.length - 1) * 100) + '%'}">
+        <div v-for="(it, index) in valueList" class="vc-slider-mark">
+            <span class="vc-slider-mark-text vc-slider-mark-text-active minShow"
+                  :style="{'left': (index / (valueList.length - 1) * 100) + '%'}">
                 {{it.label}}
             </span>
         </div>
@@ -91,7 +91,8 @@
                 type: String,
                 default : "number"
             },
-            value : {
+            value: {
+                type: [String, Number],
                 default : 0
             },
             isDisabled : {
@@ -107,17 +108,36 @@
             return{
                 status : false,
                 dotLeft : 0,
-                dotRight : 0
+                dotRight : 0,
+                maxShow: this.max,
+                minShow: this.min,
+            }
+        },
+
+        watch: {
+            max(v) {
+                this.maxShow = v;
+            },
+            min(v) {
+                this.minShow = v;
             }
         },
 
         computed: {
+            valueShow: {
+                get() {
+                    return this.value;
+                },
+                set(v) {
+                    this.$emit('input', v);
+                }
+            },
             percentValue() {
                 let percent = 0;
 
-                if(this.value <= this.min) this.value = this.min;
+                if(this.valueShow <= this.minShow) this.valueShow = this.minShow;
 
-                percent = (this.value - this.min) / (this.max - this.min);
+                percent = (this.valueShow - this.minShow) / (this.maxShow - this.minShow);
 
                 // 固定点重置
                 if(this.valueList) {
@@ -143,7 +163,7 @@
         methods: {
             // 点击端点,直接设置值
             dotClick(val) {
-                this.value = this.valueList ? this.valueList[val].value : val;
+                this.valueShow = this.valueList ? this.valueList[val].valueShow : val;
             },
 
             //鼠标按下按键，更新鼠标点击值
@@ -151,7 +171,7 @@
                 if(this.isDisabled) return;
 
                 //获取起点和重点的位移
-                let offset = this.getRect(this.$els.step);
+                let offset = this.getRect(this.$refs.step);
                 let left = this.dotLeft = offset.left;
                 let right = this.dotRight = offset.right;
                 let x = event.clientX;
@@ -159,13 +179,13 @@
                 this.status = true;
 
                 if(x >= left && x <= right) {
-                    let value = (this.max - this.min) * ((x - left) / (right - left));
-                    this.value = parseInt(value) + parseInt(this.min);
-                }
+                    let value = (this.maxShow - this.minShow) * ((x - left) / (right - left));
+                    this.valueShow = parseInt(value) + parseInt(this.minShow);
 
-                // 固定点
-                if(this.valueList) {
-                    this.value = this.valueList[Math.round(this.value / 2000 / this.valueListPoint[1])].value;
+                    // 固定点
+                    if(this.valueList) {
+                        this.valueShow = this.valueList[Math.round(value / 2000 / this.valueListPoint[1])].value;
+                    }
                 }
             },
             //鼠标按键结束则停止更新值
@@ -183,24 +203,24 @@
                 let right = this.dotRight;
                 let x = event.clientX;
 
-                if(this.value >= this.min && this.value <= this.max) {
-                    let current = (this.max - this.min) * ((x - left) / (right - left));
-                    if(current >= this.min && current <= this.max) {
-                        this.value =  parseInt(current) + parseInt(this.min);
+                if(this.valueShow >= this.minShow && this.valueShow <= this.maxShow) {
+                    let current = (this.maxShow - this.minShow) * ((x - left) / (right - left));
+                    if(current >= this.minShow && current <= this.maxShow) {
+                        this.valueShow =  parseInt(current) + parseInt(this.minShow);
+                    }
+
+                    // valueList 固定点
+                    if(this.valueList) {
+                        this.valueShow = this.valueList[Math.round(current / 2000 / this.valueListPoint[1])].value;
                     }
                 }
 
                 if(x < left) {
-                    this.value = this.min
+                    this.valueShow = this.minShow
                 }
 
                 if(x > right) {
-                    this.value = this.max
-                }
-
-                // valueList 固定点
-                if(this.valueList) {
-                    this.value = this.valueList[Math.round(this.value / 2000 / this.valueListPoint[1])].value;
+                    this.valueShow = this.maxShow
                 }
             },
 
@@ -220,8 +240,8 @@
         mounted() {
             if(!this.valueList) return;
 
-            this.min = this.valueList[0].value;
-            this.max = this.valueList[this.valueList.length - 1].value;
+            this.minShow = this.valueList[0].value;
+            this.maxShow = this.valueList[this.valueList.length - 1].value;
         }
     }
 </script>

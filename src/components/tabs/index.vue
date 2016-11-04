@@ -9,7 +9,7 @@
 -->
 <template>
     <!-- tabs头部-->
-    <div :class="['vc-tabs vc-tabs-top', type, appendClass, size]">
+    <div :class="['vc-tabs vc-tabs-top', typeClass, appendClass, sizeClass]">
         <div class="vc-tabs-bar">
             <!-- 额外操作 -->
             <div class="vc-tabs-extra-content">
@@ -59,7 +59,18 @@
 
         data() {
             return {
-                curIndex: this.activeIndex
+                curIndex: this.activeIndex,
+                typeClass: {
+                    'line': 'vc-tabs-line',
+                    'card': 'vc-tabs-card',
+                    'panel': 'vc-tabs-panel'
+                }[this.type],
+
+                sizeClass: {
+                    'normal': '',
+                    'large': 'vc-tabs-lg',
+                    'small': 'vc-tabs-sm'
+                }[this.size]
             }
         },
 
@@ -68,7 +79,7 @@
                 if(!event) {
                     this.$el.querySelector('.vc-tabs-tab-active').className = this.$el.querySelector('.vc-tabs-tab-active').className.replace(/\s?vc-tabs-tab-active\s?/, '');
 
-                    let tmp = this.$el.querySelector('.vc-tabs-nav > [slot=header]').children[index];
+                    let tmp = this.$el.querySelector('.vc-tabs-nav').firstElementChild.children[index];
                     tmp.className += ' vc-tabs-tab-active';
                 }
                 let selectIndex = 0;
@@ -82,14 +93,14 @@
 
                     // switch header
                     this.$el.querySelector('.vc-tabs-tab-active').className = this.$el.querySelector('.vc-tabs-tab-active').className.replace(/\s?vc-tabs-tab-active\s?/, '');
-                    this.$el.querySelector('.vc-tabs-nav [slot=header] > :nth-child(' + (selectIndex + 1) + ')').className += ' vc-tabs-tab-active ';
+                    this.$el.querySelector('.vc-tabs-nav > :nth-child(1) > :nth-child(' + (selectIndex + 1) + ')').className += ' vc-tabs-tab-active ';
                 }
 
                 // switch context
                 let oldContextEl = this.$el.querySelector('.vc-tabs-content > :nth-child(' + ((event ? index : this.curIndex) + 1) + ')');
-                oldContextEl.setAttribute('class',  oldContextEl.className + ' vc-tabs-tabpane-hidden ');
+                oldContextEl.setAttribute('class',  oldContextEl.className.replace(/\s?vc-tabs-tabpane-active\s?/g, '') + ' vc-tabs-tabpane-hidden ');
                 let curContextEl = this.$el.querySelector('.vc-tabs-content > :nth-child(' + ((event ? selectIndex : index) + 1) + ')');
-                curContextEl.setAttribute('class',  curContextEl.className.replace(/\s?vc-tabs-tabpane-hidden\s?/g, ''));
+                curContextEl.setAttribute('class',  curContextEl.className.replace(/\s?vc-tabs-tabpane-hidden\s?/g, 'vc-tabs-tabpane-active'));
 
 
                 this.curIndex = event ? selectIndex : index;
@@ -99,20 +110,11 @@
         },
 
         mounted() {
-            this.type = {
-               'line' : 'vc-tabs-line',
-               'card' : 'vc-tabs-card',
-               'panel' : 'vc-tabs-panel'
-            }[this.type];
-
-            this.size = {
-               'normal': '',
-               'large': 'vc-tabs-lg',
-               'small': 'vc-tabs-sm'
-            }[this.size];
-
             // header slot 样式填充和插入,并绑定事件
-            const tabHeader = this.$el.querySelector('.vc-tabs-nav > [slot=header]');
+            let tabHeader = this.$el.querySelector('.vc-tabs-nav');
+            if(!tabHeader) return console.warn('[vucc warn] slot=header must has a root element!');
+
+            tabHeader = tabHeader.firstElementChild;
             let temp = '';
             let _this = this;
 

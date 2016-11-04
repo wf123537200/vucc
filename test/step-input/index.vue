@@ -1,10 +1,12 @@
 <template>
-    <div>值: {{value}}</div>
-    <v-step-input :size="'small'" :value.sync="value"></v-step-input>
-    <v-step-input :on-change="onChange"></v-step-input>
-    <v-step-input :size="'large'" :min="10" :max="80" :step="5"></v-step-input>
+    <div>
+        <div>值: {{value}}</div>
+        <v-step-input :size="'small'" v-model="value"></v-step-input>
+        <v-step-input :on-change="onChange" v-model="value"></v-step-input>
+        <v-step-input :size="'large'" :min="10" :max="80" :step="5" v-model="value"></v-step-input>
 
-    <a class="demo-link" href="../components/step-input.html">组件连接</a>
+        <a class="demo-link" href="../components/step-input.html">组件连接</a>
+    </div>
 </template>
 
 <script>

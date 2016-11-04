@@ -2,10 +2,11 @@
    分页栏 组件
 
    @param {Boolean} isShow 是否显示分页栏组件
-   @param {Function} onChange 当选择分页时调用
+   @param {Function} onPageChange 当选择分页时调用
    @param {Number} pageSize 每页的大小
    @param {Number} currentPage 当前页的页码
    @param {Number} total 总页数
+   @param {Array} pageSizeObject 页数选择select部分的下拉框数据
    @param {Function} onSizeChange 当前页显示多少条下拉列表变更事件
 -->
 
@@ -30,7 +31,7 @@
                track-by="$index"
                href="javascript:void(0);"
                :class="{'vc-pagination-btns-dot': num == '...',
-                'vc-pagination-btns-active': currentPage == num}"
+                'vc-pagination-btns-active': currentPageShow == num}"
                @click="selectPage(num)">{{num}}</a>
 
             <a class="vc-pagination-btns-next"
@@ -55,7 +56,7 @@
                 type: Boolean,
                 default: true
             },
-            onChange: {
+            onPageChange: {
                 type: Function
             },
             pageSize: {
@@ -72,13 +73,11 @@
             },
             onSizeChange: {
                 type: Function
-            }
-        }),
-
-        data () {
-            return {
-                pageSizeObject: {
-                    optsList: [{
+            },
+            pageSizeObject: {
+                type: Array,
+                default() {
+                    return [{
                         value: 5
                     }, {
                         value: 10
@@ -86,6 +85,18 @@
                         value: 15
                     }]
                 }
+            }
+        }),
+
+        data() {
+            return {
+                currentPageShow: this.currentPage
+            }
+        },
+
+        watch: {
+            currentPage(v) {
+                this.currentPageShow = v;
             }
         },
 
@@ -103,8 +114,8 @@
 
                 let totalNum = this.totalNum;
 
-                let beginIndex = this.currentPage - 2;
-                let endIndex = this.currentPage + 2;
+                let beginIndex = this.currentPageShow - 2;
+                let endIndex = this.currentPageShow + 2;
                 beginIndex = beginIndex < 1 ? 1 : beginIndex;
                 endIndex = endIndex > totalNum ? totalNum : endIndex;
 
@@ -144,23 +155,23 @@
                 if (num === '...') {
                     return;
                 }
-                this.currentPage = num;
-                this.onChange && this.onChange(this.currentPage)
+                this.currentPageShow = num;
+                this.onPageChange && this.onPageChange(this.currentPageShow)
             },
 
             jumpPrev() {
-                this.currentPage = (this.currentPage - 1 > 0 ? this.currentPage - 1 : 1);
-                this.onChange && this.onChange(this.currentPage)
+                this.currentPageShow = (this.currentPageShow - 1 > 0 ? this.currentPageShow - 1 : 1);
+                this.onPageChange && this.onPageChange(this.currentPageShow)
 
             },
 
             jumpNext() {
-                this.currentPage = (this.currentPage + 1 > this.totalNum ? this.totalNum : this.currentPage + 1 );
-                this.onChange && this.onChange(this.currentPage)
+                this.currentPageShow = (this.currentPageShow + 1 > this.totalNum ? this.totalNum : this.currentPageShow + 1 );
+                this.onPageChange && this.onPageChange(this.currentPageShow)
 
             },
             _onSizeChange() {
-                this.currentPage = 1;
+                this.currentPageShow = 1;
                 this.onSizeChange && this.onSizeChange();
             }
         }

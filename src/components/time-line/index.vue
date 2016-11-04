@@ -14,7 +14,7 @@
             <i class="vc-timeline-item-dot"></i>
             <div class="vc-timeline-item-content">
                 <p>
-                    <span class="vc-timeline-item-info">{{it}}</span>
+                    <span class="vc-timeline-item-info" v-html="it"></span>
                 </p>
             </div>
         </li>

@@ -145,6 +145,9 @@
             isShow(v) {
                 this.showMask = v;
                 this.$emit('input', v);
+            },
+            value(v) {
+                this.isShow = v;
             }
         },
 

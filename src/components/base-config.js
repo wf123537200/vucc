@@ -5,7 +5,7 @@ var componentBaseParamConfig = {
     },
     appendStyle: {
         type: Object,
-        default: function() {
+        default() {
             return {}
         }
     }

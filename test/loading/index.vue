@@ -1,11 +1,13 @@
 <template>
-    <v-button type="primary" @click="showLoading('Global')">全局loading</v-button>
-    <v-button type="primary" @click="showLoading('Part')">局部loading</v-button>
+    <div>
+        <v-button type="primary" @click.native="showLoading('Global')">全局loading</v-button>
+        <v-button type="primary" @click.native="showLoading('Part')">局部loading</v-button>
 
-    <v-loading :is-show="showGlobalLoading" :is-global="true" :content="'加载中..'"></v-loading>
-    <v-loading :is-show="showPartLoading" :size="'small'"></v-loading>
+        <v-loading :is-show="showGlobalLoading" :is-global="true" :content="'加载中..'"></v-loading>
+        <v-loading :is-show="showPartLoading" :size="'small'"></v-loading>
 
-    <a class="demo-link" href="../components/loading.html">组件连接</a>
+        <a class="demo-link" href="../components/loading.html">组件连接</a>
+    </div>
 </template>
 
 <script>

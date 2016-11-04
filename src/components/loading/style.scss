@@ -95,6 +95,10 @@ $spin-size-lg: 40px;
     text-align: center;
   }
 
+  &-global {
+    position: fixed !important;
+  }
+
   //页面laoding
   &-page {
     position: fixed;
@@ -123,4 +127,14 @@ $spin-size-lg: 40px;
 //模糊
 .#{$css-prefix}-blur {
 
+}
+
+@keyframes loadingCircle {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }

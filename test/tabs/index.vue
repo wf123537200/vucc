@@ -1,64 +1,53 @@
 <template>
-    <h2>默认类型tabs</h2>
-    <v-tabs type="" :on-change="switchChange">
-        <div slot="operate">
-            <v-button>额外操作</v-button>
-        </div>
-
-        <div slot="header">
-            <div class="a">
-                <i class="vci vci-apple"></i>
-                <span>选项卡1</span>
+    <div>
+        <h2>默认 tabs(带额外操作和图标头部)</h2>
+        <v-tabs type="" :on-change="switchChange">
+            <div slot="operate">
+                <v-button>额外操作</v-button>
             </div>
-            <div>选项卡2</div>
-            <div>选项卡3</div>
-        </div>
 
-        <v-pane><v-button @click="buttonClick">测试按钮</v-button></v-pane>
-        <v-pane>选项卡222222内容</v-pane>
-        <v-pane>选项卡33333内容</v-pane>
-    </v-tabs>
+            <div slot="header">
+                <div class="a">
+                    <i class="vci vci-apple"></i>
+                    <span>选项卡1</span>
+                </div>
+                <div>选项卡2</div>
+                <div>选项卡3</div>
+            </div>
 
-    <h2>card tabs</h2>
-    <v-tabs type="card" :active-index.sync="activeIndex">
-        <div slot="header">
-            <div class="a">选项卡1</div>
-            <div>选项卡2</div>
-            <div>选项卡3</div>
-        </div>
+            <v-pane></v-pane>
+            <v-pane></v-pane>
+            <v-pane></v-pane>
+        </v-tabs>
 
-        <v-pane>选项卡111111内容</v-pane>
-        <v-pane>选项卡222222内容</v-pane>
-        <v-pane>选项卡33333内容</v-pane>
-    </v-tabs>
+        <h2>卡片式</h2>
+        <v-tabs type="card" :active-index.sync="activeIndex">
+            <div slot="header">
+                <div>选项卡1</div>
+                <div>选项卡2</div>
+                <div>选项卡3</div>
+            </div>
 
-    <h2>panel tabs small</h2>
-    <v-tabs type="panel" size="small" :active-index="1">
-        <div slot="header">
-            <div class="a">选项卡1</div>
-            <div>选项卡2</div>
-            <div>选项卡3</div>
-        </div>
+            <v-pane></v-pane>
+            <v-pane></v-pane>
+            <v-pane></v-pane>
+        </v-tabs>
 
-        <v-pane>选项卡111111内容</v-pane>
-        <v-pane>选项卡222222内容</v-pane>
-        <v-pane>选项卡33333内容</v-pane>
-    </v-tabs>
+        <h2>面板式</h2>
+        <v-tabs type="panel" size="small" :active-index="1">
+            <div slot="header">
+                <div>选项卡1</div>
+                <div>选项卡2</div>
+                <div>选项卡3</div>
+            </div>
 
-    <h2>panel tabs small</h2>
-    <v-tabs type="panel" size="large">
-        <div slot="header">
-            <div class="a">选项卡1</div>
-            <div>选项卡2</div>
-            <div>选项卡3</div>
-        </div>
+            <v-pane></v-pane>
+            <v-pane></v-pane>
+            <v-pane></v-pane>
+        </v-tabs>
 
-        <v-pane>选项卡111111内容</v-pane>
-        <v-pane>选项卡222222内容</v-pane>
-        <v-pane>选项卡33333内容</v-pane>
-    </v-tabs>
-
-    <a class="demo-link" href="../components/tabs.html">组件连接</a>
+        <a class="demo-link" href="../components/tabs.html">组件连接</a>
+    </div>
 </template>
 
 <script>

@@ -5,14 +5,19 @@
   @param {Object} appendStyle 自定义Style对象
 -->
 <template>
-    <textarea :style="appendStyle" :class="['vc-textarea', sizeClass, appendClass]"></textarea>
+    <textarea :style="appendStyle" :class="['vc-textarea', appendClass]" @input="onInput"></textarea>
 </template>
 
 <script>
     import {componentBaseParamConfig} from '../base-config';
 
     export default {
-        props: Object.assign({}, componentBaseParamConfig)
+        props: Object.assign({}, componentBaseParamConfig),
+        methods: {
+            onInput(event) {
+                this.$emit('input', event.target.value)
+            }
+        }
     }
 </script>
 

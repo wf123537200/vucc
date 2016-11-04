@@ -22,81 +22,81 @@
         <t-dialog></t-dialog>
       </div>
 
-      <!--<h2>标签页</h2>-->
-      <!--<div class="doc-example">-->
-        <!--<t-tabs></t-tabs>-->
-      <!--</div>-->
+      <h2>标签页</h2>
+      <div class="doc-example">
+        <t-tabs></t-tabs>
+      </div>
 
       <!--<h2>表格</h2>-->
       <!--<div class="doc-example">-->
         <!--<t-table></t-table>-->
       <!--</div>-->
 
-      <!--<h2>分页</h2>-->
-      <!--<div class="doc-example">-->
-        <!--<t-pagination></t-pagination>-->
-      <!--</div>-->
+      <h2>分页</h2>
+      <div class="doc-example">
+        <t-pagination></t-pagination>
+      </div>
 
-      <!--<h2>滑动输入条</h2>-->
-      <!--<div class="doc-example">-->
-        <!--<t-slider></t-slider>-->
-      <!--</div>-->
+      <h2>滑动输入条</h2>
+      <div class="doc-example">
+        <t-slider></t-slider>
+      </div>
 
-      <!--<h2>徽标数</h2>-->
-      <!--<div class="doc-example">-->
-        <!--<t-badge></t-badge>-->
-      <!--</div>-->
+      <h2>徽标数</h2>
+      <div class="doc-example">
+        <t-badge></t-badge>
+      </div>
 
-      <!--<h2>输入框和文本域</h2>-->
-      <!--<div class="doc-example">-->
-        <!--<t-input></t-input>-->
-        <!--<t-textarea></t-textarea>-->
-      <!--</div>-->
+      <h2>输入框和文本域</h2>
+      <div class="doc-example">
+        <t-input></t-input>
+        <t-textarea></t-textarea>
+      </div>
 
-      <!--<h2>折叠面板</h2>-->
-      <!--<div class="doc-example">-->
-        <!--<t-collapse></t-collapse>-->
-      <!--</div>-->
+      <h2>折叠面板</h2>
+      <div class="doc-example">
+        <t-collapse></t-collapse>
+      </div>
 
-      <!--<h2>折叠面板组</h2>-->
-      <!--<div class="doc-example">-->
-        <!--<t-collapse-group></t-collapse-group>-->
-      <!--</div>-->
+      <h2>折叠面板组</h2>
+      <div class="doc-example">
+        <t-collapse-group></t-collapse-group>
+      </div>
 
-      <!--<h2>步进输入框</h2>-->
-      <!--<div class="doc-example">-->
-          <!--<t-step-input></t-step-input>-->
-      <!--</div>-->
+      <h2>步进输入框</h2>
+      <div class="doc-example">
+          <t-step-input></t-step-input>
+      </div>
 
-      <!--<h2>进度条</h2>-->
-      <!--<div class="doc-example">-->
-        <!--<t-progress></t-progress>-->
-      <!--</div>-->
+      <h2>进度条</h2>
+      <div class="doc-example">
+        <t-progress></t-progress>
+      </div>
 
-      <!--<h2>加载</h2>-->
-      <!--<div class="doc-example">-->
-        <!--<t-loading></t-loading>-->
-      <!--</div>-->
+      <h2>加载</h2>
+      <div class="doc-example">
+        <t-loading></t-loading>
+      </div>
 
-      <!--<h2>步骤条</h2>-->
-      <!--<div class="doc-example">-->
-        <!--<t-steps></t-steps>-->
-      <!--</div>-->
+      <h2>步骤条</h2>
+      <div class="doc-example">
+        <t-steps></t-steps>
+      </div>
 
-      <!--<h2>文字提示</h2>-->
-      <!--<div class="doc-example">-->
-        <!--<t-tool-tip></t-tool-tip>-->
-      <!--</div>-->
+      <h2>文字提示</h2>
+      <div class="doc-example">
+        <t-tool-tip></t-tool-tip>
+      </div>
 
-      <!--<h2>时间轴</h2>-->
-      <!--<div class="doc-example">-->
-        <!--<t-time-line></t-time-line>-->
-      <!--</div>-->
+      <h2>时间轴</h2>
+      <div class="doc-example">
+        <t-time-line></t-time-line>
+      </div>
 
-      <!--<h2>标签列表</h2>-->
-      <!--<div class="doc-example">-->
-        <!--<t-tag-list></t-tag-list>-->
-      <!--</div>-->
+      <h2>标签列表</h2>
+      <div class="doc-example">
+        <t-tag-list></t-tag-list>
+      </div>
 
       <!--<h2>树形列表</h2>-->
       <!--<div class="doc-example">-->
@@ -144,28 +144,26 @@
   import tRadio from './radio';
   import tSelect from './select';
   import tMultiSelect from './multi-select';
-//
   import tTips from './tips';
   import tAlert from './alert';
   import tMessageBox from './message-box';
   import tDialog from './dialog';
-//
-//  import tTabs from './tabs';
-//  import tTable from './table';
-//  import tPagination from './pagination';
-//  import tSlider from './slider';
-//  import tBadge from './badge';
-//  import tInput from './input';
-//  import tTextarea from './textarea';
-//  import tCollapse from './collapse';
-//  import tCollapseGroup from './collapse-group';
-//  import tStepInput from './step-input';
-//  import tProgress from './progress';
-//  import tLoading from './loading';
-//  import tSteps from './steps';
-//  import tToolTip from './tool-tip';
-//  import tTimeLine from './time-line';
-//  import tTagList from './tag-list';
+  import tTabs from './tabs';
+  import tTable from './table';
+  import tPagination from './pagination';
+  import tSlider from './slider';
+  import tBadge from './badge';
+  import tInput from './input';
+  import tTextarea from './textarea';
+  import tCollapse from './collapse';
+  import tCollapseGroup from './collapse-group';
+  import tStepInput from './step-input';
+  import tProgress from './progress';
+  import tLoading from './loading';
+  import tSteps from './steps';
+  import tToolTip from './tool-tip';
+  import tTimeLine from './time-line';
+  import tTagList from './tag-list';
 //  import tTree from './tree';
 //  import tTransfer from './transfer';
 //  import tForm from './form';
@@ -181,16 +179,16 @@
 //      tLabelDropdown,
 //      tForm,
 //      tTransfer,
-//      tSteps,
-//      tToolTip,
-//      tTimeLine,
+      tSteps,
+      tToolTip,
+      tTimeLine,
 //      tTree,
-//      tTagList,
-//      tLoading,
-//      tProgress,
-//      tCollapse,
-//      tCollapseGroup,
-//      tStepInput,
+      tTagList,
+      tLoading,
+      tProgress,
+      tCollapse,
+      tCollapseGroup,
+      tStepInput,
       tButton,
       tButtonGroup,
       tSwitch,
@@ -202,14 +200,14 @@
       tAlert,
       tMessageBox,
       tDialog,
-//      tTabs,
-//      tTable,
-//      tSlider,
-//      tBadge,
-//      tInput,
-//      tTextarea,
+      tTabs,
+      tTable,
+      tSlider,
+      tBadge,
+      tInput,
+      tTextarea,
 //      tDatepicker,
-//      tPagination
+      tPagination
     }),
     data() {
       return {
@@ -563,7 +561,6 @@
 
   .doc-example .doc-part {
     padding: 15px 15px 15px 15px;
-    border-bottom: 1px solid #ccc;
   }
 
   .doc-sidebar {

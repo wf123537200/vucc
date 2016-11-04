@@ -1,10 +1,13 @@
 <template>
-    <h3>分页组件</h3>
-    <section class="doc-part">
-        <v-pagination :total="50" :current-page="5" :page-size="10"></v-pagination>
+    <div>
+        <h3>页: {{currentPage}}</h3>
+        <section class="doc-part">
+            <v-pagination :total="50" :current-page="currentPage" :on-page-change="onPageChange"
+                          :page-size="10"></v-pagination>
 
-        <a class="demo-link" href="../components/pagination.html">组件连接</a>
-    </section>
+            <a class="demo-link" href="../components/pagination.html">组件连接</a>
+        </section>
+    </div>
 </template>
 
 <script>
@@ -16,7 +19,12 @@
         },
         data() {
             return {
-
+                currentPage: 5
+            }
+        },
+        methods: {
+            onPageChange(val) {
+                this.currentPage = val;
             }
         }
     }

@@ -12,13 +12,13 @@
 -->
 
 <template>
-    <div v-if="isShow" :style="appendStyle" :class="['vc-spin', appendClass, sizeClass, {'vc-spin-lg': isGlobal}]">
+    <div v-show="isShow" :style="appendStyle" :class="['vc-spin', appendClass, sizeClass, {'vc-spin-lg': isGlobal}]">
         <!-- 全局遮罩 -->
         <pv-mask :is-show="isGlobal && isShow"></pv-mask>
         <!-- 局部遮罩 -->
-        <div v-if="!isGlobal && isShow" class="vc-spin-wrap-mask"></div>
+        <div v-show="!isGlobal && isShow" class="vc-spin-wrap-mask"></div>
 
-        <div :class="['vc-spin-content']">
+        <div :class="['vc-spin-content', {'vc-spin-global': isGlobal}]">
             <span class="vc-spin-circle"></span>
             <span v-if="content" class="vc-spin-text">{{content}}</span>
             <slot></slot>
@@ -68,7 +68,7 @@
             isShow(val) {
                 if(!val) return;
 
-                const cName = this.$el.nextSibling.className;
+                const cName = this.$el.nextSibling.className || '';
                 if(cName.indexOf('vc-spin-page') < 0 && this.isGlobal) {
                     this.$el.nextSibling.className += ' vc-spin-page';
                 }

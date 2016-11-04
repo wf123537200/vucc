@@ -18,7 +18,7 @@
 
 <template>
     <div :style="appendStyle" :class="['vc-input-number', sizeClass, appendClass, {'vc-input-number-disabled': isDisabled}]">
-        <pv-input type="text" placeholder="{{min}}" v-model="value" @change="onChangeWarp"></pv-input>
+        <pv-input type="text" :placeholder="min" v-model="valueShow" @change="onChangeWarp"></pv-input>
         <div class="vc-input-number-handle-wrap">
             <button class="vc-input-number-handle" @mousedown.stop="stepUp" @mouseup.stop="cleanTimerUp">
                 <i class="vci vci-up"></i>
@@ -39,7 +39,11 @@
             pvInput
         },
         props: Object.assign({}, componentBaseParamConfig, {
-            value: {},
+            value: {
+                type: [Number, String],
+                default: 1,
+                required: true
+            },
             min: {
                 type: Number,
                 default: 1
@@ -81,20 +85,25 @@
                     'large': 'vc-input-number-lg',
                     'small': 'vc-input-number-sm',
                     'xsmall': 'vc-input-number-xs'
-                }[this.size]
+                }[this.size],
+                valueShow: this.value
             }
         },
+
         compiled() {
-            this.value = this.value || this.min;
+            this.valueShow = this.value || this.min;
         },
 
         watch: {
             value(val, oldValue) {
-                if(isNaN(parseInt(val, 10))) this.value = oldValue;
+                if(isNaN(parseInt(val, 10))) this.valueShow = oldValue;
 
-                this.value = parseInt(val, 10);
-                if(val <= this.min) this.value = this.min;
-                if(val >= this.max) this.value = this.max;
+                this.valueShow = parseInt(val, 10);
+                if(val <= this.min) this.valueShow = this.min;
+                if(val >= this.max) this.valueShow = this.max;
+            },
+            valueShow(v) {
+                this.$emit('input', v);
             }
         },
         methods: {
@@ -102,27 +111,27 @@
                 this.onChange && this.onChange(this.value, this);
             },
             stepUp() {
-                this.value = parseInt(this.value, 10);
-                this.value += this.step;
-                this.onUp && this.onUp(this.value, this);
+                this.valueShow = parseInt(this.value, 10);
+                this.valueShow += this.step;
+                this.onUp && this.onUp(this.valueShow, this);
 
                 if(!this.isOnlyClick) {
                     this.upTimer = window.setInterval(() => {
-                        this.value += this.step;
-                        this.onUp && this.onUp(this.value, this);
+                        this.valueShow += this.step;
+                        this.onUp && this.onUp(this.valueShow, this);
                     }, 200)
                 }
             },
 
             stepDown() {
-                this.value = parseInt(this.value, 10);
-                this.value -= this.step;
-                this.onDown && this.onDown(this.value, this);
+                this.valueShow = parseInt(this.value, 10);
+                this.valueShow -= this.step;
+                this.onDown && this.onDown(this.valueShow, this);
 
                 if(!this.isOnlyClick) {
                     this.downTimer = window.setInterval(() => {
-                        this.value -= this.step;
-                        this.onDown && this.onDown(this.value, this);
+                        this.valueShow -= this.step;
+                        this.onDown && this.onDown(this.valueShow, this);
                     }, 200);
                 }
             },

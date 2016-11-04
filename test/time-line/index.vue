@@ -1,7 +1,9 @@
 <template>
-    <v-time-line :data="timeLineData"></v-time-line>
+    <div>
+        <v-time-line :data="timeLineData"></v-time-line>
 
-    <a class="demo-link" href="../components/time-line.html">组件连接</a>
+        <a class="demo-link" href="../components/time-line.html">组件连接</a>
+    </div>
 </template>
 
 <script>
@@ -13,7 +15,7 @@
         },
         data() {
             return {
-                timeLineData: ['我们发布了alpha \n\r 再试试', '我们发布了beta']
+                timeLineData: [`<a style="color: red;">我们发布了alpha \n\r 再试试</a>`, '我们发布了beta']
             }
         }
     }
