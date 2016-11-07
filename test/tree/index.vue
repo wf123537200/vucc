@@ -1,6 +1,9 @@
 <template>
-    <v-tree :data="tree" :on-item-click="tree.onItemClick"></v-tree>
-    <a class="demo-link" href="../components/tree.html">组件连接</a>
+    <div>
+        <v-tree :data="tree" :on-item-click="tree.onItemClick"></v-tree>
+
+        <a class="demo-link" href="../components/tree.html">组件连接</a>
+    </div>
 </template>
 
 <script>

@@ -98,35 +98,30 @@
         <t-tag-list></t-tag-list>
       </div>
 
-      <!--<h2>树形列表</h2>-->
-      <!--<div class="doc-example">-->
-        <!--<t-tree></t-tree>-->
-      <!--</div>-->
+      <h2>树形列表</h2>
+      <div class="doc-example">
+        <t-tree></t-tree>
+      </div>
 
-      <!--<h2>穿梭框</h2>-->
-      <!--<div class="doc-example">-->
-        <!--<t-transfer></t-transfer>-->
-      <!--</div>-->
+      <h2>穿梭框</h2>
+      <div class="doc-example">
+        <t-transfer></t-transfer>
+      </div>
 
-      <!--<h2>表单</h2>-->
-      <!--<div class="doc-example">-->
-        <!--<t-form></t-form>-->
-      <!--</div>-->
+      <h2>表单</h2>
+      <div class="doc-example">
+        <t-form></t-form>
+      </div>
 
-      <!--<h2>搜索框</h2>-->
-      <!--<div class="doc-example">-->
-        <!--<t-search></t-search>-->
-      <!--</div>-->
+      <h2>搜索框</h2>
+      <div class="doc-example">
+        <t-search></t-search>
+      </div>
 
-      <!--<h2>标签型下拉框</h2>-->
-      <!--<div class="doc-example">-->
-        <!--<t-label-dropdown></t-label-dropdown>-->
-      <!--</div>-->
-
-      <!--<h2>日期选择器</h2>-->
-          <!--<div class="doc-example">-->
-          <!--<t-datepicker></t-datepicker>-->
-      <!--</div>-->
+      <h2>日期选择器</h2>
+          <div class="doc-example">
+          <t-datepicker></t-datepicker>
+      </div>
 
     </section>
 
@@ -164,25 +159,21 @@
   import tToolTip from './tool-tip';
   import tTimeLine from './time-line';
   import tTagList from './tag-list';
-//  import tTree from './tree';
-//  import tTransfer from './transfer';
-//  import tForm from './form';
-//  import tSearch from './search';
-//  import tLabelDropdown from './label-dropdown';
-//  import tDatepicker from './datepicker';
-
-//  import Vue from 'vue';
+  import tTree from './tree';
+  import tTransfer from './transfer';
+  import tForm from './form';
+  import tSearch from './search';
+  import tDatepicker from './datepicker';
 
   export default {
     components: Object.assign({}, {
-//      tSearch,
-//      tLabelDropdown,
-//      tForm,
-//      tTransfer,
+      tSearch,
+      tForm,
+      tTransfer,
       tSteps,
       tToolTip,
       tTimeLine,
-//      tTree,
+      tTree,
       tTagList,
       tLoading,
       tProgress,
@@ -206,7 +197,7 @@
       tBadge,
       tInput,
       tTextarea,
-//      tDatepicker,
+      tDatepicker,
       tPagination
     }),
     data() {

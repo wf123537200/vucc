@@ -1,5 +1,6 @@
 <template>
     <div>
+        <h3>结果: {{tagList}}</h3>
         <v-tag-list :data="tagList" :placeholder="'请填写内容'" :on-before-add="onBeforeAdd" :is-delete-able="true"></v-tag-list>
         <v-tag-list :data="tagList2" :on-before-add="onBeforeAdd" :is-delete-able="true"
                     :as-content="'tags'"></v-tag-list>

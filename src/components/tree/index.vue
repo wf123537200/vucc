@@ -68,7 +68,7 @@
                 }
             }
         }),
-        beforeCompile: pvBase.beforeCompile,
+        created: pvBase.created,
         methods: Object.assign({}, pvBase.methods)
     }
 </script>

@@ -249,7 +249,7 @@ $datepicker-prefix-cls: $css-prefix + 'datepicker';
   &-next {
     position: absolute;
     font-size: 18px;
-    font-family: 'tbdicon';
+    font-family: vcicon;
     color: $gray-color;
     font-style: normal;
     opacity: 0.5;
@@ -263,6 +263,7 @@ $datepicker-prefix-cls: $css-prefix + 'datepicker';
     left: 10px;
 
     &:after {
+
       content: '\e619';
     }
   }

@@ -1,7 +1,10 @@
 <template>
-    <v-transfer :src-title="'原数据'" :dist-title="'选择'" :data="transfer" :result="transferRes"></v-transfer>
+    <div>
+        <h3>结果: {{transferRes}}</h3>
+        <v-transfer :src-title="'原数据'" :dist-title="'选择'" :data="transfer" v-model="transferRes"></v-transfer>
 
-    <a class="demo-link" href="../components/transfer.html">组件连接</a>
+        <a class="demo-link" href="../components/transfer.html">组件连接</a>
+    </div>
 </template>
 
 <script>

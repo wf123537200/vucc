@@ -31,11 +31,11 @@
     <div class="vc-transfer">
         <!-- 中间按钮 -->
         <div class="vc-transfer-btns">
-            <pv-button :size="'vc-btn-sm'" :type="'outline'" @click.stop="addSelect">
+            <pv-button :size="'vc-btn-sm'" :type="'outline'" @click.native.stop="addSelect">
                 {{addText}}
                 <i class="vci vci-right"></i>
             </pv-button>
-            <pv-button :size="'vc-btn-sm'" :type="'outline'" :is-disabled="isDeleteAble" @click.stop="removeSelect">
+            <pv-button :size="'vc-btn-sm'" :type="'outline'" :is-disabled="isDeleteAble" @click.native.stop="removeSelect">
                 <i class="vci vci-left"></i>
                 {{deleteText}}
             </pv-button>
@@ -48,15 +48,16 @@
                     <h3>{{srcTitle}}</h3>
                     <div class="vc-transfer-item-extra">
                         <label class="vc-label">
-                            <pv-checkbox :data="[{label: '全选', value: true}]" :value.sync="selectAll"></pv-checkbox>
+                            <pv-checkbox :data="[{label: '全选', value: true}]" v-model="selectAll"></pv-checkbox>
                         </label>
                     </div>
                 </div> <!-- 标题栏 end -->
 
                 <!-- 选择框 -->
                 <div class="vc-transfer-item-content">
-                    <label v-for="it in data | orderBy '_index'" @click.stop="onCheckboxClick(it.isChecked)" :class="['vc-label vc-label-vertical', {'vc-label-checked': it.isChecked}]">
-                        <pv-checkbox :data="[{label: it.content, value: true}]" :value.sync="it.isChecked"></pv-checkbox>
+                    <label v-for="it in dataShow" @click.stop="onCheckboxClick(it.isChecked)"
+                           :class="['vc-label vc-label-vertical', {'vc-label-checked': it.isChecked}]">
+                        <pv-checkbox :data="[{label: it.content, value: true}]" v-model="it.isChecked"></pv-checkbox>
                     </label>
                 </div><!-- 选择框 end -->
             </div>
@@ -71,7 +72,7 @@
                 </div>
                 <div class="vc-transfer-item-content">
                     <label v-for="it in result" :class="['vc-label vc-label-vertical', {'vc-label-checked': it.isChecked}]">
-                        <pv-checkbox :data="[{label: it.content, value: true}]" :value.sync="it.isChecked"></pv-checkbox>
+                        <pv-checkbox :data="[{label: it.content, value: true}]" v-model="it.isChecked"></pv-checkbox>
                     </label>
                 </div>
             </div>
@@ -119,20 +120,21 @@
             data: {
                 type: Array
             },
-            result: {
-                type: Array
+            value: {
+                type: Array,
+                default: []
             }
         }),
 
-        beforeCompile() {
-            this.data = this.data.map((it, index) => {
+        created() {
+            this.dataShow = this.data.map((it, index) => {
                 return Object.assign({
                     _index: index,
                     isChecked: false
                 }, it);
             });
 
-            this.result = this.result.map((it, index) => {
+            this.result = this.value.map((it, index) => {
                 return Object.assign({
                     _index: index + 999,
                     isChecked: false
@@ -142,7 +144,9 @@
 
         data() {
             return {
-                selectAll: false
+                selectAll: false,
+                result: [],
+                dataShow: []
             }
         },
 
@@ -152,7 +156,7 @@
                     return this.cancelSelectAll = false;
                 }
 
-                this.data.map((it) => {
+                this.dataShow.map((it) => {
                     it.isChecked = val;
                 });
             }
@@ -160,12 +164,16 @@
 
         methods: {
             addSelect() {
-                const transfer = this.data.filter((it) => {
+                const transfer = this.dataShow.filter((it) => {
                     return it.isChecked === true;
                 });
 
                 transfer.forEach((it) => {
-                    this.data.$remove(it);
+                    const i = this.dataShow.findIndex((ins) => {
+                        return ins._index === it._index;
+                    });
+
+                    this.dataShow.splice(i, 1);
                 });
 
                 this.result.push(...transfer);
@@ -175,6 +183,7 @@
                 });
 
                 this.onAdd && this.onAdd(transfer);
+                this.$emit('input', this.result);
             },
 
             removeSelect() {
@@ -183,16 +192,21 @@
                 });
 
                 transfer.forEach((it) => {
-                    this.result.$remove(it);
+                    const i = this.result.findIndex((ins) => {
+                        return ins._index === it._index;
+                    });
+
+                    this.result.splice(i, 1);
                 });
 
-                this.data.push(...transfer);
+                this.dataShow.push(...transfer);
 
-                this.data.sort((a, b) => {
+                this.dataShow.sort((a, b) => {
                     return a._index - b._index;
                 });
 
                 this.onDelete && this.onDelete(transfer);
+                this.$emit('input', this.result);
             },
 
             onCheckboxClick(val) {

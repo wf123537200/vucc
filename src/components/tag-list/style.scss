@@ -41,6 +41,14 @@ $input-prefix-cls: $css-prefix + "input";
     }
   }
 
+  &-link {
+    color: $blue-color;
+    display: block;
+    float: left;
+    padding: 8px;
+    cursor: pointer;
+  }
+
   &-active {
     span,
     span:hover {

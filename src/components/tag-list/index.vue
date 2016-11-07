@@ -15,6 +15,7 @@
         tagList: [{
           content: '内容'
         }]
+   @param {Boolean} isShowInput 是否展示,默认值为false
    @param {String} appendClass 自定义class
    @param {Object} appendStyle 自定义Style对象
 -->
@@ -27,9 +28,11 @@
                 <i class="vci vci-cross" v-if="isDeleteAble" @click.stop="deleteItem(it)"></i>
             </span>
         </label>
+        <!-- link -->
+        <a class="vc-tag-link" v-if="!isShowAddInput" @click.stop="switchInput">{{placeholder}}</a>
         <!-- input -->
-        <div class="vc-input-wrap">
-            <pv-input v-model="text" :placeholder="placeholder"></pv-input>
+        <div class="vc-input-wrap" v-if="isShowAddInput" @click.stop>
+            <pv-input v-model="text" :placeholder="placeholder" @keyup.native.enter="addItem"></pv-input>
             <button class="vc-input-wrap-extra" @click.stop="addItem">
                 <i class="vci vci-plus"></i>
             </button>
@@ -64,13 +67,18 @@
                 type: Function
             },
             placeholder: {
-                type: String
+                type: String,
+                default: '增加标签'
             },
             onBeforeAdd: {
                 type: Function
             },
             asContent: {
                 type: String
+            },
+            isShowInput: {
+                type: Boolean,
+                default: false
             }
         }),
 
@@ -81,11 +89,12 @@
                     'small': 'vc-tag-list-sm'
                 }[this.size],
                 text: '',
-                isShow: true
+                isShow: true,
+                isShowAddInput: this.isShowInput
             }
         },
 
-        beforeCompile() {
+        created() {
             if(!this.data || !this.asContent) return;
             this.data.forEach((it) => {
                 it.content = it[this.asContent];
@@ -107,6 +116,9 @@
         },
 
         methods: {
+            switchInput() {
+                this.isShowAddInput = true;
+            },
             addItem() {
                 if(!this.text || !this.text.trim()) return;
 
@@ -122,15 +134,27 @@
                 if(this.onBeforeAdd) return this.onBeforeAdd((item) => {
                     this.data.push(item || addedItem);
                     this.onAdd && this.onAdd(item || addedItem);
+                    setTimeout(() => {
+                        this.$el.querySelector('.vc-input-wrap > input').focus();
+                    }, 100);
                 });
 
                 this.data.push(addedItem);
                 this.onAdd && this.onAdd(addedItem);
+                setTimeout(() => {
+                    this.$el.querySelector('.vc-input-wrap > input').focus();
+                }, 100);
             },
             deleteItem(item) {
                 this.data.$remove(item);
                 this.onDelete && this.onDelete(item);
             }
+        },
+
+        mounted() {
+            document.body.addEventListener('click', () => {
+                this.isShowAddInput = false;
+            })
         }
     }
 </script>

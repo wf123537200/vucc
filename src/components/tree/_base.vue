@@ -40,7 +40,8 @@
                 }
             }
         },
-        beforeCompile() {
+
+        created() {
             this.data.isHasCheckbox = this.data.isHasCheckbox || false;
             this.data.leafs = this.data.leafs.map(function(it) {
                 return Object.assign({
@@ -53,7 +54,6 @@
         methods: {
             toggleOpen(it) {
                 if(it.isDisabled) return;
-
                 it.isOpened = !it.isOpened;
             },
             toggleChecked(it, ctrl) {

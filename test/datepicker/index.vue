@@ -1,26 +1,17 @@
 <template>
-    {{time1}}
-    <v-datepicker :time.sync="time1" :disable-filter="disableFilter" :is-force-refresh="true"></v-datepicker>
-    {{time1}}
-    <v-datepicker :is-disabled="true" :time.sync="time1" :disable-filter="disableFilter" :is-force-refresh="true"></v-datepicker>
+    <div>
+        <h3>常规 {{time1}}</h3>
+        <v-datepicker v-model="time1" :disable-filter="disableFilter" :is-force-refresh="true"></v-datepicker>
+        <h3>带时分秒</h3>
+        <v-datepicker v-model="time" :format="'YYYY/MM/DD hh:mm:ss'"></v-datepicker>
+        <h3>范围选择</h3>
+        <v-datepicker :is-range="true"
+                      :disable-filter="disableFilter"
+                      :range-data="rangeData"
+                      :format="'YYYY/MM/DD hh:mm:ss'"></v-datepicker>
 
-    {{time}}
-    <v-datepicker :time.sync="time" :format="'YYYY/MM/DD hh:mm:ss'"></v-datepicker>
-
-
-    {{startTime}} -- {{endTime}}
-    <v-datepicker :is-range="true" :start-time.sync="startTime"
-                  :disable-filter="disableFilter"
-                  :end-time.sync="endTime"
-                  :format="'YYYY/MM/DD hh:mm:ss'"></v-datepicker>
-
-    {{startTime}} -- {{endTime}}
-    <v-datepicker :is-range="true" :start-time.sync="startTime"
-                  :disable-filter="disableFilter"
-                  :end-time.sync="endTime"
-                  :format="'YYYY/MM/DD'"></v-datepicker>
-
-    <a class="demo-link" href="../components/template.html">组件连接</a>
+        <a class="demo-link" href="../components/template.html">组件连接</a>
+    </div>
 </template>
 
 <script>
@@ -32,8 +23,10 @@
         },
         data() {
             return {
-                startTime: '2016-09-27',
-                endTime: '2016-10-30',
+                rangeData: {
+                    endTime: '2016-10-30',
+                    startTime: '2016-09-27',
+                },
                 time1: '',
                 time: '2015/12/12'
             }
