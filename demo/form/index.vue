@@ -69,7 +69,7 @@
                             :explain-type="'feedback'"
                             :label-col=4
                             :wrapper-col=8>
-                        <v-input type="password" placeholder="请输入密码"><v-/input>
+                        <v-input type="password" placeholder="请输入密码"></v-input>
                     </v-form-item>
 
                     <v-form-item

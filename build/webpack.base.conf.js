@@ -8,11 +8,17 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue'
-      },{
+      },
+      {
+        test: /\.jsx$/,
+        loader: 'babel'
+      },
+      {
         test: /\.js/,
         loader: 'babel',
         query: {
-          presets: ['es2015']
+          "presets": ["es2015"],
+          "plugins": ["transform-vue-jsx"]
         },
         exclude: /node_modules/
       },
@@ -39,7 +45,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['', '.js', '.vue'],
+    extensions: ['', '.js', '.jsx', '.vue'],
     alias: {
       'src': path.resolve(__dirname, '/src'),
       components: path.resolve(__dirname, '/src/components'),

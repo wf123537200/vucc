@@ -54,269 +54,101 @@
 <template>
     <div>
         <div :style="appendStyle" :class="['vc-table', appendClass]">
+            <div class="cols vc-hidden" ref="hiddenCols" v-if="colsHidden">
+                <slot></slot>
+            </div>
             <div class="vc-table-body">
-                <table>
-                    <thead>
-                    <tr>
-                        <!-- 全选框 -->
-                        <th v-if="hasAllSelect" style="width: 50px;">
-                            <pv-checkbox :value.sync="selectAll"></pv-checkbox>
-                        </th>
-                        <th :style="col.style" v-for="col in cols" v-show="col.isShow === undefined">{{col.title}}</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr v-for="row in currentData" track-by="$index" @click.stop="trClick(row, currentData)">
-                        <td v-if="hasAllSelect" @click.stop="itemClick(row.isChecked, row)" v-show="!row.colspan">
-                            <pv-checkbox :value.sync="row.isChecked"></pv-checkbox>
-                        </td>
-                        <td v-if="!row.colspan" v-for="col in cols" v-show="col.isShow === undefined"
-                            :style="col.style">
-                            <span v-if="!col.hasPartial" v-html="renderTD(col, row)"></span>
-                            <span v-if="col.hasPartial">
-                                <partial :name="renderTD(col, row).id"></partial>
-                            </span>
-                        </td>
-                        <td v-if="row.colspan" v-show="row.isShow" :class="row.addClass"
-                            :colspan="row.colspan === 'all' ? (hasAllSelect ? cols.length + 1 : cols.length) : row.colspan">
-                            <partial :name="renderTD(col, row).id"></partial>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+                <pv-table-header :header="header" :body="body"></pv-table-header>
+                <pv-table-body :body="body" :data="data" :page-size="pageSizeShow"
+                               :current-page="currentPageShow"></pv-table-body>
             </div>
         </div>
 
-        <pv-pagination :total.sync="totalNum"
+        <pv-pagination :total="totalNum"
                        v-if="isShowPagination"
-                       :current-page.sync="currentPage"
-                       :page-size.sync="pageSize"
-                       :on-size-change="onSizeChange"
-                       :on-change="onChangePage"></pv-pagination>
+                       :current-page="currentPage"
+                       :page-size="pageSize"
+                       :on-size-change="onSizeChangeFn"
+                       :on-page-change="onPageChangeFn"></pv-pagination>
     </div>
 </template>
 
 <script>
     import pvPagination from '../pagination'
     import pvCheckbox from '../checkbox'
+    import pvColumns from './columns'
+    import pvTableHeader from './header'
+    import pvTableBody from './body'
     import {componentBaseParamConfig} from '../base-config';
 
+    import Vue from 'vue';
+
+    // 新建列组件
+    Vue.component('vTableColumns', pvColumns);
 
     export default {
+        components: {
+            pvPagination,
+            pvTableHeader,
+            pvTableBody
+        },
         props: Object.assign({}, componentBaseParamConfig, {
-            data: {
-                type: Array,
-                default() {
-                    return [];
-                }
-            },
-
-            columns: {
-                type: Array
-            },
-
-            onChangePage: {
-                type: Function,
-                default: function(index) {}
-            },
-
-            currentPage: {
-                type: Number,
-                default: 1
-            },
-
-            pageSize: {
-                type: Number,
-                default: 5
-            },
-
-            total: {
-                type: Number
-            },
-
             isShowPagination: {
                 type: Boolean,
                 default: true
+            },
+            onChangePage: {
+                type: Function,
+                default() {}
             },
             onSizeChange: {
                 type: Function,
                 default() {}
             },
-            hasAllSelect: {
-                type: Boolean,
-                default: false
+            currentPage: {
+                type: Number,
+                default: 1
             },
-            selectAll: {
-                type: Boolean,
-                default: false
+            pageSize: {
+                type: Number,
+                default: 5
             },
-            isReal: {
-                type: Boolean,
-                default: false
+            total: {
+                type: Number
             },
-            trClick: {
-                type: Function,
+            data: {
+                type: Array,
                 default() {
-                    return () => {};
+                    return []
                 }
             },
-            onCheckboxClick: {
-                type: Function,
-                default() {
-                    return () => {};
-                }
-            }
+            colsNum: Number
         }),
 
-        data () {
+        data() {
             return {
-                currentData: []
-            }
-        },
-
-        beforeCompile() {
-            // 初始化currentData
-            // 每一个data增加key值,为了全选
-            this.data.forEach((it) => {
-                it.__el__id__ = Math.random().toString(36).substr(3)
-            });
-            this.refreshCurrentData();
-        },
-
-        watch: {
-            data(val, newVal) {
-                // 每一个data增加key值,为了全选
-                this.data.forEach((it) => {
-                    it.__el__id__ = Math.random().toString(36).substr(3)
-                });
-                // 表格数据变化 分页重置为默认
-                this.refreshCurrentData();
-            },
-            pageSize() {
-                this.refreshCurrentData();
-            },
-            currentPage() {
-                this.refreshCurrentData();
-            },
-            selectAll(val) {
-                if(!this.hasAllSelect) return;
-
-                if(this.cancelSelectAll && !val) {
-                    return this.cancelSelectAll = false;
-                }
-
-                this.currentData.forEach((it) => {
-                    let temp = this.data.filter((el) => {
-                        return el.__el__id__ === it.__el__id__;
-                    });
-
-                    temp[0].isChecked = it.isChecked = val;
-                });
+                header: [],
+                body: [],
+                totalNum: this.total || this.data.length,
+                pageSizeShow: this.pageSize,
+                currentPageShow: this.currentPage,
+                colsHidden: true
             }
         },
 
         methods: {
-            refreshCurrentData() {
-                this.currentData = [];
-
-                if (this.data && this.data.length > 0) {
-                    let temp = this.isReal ? this.data : this.data.slice(this.pageSize * (this.currentPage - 1), this.pageSize * this.currentPage);
-
-                    temp.forEach((it, index) => {
-                        this.currentData.push(Object.assign({}, {
-                            isChecked: false
-                        }, it))
-                    });
-                }
-
-                this.selectAll = false;
+            onSizeChangeFn(val) {
+                this.pageSizeShow = val;
+                this.onSizeChange && this.onSizeChange(val);
             },
-            itemClick(isChecked, item) {
-                // 调用点击事件
-                this.onCheckboxClick(isChecked, item);
-
-                // 更新data内部值
-                let temp = this.data.filter((el) => {
-                    return el.__el__id__ === item.__el__id__;
-                });
-
-                temp[0].isChecked = isChecked;
-
-                if(isChecked) return;
-
-                this.selectAll = false;
-                this.cancelSelectAll = true;
-
-
+            onPageChangeFn(val) {
+                this.currentPageShow = val;
+                this.onPageChange && this.onPageChange(val);
             }
         },
 
-        components: {
-            pvPagination,
-            pvCheckbox
-        },
-
-        computed: {
-            // 计算表头,如果没有传入表头,使用data数据的第一行进行绘制
-            cols () {
-                if (this.columns !== undefined) {
-                    return this.columns
-                }
-
-                let cols = [];
-
-                this.data[0] && (cols = Object.keys(this.data[0]).map((col) => {
-                    return {
-                        dataIndex: col,
-                        title: col
-                    }
-                }));
-
-                return cols;
-            },
-
-            totalNum () {
-                // 真分页时
-                if (this.total !== undefined) {
-                    return this.total
-                }
-
-                // 非真分页时
-                if (this.data && this.data.length > 0) {
-                    return this.data.length
-                }
-
-                return 0
-            },
-
-            // 根据传入的渲染函数,对列进行渲染
-            renderTD() {
-                return (col, row) => {
-                    if(row.render) {
-                        const rowRenderRes = row.render(row);
-                        for(let k in rowRenderRes.functions) {
-                            this[k] = rowRenderRes.functions[k];
-                        }
-
-                        return rowRenderRes
-                    }
-                    if (col.render && typeof col.render === 'function') {
-                        const renderRes = col.render(row[col.dataIndex], row);
-                        if(col.hasPartial && renderRes.functions) {
-                            for(let k in renderRes.functions) {
-                                this[k] = renderRes.functions[k];
-                            }
-                        }
-
-                        return renderRes;
-                    } else {
-                        return row[col.dataIndex]
-                    }
-                }
-            },
-            checkboxClickFn() {
-                this.checkboxClick();
-            }
+        mounted() {
+            this.colsHidden = false;
         }
     }
 </script>

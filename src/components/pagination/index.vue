@@ -3,7 +3,7 @@
 
    @param {Boolean} isShow 是否显示分页栏组件
    @param {Function} onPageChange 当选择分页时调用
-   @param {Number} pageSize 每页的大小
+   @param {Number} pageSizeShow 每页的大小
    @param {Number} currentPage 当前页的页码
    @param {Number} total 总页数
    @param {Array} pageSizeObject 页数选择select部分的下拉框数据
@@ -14,7 +14,7 @@
     <div class="vc-pagination" v-if="isShow">
         <div class="vc-pagination-records">
             共<em>{{total}}</em>条记录，每页显示
-            <pv-select :data="pageSizeObject" :value.sync="pageSize" :on-select="_onSizeChange"></pv-select>
+            <pv-select :data="pageSizeObject" v-model="pageSizeShow" :on-select="_onSizeChange"></pv-select>
             条
         </div>
 
@@ -90,11 +90,15 @@
 
         data() {
             return {
-                currentPageShow: this.currentPage
+                currentPageShow: this.currentPage,
+                pageSizeShow: this.pageSize
             }
         },
 
         watch: {
+            pageSize(v) {
+                this.pageSizeShow = v;
+            },
             currentPage(v) {
                 this.currentPageShow = v;
             }
@@ -106,9 +110,8 @@
 
         computed: {
             totalNum() {
-                return Math.ceil(this.total / this.pageSize)
+                return Math.ceil(this.total / this.pageSizeShow)
             },
-
             pageNums() {
                 let pageNums = [1,2];
 
@@ -170,9 +173,11 @@
                 this.onPageChange && this.onPageChange(this.currentPageShow)
 
             },
-            _onSizeChange() {
+            _onSizeChange(val) {
+                this.pageSizeShow = val;
                 this.currentPageShow = 1;
-                this.onSizeChange && this.onSizeChange();
+                this.onPageChange && this.onPageChange(1);
+                this.onSizeChange && this.onSizeChange(val);
             }
         }
     }
