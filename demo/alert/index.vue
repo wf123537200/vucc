@@ -18,6 +18,7 @@
 </template>
 
 <script>
+//    import vAlert from '../../src/components/alert';
     import vAlert from '../../src/components/alert';
     import vButton from '../../src/components/button';
 

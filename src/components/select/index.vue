@@ -45,7 +45,7 @@
 </template>
 
 <script>
-    import {componentBaseParamConfig, alias} from '../base-config';
+    import {componentBaseParamConfig, alias, name2Alias} from '../base-config';
     import pvDropdown from '../dropdown';
     import pvInput from '../input';
 
@@ -101,6 +101,10 @@
             }
         },
 
+        created() {
+            name2Alias(this.data, this.asValue, this.asLabel);
+        },
+
         methods: {
             onSelected(index, item) {
                 let opts = this.data;
@@ -122,6 +126,7 @@
         watch: {
             // 数据变化重置初始值
             data() {
+                name2Alias(this.data, this.asValue, this.asLabel);
                 this.inputSelect = this.currentSelected;
             }
         },

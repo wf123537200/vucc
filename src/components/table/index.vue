@@ -58,8 +58,8 @@
                 <slot></slot>
             </div>
             <div class="vc-table-body">
-                <pv-table-header :header="header" :body="body"></pv-table-header>
-                <pv-table-body :body="body" :data="data" :page-size="pageSizeShow"
+                <pv-table-header :header="header" :body="body" :has-select-all="hasSelectAll"></pv-table-header>
+                <pv-table-body :body="body" :data="data" :page-size="pageSizeShow" :has-select-all="hasSelectAll"
                                :current-page="currentPageShow"></pv-table-body>
             </div>
         </div>
@@ -122,7 +122,11 @@
                     return []
                 }
             },
-            colsNum: Number
+            colsNum: Number,
+            hasSelectAll: {
+                type: Boolean,
+                default: false
+            }
         }),
 
         data() {
@@ -148,6 +152,10 @@
         },
 
         mounted() {
+            this.data.forEach((it, index) => {
+                it.index = index;
+            });
+
             this.colsHidden = false;
         }
     }

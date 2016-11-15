@@ -15,7 +15,9 @@ export default {
         data: Object,
         tdStyle: Object,
         renderHeader: Function,
-        renderTd: Function
+        renderTd: Function,
+        isSort: Boolean,
+        sortFn: Function
     },
 
     created() {
@@ -28,7 +30,6 @@ export default {
                     data._staticTrees = this._staticTrees;
                     data._m = this._m;
 
-                    debugger
                     return this.$options.render.call(data);
                 };
             }
@@ -41,7 +42,10 @@ export default {
             label: this.renderHeader ? this.renderHeader() : this.label,
             style: Object.assign({
                 width: (100 / parent.colsNum) + '%'
-            }, this.thStyle || this.tdStyle)
+            }, this.thStyle || this.tdStyle),
+            isSort: this.isSort,
+            isSortUp: this.isSort,
+            sortFn: this.sortFn
         });
 
         parent.body.push({
