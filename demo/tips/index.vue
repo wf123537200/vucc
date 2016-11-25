@@ -38,7 +38,7 @@
         methods: {
             // tips show way 1
             showTips(id) {
-                this.$root.$$tips[id].show();
+                document.body.$$tips[id].show();
             },
 
             showTipsWay2() {

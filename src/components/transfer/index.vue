@@ -9,7 +9,7 @@
         }, {
           content: '我是选择框Bbb'
         }
-   @param {Array} result 右侧框渲染数据
+   @param {Array} result 右侧框结果
     ex:
         {
           content: '我是选择框Ccc',

@@ -6,8 +6,7 @@
    @require step-input
 
    @param {Boolean} isRange 是否是范围类型的日期选择器
-   @param {} startTime 传入的起始日期,当isRange为true时使用
-   @param {} endTime 传入的结束日期,当isRange为true时使用
+   @param {} rangeData 传入日期范围,包括startTime和endTime
    @param {} time 传入的日期,当isRange为false时使用
    @param {String} format 日期的输出格式,现在支持 "YYYY-MM-DD hh:mm:ss"
    @param {Boolean} hasFooterProxy 是否有确定,取消两个按钮,当isRange和有时分秒的情况下不起作用

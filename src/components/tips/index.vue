@@ -110,9 +110,8 @@
         }),
 
         mounted() {
-            this.$root.$$tips = this.$root.$$tips || {};
-
-            this.$root.$$tips[this.id] = this;
+            document.body.$$tips = document.body.$$tips || {};
+            document.body.$$tips[this.id] = this;
         },
 
         data() {

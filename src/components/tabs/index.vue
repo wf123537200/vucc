@@ -4,6 +4,7 @@
   @param {String} [type=default|primary|outline|error|link] 按钮的类型
   @param {String} [size=normal|large|small] 按钮的大小
   @param {Number} activeIndex 当前选中的标签页索引
+  @param {Number} onChange 切换标签页时的回调
   @param {String} appendClass 自定义class
   @param {Object} appendClass 自定义Style对象
 -->

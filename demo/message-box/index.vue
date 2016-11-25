@@ -9,13 +9,13 @@
             <v-message-box :id="'mb4'" type="confirm" :title="'您是否确认要删除这项内容'" :explain="'一些解释'"
                            :on-cancel="dialogCallbackFn1"></v-message-box>
 
-            <v-button type="primary" @click="showMb('mb1', 'info')">msgBox info</v-button>
-            <v-button type="primary" @click="showMb('mb2', 'success')">msgBox success</v-button>
-            <v-button type="primary" @click="showMb('mb3', 'error')">msgBox error</v-button>
-            <v-button type="primary" @click="showMb('mb4', 'confirm')">msgBox confirm</v-button>
+            <v-button type="primary" @click.native="showMb('mb1', 'info')">msgBox info</v-button>
+            <v-button type="primary" @click.native="showMb('mb2', 'success')">msgBox success</v-button>
+            <v-button type="primary" @click.native="showMb('mb3', 'error')">msgBox error</v-button>
+            <v-button type="primary" @click.native="showMb('mb4', 'confirm')">msgBox confirm</v-button>
 
             <!-- 第二种调用方法 -->
-            <v-button @click="showMb2()">messagebox 第二种调用方法</v-button>
+            <v-button @click.native="showMb2()">messagebox 第二种调用方法</v-button>
 
             <a class="demo-link" href="../components/message-box.html">组件连接</a>
         </section>

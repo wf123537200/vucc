@@ -42,12 +42,13 @@
    @param {Number} currentPage 当前组件停留页
    @param {Number} pageSize 每一页展示多少条数据
    @param {Number} total 总页数
-   @param {Number} onSizeChange 当每页页数变化时产生的数据
+   @param {Function} onSizeChange 当每页页数变化时产生的数据
    @param {Boolean} isShowPagination 是否显示分页栏
    @param {Boolean} isReal 是否采用真分页,如果真分页,则每次传入数据都以外部为准
    @param {Boolean} hasAllSelect 是否展示全选框和每行前的勾选框
    @param {Function} trClick 行点击事件,会传入行的数据
    @param {Function} onCheckboxClick 组件前勾选框点击事件
+   @param {Number} colsNum 列的数量
    @param {String} appendClass 自定义class
    @param {Object} appendClass 自定义Style对象
 -->
@@ -84,7 +85,8 @@
     import Vue from 'vue';
 
     // 新建列组件
-    Vue.component('vTableColumns', pvColumns);
+    const vue = window.Vue || Vue;
+    vue.component('vTableColumns', pvColumns);
 
     export default {
         components: {

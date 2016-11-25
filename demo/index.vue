@@ -135,7 +135,7 @@
   import test from './test'
 
   export default {
-    components: Object.assign({}, test)
+    components: Object.assign({}, test.components)
   }
 </script>
 

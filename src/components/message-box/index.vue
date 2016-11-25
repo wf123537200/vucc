@@ -23,14 +23,14 @@
 -->
 <template>
     <pv-dialog :id="id"
-              :append-class="appendClass"
+              :append-class="appendClass + ' vc-confirm'"
               :append-style="appendStyle"
               :has-header="false"
               :on-cancel="onCancel"
               :on-ok="onOk"
               :cancel-text="cancelText"
               :has-cancel-btn="hasCancelBtn"
-              :is-show.sync="isShow"
+              v-model="isShowX"
               :ok-text="okText" >
 
             <div class="vc-confirm-body">
@@ -94,6 +94,7 @@
 
         data() {
             return {
+                isShowX: this.isShow,
                 iconClass: TYPE_CLASS[this.type],
                 hasCancelBtn: this.type === 'confirm'
             }
@@ -109,6 +110,9 @@
         },
 
         watch: {
+            isShowX(val) {
+                this.$emit('input', val);
+            },
             type(val) {
                 this.iconClass = TYPE_CLASS[val];
             }

@@ -23,7 +23,7 @@ MessageBox.init = function(obj) {
                                 :on-ok="onOk"
                                 :on-cancel="onCancelWrap"
                                 :is-use-html="isUseHtml"
-                                :is-show.sync="isShow"></v-message-box>`,
+                                :is-show="isShow"></v-message-box>`,
         data: {
             type: mb.type,
             id: mb.id || ('MessageBox' + Math.random().toString(36).substr(3, 15)),
@@ -37,7 +37,7 @@ MessageBox.init = function(obj) {
         methods: {
             onCancelWrap() {
                 this.onCancel && this.onCancel();
-                this.$remove();
+                this.$el.remove();
             }
         },
         components: {
