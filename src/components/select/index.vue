@@ -139,6 +139,6 @@
 </script>
 
 <!-- 这里控制了 dropdown 所以不能加上scoped -->
-<style lang="scss">
+<style lang="sass">
     @import "style.scss";
 </style>

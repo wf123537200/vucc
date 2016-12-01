@@ -53,7 +53,11 @@ module.exports = {
     }
   },
   vue: {
-    loaders: utils.cssLoaders()
+    vue: {
+      loaders: Object.assign({}, {
+        js: 'babel?presets[]=es2015'
+      }, utils.cssLoaders())
+    }
   },
   sassLoader: {
     includePaths: [pathToBourbon, path.join(__dirname, '../src')]

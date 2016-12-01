@@ -69,10 +69,11 @@
             }
         }),
         created: pvBase.created,
+        watch: pvBase.watch,
         methods: Object.assign({}, pvBase.methods)
     }
 </script>
 
-<style lang="scss">
+<style lang="sass">
     @import "style.scss";
 </style>

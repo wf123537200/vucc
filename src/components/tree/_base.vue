@@ -35,13 +35,15 @@
                 type: Function,
                 default() {
                     return () => {
-                        console.log(111);
                     };
                 }
             }
         },
 
         created() {
+            if(!this.data) return;
+            if(!this.data.leafs) this.data.leafs = [];
+
             this.data.isHasCheckbox = this.data.isHasCheckbox || false;
             this.data.leafs = this.data.leafs.map(function(it) {
                 return Object.assign({
@@ -66,6 +68,19 @@
             isParentChecked(val) {
                 this.data.leafs.forEach((it) => {
                     this.toggleChecked(it, val);
+                });
+            },
+            data() {
+                if(!this.data) return;
+                if(!this.data.leafs) this.data.leafs = [];
+
+                this.data.isHasCheckbox = this.data.isHasCheckbox || false;
+                this.data.leafs = this.data.leafs.map(function(it) {
+                    return Object.assign({
+                        isOpened: false,
+                        isChecked: false,
+                        isDisabled: false
+                    }, it);
                 });
             }
         }

@@ -38,6 +38,32 @@
                     }]
                 }
             }
+        },
+        mounted() {
+            setTimeout(() => {
+                this.tree = {
+                    onItemClick() {
+                        console.log(arguments);
+                    },
+                    isHasCheckbox: true,
+                    leafs: [{
+                        isOpened: true,
+                        isChecked: true,
+                        isDisabled: true,
+                        content: '延迟加载1'
+                    }, {
+                        content: '延迟加载2',
+                        subTree: {
+                            isHasCheckbox: true,
+                            leafs: [{
+                                content: '延迟加载3'
+                            }, {
+                                content: '延迟加载4'
+                            }]
+                        }
+                    }]
+                }
+            }, 2000)
         }
     }
 </script>

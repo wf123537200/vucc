@@ -75,6 +75,6 @@
     }
 </script>
 
-<style lang="scss">
+<style lang="sass">
     @import "style.scss";
 </style>
