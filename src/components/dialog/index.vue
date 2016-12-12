@@ -20,7 +20,7 @@
     @param {Boolean}    isShow 绑定value
     @param {String}     cancelText 取消按钮的展示文字
     @param {String}     okText 确定按钮的展示文字
-    @param {Function}   onOk ok按钮的回调函数
+    @param {Function}   onOk ok按钮的回调函数,函数返回false时阻止窗口关闭
     @param {Function}   onCancel cancel按钮的回调函数
     @param {Function}   onBeforeClose 窗口关闭前调用的函数,返回false可以阻止窗口关闭
     @param {Boolean}    isMultiple 是否允许当前窗口为复合弹出,即一个页面可以弹出多个窗口
@@ -175,13 +175,15 @@
                 this.hide();
             },
             _onOk() {
-                this.onOk && this.onOk();
-
+                let okRes = true;
+                if(this.onOk) {
+                    okRes = this.onOk();
+                }
                 if(this.onBeforeClose && this.onBeforeClose() === false) {
                     return;
                 }
 
-                this.hide();
+                if(okRes !== false) this.hide();
             },
             _onCancel() {
                 this.onCancel && this.onCancel();

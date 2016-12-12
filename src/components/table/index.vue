@@ -77,16 +77,9 @@
 <script>
     import pvPagination from '../pagination'
     import pvCheckbox from '../checkbox'
-    import pvColumns from './columns'
     import pvTableHeader from './header'
     import pvTableBody from './body'
     import {componentBaseParamConfig} from '../base-config';
-
-    import Vue from 'vue';
-
-    // 新建列组件
-    const vue = window.Vue || Vue;
-    vue.component('vTableColumns', pvColumns);
 
     export default {
         components: {

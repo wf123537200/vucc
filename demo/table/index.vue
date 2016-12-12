@@ -20,12 +20,14 @@
 <script>
     import vTable from '../../src/components/table';
     import vButton from '../../src/components/button';
+    import vTableColumns from '../../src/components/table-columns';
     import Vue from 'vue';
 
     export default {
         components: {
             vTable,
-            vButton
+            vButton,
+            vTableColumns
         },
         data() {
             const _this = this;
