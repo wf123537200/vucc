@@ -10,7 +10,7 @@
     export default {
         name: 'tree_base',
         template:    `<ul>
-                        <li v-for="it in data.leafs" :class="[{'vc-tree-checked': data.isHasCheckbox && it.isChecked, 'vc-tree-disabled': it.isDisabled, 'vc-tree-open': it.isOpened}]">
+                        <li v-for="it in data.leafs" v-show="it.isShow" :class="[{'vc-tree-checked': data.isHasCheckbox && it.isChecked, 'vc-tree-disabled': it.isDisabled, 'vc-tree-open': it.isOpened}]">
                             <a href="javascript: void 0;" class="vc-tree-item" @click.stop="onItemClick(it, $event)" @contextmenu.prevent="onItemRightClick(it, $event)" @dblclick="onItemDbclick(it, $event)">
                                 <i @click="toggleOpen(it)" v-if="it.subTree || it.icon" :class="[it.icon ? it.icon : 'vc-tree-caret']"></i>
                                 <span class="vc-tree-text" @click="toggleOpen(it)">
@@ -62,7 +62,8 @@
                 return Object.assign({
                     isOpened: false,
                     isChecked: false,
-                    isDisabled: false
+                    isDisabled: false,
+                    isShow: true
                 }, it);
             });
         },
@@ -92,7 +93,8 @@
                     return Object.assign({
                         isOpened: false,
                         isChecked: false,
-                        isDisabled: false
+                        isDisabled: false,
+                        isShow: true
                     }, it);
                 });
             }

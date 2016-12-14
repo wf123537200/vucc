@@ -42,7 +42,8 @@
                                 icon: 'lala'
                             }, {
                                 content: '文本内容2',
-                                icon: 'lala'
+                                icon: 'lala',
+                                isShow: false
                             }]
                         }
                     }]
