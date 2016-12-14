@@ -38,4 +38,15 @@ $timeline-prefix-cls: $css-prefix + 'timeline';
       margin-right: 10px;
     }
   }
+
+  &-left {
+    border-left: 0;
+    border-right: 2px solid $border-color;
+    text-align: right;
+
+    &-dot {
+      left: auto;
+      right: -9px;
+    }
+  }
 }
