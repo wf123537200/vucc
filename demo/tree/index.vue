@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-tree :data="tree" :on-item-click="tree.onItemClick" :on-item-right-click="tree.onItemRightClick"></v-tree>
+        <v-tree :data="tree" :on-item-click="tree.onItemClick" :on-item-dbclick="tree.onItemDbClick" :on-item-right-click="tree.onItemRightClick"></v-tree>
 
         <a class="demo-link" href="../components/tree.html">组件连接</a>
     </div>
@@ -17,10 +17,13 @@
             return {
                 tree: {
                     onItemClick() {
-                        console.log(arguments);
+                        console.log('click');
                     },
                     onItemRightClick() {
-                        console.log(arguments);
+                        console.log('right click');
+                    },
+                    onItemDbClick() {
+                        console.log('dbl click');
                     },
                     isHasCheckbox: true,
                     leafs: [{
@@ -31,6 +34,7 @@
                         icon: 'lala'
                     }, {
                         content: '文本内容2',
+                        icon: 'lala',
                         subTree: {
                             isHasCheckbox: true,
                             leafs: [{
@@ -50,47 +54,47 @@
                 console.log(dir);
             };
 
-            setTimeout(() => {
-                this.tree = {
-                    onItemClick() {
-                        console.log(arguments);
-                    },
-                    onItemRightClick() {
-                        console.log(arguments);
-                    },
-                    isHasCheckbox: false,
-                    leafs: [{
-                        isOpened: true,
-                        isChecked: true,
-                        isDisabled: true,
-                        content: '延迟加载1',
-                        icon: 'lala'
-                    }, {
-                        content: '延迟加载2',
-                        icon: 'lala',
-                        subTree: {
-                            isHasCheckbox: true,
-                            leafs: [{
-                                content: '延迟加载3'
-                            }, {
-                                content: '延迟加载4'
-                            }]
-                        }
-                    }]
-                };
-
-                this.tree.leafs.push({
-                    content: '延迟加载4',
-                    subTree: {
-                        isHasCheckbox: true,
-                        leafs: [{
-                            content: '延迟加载5'
-                        }, {
-                            content: `<input value="1111111" onclick="inputProxy(1);"/>`
-                        }]
-                    }
-                })
-            }, 2000)
+//            setTimeout(() => {
+//                this.tree = {
+//                    onItemClick() {
+//                        console.log(arguments);
+//                    },
+//                    onItemRightClick() {
+//                        console.log(arguments);
+//                    },
+//                    isHasCheckbox: false,
+//                    leafs: [{
+//                        isOpened: true,
+//                        isChecked: true,
+//                        isDisabled: true,
+//                        content: '延迟加载1',
+//                        icon: 'lala'
+//                    }, {
+//                        content: '延迟加载2',
+//                        icon: 'lala',
+//                        subTree: {
+//                            isHasCheckbox: true,
+//                            leafs: [{
+//                                content: '延迟加载3'
+//                            }, {
+//                                content: '延迟加载4'
+//                            }]
+//                        }
+//                    }]
+//                };
+//
+//                this.tree.leafs.push({
+//                    content: '延迟加载4',
+//                    subTree: {
+//                        isHasCheckbox: true,
+//                        leafs: [{
+//                            content: '延迟加载5'
+//                        }, {
+//                            content: `<input value="1111111" onclick="inputProxy(1);"/>`
+//                        }]
+//                    }
+//                })
+//            }, 2000)
         }
     }
 </script>

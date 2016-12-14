@@ -11,15 +11,15 @@
         name: 'tree_base',
         template:    `<ul>
                         <li v-for="it in data.leafs" :class="[{'vc-tree-checked': data.isHasCheckbox && it.isChecked, 'vc-tree-disabled': it.isDisabled, 'vc-tree-open': it.isOpened}]">
-                            <a href="javascript: void 0;" class="vc-tree-item" @click.stop="onItemClick(it, $event)" @contextmenu.prevent="onItemRightClick(it, $event)">
-                                <i @click="toggleOpen(it)" v-if="it.subTree" :class="[it.icon ? it.icon : 'vc-tree-caret']"></i>
+                            <a href="javascript: void 0;" class="vc-tree-item" @click.stop="onItemClick(it, $event)" @contextmenu.prevent="onItemRightClick(it, $event)" @dblclick="onItemDbclick(it, $event)">
+                                <i @click="toggleOpen(it)" v-if="it.subTree || it.icon" :class="[it.icon ? it.icon : 'vc-tree-caret']"></i>
                                 <span class="vc-tree-text" @click="toggleOpen(it)">
                                     <i @click="toggleChecked(it)" v-if="data.isHasCheckbox" class="vc-tree-checkbox"></i>
                                     <span @click="toggleChecked(it)" v-html="it.content"></span>
                                 </span>
                             </a>
 
-                            <tree_base v-if="it.subTree" :data="it.subTree" :on-item-click="onItemClick" :on-item-right-click="onItemRightClick" :is-parent-checked.sync="it.isChecked"></tree_base>
+                            <tree_base v-if="it.subTree" :data="it.subTree" :on-item-click="onItemClick" :on-item-dbclick="onItemDbclick" :on-item-right-click="onItemRightClick" :is-parent-checked.sync="it.isChecked"></tree_base>
                         </li>
                      </ul>`,
         props: {
@@ -43,6 +43,12 @@
                 default() {
                     return () => {
                     };
+                }
+            },
+            onItemDbclick: {
+                type: Function,
+                default() {
+                    return () => {};
                 }
             }
         },

@@ -70,22 +70,21 @@
                 default: false
             }
         }),
-
-        data() {
-            return {
-                typeClass: {
+        computed: {
+            sizeClass() {
+                return {
+                    'normal': '',
+                    'large': 'vc-progress-lg'
+                }[this.size]
+            },
+            typeClass() {
+                return {
                     'default': '',
                     'success': 'status-success',
                     'error': 'status-error',
                     'warn': 'status-warning'
-                }[this.type],
-                sizeClass: {
-                    'normal': '',
-                    'large': 'vc-progress-lg'
-                }[this.size]
-            }
-        },
-        computed: {
+                }[this.type];
+            },
             progressStyle() {
                 return {
                     width: this.progress + '%'

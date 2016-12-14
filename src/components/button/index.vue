@@ -20,37 +20,40 @@
   import {componentBaseParamConfig} from '../base-config';
 
   export default {
-    props: Object.assign({}, componentBaseParamConfig, {
-      type: {
-        type: String,
-        default: 'default'
-      },
-      size: {
-        type: String,
-        default: 'normal'
-      },
-      isDisabled: {
-        type: Boolean,
-        default: false
-      }
-    }),
+      props: Object.assign({}, componentBaseParamConfig, {
+          type: {
+              type: String,
+              default: 'default'
+          },
+          size: {
+              type: String,
+              default: 'normal'
+          },
+          isDisabled: {
+              type: Boolean,
+              default: false
+          }
+      }),
 
-    data() {
-      return {
-        typeClass: {
-          'default': '',
-          'primary': 'vc-btn-primary',
-          'outline': 'vc-btn-outline',
-          'error': 'vc-btn-error',
-          'link': 'vc-btn-link'
-        }[this.type],
-        sizeClass: {
-          'normal': '',
-          'large': 'vc-btn-lg',
-          'small': 'vc-btn-sm'
-        }[this.size]
+      computed: {
+          typeClass() {
+              return {
+                  'default': '',
+                  'primary': 'vc-btn-primary',
+                  'outline': 'vc-btn-outline',
+                  'error': 'vc-btn-error',
+                  'link': 'vc-btn-link'
+              }[this.type];
+          },
+
+          sizeClass() {
+              return {
+                  'normal': '',
+                  'large': 'vc-btn-lg',
+                  'small': 'vc-btn-sm'
+              }[this.size];
+          }
       }
-    }
   }
 </script>
 
