@@ -10,7 +10,7 @@
 -->
 
 <template>
-    <ul class="vc-timeline">
+    <ul :class="['vc-timeline', appendClass]" :style="appendStyle">
         <li :class="['vc-timeline-item', {'vc-timeline-left': textType === 'left'}]" v-for="it in data">
             <i :class="['vc-timeline-item-dot', {'vc-timeline-left-dot': textType === 'left'}]"></i>
             <div class="vc-timeline-item-content">

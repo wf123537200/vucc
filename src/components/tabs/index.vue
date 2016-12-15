@@ -3,7 +3,7 @@
 
   @param {String} [type=default|primary|outline|error|link] 按钮的类型
   @param {String} [size=normal|large|small] 按钮的大小
-  @param {Number} activeIndex 当前选中的标签页索引
+  @param {Number} value 当前选中的标签页索引
   @param {Number} onChange 切换标签页时的回调
   @param {String} appendClass 自定义class
   @param {Object} appendClass 自定义Style对象
@@ -49,18 +49,18 @@
                 type: String,
                 default: 'normal'
             },
-            activeIndex: {
-                type: Number,
-                default: 0
-            },
             onChange: {
                 type: Function
+            },
+            value: {
+                type: Number,
+                default: 0
             }
         }),
 
         data() {
             return {
-                curIndex: this.activeIndex,
+                curIndex: this.value,
                 typeClass: {
                     'line': 'vc-tabs-line',
                     'card': 'vc-tabs-card',
@@ -71,7 +71,7 @@
                     'normal': '',
                     'large': 'vc-tabs-lg',
                     'small': 'vc-tabs-sm'
-                }[this.size]
+                }[this.size],
             }
         },
 
@@ -107,6 +107,7 @@
                 this.curIndex = event ? selectIndex : index;
 
                 this.onChange && this.onChange(this.curIndex);
+                this.$emit('input', this.curIndex);
             }
         },
 
@@ -123,7 +124,7 @@
                 el.className += ' vc-tabs-tab-inner ';
                 el.setAttribute('tab_index', index);
 
-                if(index == _this.activeIndex) {
+                if(index == _this.value) {
                     _this.curIndex = +index;
                     temp += '<div class="vc-tabs-tab vc-tabs-tab-active" >' + el.outerHTML + '</div>';
                 } else {
@@ -143,11 +144,11 @@
 
             });
 
-            if(_this.curIndex === 0) _this.selectTab(_this.activeIndex || 0);
+            if(_this.curIndex === 0) _this.selectTab(_this.value || 0);
         },
 
         watch: {
-            activeIndex(val) {
+            value(val) {
                 this.selectTab(+val)
             }
         }

@@ -21,7 +21,7 @@
         </v-tabs>
 
         <h2>卡片式</h2>
-        <v-tabs type="card" :active-index.sync="activeIndex">
+        <v-tabs type="card" v-model="activeIndex">
             <div slot="header">
                 <div>选项卡1</div>
                 <div>选项卡2</div>
@@ -34,7 +34,7 @@
         </v-tabs>
 
         <h2>面板式</h2>
-        <v-tabs type="panel" size="small" :active-index="1">
+        <v-tabs type="panel" size="small" v-model="activeIndex">
             <div slot="header">
                 <div>选项卡1</div>
                 <div>选项卡2</div>

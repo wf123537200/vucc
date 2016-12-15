@@ -43,6 +43,7 @@ $timeline-prefix-cls: $css-prefix + 'timeline';
     border-left: 0;
     border-right: 2px solid $border-color;
     text-align: right;
+    padding: 0 10px 15px 0;
 
     &-dot {
       left: auto;
