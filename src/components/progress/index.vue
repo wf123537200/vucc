@@ -18,13 +18,13 @@
         <!-- title -->
         <div class="vc-progress-title" v-if="!!title">
             <h3>{{title}}</h3>
-            <span class="vc-progress-title-info">{{info || progress + '%'}}</span>
+            <span class="vc-progress-title-info">{{info || (progress + '%')}}</span>
         </div><!-- title end -->
 
         <!-- line -->
         <div class="vc-progress-line-wrap">
-            <span class="vc-progress-line-text" v-if="isShowText">{{progress + '%'}}
-                <slot></slot>
+            <span class="vc-progress-line-text" v-if="isShowText">
+                {{progressText || progress + '%'}}
             </span>
             <div class="vc-progress-line">
                 <span class="vc-progress-line-bg" :style="progressStyle"></span>
@@ -53,6 +53,9 @@
                 type: String
             },
             info: {
+                type: String
+            },
+            progressText: {
                 type: String
             },
             explain: {
