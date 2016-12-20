@@ -112,7 +112,15 @@ class DateX {
     }
 
     setMonth(month) {
-        var date = [this.year, parseInt(month, 10) + 1, 1].join('/') + ' ' + [this.hour, this.minute, this.second].join(':');
+        let m = parseInt(month, 10) + 1 > 12 ? parseInt(month, 10) + 1 - 12 : parseInt(month, 10) + 1;
+        let y = parseInt(month, 10) + 1 > 12 ? this.year + 1 : this.year;
+
+        if(m == 0) {
+            m = 12;
+            y = this.year - 1;
+        }
+
+        let date = [y, m, 1].join('/') + ' ' + [this.hour, this.minute, this.second].join(':');
 
         this.init(date);
         this.renderTable && this.renderTable();
