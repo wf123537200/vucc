@@ -48,6 +48,7 @@
    @param {Boolean} hasAllSelect 是否展示全选框和每行前的勾选框
    @param {Function} trClick 行点击事件,会传入行的数据
    @param {Function} onCheckboxClick 组件前勾选框点击事件
+   @param {String} emptyText 空数据提示,可以传入html
    @param {Number} colsNum 列的数量
    @param {String} appendClass 自定义class
    @param {Object} appendClass 自定义Style对象
@@ -60,7 +61,10 @@
             </div>
             <div class="vc-table-body">
                 <pv-table-header :header="header" :body="body" :has-select-all="hasSelectAll"></pv-table-header>
-                <pv-table-body :body="body" :data="data" :page-size="pageSizeShow" :has-select-all="hasSelectAll"
+                <!-- 没有数据提示 -->
+                <div v-show="!data || data.length === 0" class="vc-table-empty-text" v-html="emptyText">
+                </div>
+                <pv-table-body v-show="data && data.length > 0" :body="body" :data="data" :page-size="pageSizeShow" :has-select-all="hasSelectAll"
                                :current-page="currentPageShow"></pv-table-body>
             </div>
         </div>
@@ -121,6 +125,10 @@
             hasSelectAll: {
                 type: Boolean,
                 default: false
+            },
+            emptyText: {
+                type: String,
+                default: '没有数据,请重新查询'
             }
         }),
 

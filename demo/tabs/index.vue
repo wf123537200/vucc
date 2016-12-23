@@ -9,7 +9,7 @@
             <div slot="header">
                 <div class="a">
                     <i class="vci vci-apple"></i>
-                    <span>选项卡1</span>
+                    <span>{{xxxx}}</span>
                 </div>
                 <div>选项卡2</div>
                 <div>选项卡3</div>
@@ -63,7 +63,9 @@
         },
         data() {
             return {
-                activeIndex: 2
+                activeIndex: 2,
+                xxxx: 111,
+                headerRefresh: true
             }
         },
         methods: {
@@ -76,7 +78,8 @@
         },
         mounted() {
             setTimeout(() => {
-                this.activeIndex = 1
+                this.activeIndex = 1;
+                this.xxxx = 112123;
             }, 3000)
         }
     }

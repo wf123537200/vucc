@@ -58,6 +58,15 @@ $table-head-background-color: lighten($base-bg, 3%);
     table-layout: fixed;
   }
 
+  &-empty-text {
+    padding: 10px;
+    text-align: center;
+
+    i {
+      color: $warning-color;
+    }
+  }
+
   table {
     width: 100%;
     max-width: 100%;
