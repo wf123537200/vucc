@@ -42,7 +42,7 @@
             },
 
             showTipsWay2() {
-                window.Tips.init('', 'info', 'lalalala');
+                window.Tips.init('', 'info', 'lalalala', 20000);
             },
         }
     }

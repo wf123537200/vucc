@@ -14,7 +14,7 @@ MessageBox.init = function(obj) {
 
     document.body.appendChild(tmpDiv);
 
-    this.messageBox = new Vue({
+    return this.messageBox = new Vue({
         el: tmpDiv,
         template: `<v-message-box
                                 :id="id" :type="type"
@@ -37,6 +37,9 @@ MessageBox.init = function(obj) {
         methods: {
             onCancelWrap() {
                 this.onCancel && this.onCancel();
+                this.$el.remove();
+            },
+            hide() {
                 this.$el.remove();
             }
         },

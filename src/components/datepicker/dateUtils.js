@@ -29,7 +29,7 @@ class DateX {
 
     // 小于10的日期补0
     appendZero(str) {
-        const s = parseInt(str);
+        const s = parseInt(str, 10);
         if(isNaN(s)) return console.error('传入字符串数据非法');
 
         return s < 10 ? '0' + s : s;
