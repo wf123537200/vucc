@@ -7,6 +7,7 @@
    @param {Boolean} isGlobal 是否是全局遮罩
    @param {String} content loading提示语
    @param {String} [size=normal|large|small] loading的大小
+   @param {Object} maskStyle maskStyle对象
    @param {String} appendClass 自定义class
    @param {Object} appendStyle 自定义Style对象
 -->
@@ -14,9 +15,9 @@
 <template>
     <div v-show="isShow" :style="appendStyle" :class="['vc-spin', appendClass, sizeClass, {'vc-spin-lg': isGlobal}]">
         <!-- 全局遮罩 -->
-        <pv-mask :is-show="isGlobal && isShow"></pv-mask>
+        <pv-mask :is-show="isGlobal && isShow" :append-style="maskStyle"></pv-mask>
         <!-- 局部遮罩 -->
-        <div v-show="!isGlobal && isShow" class="vc-spin-wrap-mask"></div>
+        <div v-show="!isGlobal && isShow" class="vc-spin-wrap-mask" :append-style="maskStyle"></div>
 
         <div :class="['vc-spin-content', {'vc-spin-global': isGlobal}]">
             <span class="vc-spin-circle"></span>
