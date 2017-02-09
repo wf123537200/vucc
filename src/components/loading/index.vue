@@ -17,7 +17,7 @@
         <!-- 全局遮罩 -->
         <pv-mask :is-show="isGlobal && isShow" :append-style="maskStyle"></pv-mask>
         <!-- 局部遮罩 -->
-        <div v-show="!isGlobal && isShow" class="vc-spin-wrap-mask" :append-style="maskStyle"></div>
+        <div v-show="!isGlobal && isShow" class="vc-spin-wrap-mask" :style="maskStyle"></div>
 
         <div :class="['vc-spin-content', {'vc-spin-global': isGlobal}]">
             <span class="vc-spin-circle"></span>
