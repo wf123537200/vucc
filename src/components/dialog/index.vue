@@ -126,12 +126,22 @@
         },
 
         mounted() {
+            this.$root.$$dialog = Object.assign(this.$root.$$dialog || {}, window.$$dialog);
             this.$root.$$dialog = this.$root.$$dialog || {};
             if(this.$root.$$dialog[this.id]) {
                 console.warn(this.id + ' 此dialog id已经被使用,请确认id填写正确!');
             }
             this.$root.$$dialog[this.id] = this;
             this.isShow = this.value;
+
+            // 如果不是复合弹出,则清理掉当前页面的所有窗口
+            if(this.$root.$$dialog) {
+                for(let it in this.$root.$$dialog) {
+                    if(this.$root.$$dialog[it].isMultiple) continue;
+
+                    if(this.$root.$$dialog[it].id !== this.id) this.$root.$$dialog[it].hide();
+                }
+            }
         },
 
         data() {

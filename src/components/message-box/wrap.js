@@ -47,6 +47,8 @@ MessageBox.init = function(obj) {
             vMessageBox
         },
         mounted() {
+            window.$$dialog = window.$$dialog || {};
+            window.$$dialog[this.id] = this;
             this.isShow = true;
         }
     })
