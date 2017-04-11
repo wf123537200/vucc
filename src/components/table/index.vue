@@ -39,6 +39,7 @@
                         }
                     }]
    @param {Function} onChangePage 用于传入分页组件页面变更事件进行响应
+   @param {Function} onSelectAll 全选事件，只有在hasAllSelect为true时可用，传入全选checkbox框的值
    @param {Number} currentPage 当前组件停留页
    @param {Number} pageSize 每一页展示多少条数据
    @param {Number} total 总页数
@@ -60,7 +61,7 @@
                 <slot></slot>
             </div>
             <div class="vc-table-body">
-                <pv-table-header :header="header" :body="body" :has-select-all="hasSelectAll"></pv-table-header>
+                <pv-table-header :header="header" :body="body" :on-select-all="onSelectAll" :has-select-all="hasSelectAll"></pv-table-header>
                 <!-- 没有数据提示 -->
                 <div v-show="!data || data.length === 0" class="vc-table-empty-text" v-html="emptyText">
                 </div>
@@ -129,6 +130,12 @@
             emptyText: {
                 type: String,
                 default: '没有数据,请重新查询'
+            },
+            onSelectAll: {
+                type: Function,
+                default: () => {
+                    return;
+                }
             }
         }),
 

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-table :page-size="10" :has-all-select="true" :cols-num="5" :on-checkbox-click="table.checkboxClick" :data="table.data" :has-select-all="true">
+        <v-table :page-size="10" :on-select-all="onSelectAll" :has-all-select="true" :cols-num="5" :on-checkbox-click="table.checkboxClick" :data="table.data" :has-select-all="true">
             <v-table-columns :prop="'key'" :label="'索引'" :td-style="{width: '100px', color: 'red'}" :is-sort="true"></v-table-columns>
             <v-table-columns :prop="'name'" :label="'姓名'" :render-header="renderHeader" :is-sort="true" :sort-fn="sortFn"></v-table-columns>
             <v-table-columns :prop="'age'" :label="'年龄'"></v-table-columns>
@@ -53,6 +53,9 @@
         methods: {
             renderHeader() {
                 return `我是渲染函数渲染的`;
+            },
+            onSelectAll(val) {
+                console.log(val);
             },
             clickX() {
                 console.log(arguments)

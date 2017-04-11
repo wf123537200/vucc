@@ -3,7 +3,7 @@
         <thead>
             <tr>
                 <th :style="it.style" :class="{pointer: it.isSort}" v-for="(it, index) in header" @click="sort(it)">
-                    <pv-checkbox @click.native.stop v-if="index === 0 && hasSelectAll" v-model="selectAll" :append-style="{float: 'left', 'margin-right': '5px'}"></pv-checkbox>
+                    <pv-checkbox @click.native.stop="onSelectAll(selectAll)" v-if="index === 0 && hasSelectAll" v-model="selectAll" :append-style="{float: 'left', 'margin-right': '5px'}"></pv-checkbox>
                     <span v-if="it.isSort"
                           :class="['vc-table-sort-arrow', {'vc-table-sort-arrow-down': !it.isSortUp}]"></span>
                     <span :class="{'vc-table-label': hasSelectAll}">{{it.label}}</span>
@@ -28,6 +28,12 @@
             hasSelectAll: {
                 type: Boolean,
                 default: false
+            },
+            onSelectAll: {
+                type: Function,
+                default: () => {
+                    return;
+                }
             }
         },
 
