@@ -295,6 +295,9 @@
             },
             onSuccess: {
                 type: Function
+            },
+            onOpen: {
+                type: Function
             }
         }),
         data() {
@@ -338,10 +341,11 @@
         },
         methods: {
             // 展示
-            showDatepicker() {
+            showDatepicker(ev) {
                 if(this.isDisabled) return;
 
                 this.isShowDatePicker = true;
+                this.onOpen && this.onOpen(ev);
             },
 
             // 确定按钮

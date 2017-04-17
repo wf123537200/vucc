@@ -3,7 +3,7 @@
         <h3>常规 {{time1}}</h3>
         <v-datepicker v-model="time1" :disable-filter="disableFilter" :is-force-refresh="true"></v-datepicker>
         <h3>带时分秒</h3>
-        <v-datepicker v-model="time" :format="'YYYY/MM/DD hh:mm:ss'"></v-datepicker>
+        <v-datepicker v-model="time" :format="'YYYY/MM/DD hh:mm:ss'" :on-open="open"></v-datepicker>
         <h3>范围选择</h3>
         <v-datepicker :is-range="true"
                       :disable-filter="disableFilter"
@@ -39,6 +39,9 @@
                     return false;
                 }
 
+            },
+            open() {
+                console.log(arguments)
             }
         },
         mounted() {
