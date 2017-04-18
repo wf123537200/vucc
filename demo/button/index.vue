@@ -29,9 +29,14 @@
         components: {
             vButton
         },
+        data: {
+            a: 1
+        },
         methods: {
             buttonClick() {
-                console.log('u has been click')
+                return () => {
+                    console.log(this.a)
+                }
             }
         }
     }

@@ -24,7 +24,7 @@ module.exports = merge(baseConfig, {
     plugins: [
         // 生成 html 文件
         new HtmlWebpackPlugin({
-            template: './test/index.html', // html模版
+            template: './demo/index.html', // html模版
             hash: false, // 文件名是否 hash
             filename: 'index.html', // 文件名
             inject: 'body', // 静态文件注入的位置
