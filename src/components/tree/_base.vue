@@ -1,7 +1,7 @@
 <!--
    tree 树状组件
 
-   @param {String}
+   @param {Boolean} isShow tree中的一行是否展示
    @param {String} appendClass 自定义class
    @param {Object} appendStyle 自定义Style对象
 -->

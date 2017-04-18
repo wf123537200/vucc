@@ -25,6 +25,7 @@
    @param {Function} onItemClick 节点点击函数
    @param {Function} onItemDbclick 节点双击函数
    @param {Function} onItemRightClick 节点右键点击函数
+   @param {Boolean} isShow tree中的一行是否展示
    @param {String} appendClass 自定义class
    @param {Object} appendStyle 自定义Style对象
 -->

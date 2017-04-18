@@ -16,6 +16,7 @@
    @param {Function} onOk 确定按钮回调
    @param {Function} onCancel 取消按钮回调
    @param {Function} onSuccess 选中按钮回调
+   @param {Function} onOpen 当日期选择器打开时触发，传入mouseEvent
    @param {String} appendClass 自定义class
    @param {Object} appendStyle 自定义Style对象
 -->
