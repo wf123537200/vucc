@@ -41,7 +41,8 @@
                                 key: i,
                                 name: `name${i}`,
                                 age: 32,
-                                address: `address${i}号`
+                                address: `address${i}号`,
+                                isDisabled: true
                             });
                         }
 

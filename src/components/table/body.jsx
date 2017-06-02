@@ -27,7 +27,7 @@ export default {
                                     if(ins === 0 && this.hasSelectAll) {
                                         return <td style={getStyle(el)}>
                                             <label on-click={($event) => this.handlerClick($event, row)}
-                                                   class="vc-label all-select-checkbox">
+                                                   class={row.isDisabled ? 'vc-label all-select-checkbox vc-label-disabled' : 'vc-label all-select-checkbox'}>
                                                 <span class="vc-checkbox"></span>
                                                 <span class="vc-label-text"> </span>
                                             </label>
@@ -115,6 +115,8 @@ export default {
             }
         },
         handlerClick($event, row) {
+            if(row.isDisabled) return;
+
             row.isChecked = !row.isChecked;
 
             if(row.isChecked) {
