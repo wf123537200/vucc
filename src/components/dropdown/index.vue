@@ -17,6 +17,8 @@
         value: 2,
         label: 'value2',
         isDisabled: true
+        // 不可删除
+        isDeleteAble: false
       }]
     }
   @param {String} [size = normal | large | small] 组件大小,单选时使用
@@ -74,7 +76,7 @@
                 <ul>
                     <li v-for="it in resultListTemp">
                         <span class="vc-dropdown-multi-result-text" :title="it.label">{{it.label}}</span>
-                        <span class="vc-dropdown-multi-result-delete" @click.stop="onDelete(it)"></span>
+                        <span v-if="it.isDeleteAble !== false" class="vc-dropdown-multi-result-delete" @click.stop="onDelete(it)"></span>
                     </li>
                 </ul>
             </div><!-- 已选展示 end -->

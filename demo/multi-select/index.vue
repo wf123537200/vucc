@@ -39,20 +39,22 @@
                         }, {
                             value: 2,
                             label: 'value2disabledvalue2disabled',
-                            isDisabled: true
+                            isDisabled: true,
+                            isDeleteAble: false
                         }];
 
                         var other = [];
                         for(var i = 0; i < 30; i++) {
                             other.push({
                                 value: i,
-                                label: 'value' + i
+                                label: 'value' + i,
+                                isDeleteAble: false
                             })
                         }
 
                         return base.concat(other);
                     })(),
-                multiResList: [ { "value": 7, "label": "value7" }, { "value": 9, "label": "value9" }, { "value": 17, "label": "value17" }, { "value": 11, "label": "value11" }]
+                multiResList: [ { "value": 7, "label": "value7", isDeleteAble: false}, { "value": 9, "label": "value9" }, { "value": 17, "label": "value17" }, { "value": 11, "label": "value11" }]
             }
         },
         methods: {
