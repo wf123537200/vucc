@@ -56,7 +56,7 @@
 
         <!-- 多选 -->
         <div v-if="isMultiple" class="vc-dropdown vc-dropdown-multi" :class="{'hide': !isOpened}">
-            <pv-button v-if="hasSearch" type="outline" :style="{margin: '10px', border: 0}">清空</pv-button>
+            <pv-button v-if="hasSearch" type="outline" :style="{margin: '10px', border: 0}" @click.native.stop="onClear">清空</pv-button>
             <pv-search v-if="hasSearch" v-model="filter" :append-style="searchAppendStyle" :size="'small'"></pv-search>
 
             <ul class="vc-dropdown-menu">
