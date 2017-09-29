@@ -13,6 +13,8 @@
             <v-button @click.native="showAlert2()">alert第二种调用方法</v-button>
 
             <a class="demo-link" href="../components/loading.html">组件连接</a>
+
+            {{da | capitalize}}
         </section>
     </div>
 </template>
@@ -29,7 +31,7 @@
         },
         data() {
             return {
-
+                da: 'dasdas'
             }
         },
         methods: {
@@ -45,6 +47,13 @@
                     explain: '我是说明文字',
                     isCloseAble: true
                 });
+            }
+        },
+        filters: {
+            capitalize: function (value) {
+                if (!value) return ''
+                value = value.toString()
+                return value.charAt(0).toUpperCase() + value.slice(1)
             }
         }
     }

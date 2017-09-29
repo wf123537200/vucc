@@ -33,11 +33,11 @@
 <template>
     <ul :style="appendStyle" :class="['vc-tree', appendClass]" >
         <li v-for="it in data.leafs" v-show="it.isShow" :class="[{'vc-tree-checked': data.isHasCheckbox && it.isChecked, 'vc-tree-disabled': it.isDisabled, 'vc-tree-open': it.isOpened}]">
-            <a href="javascript: void 0;" class="vc-tree-item" @click.stop="onItemClick(it, $event)" @contextmenu.prevent="onItemRightClick(it, $event)" @dblclick="onItemDbclick(it, $event)">
+            <a class="vc-tree-item" @click.stop="onItemClick(it, $event)" @contextmenu.prevent="onItemRightClick(it, $event)" @dblclick="onItemDbclick(it, $event)">
                 <i @click="toggleOpen(it)" v-if="it.subTree || it.icon" :class="[it.icon ? it.icon : 'vc-tree-caret']"></i>
                 <span class="vc-tree-text" @click="toggleOpen(it)">
-                    <i @click.stop="toggleChecked(it)" v-if="data.isHasCheckbox" class="vc-tree-checkbox"></i>
-                    <span v-html="it.content"></span>
+                    <i @click="toggleChecked(it)" v-if="data.isHasCheckbox" class="vc-tree-checkbox"></i>
+                    <span @click="toggleChecked(it)" v-html="it.content"></span>
                 </span>
             </a>
 
